@@ -1,5 +1,6 @@
 # Project-Fruit-Shop
 
+<pre>
 Software Development Life Cycle (SDLC)
 
 Planning 
@@ -45,3 +46,4 @@ C# .NET Framework 4.7.2
 Document
 
 Testing
+</pre>
