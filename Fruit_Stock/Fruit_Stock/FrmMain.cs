@@ -17,5 +17,16 @@ namespace Fruit_Stock
             InitializeComponent();
         }
 
+
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
