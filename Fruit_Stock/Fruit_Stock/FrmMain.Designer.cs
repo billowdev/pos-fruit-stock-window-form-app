@@ -29,22 +29,53 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            this.mnsTest = new System.Windows.Forms.MenuStrip();
+            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnsTest.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mnsTest
+            // 
+            this.mnsTest.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnsTest.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loginToolStripMenuItem});
+            this.mnsTest.Location = new System.Drawing.Point(0, 0);
+            this.mnsTest.Name = "mnsTest";
+            this.mnsTest.Size = new System.Drawing.Size(1348, 28);
+            this.mnsTest.TabIndex = 1;
+            this.mnsTest.Text = "menuStrip1";
+          
+            // 
+            // loginToolStripMenuItem
+            // 
+            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.loginToolStripMenuItem.Text = "Login";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.Controls.Add(this.mnsTest);
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.mnsTest;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
             this.Text = "Fruit Stock";
+
+            this.mnsTest.ResumeLayout(false);
+            this.mnsTest.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip mnsTest;
+        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
     }
 }
 

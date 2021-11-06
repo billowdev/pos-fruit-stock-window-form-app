@@ -8,3 +8,4 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.cspro
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.CoreCompileInputs.cache
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.exe
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.pdb
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmLogin.resources
