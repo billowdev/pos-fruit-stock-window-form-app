@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -43,8 +44,9 @@ namespace Fruit_Stock
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogin.BackgroundImage = global::Fruit_Stock.Properties.Resources.btnLogin;
+            this.btnLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogin.BackgroundImage")));
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Location = new System.Drawing.Point(595, 578);
@@ -58,8 +60,9 @@ namespace Fruit_Stock
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = global::Fruit_Stock.Properties.Resources.btnExit;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(1217, 692);
@@ -92,7 +95,7 @@ namespace Fruit_Stock
             // pbShopkeeper
             // 
             this.pbShopkeeper.BackColor = System.Drawing.Color.Transparent;
-            this.pbShopkeeper.BackgroundImage = global::Fruit_Stock.Properties.Resources.shopkeeper;
+            this.pbShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbShopkeeper.BackgroundImage")));
             this.pbShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbShopkeeper.Location = new System.Drawing.Point(485, 48);
             this.pbShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -104,7 +107,7 @@ namespace Fruit_Stock
             // pbFruitFrontShopkeeper
             // 
             this.pbFruitFrontShopkeeper.BackColor = System.Drawing.Color.Transparent;
-            this.pbFruitFrontShopkeeper.BackgroundImage = global::Fruit_Stock.Properties.Resources.fruits_2;
+            this.pbFruitFrontShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbFruitFrontShopkeeper.BackgroundImage")));
             this.pbFruitFrontShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbFruitFrontShopkeeper.Location = new System.Drawing.Point(613, 241);
             this.pbFruitFrontShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -132,8 +135,8 @@ namespace Fruit_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Wheat;
-            this.BackgroundImage = global::Fruit_Stock.Properties.Resources.Outstanding_Colorful_Background;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1365, 768);
             this.Controls.Add(this.cbShowPassword);

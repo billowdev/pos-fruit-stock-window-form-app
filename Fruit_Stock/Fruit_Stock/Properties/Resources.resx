@@ -121,19 +121,4 @@
   <data name="shopkeeper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Images\shopkeeper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fruits_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Images\fruits_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Outstanding_Colorful_Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Images\Outstanding_Colorful_Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Images\btnLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Images\eye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Images\btnExit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
