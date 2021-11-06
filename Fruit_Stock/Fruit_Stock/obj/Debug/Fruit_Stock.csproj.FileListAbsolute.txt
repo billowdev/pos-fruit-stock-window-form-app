@@ -1,0 +1,11 @@
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe.config
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.pdb
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.AssemblyReference.cache
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmMain.resources
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.Properties.Resources.resources
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.GenerateResource.cache
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.CoreCompileInputs.cache
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.exe
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.pdb
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmLogin.resources
