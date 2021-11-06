@@ -1,9 +1,12 @@
 # Project-Fruit-Shop
 
+<<<<<<< HEAD
 
 
 # Project-Fruit-Shop
 
+=======
+>>>>>>> a7c4cb83d07c18f8fda4e6a6cb201b19b8f5c841
 <pre>
 Software Development Life Cycle (SDLC)
 
@@ -51,4 +54,7 @@ Document
 
 Testing
 </pre>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7c4cb83d07c18f8fda4e6a6cb201b19b8f5c841
