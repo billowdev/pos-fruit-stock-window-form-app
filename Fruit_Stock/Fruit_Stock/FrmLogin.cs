@@ -118,5 +118,7 @@ namespace Fruit_Stock
                 txtPassword.PasswordChar = '●';
             }
         }
+
+
     }
 }
