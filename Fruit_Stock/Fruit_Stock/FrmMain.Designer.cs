@@ -44,7 +44,6 @@ namespace Fruit_Stock
             this.mnsTest.Size = new System.Drawing.Size(1348, 28);
             this.mnsTest.TabIndex = 1;
             this.mnsTest.Text = "menuStrip1";
-          
             // 
             // loginToolStripMenuItem
             // 
@@ -64,7 +63,6 @@ namespace Fruit_Stock
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
             this.Text = "Fruit Stock";
-
             this.mnsTest.ResumeLayout(false);
             this.mnsTest.PerformLayout();
             this.ResumeLayout(false);

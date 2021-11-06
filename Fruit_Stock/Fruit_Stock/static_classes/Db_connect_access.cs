@@ -13,9 +13,11 @@ namespace Fruit_Stock.static_classes
     {
         public static OleDbConnection conn = new OleDbConnection();
         public static OleDbCommand cmd = new OleDbCommand("", conn);
-        public static OleDbDataAdapter da;
+        //public static OleDbDataAdapter da;
+        public static OleDbDataReader rd;
 
-        public static string currentFullName;
+        public static string currentUsername;
+        public static string currentStatus;
         public static string sql;
 
         public static string getConnectionString()
