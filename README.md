@@ -1,7 +1,3 @@
-# Project-Fruit-Shop
-
-
-
 
 # Project-Fruit-Shop
 
