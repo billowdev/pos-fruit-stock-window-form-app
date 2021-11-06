@@ -36,9 +36,10 @@ namespace Fruit_Stock.static_classes
                     conn.Open();
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("ระบบไม่สามารถสร้างการเชื่อมต่อได้" + Environment.NewLine +
+                MessageBox.Show("ระบบไม่สามารถสร้างการเชื่อมต่อได้" + "\n" +
                     "รายละเอียด: " + ex.Message.ToString(), "ผิดพลาด",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -54,10 +55,10 @@ namespace Fruit_Stock.static_classes
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("CloseConnection");
-                    
+                MessageBox.Show("Close Connection Failed");
+
             }
         }
     }

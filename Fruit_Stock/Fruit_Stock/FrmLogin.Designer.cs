@@ -140,6 +140,7 @@ namespace Fruit_Stock
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
