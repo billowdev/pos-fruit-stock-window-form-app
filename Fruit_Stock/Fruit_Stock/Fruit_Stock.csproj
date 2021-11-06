@@ -78,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -93,6 +94,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="assets\Images\Outstanding_Colorful_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Images\shopkeeper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Images\fruits_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Images\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Images\btnLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Images\btnExit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

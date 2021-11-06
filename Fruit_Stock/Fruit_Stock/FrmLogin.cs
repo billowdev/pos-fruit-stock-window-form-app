@@ -33,17 +33,7 @@ namespace Fruit_Stock
 
         }
 
-        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbShowPassword.Checked == true)
-            {
-                txtPassword.PasswordChar = (char)0;
-            }
-            else
-            {
-                txtPassword.PasswordChar = '●';
-            }
-        }
+  
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -115,6 +105,18 @@ namespace Fruit_Stock
             Db_connect.rd.Close();
             Db_connect.closeConnection();
 
+        }
+
+        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShowPassword.Checked == true)
+            {
+                txtPassword.PasswordChar = (char)0;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '●';
+            }
         }
     }
 }
