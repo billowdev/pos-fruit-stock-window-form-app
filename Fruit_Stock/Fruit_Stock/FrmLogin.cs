@@ -31,5 +31,28 @@ namespace Fruit_Stock
                 "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShowPassword.Checked == true)
+            {
+                txtPassword.PasswordChar = (char)0;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '●';
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            // login
+
+        }
     }
 }

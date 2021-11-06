@@ -37,7 +37,8 @@ namespace Fruit_Stock
             this.btnExit = new System.Windows.Forms.Button();
             this.pbUserLogin = new System.Windows.Forms.PictureBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.cbShowPassword = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,12 +56,13 @@ namespace Fruit_Stock
             // 
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(924, 490);
+            this.btnLogin.Location = new System.Drawing.Point(926, 507);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(126, 52);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lbUsername
             // 
@@ -86,12 +88,13 @@ namespace Fruit_Stock
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(753, 490);
+            this.btnExit.Location = new System.Drawing.Point(755, 507);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(126, 52);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pbUserLogin
             // 
@@ -105,19 +108,32 @@ namespace Fruit_Stock
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("TH Sarabun New", 16F);
+            this.txtUsername.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
             this.txtUsername.Location = new System.Drawing.Point(739, 278);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(373, 43);
             this.txtUsername.TabIndex = 4;
             // 
-            // textBox1
+            // txtPassword
             // 
-            this.textBox1.Font = new System.Drawing.Font("TH Sarabun New", 16F);
-            this.textBox1.Location = new System.Drawing.Point(739, 376);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 43);
-            this.textBox1.TabIndex = 4;
+            this.txtPassword.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
+            this.txtPassword.Location = new System.Drawing.Point(739, 376);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(373, 43);
+            this.txtPassword.TabIndex = 4;
+            // 
+            // cbShowPassword
+            // 
+            this.cbShowPassword.AutoSize = true;
+            this.cbShowPassword.Font = new System.Drawing.Font("Mali", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cbShowPassword.Location = new System.Drawing.Point(753, 443);
+            this.cbShowPassword.Name = "cbShowPassword";
+            this.cbShowPassword.Size = new System.Drawing.Size(145, 33);
+            this.cbShowPassword.TabIndex = 5;
+            this.cbShowPassword.Text = "Show password";
+            this.cbShowPassword.UseVisualStyleBackColor = true;
+            this.cbShowPassword.CheckedChanged += new System.EventHandler(this.cbShowPassword_CheckedChanged);
             // 
             // FrmLogin
             // 
@@ -125,7 +141,8 @@ namespace Fruit_Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Wheat;
             this.ClientSize = new System.Drawing.Size(1366, 768);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cbShowPassword);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.pbUserLogin);
             this.Controls.Add(this.btnExit);
@@ -156,6 +173,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.PictureBox pbUserLogin;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.CheckBox cbShowPassword;
     }
 }
