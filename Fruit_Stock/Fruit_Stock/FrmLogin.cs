@@ -89,7 +89,6 @@ namespace Fruit_Stock
                 f.ShowDialog();
                 f = null;
 
-                this.Show();
             }
             else
             {
