@@ -26,8 +26,8 @@ namespace Fruit_Stock.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\db_fruit_" +
-            "stock.accdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../../Database/db_fruit_stock.accdb" +
+            "")]
         public string db_fruit_stockConnectionString {
             get {
                 return ((string)(this["db_fruit_stockConnectionString"]));

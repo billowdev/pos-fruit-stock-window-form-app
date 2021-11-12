@@ -1,4 +1,3 @@
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe.config
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.pdb
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.AssemblyReference.cache
@@ -10,7 +9,7 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.exe
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.pdb
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmLogin.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmProfile.resources
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\db_fruit_stock.accdb
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmHistoryInvoice.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmInvoice.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmStock.resources
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe.config

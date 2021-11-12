@@ -32,18 +32,16 @@ namespace Fruit_Stock
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfile));
             this.mnuProfile = new System.Windows.Forms.MenuStrip();
-            this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyInvoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtStatus = new System.Windows.Forms.TextBox();
-            this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.appData = new Fruit_Stock.AppData();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -52,7 +50,6 @@ namespace Fruit_Stock
             this.lbEMPID = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.txtEMPID = new System.Windows.Forms.TextBox();
-            this.tbadminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.lbLastName = new System.Windows.Forms.Label();
@@ -65,24 +62,24 @@ namespace Fruit_Stock
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
-            this.tb_adminTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_adminTableAdapter();
             this.dgvAllMember = new System.Windows.Forms.DataGridView();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbAllData = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
+            this.appData = new Fruit_Stock.AppData();
+            this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnuProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbadminBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuProfile
@@ -104,13 +101,6 @@ namespace Fruit_Stock
             this.mnuProfile.Text = "menuStrip1";
             this.mnuProfile.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
             // 
-            // invoiceToolStripMenuItem
-            // 
-            this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.invoiceToolStripMenuItem.Text = "Invoice";
-            this.invoiceToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -126,27 +116,34 @@ namespace Fruit_Stock
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exportProfileToolStripMenuItem
             // 
             this.exportProfileToolStripMenuItem.Name = "exportProfileToolStripMenuItem";
-            this.exportProfileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportProfileToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
             this.exportProfileToolStripMenuItem.Text = "Export Profile";
             // 
             // homePageToolStripMenuItem
             // 
             this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
-            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
             this.homePageToolStripMenuItem.Text = "Home Page";
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 26);
+            this.mnuExit.Size = new System.Drawing.Size(245, 46);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
+            // invoiceToolStripMenuItem
+            // 
+            this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
+            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
+            this.invoiceToolStripMenuItem.Text = "Invoice";
+            this.invoiceToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // historyInvoiceToolStripMenuItem
             // 
@@ -177,16 +174,6 @@ namespace Fruit_Stock
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(346, 34);
             this.txtStatus.TabIndex = 1;
-            // 
-            // tbloginBindingSource
-            // 
-            this.tbloginBindingSource.DataMember = "tb_login";
-            this.tbloginBindingSource.DataSource = this.appData;
-            // 
-            // appData
-            // 
-            this.appData.DataSetName = "AppData";
-            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lbStatus
             // 
@@ -258,21 +245,14 @@ namespace Fruit_Stock
             // 
             // txtEMPID
             // 
-            this.txtEMPID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_id", true));
             this.txtEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEMPID.Location = new System.Drawing.Point(868, 272);
             this.txtEMPID.Name = "txtEMPID";
             this.txtEMPID.Size = new System.Drawing.Size(346, 34);
             this.txtEMPID.TabIndex = 1;
             // 
-            // tbadminBindingSource
-            // 
-            this.tbadminBindingSource.DataMember = "tb_admin";
-            this.tbadminBindingSource.DataSource = this.appData;
-            // 
             // txtName
             // 
-            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_name", true));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(868, 327);
             this.txtName.Name = "txtName";
@@ -281,7 +261,6 @@ namespace Fruit_Stock
             // 
             // txtLastName
             // 
-            this.txtLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_lastname", true));
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(868, 391);
             this.txtLastName.Name = "txtLastName";
@@ -330,7 +309,6 @@ namespace Fruit_Stock
             // 
             // dtpBirthDate
             // 
-            this.dtpBirthDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tbadminBindingSource, "admin_bdate", true));
             this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBirthDate.Location = new System.Drawing.Point(868, 516);
             this.dtpBirthDate.Name = "dtpBirthDate";
@@ -339,7 +317,6 @@ namespace Fruit_Stock
             // 
             // txtPhone
             // 
-            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_phone", true));
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(868, 572);
             this.txtPhone.Name = "txtPhone";
@@ -392,14 +369,6 @@ namespace Fruit_Stock
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // tb_loginTableAdapter
-            // 
-            this.tb_loginTableAdapter.ClearBeforeFill = true;
-            // 
-            // tb_adminTableAdapter
-            // 
-            this.tb_adminTableAdapter.ClearBeforeFill = true;
-            // 
             // dgvAllMember
             // 
             this.dgvAllMember.AutoGenerateColumns = false;
@@ -415,30 +384,6 @@ namespace Fruit_Stock
             this.dgvAllMember.RowTemplate.Height = 24;
             this.dgvAllMember.Size = new System.Drawing.Size(471, 499);
             this.dgvAllMember.TabIndex = 7;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Width = 140;
             // 
             // lbAllData
             // 
@@ -500,6 +445,44 @@ namespace Fruit_Stock
             this.gbOperating.TabStop = false;
             this.gbOperating.Text = "การดำเนินการ";
             // 
+            // appData
+            // 
+            this.appData.DataSetName = "AppData";
+            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbloginBindingSource
+            // 
+            this.tbloginBindingSource.DataMember = "tb_login";
+            this.tbloginBindingSource.DataSource = this.appData;
+            // 
+            // tb_loginTableAdapter
+            // 
+            this.tb_loginTableAdapter.ClearBeforeFill = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Width = 140;
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -544,11 +527,10 @@ namespace Fruit_Stock
             this.Load += new System.EventHandler(this.FrmProfile_Load);
             this.mnuProfile.ResumeLayout(false);
             this.mnuProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbadminBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -587,20 +569,18 @@ namespace Fruit_Stock
         private System.Windows.Forms.RadioButton rdbFemale;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.PictureBox pbProfile;
-        private AppData appData;
-        private System.Windows.Forms.BindingSource tbloginBindingSource;
-        private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
-        private System.Windows.Forms.BindingSource tbadminBindingSource;
-        private AppDataTableAdapters.tb_adminTableAdapter tb_adminTableAdapter;
         private System.Windows.Forms.DataGridView dgvAllMember;
         private System.Windows.Forms.Label lbAllData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbOperating;
+        private AppData appData;
+        private System.Windows.Forms.BindingSource tbloginBindingSource;
+        private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }

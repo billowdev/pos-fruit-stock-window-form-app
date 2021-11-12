@@ -38,6 +38,18 @@ namespace Fruit_Stock {
         
         private tb_productDataTable tabletb_product;
         
+        private global::System.Data.DataRelation relationtb_login_tb_admin;
+        
+        private global::System.Data.DataRelation relationtb_login_tb_employee;
+        
+        private global::System.Data.DataRelation relationtb_import_tb_employee;
+        
+        private global::System.Data.DataRelation relationtb_product_tb_import;
+        
+        private global::System.Data.DataRelation relationtb_order_tb_customer;
+        
+        private global::System.Data.DataRelation relationtb_order_tb_product;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,6 +350,12 @@ namespace Fruit_Stock {
                     this.tabletb_product.InitVars();
                 }
             }
+            this.relationtb_login_tb_admin = this.Relations["tb_login_tb_admin"];
+            this.relationtb_login_tb_employee = this.Relations["tb_login_tb_employee"];
+            this.relationtb_import_tb_employee = this.Relations["tb_import_tb_employee"];
+            this.relationtb_product_tb_import = this.Relations["tb_product_tb_import"];
+            this.relationtb_order_tb_customer = this.Relations["tb_order_tb_customer"];
+            this.relationtb_order_tb_product = this.Relations["tb_order_tb_product"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +380,30 @@ namespace Fruit_Stock {
             base.Tables.Add(this.tabletb_order);
             this.tabletb_product = new tb_productDataTable();
             base.Tables.Add(this.tabletb_product);
+            this.relationtb_login_tb_admin = new global::System.Data.DataRelation("tb_login_tb_admin", new global::System.Data.DataColumn[] {
+                        this.tabletb_login.UsernameColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_admin.admin_idColumn}, false);
+            this.Relations.Add(this.relationtb_login_tb_admin);
+            this.relationtb_login_tb_employee = new global::System.Data.DataRelation("tb_login_tb_employee", new global::System.Data.DataColumn[] {
+                        this.tabletb_login.UsernameColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_employee.emp_idColumn}, false);
+            this.Relations.Add(this.relationtb_login_tb_employee);
+            this.relationtb_import_tb_employee = new global::System.Data.DataRelation("tb_import_tb_employee", new global::System.Data.DataColumn[] {
+                        this.tabletb_import.im_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_employee.emp_idColumn}, false);
+            this.Relations.Add(this.relationtb_import_tb_employee);
+            this.relationtb_product_tb_import = new global::System.Data.DataRelation("tb_product_tb_import", new global::System.Data.DataColumn[] {
+                        this.tabletb_product.pro_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_import.im_idColumn}, false);
+            this.Relations.Add(this.relationtb_product_tb_import);
+            this.relationtb_order_tb_customer = new global::System.Data.DataRelation("tb_order_tb_customer", new global::System.Data.DataColumn[] {
+                        this.tabletb_order.order_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_customer.cus_idColumn}, false);
+            this.Relations.Add(this.relationtb_order_tb_customer);
+            this.relationtb_order_tb_product = new global::System.Data.DataRelation("tb_order_tb_product", new global::System.Data.DataColumn[] {
+                        this.tabletb_order.order_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletb_product.pro_idColumn}, false);
+            this.Relations.Add(this.relationtb_order_tb_product);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -619,15 +661,18 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_adminRow Addtb_adminRow(int admin_id, string admin_name, string admin_lastname, string admin_gender, System.DateTime admin_bdate, string admin_phone) {
+            public tb_adminRow Addtb_adminRow(tb_loginRow parenttb_loginRowBytb_login_tb_admin, string admin_name, string admin_lastname, string admin_gender, System.DateTime admin_bdate, string admin_phone) {
                 tb_adminRow rowtb_adminRow = ((tb_adminRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        admin_id,
+                        null,
                         admin_name,
                         admin_lastname,
                         admin_gender,
                         admin_bdate,
                         admin_phone};
+                if ((parenttb_loginRowBytb_login_tb_admin != null)) {
+                    columnValuesArray[0] = parenttb_loginRowBytb_login_tb_admin[0];
+                }
                 rowtb_adminRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtb_adminRow);
                 return rowtb_adminRow;
@@ -635,7 +680,7 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_adminRow FindByadmin_id(int admin_id) {
+            public tb_adminRow FindByadmin_id(string admin_id) {
                 return ((tb_adminRow)(this.Rows.Find(new object[] {
                             admin_id})));
             }
@@ -668,7 +713,7 @@ namespace Fruit_Stock {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnadmin_id = new global::System.Data.DataColumn("admin_id", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnadmin_id = new global::System.Data.DataColumn("admin_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnadmin_id);
                 this.columnadmin_name = new global::System.Data.DataColumn("admin_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnadmin_name);
@@ -682,9 +727,9 @@ namespace Fruit_Stock {
                 base.Columns.Add(this.columnadmin_phone);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnadmin_id}, true));
-                this.columnadmin_id.AutoIncrementSeed = 1;
                 this.columnadmin_id.AllowDBNull = false;
                 this.columnadmin_id.Unique = true;
+                this.columnadmin_id.MaxLength = 6;
                 this.columnadmin_name.MaxLength = 50;
                 this.columnadmin_lastname.MaxLength = 50;
                 this.columnadmin_gender.MaxLength = 5;
@@ -932,13 +977,16 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_customerRow Addtb_customerRow(string cus_id, string cus_name, string cus_lastname, string cus_phone) {
+            public tb_customerRow Addtb_customerRow(tb_orderRow parenttb_orderRowBytb_order_tb_customer, string cus_name, string cus_lastname, string cus_phone) {
                 tb_customerRow rowtb_customerRow = ((tb_customerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        cus_id,
+                        null,
                         cus_name,
                         cus_lastname,
                         cus_phone};
+                if ((parenttb_orderRowBytb_order_tb_customer != null)) {
+                    columnValuesArray[0] = parenttb_orderRowBytb_order_tb_customer[0];
+                }
                 rowtb_customerRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtb_customerRow);
                 return rowtb_customerRow;
@@ -1256,15 +1304,18 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_employeeRow Addtb_employeeRow(string emp_id, string emp_name, string emp_lastname, string emp_gender, System.DateTime emp_bdate, string emp_phone) {
+            public tb_employeeRow Addtb_employeeRow(tb_loginRow parenttb_loginRowBytb_login_tb_employee, string emp_name, string emp_lastname, string emp_gender, System.DateTime emp_bdate, string emp_phone) {
                 tb_employeeRow rowtb_employeeRow = ((tb_employeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        emp_id,
+                        null,
                         emp_name,
                         emp_lastname,
                         emp_gender,
                         emp_bdate,
                         emp_phone};
+                if ((parenttb_loginRowBytb_login_tb_employee != null)) {
+                    columnValuesArray[0] = parenttb_loginRowBytb_login_tb_employee[0];
+                }
                 rowtb_employeeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtb_employeeRow);
                 return rowtb_employeeRow;
@@ -1559,12 +1610,15 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_importRow Addtb_importRow(string im_id, string im_name, System.DateTime im_date) {
+            public tb_importRow Addtb_importRow(tb_productRow parenttb_productRowBytb_product_tb_import, string im_name, System.DateTime im_date) {
                 tb_importRow rowtb_importRow = ((tb_importRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        im_id,
+                        null,
                         im_name,
                         im_date};
+                if ((parenttb_productRowBytb_product_tb_import != null)) {
+                    columnValuesArray[0] = parenttb_productRowBytb_product_tb_import[0];
+                }
                 rowtb_importRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtb_importRow);
                 return rowtb_importRow;
@@ -2457,14 +2511,17 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_productRow Addtb_productRow(string pro_id, string pro_name, short pro_price, string pro_unit, short pro_quantity) {
+            public tb_productRow Addtb_productRow(tb_orderRow parenttb_orderRowBytb_order_tb_product, string pro_name, short pro_price, string pro_unit, short pro_quantity) {
                 tb_productRow rowtb_productRow = ((tb_productRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        pro_id,
+                        null,
                         pro_name,
                         pro_price,
                         pro_unit,
                         pro_quantity};
+                if ((parenttb_orderRowBytb_order_tb_product != null)) {
+                    columnValuesArray[0] = parenttb_orderRowBytb_order_tb_product[0];
+                }
                 rowtb_productRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtb_productRow);
                 return rowtb_productRow;
@@ -2663,9 +2720,9 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int admin_id {
+            public string admin_id {
                 get {
-                    return ((int)(this[this.tabletb_admin.admin_idColumn]));
+                    return ((string)(this[this.tabletb_admin.admin_idColumn]));
                 }
                 set {
                     this[this.tabletb_admin.admin_idColumn] = value;
@@ -2749,6 +2806,17 @@ namespace Fruit_Stock {
                 }
                 set {
                     this[this.tabletb_admin.admin_phoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_loginRow tb_loginRow {
+                get {
+                    return ((tb_loginRow)(this.GetParentRow(this.Table.ParentRelations["tb_login_tb_admin"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_login_tb_admin"]);
                 }
             }
             
@@ -2883,6 +2951,17 @@ namespace Fruit_Stock {
                 }
                 set {
                     this[this.tabletb_customer.cus_phoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_orderRow tb_orderRow {
+                get {
+                    return ((tb_orderRow)(this.GetParentRow(this.Table.ParentRelations["tb_order_tb_customer"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_order_tb_customer"]);
                 }
             }
             
@@ -3030,6 +3109,28 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_loginRow tb_loginRow {
+                get {
+                    return ((tb_loginRow)(this.GetParentRow(this.Table.ParentRelations["tb_login_tb_employee"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_login_tb_employee"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_importRow tb_importRow {
+                get {
+                    return ((tb_importRow)(this.GetParentRow(this.Table.ParentRelations["tb_import_tb_employee"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_import_tb_employee"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isemp_nameNull() {
                 return this.IsNull(this.tabletb_employee.emp_nameColumn);
             }
@@ -3148,6 +3249,17 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_productRow tb_productRow {
+                get {
+                    return ((tb_productRow)(this.GetParentRow(this.Table.ParentRelations["tb_product_tb_import"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_product_tb_import"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isim_nameNull() {
                 return this.IsNull(this.tabletb_import.im_nameColumn);
             }
@@ -3168,6 +3280,17 @@ namespace Fruit_Stock {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setim_dateNull() {
                 this[this.tabletb_import.im_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_employeeRow[] Gettb_employeeRows() {
+                if ((this.Table.ChildRelations["tb_import_tb_employee"] == null)) {
+                    return new tb_employeeRow[0];
+                }
+                else {
+                    return ((tb_employeeRow[])(base.GetChildRows(this.Table.ChildRelations["tb_import_tb_employee"])));
+                }
             }
         }
         
@@ -3250,6 +3373,28 @@ namespace Fruit_Stock {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusNull() {
                 this[this.tabletb_login.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_adminRow[] Gettb_adminRows() {
+                if ((this.Table.ChildRelations["tb_login_tb_admin"] == null)) {
+                    return new tb_adminRow[0];
+                }
+                else {
+                    return ((tb_adminRow[])(base.GetChildRows(this.Table.ChildRelations["tb_login_tb_admin"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_employeeRow[] Gettb_employeeRows() {
+                if ((this.Table.ChildRelations["tb_login_tb_employee"] == null)) {
+                    return new tb_employeeRow[0];
+                }
+                else {
+                    return ((tb_employeeRow[])(base.GetChildRows(this.Table.ChildRelations["tb_login_tb_employee"])));
+                }
             }
         }
         
@@ -3361,6 +3506,28 @@ namespace Fruit_Stock {
             public void Setorder_dateNull() {
                 this[this.tabletb_order.order_dateColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_customerRow[] Gettb_customerRows() {
+                if ((this.Table.ChildRelations["tb_order_tb_customer"] == null)) {
+                    return new tb_customerRow[0];
+                }
+                else {
+                    return ((tb_customerRow[])(base.GetChildRows(this.Table.ChildRelations["tb_order_tb_customer"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_productRow[] Gettb_productRows() {
+                if ((this.Table.ChildRelations["tb_order_tb_product"] == null)) {
+                    return new tb_productRow[0];
+                }
+                else {
+                    return ((tb_productRow[])(base.GetChildRows(this.Table.ChildRelations["tb_order_tb_product"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3454,6 +3621,17 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_orderRow tb_orderRow {
+                get {
+                    return ((tb_orderRow)(this.GetParentRow(this.Table.ParentRelations["tb_order_tb_product"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["tb_order_tb_product"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Ispro_nameNull() {
                 return this.IsNull(this.tabletb_product.pro_nameColumn);
             }
@@ -3498,6 +3676,17 @@ namespace Fruit_Stock {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setpro_quantityNull() {
                 this[this.tabletb_product.pro_quantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public tb_importRow[] Gettb_importRows() {
+                if ((this.Table.ChildRelations["tb_product_tb_import"] == null)) {
+                    return new tb_importRow[0];
+                }
+                else {
+                    return ((tb_importRow[])(base.GetChildRows(this.Table.ChildRelations["tb_product_tb_import"])));
+                }
             }
         }
         
@@ -6980,6 +7169,42 @@ namespace Fruit_Stock.AppDataTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(AppData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._tb_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tb_orderTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._tb_productTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tb_productTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._tb_importTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tb_importTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._tb_loginTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tb_loginTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._tb_adminTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.tb_admin.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -7007,42 +7232,6 @@ namespace Fruit_Stock.AppDataTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._tb_importTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tb_importTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tb_loginTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tb_loginTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tb_orderTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tb_orderTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tb_productTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tb_productTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -7053,6 +7242,38 @@ namespace Fruit_Stock.AppDataTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(AppData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._tb_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tb_orderTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._tb_productTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tb_productTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._tb_importTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tb_importTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._tb_loginTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tb_loginTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._tb_adminTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.tb_admin.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7077,38 +7298,6 @@ namespace Fruit_Stock.AppDataTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._tb_importTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tb_importTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tb_loginTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tb_loginTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tb_orderTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tb_orderTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tb_productTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tb_productTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -7119,38 +7308,6 @@ namespace Fruit_Stock.AppDataTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(AppData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._tb_productTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tb_productTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tb_orderTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tb_orderTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tb_loginTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tb_loginTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tb_importTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tb_importTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._tb_employeeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.tb_employee.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -7172,6 +7329,38 @@ namespace Fruit_Stock.AppDataTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tb_adminTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tb_loginTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tb_login.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tb_loginTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tb_importTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tb_import.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tb_importTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tb_productTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tb_product.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tb_productTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tb_orderTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tb_order.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tb_orderTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
