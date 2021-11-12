@@ -9,3 +9,5 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.cspro
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.exe
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.pdb
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmLogin.resources
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmProfile.resources
+D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\db_fruit_stock.accdb

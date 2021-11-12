@@ -146,6 +146,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(1979, 1078);

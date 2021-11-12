@@ -37,8 +37,8 @@ namespace Fruit_Stock
             this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historyInvoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfile.SuspendLayout();
             this.SuspendLayout();
@@ -72,25 +72,25 @@ namespace Fruit_Stock
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exportProfileToolStripMenuItem
             // 
             this.exportProfileToolStripMenuItem.Name = "exportProfileToolStripMenuItem";
-            this.exportProfileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportProfileToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.exportProfileToolStripMenuItem.Text = "Export Profile";
             // 
             // homePageToolStripMenuItem
             // 
             this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
-            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.homePageToolStripMenuItem.Text = "Home Page";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // invoiceToolStripMenuItem
@@ -99,17 +99,17 @@ namespace Fruit_Stock
             this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.invoiceToolStripMenuItem.Text = "Invoice";
             // 
-            // stockToolStripMenuItem
-            // 
-            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
-            this.stockToolStripMenuItem.Text = "Stock";
-            // 
             // historyInvoiceToolStripMenuItem
             // 
             this.historyInvoiceToolStripMenuItem.Name = "historyInvoiceToolStripMenuItem";
             this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
             this.historyInvoiceToolStripMenuItem.Text = "History Invoice";
+            // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.stockToolStripMenuItem.Text = "Stock";
             // 
             // helpToolStripMenuItem
             // 
@@ -128,6 +128,7 @@ namespace Fruit_Stock
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
             this.mnuProfile.ResumeLayout(false);
             this.mnuProfile.PerformLayout();

@@ -20,17 +20,6 @@ namespace Fruit_Stock
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            //Fruit_Stock.static_classes.Db_connect.openConnection();
-            
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //Fruit_Stock.static_classes.Db_connect.closeConnection();
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
   

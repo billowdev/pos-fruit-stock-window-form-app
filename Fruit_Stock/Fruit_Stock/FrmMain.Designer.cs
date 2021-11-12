@@ -31,16 +31,11 @@ namespace Fruit_Stock
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btnExit = new System.Windows.Forms.Button();
-            this.pbInvoice = new System.Windows.Forms.PictureBox();
-            this.pbProfile = new System.Windows.Forms.PictureBox();
-            this.pbStock = new System.Windows.Forms.PictureBox();
-            this.pbHistoryInvoice = new System.Windows.Forms.PictureBox();
-            this.pbHelp = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHistoryInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
+            this.btnProfile = new System.Windows.Forms.Button();
+            this.btnInvoice = new System.Windows.Forms.Button();
+            this.btnStock = new System.Windows.Forms.Button();
+            this.btnHistoryInvoice = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnExit
@@ -59,59 +54,66 @@ namespace Fruit_Stock
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // pbInvoice
+            // btnProfile
             // 
-            this.pbInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.pbInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbInvoice.BackgroundImage")));
-            this.pbInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbInvoice.Location = new System.Drawing.Point(229, 82);
-            this.pbInvoice.Name = "pbInvoice";
-            this.pbInvoice.Size = new System.Drawing.Size(251, 254);
-            this.pbInvoice.TabIndex = 6;
-            this.pbInvoice.TabStop = false;
+            this.btnProfile.BackColor = System.Drawing.Color.Transparent;
+            this.btnProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnProfile.BackgroundImage")));
+            this.btnProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnProfile.Location = new System.Drawing.Point(550, 66);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(272, 285);
+            this.btnProfile.TabIndex = 8;
+            this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // pbProfile
+            // btnInvoice
             // 
-            this.pbProfile.BackColor = System.Drawing.Color.Transparent;
-            this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
-            this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbProfile.Location = new System.Drawing.Point(600, 82);
-            this.pbProfile.Name = "pbProfile";
-            this.pbProfile.Size = new System.Drawing.Size(251, 254);
-            this.pbProfile.TabIndex = 6;
-            this.pbProfile.TabStop = false;
+            this.btnInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.btnInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInvoice.BackgroundImage")));
+            this.btnInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInvoice.Location = new System.Drawing.Point(229, 66);
+            this.btnInvoice.Name = "btnInvoice";
+            this.btnInvoice.Size = new System.Drawing.Size(272, 285);
+            this.btnInvoice.TabIndex = 8;
+            this.btnInvoice.UseVisualStyleBackColor = false;
+            this.btnInvoice.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // pbStock
+            // btnStock
             // 
-            this.pbStock.BackColor = System.Drawing.Color.Transparent;
-            this.pbStock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbStock.BackgroundImage")));
-            this.pbStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbStock.Location = new System.Drawing.Point(229, 395);
-            this.pbStock.Name = "pbStock";
-            this.pbStock.Size = new System.Drawing.Size(251, 254);
-            this.pbStock.TabIndex = 6;
-            this.pbStock.TabStop = false;
+            this.btnStock.BackColor = System.Drawing.Color.Transparent;
+            this.btnStock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStock.BackgroundImage")));
+            this.btnStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStock.Location = new System.Drawing.Point(229, 379);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(272, 285);
+            this.btnStock.TabIndex = 8;
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // pbHistoryInvoice
+            // btnHistoryInvoice
             // 
-            this.pbHistoryInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.pbHistoryInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHistoryInvoice.BackgroundImage")));
-            this.pbHistoryInvoice.Location = new System.Drawing.Point(600, 395);
-            this.pbHistoryInvoice.Name = "pbHistoryInvoice";
-            this.pbHistoryInvoice.Size = new System.Drawing.Size(251, 254);
-            this.pbHistoryInvoice.TabIndex = 6;
-            this.pbHistoryInvoice.TabStop = false;
+            this.btnHistoryInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistoryInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHistoryInvoice.BackgroundImage")));
+            this.btnHistoryInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHistoryInvoice.Location = new System.Drawing.Point(550, 379);
+            this.btnHistoryInvoice.Name = "btnHistoryInvoice";
+            this.btnHistoryInvoice.Size = new System.Drawing.Size(272, 285);
+            this.btnHistoryInvoice.TabIndex = 8;
+            this.btnHistoryInvoice.UseVisualStyleBackColor = false;
+            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // pbHelp
+            // btnHelp
             // 
-            this.pbHelp.BackColor = System.Drawing.Color.Transparent;
-            this.pbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHelp.BackgroundImage")));
-            this.pbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbHelp.Location = new System.Drawing.Point(988, 264);
-            this.pbHelp.Name = "pbHelp";
-            this.pbHelp.Size = new System.Drawing.Size(171, 169);
-            this.pbHelp.TabIndex = 6;
-            this.pbHelp.TabStop = false;
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.ForeColor = System.Drawing.Color.Transparent;
+            this.btnHelp.Location = new System.Drawing.Point(873, 219);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(272, 285);
+            this.btnHelp.TabIndex = 8;
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // FrmMain
             // 
@@ -120,24 +122,23 @@ namespace Fruit_Stock
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1348, 721);
-            this.Controls.Add(this.pbHistoryInvoice);
-            this.Controls.Add(this.pbHelp);
-            this.Controls.Add(this.pbProfile);
-            this.Controls.Add(this.pbStock);
-            this.Controls.Add(this.pbInvoice);
+            this.Controls.Add(this.btnStock);
+            this.Controls.Add(this.btnInvoice);
+            this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.btnHistoryInvoice);
+            this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.btnExit);
             this.DoubleBuffered = true;
+            this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fruit Stock";
+            this.TransparencyKey = System.Drawing.Color.Transparent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pbInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHistoryInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
 
         }
@@ -145,11 +146,11 @@ namespace Fruit_Stock
         #endregion
 
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.PictureBox pbInvoice;
-        private System.Windows.Forms.PictureBox pbProfile;
-        private System.Windows.Forms.PictureBox pbStock;
-        private System.Windows.Forms.PictureBox pbHistoryInvoice;
-        private System.Windows.Forms.PictureBox pbHelp;
+        private System.Windows.Forms.Button btnProfile;
+        private System.Windows.Forms.Button btnInvoice;
+        private System.Windows.Forms.Button btnStock;
+        private System.Windows.Forms.Button btnHistoryInvoice;
+        private System.Windows.Forms.Button btnHelp;
     }
 }
 
