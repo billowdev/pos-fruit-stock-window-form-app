@@ -473,7 +473,13 @@
         <xs:element name="tb_admin" msprop:Generator_TableClassName="tb_adminDataTable" msprop:Generator_TableVarName="tabletb_admin" msprop:Generator_RowChangedName="tb_adminRowChanged" msprop:Generator_TablePropName="tb_admin" msprop:Generator_RowDeletingName="tb_adminRowDeleting" msprop:Generator_RowChangingName="tb_adminRowChanging" msprop:Generator_RowEvHandlerName="tb_adminRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_adminRowDeleted" msprop:Generator_RowClassName="tb_adminRow" msprop:Generator_UserTableName="tb_admin" msprop:Generator_RowEvArgName="tb_adminRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="admin_id" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnadmin_id" msprop:Generator_ColumnPropNameInRow="admin_id" msprop:Generator_ColumnPropNameInTable="admin_idColumn" msprop:Generator_UserColumnName="admin_id" type="xs:int" />
+              <xs:element name="admin_id" msprop:Generator_ColumnVarNameInTable="columnadmin_id" msprop:Generator_ColumnPropNameInRow="admin_id" msprop:Generator_ColumnPropNameInTable="admin_idColumn" msprop:Generator_UserColumnName="admin_id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="admin_name" msprop:Generator_ColumnVarNameInTable="columnadmin_name" msprop:Generator_ColumnPropNameInRow="admin_name" msprop:Generator_ColumnPropNameInTable="admin_nameColumn" msprop:Generator_UserColumnName="admin_name" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -706,4 +712,14 @@
       <xs:field xpath="mstns:pro_id" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="tb_login_tb_admin" msdata:parent="tb_login" msdata:child="tb_admin" msdata:parentkey="Username" msdata:childkey="admin_id" msprop:Generator_UserChildTable="tb_admin" msprop:Generator_ChildPropName="Gettb_adminRows" msprop:Generator_UserRelationName="tb_login_tb_admin" msprop:Generator_RelationVarName="relationtb_login_tb_admin" msprop:Generator_UserParentTable="tb_login" msprop:Generator_ParentPropName="tb_loginRow" />
+      <msdata:Relationship name="tb_login_tb_employee" msdata:parent="tb_login" msdata:child="tb_employee" msdata:parentkey="Username" msdata:childkey="emp_id" msprop:Generator_UserChildTable="tb_employee" msprop:Generator_ChildPropName="Gettb_employeeRows" msprop:Generator_UserRelationName="tb_login_tb_employee" msprop:Generator_RelationVarName="relationtb_login_tb_employee" msprop:Generator_UserParentTable="tb_login" msprop:Generator_ParentPropName="tb_loginRow" />
+      <msdata:Relationship name="tb_import_tb_employee" msdata:parent="tb_import" msdata:child="tb_employee" msdata:parentkey="im_id" msdata:childkey="emp_id" msprop:Generator_UserChildTable="tb_employee" msprop:Generator_ChildPropName="Gettb_employeeRows" msprop:Generator_UserRelationName="tb_import_tb_employee" msprop:Generator_RelationVarName="relationtb_import_tb_employee" msprop:Generator_UserParentTable="tb_import" msprop:Generator_ParentPropName="tb_importRow" />
+      <msdata:Relationship name="tb_product_tb_import" msdata:parent="tb_product" msdata:child="tb_import" msdata:parentkey="pro_id" msdata:childkey="im_id" msprop:Generator_UserChildTable="tb_import" msprop:Generator_ChildPropName="Gettb_importRows" msprop:Generator_UserRelationName="tb_product_tb_import" msprop:Generator_RelationVarName="relationtb_product_tb_import" msprop:Generator_UserParentTable="tb_product" msprop:Generator_ParentPropName="tb_productRow" />
+      <msdata:Relationship name="tb_order_tb_customer" msdata:parent="tb_order" msdata:child="tb_customer" msdata:parentkey="order_id" msdata:childkey="cus_id" msprop:Generator_UserChildTable="tb_customer" msprop:Generator_ChildPropName="Gettb_customerRows" msprop:Generator_UserRelationName="tb_order_tb_customer" msprop:Generator_RelationVarName="relationtb_order_tb_customer" msprop:Generator_UserParentTable="tb_order" msprop:Generator_ParentPropName="tb_orderRow" />
+      <msdata:Relationship name="tb_order_tb_product" msdata:parent="tb_order" msdata:child="tb_product" msdata:parentkey="order_id" msdata:childkey="pro_id" msprop:Generator_UserChildTable="tb_product" msprop:Generator_ChildPropName="Gettb_productRows" msprop:Generator_UserRelationName="tb_order_tb_product" msprop:Generator_ParentPropName="tb_orderRow" msprop:Generator_RelationVarName="relationtb_order_tb_product" msprop:Generator_UserParentTable="tb_order" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

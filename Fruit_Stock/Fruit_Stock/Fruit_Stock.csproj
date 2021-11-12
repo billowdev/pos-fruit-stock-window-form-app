@@ -121,6 +121,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>
@@ -144,9 +145,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="assets\Images\shopkeeper.png" />
   </ItemGroup>
   <ItemGroup>
@@ -163,11 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Images\1980x1080.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="db_fruit_stock.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
