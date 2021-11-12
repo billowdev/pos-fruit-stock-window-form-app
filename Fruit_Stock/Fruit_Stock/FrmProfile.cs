@@ -40,6 +40,6 @@ namespace Fruit_Stock
             f = null;
         }
 
-  
+
     }
 }

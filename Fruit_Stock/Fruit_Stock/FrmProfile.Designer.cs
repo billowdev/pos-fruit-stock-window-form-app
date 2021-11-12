@@ -68,10 +68,15 @@ namespace Fruit_Stock
             this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
             this.tb_adminTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_adminTableAdapter();
             this.dgvAllMember = new System.Windows.Forms.DataGridView();
-            this.lbAllData = new System.Windows.Forms.Label();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbAllData = new System.Windows.Forms.Label();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.gbOperating = new System.Windows.Forms.GroupBox();
             this.mnuProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
@@ -89,9 +94,10 @@ namespace Fruit_Stock
             this.historyInvoiceToolStripMenuItem,
             this.stockToolStripMenuItem,
             this.helpToolStripMenuItem});
+            this.mnuProfile.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuProfile.Location = new System.Drawing.Point(0, 0);
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(1348, 28);
+            this.mnuProfile.Size = new System.Drawing.Size(1348, 30);
             this.mnuProfile.TabIndex = 0;
             this.mnuProfile.Text = "menuStrip1";
             // 
@@ -360,7 +366,7 @@ namespace Fruit_Stock
             // 
             this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
             this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbProfile.Location = new System.Drawing.Point(12, 34);
+            this.pbProfile.Location = new System.Drawing.Point(30, 41);
             this.pbProfile.Name = "pbProfile";
             this.pbProfile.Size = new System.Drawing.Size(96, 102);
             this.pbProfile.TabIndex = 6;
@@ -371,7 +377,7 @@ namespace Fruit_Stock
             this.btnBack.BackColor = System.Drawing.Color.Silver;
             this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnBack.Location = new System.Drawing.Point(12, 611);
+            this.btnBack.Location = new System.Drawing.Point(30, 594);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(96, 98);
             this.btnBack.TabIndex = 5;
@@ -399,8 +405,32 @@ namespace Fruit_Stock
             this.dgvAllMember.Name = "dgvAllMember";
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
-            this.dgvAllMember.Size = new System.Drawing.Size(429, 581);
+            this.dgvAllMember.Size = new System.Drawing.Size(471, 581);
             this.dgvAllMember.TabIndex = 7;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Width = 140;
             // 
             // lbAllData
             // 
@@ -412,35 +442,65 @@ namespace Fruit_Stock
             this.lbAllData.TabIndex = 2;
             this.lbAllData.Text = "ข้อมูลสมาชิกทั้งหมด";
             // 
-            // usernameDataGridViewTextBoxColumn
+            // btnNew
             // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.Width = 125;
+            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.Location = new System.Drawing.Point(727, 644);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(102, 39);
+            this.btnNew.TabIndex = 8;
+            this.btnNew.Text = "เพิ่ม";
+            this.btnNew.UseVisualStyleBackColor = true;
             // 
-            // passwordDataGridViewTextBoxColumn
+            // btnEdit
             // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.Width = 125;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(859, 644);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(102, 39);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // statusDataGridViewTextBoxColumn
+            // btnCancel
             // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Width = 125;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(990, 644);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(102, 39);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "ยกเลิก";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(1122, 644);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(102, 39);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "บันทึก";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // gbOperating
+            // 
+            this.gbOperating.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbOperating.Location = new System.Drawing.Point(674, 60);
+            this.gbOperating.Name = "gbOperating";
+            this.gbOperating.Size = new System.Drawing.Size(662, 649);
+            this.gbOperating.TabIndex = 9;
+            this.gbOperating.TabStop = false;
+            this.gbOperating.Text = "การดำเนินการ";
             // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.pbProfile);
             this.Controls.Add(this.btnBack);
@@ -465,6 +525,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.mnuProfile);
+            this.Controls.Add(this.gbOperating);
             this.MainMenuStrip = this.mnuProfile;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
@@ -524,9 +585,14 @@ namespace Fruit_Stock
         private System.Windows.Forms.BindingSource tbadminBindingSource;
         private AppDataTableAdapters.tb_adminTableAdapter tb_adminTableAdapter;
         private System.Windows.Forms.DataGridView dgvAllMember;
+        private System.Windows.Forms.Label lbAllData;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lbAllData;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.GroupBox gbOperating;
     }
 }
