@@ -78,7 +78,7 @@ namespace Fruit_Stock
             this.btnInvoice.Size = new System.Drawing.Size(272, 285);
             this.btnInvoice.TabIndex = 8;
             this.btnInvoice.UseVisualStyleBackColor = false;
-            this.btnInvoice.Click += new System.EventHandler(this.btnProfile_Click);
+            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // btnStock
             // 
@@ -91,7 +91,7 @@ namespace Fruit_Stock
             this.btnStock.Size = new System.Drawing.Size(272, 285);
             this.btnStock.TabIndex = 8;
             this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnProfile_Click);
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnHelp
             // 
@@ -118,7 +118,7 @@ namespace Fruit_Stock
             this.btnHistoryInvoice.Size = new System.Drawing.Size(272, 285);
             this.btnHistoryInvoice.TabIndex = 8;
             this.btnHistoryInvoice.UseVisualStyleBackColor = false;
-            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnProfile_Click);
+            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnHistoryInvoice_Click);
             // 
             // FrmMain
             // 

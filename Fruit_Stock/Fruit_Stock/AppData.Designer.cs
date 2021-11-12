@@ -619,7 +619,7 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_adminRow Addtb_adminRow(string admin_id, string admin_name, string admin_lastname, string admin_gender, System.DateTime admin_bdate, string admin_phone) {
+            public tb_adminRow Addtb_adminRow(int admin_id, string admin_name, string admin_lastname, string admin_gender, System.DateTime admin_bdate, string admin_phone) {
                 tb_adminRow rowtb_adminRow = ((tb_adminRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         admin_id,
@@ -635,7 +635,7 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public tb_adminRow FindByadmin_id(string admin_id) {
+            public tb_adminRow FindByadmin_id(int admin_id) {
                 return ((tb_adminRow)(this.Rows.Find(new object[] {
                             admin_id})));
             }
@@ -668,7 +668,7 @@ namespace Fruit_Stock {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnadmin_id = new global::System.Data.DataColumn("admin_id", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnadmin_id = new global::System.Data.DataColumn("admin_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnadmin_id);
                 this.columnadmin_name = new global::System.Data.DataColumn("admin_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnadmin_name);
@@ -682,9 +682,9 @@ namespace Fruit_Stock {
                 base.Columns.Add(this.columnadmin_phone);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnadmin_id}, true));
+                this.columnadmin_id.AutoIncrementSeed = 1;
                 this.columnadmin_id.AllowDBNull = false;
                 this.columnadmin_id.Unique = true;
-                this.columnadmin_id.MaxLength = 6;
                 this.columnadmin_name.MaxLength = 50;
                 this.columnadmin_lastname.MaxLength = 50;
                 this.columnadmin_gender.MaxLength = 5;
@@ -2663,9 +2663,9 @@ namespace Fruit_Stock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string admin_id {
+            public int admin_id {
                 get {
-                    return ((string)(this[this.tabletb_admin.admin_idColumn]));
+                    return ((int)(this[this.tabletb_admin.admin_idColumn]));
                 }
                 set {
                     this[this.tabletb_admin.admin_idColumn] = value;

@@ -36,10 +36,34 @@ namespace Fruit_Stock
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmProfile f = new FrmProfile();
             f.ShowDialog();
             f = null;
+            this.Close();
+        }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            FrmInvoice f = new FrmInvoice();
+            f.ShowDialog();
+            f = null;
+            this.Close();
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            FrmStock f = new FrmStock();
+            f.ShowDialog();
+            f = null;
+            this.Close();
+        }
+
+        private void btnHistoryInvoice_Click(object sender, EventArgs e)
+        {
+            FrmHistoryInvoice f = new FrmHistoryInvoice();
+            f.ShowDialog();
+            f = null;
+            this.Close();
         }
     }
 }

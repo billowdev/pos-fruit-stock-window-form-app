@@ -19,6 +19,10 @@ namespace Fruit_Stock
 
         private void FrmProfile_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'appData.tb_admin' table. You can move, or remove it, as needed.
+            this.tb_adminTableAdapter.Fill(this.appData.tb_admin);
+            // TODO: This line of code loads data into the 'appData.tb_login' table. You can move, or remove it, as needed.
+            this.tb_loginTableAdapter.Fill(this.appData.tb_login);
 
         }
 
@@ -35,5 +39,7 @@ namespace Fruit_Stock
             f.ShowDialog();
             f = null;
         }
+
+  
     }
 }

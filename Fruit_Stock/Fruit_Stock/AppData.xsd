@@ -470,16 +470,10 @@
   <xs:element name="AppData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="AppData" msprop:Generator_UserDSName="AppData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tb_admin" msprop:Generator_TableClassName="tb_adminDataTable" msprop:Generator_TableVarName="tabletb_admin" msprop:Generator_TablePropName="tb_admin" msprop:Generator_RowDeletingName="tb_adminRowDeleting" msprop:Generator_RowChangingName="tb_adminRowChanging" msprop:Generator_RowEvHandlerName="tb_adminRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_adminRowDeleted" msprop:Generator_UserTableName="tb_admin" msprop:Generator_RowChangedName="tb_adminRowChanged" msprop:Generator_RowEvArgName="tb_adminRowChangeEvent" msprop:Generator_RowClassName="tb_adminRow">
+        <xs:element name="tb_admin" msprop:Generator_TableClassName="tb_adminDataTable" msprop:Generator_TableVarName="tabletb_admin" msprop:Generator_RowChangedName="tb_adminRowChanged" msprop:Generator_TablePropName="tb_admin" msprop:Generator_RowDeletingName="tb_adminRowDeleting" msprop:Generator_RowChangingName="tb_adminRowChanging" msprop:Generator_RowEvHandlerName="tb_adminRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_adminRowDeleted" msprop:Generator_RowClassName="tb_adminRow" msprop:Generator_UserTableName="tb_admin" msprop:Generator_RowEvArgName="tb_adminRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="admin_id" msprop:Generator_ColumnVarNameInTable="columnadmin_id" msprop:Generator_ColumnPropNameInRow="admin_id" msprop:Generator_ColumnPropNameInTable="admin_idColumn" msprop:Generator_UserColumnName="admin_id">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="6" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="admin_id" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnadmin_id" msprop:Generator_ColumnPropNameInRow="admin_id" msprop:Generator_ColumnPropNameInTable="admin_idColumn" msprop:Generator_UserColumnName="admin_id" type="xs:int" />
               <xs:element name="admin_name" msprop:Generator_ColumnVarNameInTable="columnadmin_name" msprop:Generator_ColumnPropNameInRow="admin_name" msprop:Generator_ColumnPropNameInTable="admin_nameColumn" msprop:Generator_UserColumnName="admin_name" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -512,7 +506,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_customer" msprop:Generator_TableClassName="tb_customerDataTable" msprop:Generator_TableVarName="tabletb_customer" msprop:Generator_TablePropName="tb_customer" msprop:Generator_RowDeletingName="tb_customerRowDeleting" msprop:Generator_RowChangingName="tb_customerRowChanging" msprop:Generator_RowEvHandlerName="tb_customerRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_customerRowDeleted" msprop:Generator_UserTableName="tb_customer" msprop:Generator_RowChangedName="tb_customerRowChanged" msprop:Generator_RowEvArgName="tb_customerRowChangeEvent" msprop:Generator_RowClassName="tb_customerRow">
+        <xs:element name="tb_customer" msprop:Generator_TableClassName="tb_customerDataTable" msprop:Generator_TableVarName="tabletb_customer" msprop:Generator_RowChangedName="tb_customerRowChanged" msprop:Generator_TablePropName="tb_customer" msprop:Generator_RowDeletingName="tb_customerRowDeleting" msprop:Generator_RowChangingName="tb_customerRowChanging" msprop:Generator_RowEvHandlerName="tb_customerRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_customerRowDeleted" msprop:Generator_RowClassName="tb_customerRow" msprop:Generator_UserTableName="tb_customer" msprop:Generator_RowEvArgName="tb_customerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cus_id" msprop:Generator_ColumnVarNameInTable="columncus_id" msprop:Generator_ColumnPropNameInRow="cus_id" msprop:Generator_ColumnPropNameInTable="cus_idColumn" msprop:Generator_UserColumnName="cus_id">
@@ -546,7 +540,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_employee" msprop:Generator_TableClassName="tb_employeeDataTable" msprop:Generator_TableVarName="tabletb_employee" msprop:Generator_TablePropName="tb_employee" msprop:Generator_RowDeletingName="tb_employeeRowDeleting" msprop:Generator_RowChangingName="tb_employeeRowChanging" msprop:Generator_RowEvHandlerName="tb_employeeRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_employeeRowDeleted" msprop:Generator_UserTableName="tb_employee" msprop:Generator_RowChangedName="tb_employeeRowChanged" msprop:Generator_RowEvArgName="tb_employeeRowChangeEvent" msprop:Generator_RowClassName="tb_employeeRow">
+        <xs:element name="tb_employee" msprop:Generator_TableClassName="tb_employeeDataTable" msprop:Generator_TableVarName="tabletb_employee" msprop:Generator_RowChangedName="tb_employeeRowChanged" msprop:Generator_TablePropName="tb_employee" msprop:Generator_RowDeletingName="tb_employeeRowDeleting" msprop:Generator_RowChangingName="tb_employeeRowChanging" msprop:Generator_RowEvHandlerName="tb_employeeRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_employeeRowDeleted" msprop:Generator_RowClassName="tb_employeeRow" msprop:Generator_UserTableName="tb_employee" msprop:Generator_RowEvArgName="tb_employeeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="emp_id" msprop:Generator_ColumnVarNameInTable="columnemp_id" msprop:Generator_ColumnPropNameInRow="emp_id" msprop:Generator_ColumnPropNameInTable="emp_idColumn" msprop:Generator_UserColumnName="emp_id">
@@ -588,7 +582,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_import" msprop:Generator_TableClassName="tb_importDataTable" msprop:Generator_TableVarName="tabletb_import" msprop:Generator_TablePropName="tb_import" msprop:Generator_RowDeletingName="tb_importRowDeleting" msprop:Generator_RowChangingName="tb_importRowChanging" msprop:Generator_RowEvHandlerName="tb_importRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_importRowDeleted" msprop:Generator_UserTableName="tb_import" msprop:Generator_RowChangedName="tb_importRowChanged" msprop:Generator_RowEvArgName="tb_importRowChangeEvent" msprop:Generator_RowClassName="tb_importRow">
+        <xs:element name="tb_import" msprop:Generator_TableClassName="tb_importDataTable" msprop:Generator_TableVarName="tabletb_import" msprop:Generator_RowChangedName="tb_importRowChanged" msprop:Generator_TablePropName="tb_import" msprop:Generator_RowDeletingName="tb_importRowDeleting" msprop:Generator_RowChangingName="tb_importRowChanging" msprop:Generator_RowEvHandlerName="tb_importRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_importRowDeleted" msprop:Generator_RowClassName="tb_importRow" msprop:Generator_UserTableName="tb_import" msprop:Generator_RowEvArgName="tb_importRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="im_id" msprop:Generator_ColumnVarNameInTable="columnim_id" msprop:Generator_ColumnPropNameInRow="im_id" msprop:Generator_ColumnPropNameInTable="im_idColumn" msprop:Generator_UserColumnName="im_id">
@@ -609,7 +603,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_login" msprop:Generator_TableClassName="tb_loginDataTable" msprop:Generator_TableVarName="tabletb_login" msprop:Generator_TablePropName="tb_login" msprop:Generator_RowDeletingName="tb_loginRowDeleting" msprop:Generator_RowChangingName="tb_loginRowChanging" msprop:Generator_RowEvHandlerName="tb_loginRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_loginRowDeleted" msprop:Generator_UserTableName="tb_login" msprop:Generator_RowChangedName="tb_loginRowChanged" msprop:Generator_RowEvArgName="tb_loginRowChangeEvent" msprop:Generator_RowClassName="tb_loginRow">
+        <xs:element name="tb_login" msprop:Generator_TableClassName="tb_loginDataTable" msprop:Generator_TableVarName="tabletb_login" msprop:Generator_RowChangedName="tb_loginRowChanged" msprop:Generator_TablePropName="tb_login" msprop:Generator_RowDeletingName="tb_loginRowDeleting" msprop:Generator_RowChangingName="tb_loginRowChanging" msprop:Generator_RowEvHandlerName="tb_loginRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_loginRowDeleted" msprop:Generator_RowClassName="tb_loginRow" msprop:Generator_UserTableName="tb_login" msprop:Generator_RowEvArgName="tb_loginRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Username" msprop:Generator_ColumnVarNameInTable="columnUsername" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_UserColumnName="Username">
@@ -636,7 +630,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_order" msprop:Generator_TableClassName="tb_orderDataTable" msprop:Generator_TableVarName="tabletb_order" msprop:Generator_TablePropName="tb_order" msprop:Generator_RowDeletingName="tb_orderRowDeleting" msprop:Generator_RowChangingName="tb_orderRowChanging" msprop:Generator_RowEvHandlerName="tb_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_orderRowDeleted" msprop:Generator_UserTableName="tb_order" msprop:Generator_RowChangedName="tb_orderRowChanged" msprop:Generator_RowEvArgName="tb_orderRowChangeEvent" msprop:Generator_RowClassName="tb_orderRow">
+        <xs:element name="tb_order" msprop:Generator_TableClassName="tb_orderDataTable" msprop:Generator_TableVarName="tabletb_order" msprop:Generator_RowChangedName="tb_orderRowChanged" msprop:Generator_TablePropName="tb_order" msprop:Generator_RowDeletingName="tb_orderRowDeleting" msprop:Generator_RowChangingName="tb_orderRowChanging" msprop:Generator_RowEvHandlerName="tb_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_orderRowDeleted" msprop:Generator_RowClassName="tb_orderRow" msprop:Generator_UserTableName="tb_order" msprop:Generator_RowEvArgName="tb_orderRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="order_id" msprop:Generator_ColumnVarNameInTable="columnorder_id" msprop:Generator_ColumnPropNameInRow="order_id" msprop:Generator_ColumnPropNameInTable="order_idColumn" msprop:Generator_UserColumnName="order_id">
@@ -652,7 +646,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tb_product" msprop:Generator_TableClassName="tb_productDataTable" msprop:Generator_TableVarName="tabletb_product" msprop:Generator_TablePropName="tb_product" msprop:Generator_RowDeletingName="tb_productRowDeleting" msprop:Generator_RowChangingName="tb_productRowChanging" msprop:Generator_RowEvHandlerName="tb_productRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_productRowDeleted" msprop:Generator_UserTableName="tb_product" msprop:Generator_RowChangedName="tb_productRowChanged" msprop:Generator_RowEvArgName="tb_productRowChangeEvent" msprop:Generator_RowClassName="tb_productRow">
+        <xs:element name="tb_product" msprop:Generator_TableClassName="tb_productDataTable" msprop:Generator_TableVarName="tabletb_product" msprop:Generator_RowChangedName="tb_productRowChanged" msprop:Generator_TablePropName="tb_product" msprop:Generator_RowDeletingName="tb_productRowDeleting" msprop:Generator_RowChangingName="tb_productRowChanging" msprop:Generator_RowEvHandlerName="tb_productRowChangeEventHandler" msprop:Generator_RowDeletedName="tb_productRowDeleted" msprop:Generator_RowClassName="tb_productRow" msprop:Generator_UserTableName="tb_product" msprop:Generator_RowEvArgName="tb_productRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pro_id" msprop:Generator_ColumnVarNameInTable="columnpro_id" msprop:Generator_ColumnPropNameInRow="pro_id" msprop:Generator_ColumnPropNameInTable="pro_idColumn" msprop:Generator_UserColumnName="pro_id">

@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfile));
             this.mnuProfile = new System.Windows.Forms.MenuStrip();
             this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,8 @@ namespace Fruit_Stock
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtStatus = new System.Windows.Forms.TextBox();
+            this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.appData = new Fruit_Stock.AppData();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -49,6 +52,7 @@ namespace Fruit_Stock
             this.lbEMPID = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.txtEMPID = new System.Windows.Forms.TextBox();
+            this.tbadminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.lbLastName = new System.Windows.Forms.Label();
@@ -61,8 +65,19 @@ namespace Fruit_Stock
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
+            this.tb_adminTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_adminTableAdapter();
+            this.dgvAllMember = new System.Windows.Forms.DataGridView();
+            this.lbAllData = new System.Windows.Forms.Label();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnuProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbadminBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuProfile
@@ -76,14 +91,14 @@ namespace Fruit_Stock
             this.helpToolStripMenuItem});
             this.mnuProfile.Location = new System.Drawing.Point(0, 0);
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(1348, 30);
+            this.mnuProfile.Size = new System.Drawing.Size(1348, 28);
             this.mnuProfile.TabIndex = 0;
             this.mnuProfile.Text = "menuStrip1";
             // 
             // invoiceToolStripMenuItem
             // 
             this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
+            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.invoiceToolStripMenuItem.Text = "Invoice";
             // 
             // fileToolStripMenuItem
@@ -94,7 +109,7 @@ namespace Fruit_Stock
             this.homePageToolStripMenuItem,
             this.mnuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
@@ -125,34 +140,45 @@ namespace Fruit_Stock
             // historyInvoiceToolStripMenuItem
             // 
             this.historyInvoiceToolStripMenuItem.Name = "historyInvoiceToolStripMenuItem";
-            this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
+            this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
             this.historyInvoiceToolStripMenuItem.Text = "History Invoice";
             // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.stockToolStripMenuItem.Text = "Stock";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // txtStatus
             // 
+            this.txtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Status", true));
             this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatus.Location = new System.Drawing.Point(844, 104);
+            this.txtStatus.Location = new System.Drawing.Point(868, 111);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(346, 34);
             this.txtStatus.TabIndex = 1;
+            // 
+            // tbloginBindingSource
+            // 
+            this.tbloginBindingSource.DataMember = "tb_login";
+            this.tbloginBindingSource.DataSource = this.appData;
+            // 
+            // appData
+            // 
+            this.appData.DataSetName = "AppData";
+            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStatus.Location = new System.Drawing.Point(687, 107);
+            this.lbStatus.Location = new System.Drawing.Point(711, 114);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(75, 29);
             this.lbStatus.TabIndex = 2;
@@ -162,7 +188,7 @@ namespace Fruit_Stock
             // 
             this.lbUsername.AutoSize = true;
             this.lbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsername.Location = new System.Drawing.Point(687, 158);
+            this.lbUsername.Location = new System.Drawing.Point(711, 165);
             this.lbUsername.Name = "lbUsername";
             this.lbUsername.Size = new System.Drawing.Size(124, 29);
             this.lbUsername.TabIndex = 2;
@@ -170,16 +196,18 @@ namespace Fruit_Stock
             // 
             // txtUsername
             // 
+            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Username", true));
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(844, 158);
+            this.txtUsername.Location = new System.Drawing.Point(868, 165);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(346, 34);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
+            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Password", true));
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(844, 211);
+            this.txtPassword.Location = new System.Drawing.Point(868, 218);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(346, 34);
             this.txtPassword.TabIndex = 1;
@@ -188,7 +216,7 @@ namespace Fruit_Stock
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.Location = new System.Drawing.Point(687, 211);
+            this.lbPassword.Location = new System.Drawing.Point(711, 218);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(120, 29);
             this.lbPassword.TabIndex = 2;
@@ -198,7 +226,7 @@ namespace Fruit_Stock
             // 
             this.lbEMPID.AutoSize = true;
             this.lbEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEMPID.Location = new System.Drawing.Point(687, 268);
+            this.lbEMPID.Location = new System.Drawing.Point(711, 275);
             this.lbEMPID.Name = "lbEMPID";
             this.lbEMPID.Size = new System.Drawing.Size(51, 29);
             this.lbEMPID.TabIndex = 2;
@@ -208,7 +236,7 @@ namespace Fruit_Stock
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(687, 325);
+            this.lbName.Location = new System.Drawing.Point(711, 332);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(39, 29);
             this.lbName.TabIndex = 2;
@@ -216,24 +244,32 @@ namespace Fruit_Stock
             // 
             // txtEMPID
             // 
+            this.txtEMPID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_id", true));
             this.txtEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEMPID.Location = new System.Drawing.Point(844, 265);
+            this.txtEMPID.Location = new System.Drawing.Point(868, 272);
             this.txtEMPID.Name = "txtEMPID";
             this.txtEMPID.Size = new System.Drawing.Size(346, 34);
             this.txtEMPID.TabIndex = 1;
             // 
+            // tbadminBindingSource
+            // 
+            this.tbadminBindingSource.DataMember = "tb_admin";
+            this.tbadminBindingSource.DataSource = this.appData;
+            // 
             // txtName
             // 
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_name", true));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(844, 320);
+            this.txtName.Location = new System.Drawing.Point(868, 327);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(346, 34);
             this.txtName.TabIndex = 1;
             // 
             // txtLastName
             // 
+            this.txtLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_lastname", true));
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(844, 384);
+            this.txtLastName.Location = new System.Drawing.Point(868, 391);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(346, 34);
             this.txtLastName.TabIndex = 1;
@@ -242,7 +278,7 @@ namespace Fruit_Stock
             // 
             this.lbLastName.AutoSize = true;
             this.lbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastName.Location = new System.Drawing.Point(687, 384);
+            this.lbLastName.Location = new System.Drawing.Point(711, 391);
             this.lbLastName.Name = "lbLastName";
             this.lbLastName.Size = new System.Drawing.Size(91, 29);
             this.lbLastName.TabIndex = 2;
@@ -252,7 +288,7 @@ namespace Fruit_Stock
             // 
             this.lbGender.AutoSize = true;
             this.lbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGender.Location = new System.Drawing.Point(688, 448);
+            this.lbGender.Location = new System.Drawing.Point(712, 455);
             this.lbGender.Name = "lbGender";
             this.lbGender.Size = new System.Drawing.Size(52, 29);
             this.lbGender.TabIndex = 2;
@@ -262,7 +298,7 @@ namespace Fruit_Stock
             // 
             this.lbBirthDate.AutoSize = true;
             this.lbBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBirthDate.Location = new System.Drawing.Point(686, 509);
+            this.lbBirthDate.Location = new System.Drawing.Point(710, 516);
             this.lbBirthDate.Name = "lbBirthDate";
             this.lbBirthDate.Size = new System.Drawing.Size(141, 29);
             this.lbBirthDate.TabIndex = 2;
@@ -272,7 +308,7 @@ namespace Fruit_Stock
             // 
             this.lbPhone.AutoSize = true;
             this.lbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhone.Location = new System.Drawing.Point(687, 570);
+            this.lbPhone.Location = new System.Drawing.Point(711, 577);
             this.lbPhone.Name = "lbPhone";
             this.lbPhone.Size = new System.Drawing.Size(144, 29);
             this.lbPhone.TabIndex = 2;
@@ -280,16 +316,18 @@ namespace Fruit_Stock
             // 
             // dtpBirthDate
             // 
+            this.dtpBirthDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tbadminBindingSource, "admin_bdate", true));
             this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBirthDate.Location = new System.Drawing.Point(844, 509);
+            this.dtpBirthDate.Location = new System.Drawing.Point(868, 516);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(346, 34);
             this.dtpBirthDate.TabIndex = 3;
             // 
             // txtPhone
             // 
+            this.txtPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbadminBindingSource, "admin_phone", true));
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(844, 565);
+            this.txtPhone.Location = new System.Drawing.Point(868, 572);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(346, 34);
             this.txtPhone.TabIndex = 1;
@@ -298,7 +336,7 @@ namespace Fruit_Stock
             // 
             this.rdbMale.AutoSize = true;
             this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbMale.Location = new System.Drawing.Point(900, 444);
+            this.rdbMale.Location = new System.Drawing.Point(924, 451);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(69, 33);
             this.rdbMale.TabIndex = 4;
@@ -310,7 +348,7 @@ namespace Fruit_Stock
             // 
             this.rdbFemale.AutoSize = true;
             this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbFemale.Location = new System.Drawing.Point(1049, 444);
+            this.rdbFemale.Location = new System.Drawing.Point(1073, 451);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(76, 33);
             this.rdbFemale.TabIndex = 4;
@@ -322,9 +360,9 @@ namespace Fruit_Stock
             // 
             this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
             this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbProfile.Location = new System.Drawing.Point(178, 131);
+            this.pbProfile.Location = new System.Drawing.Point(12, 34);
             this.pbProfile.Name = "pbProfile";
-            this.pbProfile.Size = new System.Drawing.Size(351, 361);
+            this.pbProfile.Size = new System.Drawing.Size(96, 102);
             this.pbProfile.TabIndex = 6;
             this.pbProfile.TabStop = false;
             // 
@@ -340,11 +378,70 @@ namespace Fruit_Stock
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // tb_loginTableAdapter
+            // 
+            this.tb_loginTableAdapter.ClearBeforeFill = true;
+            // 
+            // tb_adminTableAdapter
+            // 
+            this.tb_adminTableAdapter.ClearBeforeFill = true;
+            // 
+            // dgvAllMember
+            // 
+            this.dgvAllMember.AutoGenerateColumns = false;
+            this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAllMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.usernameDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn});
+            this.dgvAllMember.DataSource = this.tbloginBindingSource;
+            this.dgvAllMember.Location = new System.Drawing.Point(167, 102);
+            this.dgvAllMember.Name = "dgvAllMember";
+            this.dgvAllMember.RowHeadersWidth = 51;
+            this.dgvAllMember.RowTemplate.Height = 24;
+            this.dgvAllMember.Size = new System.Drawing.Size(429, 581);
+            this.dgvAllMember.TabIndex = 7;
+            // 
+            // lbAllData
+            // 
+            this.lbAllData.AutoSize = true;
+            this.lbAllData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAllData.Location = new System.Drawing.Point(276, 61);
+            this.lbAllData.Name = "lbAllData";
+            this.lbAllData.Size = new System.Drawing.Size(194, 29);
+            this.lbAllData.TabIndex = 2;
+            this.lbAllData.Text = "ข้อมูลสมาชิกทั้งหมด";
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Width = 125;
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.pbProfile);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.rdbFemale);
@@ -358,6 +455,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.lbEMPID);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbUsername);
+            this.Controls.Add(this.lbAllData);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtLastName);
@@ -377,7 +475,11 @@ namespace Fruit_Stock
             this.Load += new System.EventHandler(this.FrmProfile_Load);
             this.mnuProfile.ResumeLayout(false);
             this.mnuProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbadminBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +518,15 @@ namespace Fruit_Stock
         private System.Windows.Forms.RadioButton rdbFemale;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.PictureBox pbProfile;
+        private AppData appData;
+        private System.Windows.Forms.BindingSource tbloginBindingSource;
+        private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
+        private System.Windows.Forms.BindingSource tbadminBindingSource;
+        private AppDataTableAdapters.tb_adminTableAdapter tb_adminTableAdapter;
+        private System.Windows.Forms.DataGridView dgvAllMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lbAllData;
     }
 }
