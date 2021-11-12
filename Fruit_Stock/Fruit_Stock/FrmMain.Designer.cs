@@ -34,8 +34,8 @@ namespace Fruit_Stock
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnInvoice = new System.Windows.Forms.Button();
             this.btnStock = new System.Windows.Forms.Button();
-            this.btnHistoryInvoice = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.btnHistoryInvoice = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnExit
@@ -59,6 +59,7 @@ namespace Fruit_Stock
             this.btnProfile.BackColor = System.Drawing.Color.Transparent;
             this.btnProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnProfile.BackgroundImage")));
             this.btnProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProfile.Location = new System.Drawing.Point(550, 66);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(272, 285);
@@ -71,6 +72,7 @@ namespace Fruit_Stock
             this.btnInvoice.BackColor = System.Drawing.Color.Transparent;
             this.btnInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInvoice.BackgroundImage")));
             this.btnInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInvoice.Location = new System.Drawing.Point(229, 66);
             this.btnInvoice.Name = "btnInvoice";
             this.btnInvoice.Size = new System.Drawing.Size(272, 285);
@@ -83,6 +85,7 @@ namespace Fruit_Stock
             this.btnStock.BackColor = System.Drawing.Color.Transparent;
             this.btnStock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStock.BackgroundImage")));
             this.btnStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStock.Location = new System.Drawing.Point(229, 379);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(272, 285);
@@ -90,23 +93,12 @@ namespace Fruit_Stock
             this.btnStock.UseVisualStyleBackColor = false;
             this.btnStock.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // btnHistoryInvoice
-            // 
-            this.btnHistoryInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.btnHistoryInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHistoryInvoice.BackgroundImage")));
-            this.btnHistoryInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHistoryInvoice.Location = new System.Drawing.Point(550, 379);
-            this.btnHistoryInvoice.Name = "btnHistoryInvoice";
-            this.btnHistoryInvoice.Size = new System.Drawing.Size(272, 285);
-            this.btnHistoryInvoice.TabIndex = 8;
-            this.btnHistoryInvoice.UseVisualStyleBackColor = false;
-            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnProfile_Click);
-            // 
             // btnHelp
             // 
             this.btnHelp.BackColor = System.Drawing.Color.Transparent;
             this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHelp.ForeColor = System.Drawing.Color.Transparent;
             this.btnHelp.Location = new System.Drawing.Point(873, 219);
             this.btnHelp.Name = "btnHelp";
@@ -115,10 +107,23 @@ namespace Fruit_Stock
             this.btnHelp.UseVisualStyleBackColor = false;
             this.btnHelp.Click += new System.EventHandler(this.btnProfile_Click);
             // 
+            // btnHistoryInvoice
+            // 
+            this.btnHistoryInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.btnHistoryInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHistoryInvoice.BackgroundImage")));
+            this.btnHistoryInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHistoryInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistoryInvoice.Location = new System.Drawing.Point(550, 379);
+            this.btnHistoryInvoice.Name = "btnHistoryInvoice";
+            this.btnHistoryInvoice.Size = new System.Drawing.Size(272, 285);
+            this.btnHistoryInvoice.TabIndex = 8;
+            this.btnHistoryInvoice.UseVisualStyleBackColor = false;
+            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1348, 721);
@@ -128,14 +133,14 @@ namespace Fruit_Stock
             this.Controls.Add(this.btnHistoryInvoice);
             this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.btnExit);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
-            this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fruit Stock";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -149,8 +154,8 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnProfile;
         private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Button btnStock;
-        private System.Windows.Forms.Button btnHistoryInvoice;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnHistoryInvoice;
     }
 }
 

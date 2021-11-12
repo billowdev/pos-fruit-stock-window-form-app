@@ -36,6 +36,7 @@ namespace Fruit_Stock
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FrmProfile f = new FrmProfile();
             f.ShowDialog();
             f = null;

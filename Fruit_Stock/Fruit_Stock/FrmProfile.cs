@@ -16,5 +16,24 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
+
+        private void FrmProfile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            FrmMain f = new FrmMain();
+            f.ShowDialog();
+            f = null;
+        }
     }
 }
