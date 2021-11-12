@@ -17,34 +17,60 @@ namespace Fruit_Stock
             InitializeComponent();
         }
 
-
-
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        private void mnuProfile_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+
+            FrmProfile f = new FrmProfile();
+            f.ShowDialog();
+            f = null;
         }
+
+        private void mnuInvoice_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            FrmInvoice f = new FrmInvoice();
+            f.ShowDialog();
+            f = null;
+        }
+
+        private void mnuHistoryInvoice_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+
+            FrmHistoryInvoice f = new FrmHistoryInvoice();
+            f.ShowDialog();
+            f = null;
+        }
+
+        private void mnuStock_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            FrmStock f = new FrmStock();
+            f.ShowDialog();
+            f = null;
+        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void btnInvoice_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e)
-        {
-            FrmProfile f = new FrmProfile();
+            FrmInvoice f = new FrmInvoice();
             f.ShowDialog();
             f = null;
             this.Close();
         }
 
-        private void btnInvoice_Click(object sender, EventArgs e)
+        private void btnProfile_Click(object sender, EventArgs e)
         {
-            FrmInvoice f = new FrmInvoice();
+            FrmProfile f = new FrmProfile();
             f.ShowDialog();
             f = null;
             this.Close();
@@ -65,5 +91,11 @@ namespace Fruit_Stock
             f = null;
             this.Close();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
