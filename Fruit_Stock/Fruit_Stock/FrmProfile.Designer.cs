@@ -59,8 +59,8 @@ namespace Fruit_Stock
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
-            this.btnBack = new System.Windows.Forms.Button();
             this.pbProfile = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.mnuProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             this.SuspendLayout();
@@ -76,14 +76,14 @@ namespace Fruit_Stock
             this.helpToolStripMenuItem});
             this.mnuProfile.Location = new System.Drawing.Point(0, 0);
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(1366, 28);
+            this.mnuProfile.Size = new System.Drawing.Size(1348, 30);
             this.mnuProfile.TabIndex = 0;
             this.mnuProfile.Text = "menuStrip1";
             // 
             // invoiceToolStripMenuItem
             // 
             this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
             this.invoiceToolStripMenuItem.Text = "Invoice";
             // 
             // fileToolStripMenuItem
@@ -94,7 +94,7 @@ namespace Fruit_Stock
             this.homePageToolStripMenuItem,
             this.mnuExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
@@ -125,19 +125,19 @@ namespace Fruit_Stock
             // historyInvoiceToolStripMenuItem
             // 
             this.historyInvoiceToolStripMenuItem.Name = "historyInvoiceToolStripMenuItem";
-            this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.historyInvoiceToolStripMenuItem.Text = "History Invoice";
             // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
             this.stockToolStripMenuItem.Text = "Stock";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // txtStatus
@@ -318,6 +318,16 @@ namespace Fruit_Stock
             this.rdbFemale.Text = "หญิง";
             this.rdbFemale.UseVisualStyleBackColor = true;
             // 
+            // pbProfile
+            // 
+            this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
+            this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbProfile.Location = new System.Drawing.Point(178, 131);
+            this.pbProfile.Name = "pbProfile";
+            this.pbProfile.Size = new System.Drawing.Size(351, 361);
+            this.pbProfile.TabIndex = 6;
+            this.pbProfile.TabStop = false;
+            // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Silver;
@@ -329,16 +339,6 @@ namespace Fruit_Stock
             this.btnBack.TabIndex = 5;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // pbProfile
-            // 
-            this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
-            this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbProfile.Location = new System.Drawing.Point(178, 131);
-            this.pbProfile.Name = "pbProfile";
-            this.pbProfile.Size = new System.Drawing.Size(351, 361);
-            this.pbProfile.TabIndex = 6;
-            this.pbProfile.TabStop = false;
             // 
             // FrmProfile
             // 
@@ -371,7 +371,7 @@ namespace Fruit_Stock
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmProfile";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmProfile_Load);
