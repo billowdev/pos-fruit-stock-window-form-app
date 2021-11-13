@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfile));
             this.mnuProfile = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,9 +69,14 @@ namespace Fruit_Stock
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
+            this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.appData = new Fruit_Stock.AppData();
+            this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
             this.mnuProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuProfile
@@ -87,7 +93,7 @@ namespace Fruit_Stock
             this.mnuProfile.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.mnuProfile.Location = new System.Drawing.Point(0, 0);
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(188, 977);
+            this.mnuProfile.Size = new System.Drawing.Size(188, 1018);
             this.mnuProfile.TabIndex = 0;
             this.mnuProfile.Text = "menuStrip1";
             this.mnuProfile.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
@@ -360,12 +366,13 @@ namespace Fruit_Stock
             // dgvAllMember
             // 
             this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllMember.Location = new System.Drawing.Point(167, 184);
+            this.dgvAllMember.Location = new System.Drawing.Point(132, 184);
             this.dgvAllMember.Name = "dgvAllMember";
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
-            this.dgvAllMember.Size = new System.Drawing.Size(471, 499);
+            this.dgvAllMember.Size = new System.Drawing.Size(520, 499);
             this.dgvAllMember.TabIndex = 7;
+            this.dgvAllMember.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllMember_CellMouseUp);
             // 
             // lbAllData
             // 
@@ -427,11 +434,25 @@ namespace Fruit_Stock
             this.gbOperating.TabStop = false;
             this.gbOperating.Text = "การดำเนินการ";
             // 
+            // tbloginBindingSource
+            // 
+            this.tbloginBindingSource.DataMember = "tb_login";
+            this.tbloginBindingSource.DataSource = this.appData;
+            // 
+            // appData
+            // 
+            this.appData.DataSetName = "AppData";
+            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tb_loginTableAdapter
+            // 
+            this.tb_loginTableAdapter.ClearBeforeFill = true;
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1422, 977);
+            this.ClientSize = new System.Drawing.Size(1440, 1018);
             this.Controls.Add(this.pbProfile);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -461,6 +482,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.mnuProfile);
             this.Controls.Add(this.gbOperating);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.mnuProfile;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1440, 1018);
@@ -473,6 +495,8 @@ namespace Fruit_Stock
             this.mnuProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,5 +542,8 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbOperating;
+        private AppData appData;
+        private System.Windows.Forms.BindingSource tbloginBindingSource;
+        private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
     }
 }

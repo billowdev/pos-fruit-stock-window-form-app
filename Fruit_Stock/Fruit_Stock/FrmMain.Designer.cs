@@ -81,48 +81,46 @@ namespace Fruit_Stock
             // mnuHome
             // 
             this.mnuHome.Name = "mnuHome";
-            this.mnuHome.Size = new System.Drawing.Size(166, 32);
+            this.mnuHome.Size = new System.Drawing.Size(224, 32);
             this.mnuHome.Text = "Home";
             // 
             // mnuLogout
             // 
             this.mnuLogout.Name = "mnuLogout";
-            this.mnuLogout.Size = new System.Drawing.Size(166, 32);
+            this.mnuLogout.Size = new System.Drawing.Size(224, 32);
             this.mnuLogout.Text = "Log out";
+            this.mnuLogout.Click += new System.EventHandler(this.mnuLogout_Click);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(166, 32);
+            this.mnuExit.Size = new System.Drawing.Size(224, 32);
             this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuProfile
             // 
             this.mnuProfile.Name = "mnuProfile";
             this.mnuProfile.Size = new System.Drawing.Size(82, 32);
             this.mnuProfile.Text = "Profile";
-            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
             // 
             // mnuInvoice
             // 
             this.mnuInvoice.Name = "mnuInvoice";
             this.mnuInvoice.Size = new System.Drawing.Size(88, 32);
             this.mnuInvoice.Text = "Invoice";
-            this.mnuInvoice.Click += new System.EventHandler(this.mnuInvoice_Click);
             // 
             // mnuHistoryInvoice
             // 
             this.mnuHistoryInvoice.Name = "mnuHistoryInvoice";
             this.mnuHistoryInvoice.Size = new System.Drawing.Size(156, 32);
             this.mnuHistoryInvoice.Text = "History Invoice";
-            this.mnuHistoryInvoice.Click += new System.EventHandler(this.mnuHistoryInvoice_Click);
             // 
             // mnuStock
             // 
             this.mnuStock.Name = "mnuStock";
             this.mnuStock.Size = new System.Drawing.Size(74, 32);
             this.mnuStock.Text = "Stock";
-            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
             // 
             // mnuHelp
             // 
@@ -171,7 +169,6 @@ namespace Fruit_Stock
             this.btnStock.Size = new System.Drawing.Size(272, 285);
             this.btnStock.TabIndex = 8;
             this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnProfile
             // 
@@ -197,7 +194,6 @@ namespace Fruit_Stock
             this.btnInvoice.Size = new System.Drawing.Size(272, 285);
             this.btnInvoice.TabIndex = 8;
             this.btnInvoice.UseVisualStyleBackColor = false;
-            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // btnHistoryInvoice
             // 
@@ -210,7 +206,6 @@ namespace Fruit_Stock
             this.btnHistoryInvoice.Size = new System.Drawing.Size(272, 285);
             this.btnHistoryInvoice.TabIndex = 8;
             this.btnHistoryInvoice.UseVisualStyleBackColor = false;
-            this.btnHistoryInvoice.Click += new System.EventHandler(this.btnHistoryInvoice_Click);
             // 
             // btnHelp
             // 
@@ -224,7 +219,6 @@ namespace Fruit_Stock
             this.btnHelp.Size = new System.Drawing.Size(272, 285);
             this.btnHelp.TabIndex = 8;
             this.btnHelp.UseVisualStyleBackColor = false;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // FrmMain
             // 
@@ -240,8 +234,8 @@ namespace Fruit_Stock
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmMDI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mnuFrmMain.ResumeLayout(false);
             this.mnuFrmMain.PerformLayout();

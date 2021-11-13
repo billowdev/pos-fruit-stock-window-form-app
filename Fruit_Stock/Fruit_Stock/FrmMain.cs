@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fruit_Stock.static_classes;
 
 namespace Fruit_Stock
 {
@@ -16,84 +17,31 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
+        FrmProfile fProfile = new FrmProfile();
+        FrmInvoice fInvoice = new FrmInvoice();
+        FrmLogin fLogin = new FrmLogin();
 
-        private void mnuProfile_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            FrmProfile f = new FrmProfile();
-            f.ShowDialog();
-            f = null;
-        }
-
-        private void mnuInvoice_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            FrmInvoice f = new FrmInvoice();
-            f.ShowDialog();
-            f = null;
-        }
-
-        private void mnuHistoryInvoice_Click(object sender, EventArgs e)
+        private void btnProfile_Click(object sender, EventArgs e)
         {
             
-            this.Hide();
-
-            FrmHistoryInvoice f = new FrmHistoryInvoice();
-            f.ShowDialog();
-            f = null;
+            fProfile.ShowDialog();
+           
         }
-
-        private void mnuStock_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            FrmStock f = new FrmStock();
-            f.ShowDialog();
-            f = null;
-        }
-
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnInvoice_Click(object sender, EventArgs e)
+      
+        private void mnuExit_Click(object sender, EventArgs e)
         {
-            FrmInvoice f = new FrmInvoice();
-            f.ShowDialog();
-            f = null;
-            this.Close();
+            Application.Exit();
         }
 
-        private void btnProfile_Click(object sender, EventArgs e)
+        private void mnuLogout_Click(object sender, EventArgs e)
         {
-            FrmProfile f = new FrmProfile();
-            f.ShowDialog();
-            f = null;
-            this.Close();
-        }
 
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            FrmStock f = new FrmStock();
-            f.ShowDialog();
-            f = null;
-            this.Close();
-        }
-
-        private void btnHistoryInvoice_Click(object sender, EventArgs e)
-        {
-            FrmHistoryInvoice f = new FrmHistoryInvoice();
-            f.ShowDialog();
-            f = null;
-            this.Close();
-        }
-
-        private void btnHelp_Click(object sender, EventArgs e)
-        {
+            Application.Exit();
 
         }
     }

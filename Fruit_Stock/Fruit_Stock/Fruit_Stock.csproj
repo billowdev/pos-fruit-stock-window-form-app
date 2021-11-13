@@ -121,7 +121,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>

@@ -12,4 +12,3 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmPr
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmHistoryInvoice.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmInvoice.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmStock.resources
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\Fruit_Stock.exe.config
