@@ -45,7 +45,7 @@ namespace Fruit_Stock
                 return;
             }
             
-            Db_connect.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
+            Db_connect.sql = "SELECT * FROM tb_user WHERE Username = @us AND Password = @pa";
 
             Db_connect.cmd.Parameters.Clear();
             Db_connect.cmd.CommandType = CommandType.Text;
@@ -62,8 +62,8 @@ namespace Fruit_Stock
             {
                 while (Db_connect.rd.Read())
                 {
-                    Db_connect.currentUsername = Db_connect.rd[0].ToString();
-                    Db_connect.currentStatus = Db_connect.rd[2].ToString();
+                    Db_connect.currentUsername = Db_connect.rd[1].ToString();
+                    Db_connect.currentStatus = Db_connect.rd[3].ToString();
 
                     MessageBox.Show("Welcome  " + Db_connect.currentUsername + "\n Your Status is ... " + Db_connect.currentStatus , "\n Login Successed :)",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);

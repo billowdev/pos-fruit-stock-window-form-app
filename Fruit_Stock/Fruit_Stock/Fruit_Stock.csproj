@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppData.cs">
-      <DependentUpon>AppData.xsd</DependentUpon>
-    </Compile>
     <Compile Include="AppData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,7 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="static_classes\Db_connect_access.cs" />
+    <Compile Include="static_classes\db_connect_access.cs" />
     <EmbeddedResource Include="FrmHistoryInvoice.resx">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </EmbeddedResource>

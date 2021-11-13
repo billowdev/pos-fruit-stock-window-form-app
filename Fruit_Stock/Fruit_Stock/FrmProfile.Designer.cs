@@ -29,7 +29,6 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfile));
             this.mnuProfile = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,17 +68,9 @@ namespace Fruit_Stock
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
-            this.appData = new Fruit_Stock.AppData();
-            this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnuProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuProfile
@@ -168,7 +159,6 @@ namespace Fruit_Stock
             // 
             // txtStatus
             // 
-            this.txtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Status", true));
             this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStatus.Location = new System.Drawing.Point(868, 111);
             this.txtStatus.Name = "txtStatus";
@@ -197,7 +187,6 @@ namespace Fruit_Stock
             // 
             // txtUsername
             // 
-            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Username", true));
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(868, 165);
             this.txtUsername.Name = "txtUsername";
@@ -206,7 +195,6 @@ namespace Fruit_Stock
             // 
             // txtPassword
             // 
-            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tbloginBindingSource, "Password", true));
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(868, 218);
             this.txtPassword.Name = "txtPassword";
@@ -371,13 +359,7 @@ namespace Fruit_Stock
             // 
             // dgvAllMember
             // 
-            this.dgvAllMember.AutoGenerateColumns = false;
             this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.usernameDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
-            this.dgvAllMember.DataSource = this.tbloginBindingSource;
             this.dgvAllMember.Location = new System.Drawing.Point(167, 184);
             this.dgvAllMember.Name = "dgvAllMember";
             this.dgvAllMember.RowHeadersWidth = 51;
@@ -445,44 +427,6 @@ namespace Fruit_Stock
             this.gbOperating.TabStop = false;
             this.gbOperating.Text = "การดำเนินการ";
             // 
-            // appData
-            // 
-            this.appData.DataSetName = "AppData";
-            this.appData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbloginBindingSource
-            // 
-            this.tbloginBindingSource.DataMember = "tb_login";
-            this.tbloginBindingSource.DataSource = this.appData;
-            // 
-            // tb_loginTableAdapter
-            // 
-            this.tb_loginTableAdapter.ClearBeforeFill = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Width = 140;
-            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -529,8 +473,6 @@ namespace Fruit_Stock
             this.mnuProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,11 +518,5 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbOperating;
-        private AppData appData;
-        private System.Windows.Forms.BindingSource tbloginBindingSource;
-        private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }

@@ -23,7 +23,7 @@ namespace Fruit_Stock.static_classes
         public static string getConnectionString()
         {
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" +
-                Application.StartupPath + "/db_fruit_stock.accdb;";
+                Application.StartupPath + "/Database/db_fruit_stock.accdb;";
 
             return connectionString;
         }

@@ -33,5 +33,16 @@ namespace Fruit_Stock.Properties {
                 return ((string)(this["db_fruit_stockConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database\\" +
+            "db_fruit_stock.accdb")]
+        public string db_fruit_stock_connection_string {
+            get {
+                return ((string)(this["db_fruit_stock_connection_string"]));
+            }
+        }
     }
 }
