@@ -31,7 +31,7 @@ namespace Fruit_Stock.static_classes
             return connectionString;
         }
 
-        public static void openConnection()
+public static void openConnection()
         {
             try
             {
@@ -42,6 +42,7 @@ namespace Fruit_Stock.static_classes
                 }
 
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("ระบบไม่สามารถสร้างการเชื่อมต่อได้" + "\n" +

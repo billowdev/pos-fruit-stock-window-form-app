@@ -20,16 +20,16 @@ namespace Fruit_Stock
         }
         OleDbDataAdapter da;
 
+        FrmLogin fLogin = new FrmLogin();
         private void FrmProfile_Load(object sender, EventArgs e)
         {
-            AC.closeConnection();
-
+            // ---------------------------------------------- User  ---------------------- // 
             if (AC.currentStatus == "user")
             {
                 showAllDataUser();
-
+                txtStatus.Hide();
                 dgvAllMember.Hide();
-                btnEdit.Enabled = false;
+                //btnEdit.Enabled = false;
                 btnNew.Enabled = false;
                 btnSave.Enabled = false;
                 btnCancel.Enabled = false;
@@ -38,17 +38,45 @@ namespace Fruit_Stock
             // -------------------------------------------- Admin --------------------------------------- //
             else
             {
+                lbUserStatus.Hide();
                 showAllMember();
+                FormatDataMember();
+            }
+        }
+        // ---------------------------------------------- Function Show All data User ---------------------- // 
+        private void showAllDataUser()
+        {
+            AC.rd.Close();
+            AC.openConnection();
+
+            AC.sql = "select * from tb_login where Username = '" + AC.currentUsername + "'";
+            AC.cmd.Connection = AC.conn;
+            AC.cmd.CommandText = AC.sql;
+            AC.cmd.ExecuteNonQuery();
+
+            AC.rd = AC.cmd.ExecuteReader();
+
+            if (AC.rd.HasRows)
+            {
+                while (AC.rd.Read())
+                {
+                    txtUsername.Text = AC.rd[1].ToString();
+                    txtPassword.Text = AC.rd[2].ToString();
+                    lbUserStatus.Text = AC.rd[3].ToString();
+                    txtEMPID.Text = AC.rd[4].ToString();
+                }
+            }
+
+            AC.rd.Close();
+            AC.openConnection();
+
+            if (txtEMPID.Text != "")
+            {
+                fillEmployData();
             }
         }
 
-        private void showAllDataUser()
-        {
-            
-
-        }
-
-
+        // ---------------------------------------------- Function Show All Member for Admin ---------------------- // 
         private void showAllMember() {
             string sqlMember = "select * from tb_login";
             if (AC.IsFind == true)
@@ -58,7 +86,7 @@ namespace Fruit_Stock
 
             da = new OleDbDataAdapter(sqlMember, AC.conn);
             da.Fill(AC.ds, "tb_login");
-         
+
 
             if (AC.ds.Tables["tb_login"].Rows.Count != 0)
             {
@@ -71,37 +99,66 @@ namespace Fruit_Stock
                 AC.IsFind = false;
             }
         }
+        // ---------------------------------- Menu Exit ---------------------- // 
         private void mnuExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        // ---------------------------------- Back to Main ---------------------- // 
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void ChildForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
-
+        // ---------------------------------- Event Cell mouse up data gridview ---------------------- // 
         private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex == dgvAllMember.Rows.Count - 1)
             {
                 return;
             }
+            txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            if (txtEMPID.Text != "")
+            {
+                fillEmployData();
+            }
+
+        }
+
+        // Data GridViewFormat
+        private void FormatDataMember()
+        {
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
+            dgvAllMember.Columns[0].HeaderText = "NO";
+            dgvAllMember.Columns[1].HeaderText = "ชื่อผู้ใช้";
+            dgvAllMember.Columns[2].HeaderText = "รหัสผ่าน";
+            dgvAllMember.Columns[3].HeaderText = "สถานะ";
+            dgvAllMember.Columns[4].HeaderText = "รหัสพนักงาน";
+
+            dgvAllMember.Columns[0].Width = 40;
+            dgvAllMember.Columns[1].Width = 130;
+            dgvAllMember.Columns[2].Width = 130;
+            dgvAllMember.Columns[3].Width = 60;
+            dgvAllMember.Columns[4].Width = 100;
+
+        }
+
+
+        // Function for fill data to text box from table employee reference by empid use for admin and user account
+        private void fillEmployData()
+        {
             try
             {
-                // it is fill all data from tb_login to dataGridView
-                txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
+                AC.closeConnection();
 
-                
+                // it is fill all data from tb_login to dataGridView
                 AC.sql = "SELECT * FROM tb_employee WHERE emp_id = @empid";
                 AC.cmd.Parameters.Clear();
                 AC.cmd.CommandType = CommandType.Text;
@@ -131,39 +188,18 @@ namespace Fruit_Stock
 
                         dtpBirthDate.Value = Convert.ToDateTime(AC.rd[4]);
                         txtPhone.Text = AC.rd[5].ToString();
-
                     }
                 }
-
-            AC.rd.Close();
-            AC.closeConnection();
+                AC.rd.Close();
+                AC.closeConnection();
             }
-
             catch
             {
-                MessageBox.Show("Error", "Error krub",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void FormatDataMember()
-        {
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            //dgvAllStduent.ColumnHeadersDefaultCellStyle = cs;
-            //dgvAllStduent.Columns[0].HeaderText = "รหัสนักศึกษา";
-            //dgvAllStduent.Columns[1].HeaderText = "ชื่อ";
-            //dgvAllStduent.Columns[2].HeaderText = "นามสกุล";
-            //dgvAllStduent.Columns[3].HeaderText = "วันเดือนปีเกิด";
-            //dgvAllStduent.Columns[4].HeaderText = "น้ำหนัก";
-
-            //dgvAllStduent.Columns[0].Width = 120;
-            //dgvAllStduent.Columns[1].Width = 140;
-            //dgvAllStduent.Columns[2].Width = 140;
-            //dgvAllStduent.Columns[3].Width = 140;
-            //dgvAllStduent.Columns[4].Width = 70;
 
         }
+
+
     }
 }
-
+        

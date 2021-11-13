@@ -70,7 +70,8 @@ namespace Fruit_Stock
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                this.txtUsername.Text = string.Empty;
+
+                
                 this.txtPassword.Text = string.Empty;
 
                 this.Hide();
@@ -108,6 +109,6 @@ namespace Fruit_Stock
             }
         }
 
-
+      
     }
 }
