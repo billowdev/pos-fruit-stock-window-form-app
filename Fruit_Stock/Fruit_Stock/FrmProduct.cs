@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Fruit_Stock
 {
-    public partial class FrmStock : Form
+    public partial class FrmProduct : Form
     {
-        public FrmStock()
+        public FrmProduct()
         {
             InitializeComponent();
         }
