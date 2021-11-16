@@ -114,19 +114,21 @@ namespace Fruit_Stock
             txtStatus.Text = "";
             txtUsername.Text = "";
 
-            if (e.RowIndex == dgvAllMember.Rows.Count - 1)
-            {
-                return;
-            }
-            else
-            {
-                txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
-                
-                fillEmployData(this.txtEMPID.Text);
-            }
+            txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            fillEmployData(this.txtEMPID.Text);
+
+            //if (e.RowIndex == dgvAllMember.Rows.Count)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+               
+            //}
 
 
         }
