@@ -20,20 +20,8 @@ namespace Fruit_Stock
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            //Fruit_Stock.static_classes.Db_connect.openConnection();
-            
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //Fruit_Stock.static_classes.Db_connect.closeConnection();
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
-  
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -42,9 +30,23 @@ namespace Fruit_Stock
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                Check_login();
+            }
+            else
+            {
+                MessageBox.Show("กรุณากรอกรหัส", "Msg",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void Check_login()
+        {
             // login
-            if ( ( string.IsNullOrEmpty(this.txtUsername.Text.Trim() )) ||  
-                 ( string.IsNullOrEmpty(this.txtPassword.Text.Trim() )) )
+            if ((string.IsNullOrEmpty(this.txtUsername.Text.Trim())) ||
+                 (string.IsNullOrEmpty(this.txtPassword.Text.Trim())))
             {
                 MessageBox.Show("Enter your username and password", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,40 +57,36 @@ namespace Fruit_Stock
                 }
                 return;
             }
-            
-            Db_connect.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
 
-            Db_connect.cmd.Parameters.Clear();
-            Db_connect.cmd.CommandType = CommandType.Text;
-            Db_connect.cmd.CommandText = Db_connect.sql;
+            AC.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
 
-            Db_connect.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
-            Db_connect.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
+            AC.cmd.Parameters.Clear();
+            AC.cmd.CommandType = CommandType.Text;
+            AC.cmd.CommandText = AC.sql;
 
-            Db_connect.openConnection();
+            AC.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
+            AC.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
 
-            Db_connect.rd = Db_connect.cmd.ExecuteReader(); 
+            AC.openConnection();
 
-            if (Db_connect.rd.HasRows)
+            AC.rd = AC.cmd.ExecuteReader();
+
+            if (AC.rd.HasRows)
             {
-                while (Db_connect.rd.Read())
+                while (AC.rd.Read())
                 {
-                    Db_connect.currentUsername = Db_connect.rd[0].ToString();
-                    Db_connect.currentStatus = Db_connect.rd[2].ToString();
+                    AC.currentUsername = AC.rd[1].ToString();
+                    AC.currentStatus = AC.rd[3].ToString();
 
-                    MessageBox.Show("Welcome  " + Db_connect.currentUsername + "\n Your Status is ... " + Db_connect.currentStatus , "\n Login Successed :)",
+                    MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    FrmMain frm = new FrmMain();
+                    frm.Show();
 
                 }
-                this.txtUsername.Text = string.Empty;
                 this.txtPassword.Text = string.Empty;
-
-                this.Hide();
-
-                FrmMain f = new FrmMain();
-                f.ShowDialog();
-                f = null;
-
+                this.txtUsername.Text = string.Empty;
             }
             else
             {
@@ -99,11 +97,15 @@ namespace Fruit_Stock
                 {
                     this.txtUsername.Select();
                 }
+
+                this.txtPassword.Text = string.Empty;
+                this.txtUsername.Text = string.Empty;
+                //MessageBox.Show(AC.currentUsername);
+
             }
 
-            Db_connect.rd.Close();
-            Db_connect.closeConnection();
-
+            AC.rd.Close();
+            AC.closeConnection();
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -117,7 +119,5 @@ namespace Fruit_Stock
                 txtPassword.PasswordChar = '●';
             }
         }
-
-
     }
 }

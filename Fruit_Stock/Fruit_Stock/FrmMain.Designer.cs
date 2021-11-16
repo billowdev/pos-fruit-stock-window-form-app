@@ -29,127 +29,203 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.btnExit = new System.Windows.Forms.Button();
-            this.pbInvoice = new System.Windows.Forms.PictureBox();
-            this.pbProfile = new System.Windows.Forms.PictureBox();
-            this.pbStock = new System.Windows.Forms.PictureBox();
-            this.pbHistoryInvoice = new System.Windows.Forms.PictureBox();
-            this.pbHelp = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHistoryInvoice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
+            this.mnuFrmMain = new System.Windows.Forms.MenuStrip();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuInvoice = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbUsernameStatus = new System.Windows.Forms.Label();
+            this.pbMain = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timTime = new System.Windows.Forms.Timer(this.components);
+            this.mnuFrmMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnExit
+            // mnuFrmMain
             // 
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1203, 637);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(121, 64);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.mnuFrmMain.AutoSize = false;
+            this.mnuFrmMain.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mnuFrmMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnuFrmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logOutToolStripMenuItem,
+            this.mnuSale,
+            this.mnuProfile,
+            this.mnuInvoice,
+            this.mnuStock,
+            this.mnuHelp});
+            this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
+            this.mnuFrmMain.Name = "mnuFrmMain";
+            this.mnuFrmMain.Size = new System.Drawing.Size(1924, 61);
+            this.mnuFrmMain.TabIndex = 1;
+            this.mnuFrmMain.Text = "menuStrip1";
             // 
-            // pbInvoice
+            // logOutToolStripMenuItem
             // 
-            this.pbInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.pbInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbInvoice.BackgroundImage")));
-            this.pbInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbInvoice.Location = new System.Drawing.Point(229, 82);
-            this.pbInvoice.Name = "pbInvoice";
-            this.pbInvoice.Size = new System.Drawing.Size(251, 254);
-            this.pbInvoice.TabIndex = 6;
-            this.pbInvoice.TabStop = false;
+            this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExit});
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(56, 57);
+            this.logOutToolStripMenuItem.Text = "File";
             // 
-            // pbProfile
+            // mnuExit
             // 
-            this.pbProfile.BackColor = System.Drawing.Color.Transparent;
-            this.pbProfile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbProfile.BackgroundImage")));
-            this.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbProfile.Location = new System.Drawing.Point(600, 82);
-            this.pbProfile.Name = "pbProfile";
-            this.pbProfile.Size = new System.Drawing.Size(251, 254);
-            this.pbProfile.TabIndex = 6;
-            this.pbProfile.TabStop = false;
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
-            // pbStock
+            // mnuSale
             // 
-            this.pbStock.BackColor = System.Drawing.Color.Transparent;
-            this.pbStock.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbStock.BackgroundImage")));
-            this.pbStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbStock.Location = new System.Drawing.Point(229, 395);
-            this.pbStock.Name = "pbStock";
-            this.pbStock.Size = new System.Drawing.Size(251, 254);
-            this.pbStock.TabIndex = 6;
-            this.pbStock.TabStop = false;
+            this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mnuSale.Name = "mnuSale";
+            this.mnuSale.Size = new System.Drawing.Size(62, 57);
+            this.mnuSale.Text = "Sale";
+            this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
             // 
-            // pbHistoryInvoice
+            // mnuProfile
             // 
-            this.pbHistoryInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.pbHistoryInvoice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHistoryInvoice.BackgroundImage")));
-            this.pbHistoryInvoice.Location = new System.Drawing.Point(600, 395);
-            this.pbHistoryInvoice.Name = "pbHistoryInvoice";
-            this.pbHistoryInvoice.Size = new System.Drawing.Size(251, 254);
-            this.pbHistoryInvoice.TabIndex = 6;
-            this.pbHistoryInvoice.TabStop = false;
+            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
+            this.mnuProfile.Name = "mnuProfile";
+            this.mnuProfile.Size = new System.Drawing.Size(102, 57);
+            this.mnuProfile.Text = "Profile";
+            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
             // 
-            // pbHelp
+            // mnuInvoice
             // 
-            this.pbHelp.BackColor = System.Drawing.Color.Transparent;
-            this.pbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbHelp.BackgroundImage")));
-            this.pbHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbHelp.Location = new System.Drawing.Point(988, 264);
-            this.pbHelp.Name = "pbHelp";
-            this.pbHelp.Size = new System.Drawing.Size(171, 169);
-            this.pbHelp.TabIndex = 6;
-            this.pbHelp.TabStop = false;
+            this.mnuInvoice.Image = ((System.Drawing.Image)(resources.GetObject("mnuInvoice.Image")));
+            this.mnuInvoice.Name = "mnuInvoice";
+            this.mnuInvoice.Size = new System.Drawing.Size(108, 57);
+            this.mnuInvoice.Text = "Invoice";
+            this.mnuInvoice.Click += new System.EventHandler(this.mnuInvoice_Click);
+            // 
+            // mnuStock
+            // 
+            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
+            this.mnuStock.Name = "mnuStock";
+            this.mnuStock.Size = new System.Drawing.Size(94, 57);
+            this.mnuStock.Text = "Stock";
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(87, 57);
+            this.mnuHelp.Text = "Help";
+            this.mnuHelp.Click += new System.EventHandler(this.mnuHelp_Click);
+            // 
+            // lbUsernameStatus
+            // 
+            this.lbUsernameStatus.BackColor = System.Drawing.Color.White;
+            this.lbUsernameStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbUsernameStatus.Font = new System.Drawing.Font("Mali", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsernameStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbUsernameStatus.Image = ((System.Drawing.Image)(resources.GetObject("lbUsernameStatus.Image")));
+            this.lbUsernameStatus.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbUsernameStatus.Location = new System.Drawing.Point(519, 181);
+            this.lbUsernameStatus.Name = "lbUsernameStatus";
+            this.lbUsernameStatus.Size = new System.Drawing.Size(785, 594);
+            this.lbUsernameStatus.TabIndex = 4;
+            this.lbUsernameStatus.Text = "Username&Status";
+            this.lbUsernameStatus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // pbMain
+            // 
+            this.pbMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMain.BackgroundImage")));
+            this.pbMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMain.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMain.InitialImage")));
+            this.pbMain.Location = new System.Drawing.Point(0, 53);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1925, 1024);
+            this.pbMain.TabIndex = 3;
+            this.pbMain.TabStop = false;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.stsTime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 981);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1924, 52);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.AutoSize = false;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(300, 46);
+            this.toolStripStatusLabel1.Text = "โปรแกรมสต๊อกสินค้า ร้านผลไม้";
+            // 
+            // stsTime
+            // 
+            this.stsTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.stsTime.Name = "stsTime";
+            this.stsTime.Size = new System.Drawing.Size(56, 46);
+            this.stsTime.Text = "Time";
+            // 
+            // timTime
+            // 
+            this.timTime.Enabled = true;
+            this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1348, 721);
-            this.Controls.Add(this.pbHistoryInvoice);
-            this.Controls.Add(this.pbHelp);
-            this.Controls.Add(this.pbProfile);
-            this.Controls.Add(this.pbStock);
-            this.Controls.Add(this.pbInvoice);
-            this.Controls.Add(this.btnExit);
-            this.DoubleBuffered = true;
+            this.ClientSize = new System.Drawing.Size(1924, 1033);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.lbUsernameStatus);
+            this.Controls.Add(this.mnuFrmMain);
+            this.Controls.Add(this.pbMain);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.mnuFrmMain;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
-            this.Text = "Fruit Stock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pbInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHistoryInvoice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.mnuFrmMain.ResumeLayout(false);
+            this.mnuFrmMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.PictureBox pbInvoice;
-        private System.Windows.Forms.PictureBox pbProfile;
-        private System.Windows.Forms.PictureBox pbStock;
-        private System.Windows.Forms.PictureBox pbHistoryInvoice;
-        private System.Windows.Forms.PictureBox pbHelp;
+        private System.Windows.Forms.MenuStrip mnuFrmMain;
+        private System.Windows.Forms.ToolStripMenuItem mnuProfile;
+        private System.Windows.Forms.ToolStripMenuItem mnuInvoice;
+        private System.Windows.Forms.ToolStripMenuItem mnuSale;
+        private System.Windows.Forms.ToolStripMenuItem mnuStock;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.PictureBox pbMain;
+        private System.Windows.Forms.Label lbUsernameStatus;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel stsTime;
+        private System.Windows.Forms.Timer timTime;
     }
 }
-

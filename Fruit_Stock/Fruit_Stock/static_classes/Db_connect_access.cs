@@ -9,26 +9,29 @@ using System.Windows.Forms;
 
 namespace Fruit_Stock.static_classes
 {
-    class Db_connect
+    class AC
     {
         public static OleDbConnection conn = new OleDbConnection();
         public static OleDbCommand cmd = new OleDbCommand("", conn);
-        //public static OleDbDataAdapter da;
+        public static OleDbDataAdapter da;
         public static OleDbDataReader rd;
+        public static DataSet ds = new DataSet();
 
-        public static string currentUsername;
+        public static string currentUsername = "";
         public static string currentStatus;
         public static string sql;
+
+        public static bool IsFind = false;
 
         public static string getConnectionString()
         {
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" +
-                Application.StartupPath + "/db_fruit_stock.accdb;";
+                Application.StartupPath + "/Database/db_fruit_stock.accdb;";
 
             return connectionString;
         }
 
-        public static void openConnection()
+public static void openConnection()
         {
             try
             {
@@ -39,6 +42,7 @@ namespace Fruit_Stock.static_classes
                 }
 
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("ระบบไม่สามารถสร้างการเชื่อมต่อได้" + "\n" +
@@ -63,5 +67,7 @@ namespace Fruit_Stock.static_classes
 
             }
         }
+
+       
     }
 }
