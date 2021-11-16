@@ -35,6 +35,11 @@ namespace Fruit_Stock
                 btnSave.Enabled = false;
                 btnCancel.Enabled = false;
                 txtStatus.Hide();
+                pbProfile.Hide();
+                mnuDelete.Enabled = false;
+                mnuNew.Enabled = false;
+
+
 
             }
             // -------------------------------------------- Admin --------------------------------------- //

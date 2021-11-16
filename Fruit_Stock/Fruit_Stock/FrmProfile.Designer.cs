@@ -31,16 +31,6 @@ namespace Fruit_Stock
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfile));
-            this.mnuProfile = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.invoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyInvoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
@@ -73,103 +63,18 @@ namespace Fruit_Stock
             this.tbloginBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appData = new Fruit_Stock.AppData();
             this.tb_loginTableAdapter = new Fruit_Stock.AppDataTableAdapters.tb_loginTableAdapter();
-            this.mnuProfile.SuspendLayout();
+            this.cmuMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appData)).BeginInit();
+            this.cmuMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mnuProfile
-            // 
-            this.mnuProfile.BackColor = System.Drawing.Color.Transparent;
-            this.mnuProfile.Dock = System.Windows.Forms.DockStyle.Left;
-            this.mnuProfile.Font = new System.Drawing.Font("Mali", 12F);
-            this.mnuProfile.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mnuProfile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.invoiceToolStripMenuItem,
-            this.historyInvoiceToolStripMenuItem,
-            this.stockToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.mnuProfile.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.mnuProfile.Location = new System.Drawing.Point(0, 0);
-            this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(188, 1018);
-            this.mnuProfile.TabIndex = 0;
-            this.mnuProfile.Text = "menuStrip1";
-            this.mnuProfile.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.exportProfileToolStripMenuItem,
-            this.homePageToolStripMenuItem,
-            this.mnuExit});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.fileToolStripMenuItem.Text = "File";
-            this.fileToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // exportProfileToolStripMenuItem
-            // 
-            this.exportProfileToolStripMenuItem.Name = "exportProfileToolStripMenuItem";
-            this.exportProfileToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
-            this.exportProfileToolStripMenuItem.Text = "Export Profile";
-            // 
-            // homePageToolStripMenuItem
-            // 
-            this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
-            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(245, 46);
-            this.homePageToolStripMenuItem.Text = "Home Page";
-            // 
-            // mnuExit
-            // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(245, 46);
-            this.mnuExit.Text = "Exit";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
-            // 
-            // invoiceToolStripMenuItem
-            // 
-            this.invoiceToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.invoiceToolStripMenuItem.Name = "invoiceToolStripMenuItem";
-            this.invoiceToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.invoiceToolStripMenuItem.Text = "Invoice";
-            this.invoiceToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // historyInvoiceToolStripMenuItem
-            // 
-            this.historyInvoiceToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.historyInvoiceToolStripMenuItem.Name = "historyInvoiceToolStripMenuItem";
-            this.historyInvoiceToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.historyInvoiceToolStripMenuItem.Text = "History Invoice";
-            this.historyInvoiceToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // stockToolStripMenuItem
-            // 
-            this.stockToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.stockToolStripMenuItem.Text = "Stock";
-            this.stockToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(175, 46);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // txtStatus
             // 
@@ -377,7 +282,7 @@ namespace Fruit_Stock
             this.dgvAllMember.AllowUserToDeleteRows = false;
             this.dgvAllMember.AllowUserToResizeColumns = false;
             this.dgvAllMember.AllowUserToResizeRows = false;
-            this.dgvAllMember.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dgvAllMember.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllMember.Location = new System.Drawing.Point(219, 183);
             this.dgvAllMember.Name = "dgvAllMember";
@@ -441,7 +346,7 @@ namespace Fruit_Stock
             // 
             // gbOperating
             // 
-            this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbOperating.Controls.Add(this.lbUserStatus);
             this.gbOperating.Controls.Add(this.btnSave);
             this.gbOperating.Controls.Add(this.btnCancel);
@@ -498,6 +403,41 @@ namespace Fruit_Stock
             // 
             this.tb_loginTableAdapter.ClearBeforeFill = true;
             // 
+            // cmuMenu
+            // 
+            this.cmuMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmuMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuBack,
+            this.mnuNew,
+            this.mnuEdit,
+            this.mnuDelete});
+            this.cmuMenu.Name = "cmuMenu";
+            this.cmuMenu.Size = new System.Drawing.Size(211, 128);
+            // 
+            // mnuBack
+            // 
+            this.mnuBack.Name = "mnuBack";
+            this.mnuBack.Size = new System.Drawing.Size(210, 24);
+            this.mnuBack.Text = "Back";
+            // 
+            // mnuNew
+            // 
+            this.mnuNew.Name = "mnuNew";
+            this.mnuNew.Size = new System.Drawing.Size(210, 24);
+            this.mnuNew.Text = "เพิ่ม";
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(210, 24);
+            this.mnuEdit.Text = "แก้ไข";
+            // 
+            // mnuDelete
+            // 
+            this.mnuDelete.Name = "mnuDelete";
+            this.mnuDelete.Size = new System.Drawing.Size(210, 24);
+            this.mnuDelete.Text = "ลบ";
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -509,11 +449,9 @@ namespace Fruit_Stock
             this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lbAllData);
-            this.Controls.Add(this.mnuProfile);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.mnuProfile;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1440, 1018);
             this.Name = "FrmProfile";
@@ -521,31 +459,19 @@ namespace Fruit_Stock
             this.Text = "Profile";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmProfile_Load);
-            this.mnuProfile.ResumeLayout(false);
-            this.mnuProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
             this.gbOperating.ResumeLayout(false);
             this.gbOperating.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbloginBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appData)).EndInit();
+            this.cmuMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip mnuProfile;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem homePageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuExit;
-        private System.Windows.Forms.ToolStripMenuItem invoiceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historyInvoiceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label lbUsername;
@@ -578,5 +504,10 @@ namespace Fruit_Stock
         private System.Windows.Forms.BindingSource tbloginBindingSource;
         private AppDataTableAdapters.tb_loginTableAdapter tb_loginTableAdapter;
         private System.Windows.Forms.Label lbUserStatus;
+        private System.Windows.Forms.ContextMenuStrip cmuMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuBack;
+        private System.Windows.Forms.ToolStripMenuItem mnuNew;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuDelete;
     }
 }

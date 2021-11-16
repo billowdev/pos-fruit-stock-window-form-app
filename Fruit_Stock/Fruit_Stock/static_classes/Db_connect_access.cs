@@ -17,7 +17,7 @@ namespace Fruit_Stock.static_classes
         public static OleDbDataReader rd;
         public static DataSet ds = new DataSet();
 
-        public static string currentUsername;
+        public static string currentUsername = "";
         public static string currentStatus;
         public static string sql;
 

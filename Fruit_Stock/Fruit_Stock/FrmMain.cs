@@ -20,6 +20,7 @@ namespace Fruit_Stock
         FrmProfile fProfile = new FrmProfile();
         FrmInvoice fInvoice = new FrmInvoice();
         FrmLogin fLogin = new FrmLogin();
+        FrmSale fSale = new FrmSale();
 
         private void mnuProfile_Click(object sender, EventArgs e)
         {
@@ -31,13 +32,14 @@ namespace Fruit_Stock
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
-            //if (AC.currentUsername == null)
-            //{
-            //    fLogin.ShowDialog();
-            //}
-            if (AC.currentUsername != null)
+            if (AC.currentUsername == "")
             {
-                lbName.Text = "Username: " + AC.currentUsername + " Status " + AC.currentStatus;
+                fLogin.ShowDialog();
+            }
+
+            if (AC.currentUsername != "")
+            {
+                lbUsernameStatus.Text = "Welcome:" + AC.currentUsername;
             }
         }
 
@@ -47,13 +49,14 @@ namespace Fruit_Stock
             {
                 fLogin.ShowDialog();
                 this.Close();
-                AC.currentUsername = null;
+                AC.currentUsername = "";
             }
         }
 
         private void mnuExit_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Exit", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {
                 Application.Exit();
             }
@@ -66,9 +69,23 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            FrmSale fSale = new FrmSale();
+            
             fSale.ShowDialog();
         }
+
+        private void mnuHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.com");
+        }
+
+        private void timTime_Tick(object sender, EventArgs e)
+        {
+            stsTime.Text = DateTime.Now.AddSeconds(1).ToString("dd/MM/yyyy HH:MM:ss");
+
+        }
+
+ 
+
     }
 }
 

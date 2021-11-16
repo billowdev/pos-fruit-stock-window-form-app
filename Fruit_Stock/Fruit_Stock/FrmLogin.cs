@@ -20,7 +20,7 @@ namespace Fruit_Stock
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-        
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -30,9 +30,23 @@ namespace Fruit_Stock
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                Check_login();
+            }
+            else
+            {
+                MessageBox.Show("กรุณากรอกรหัส", "Msg",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void Check_login()
+        {
             // login
-            if ( ( string.IsNullOrEmpty(this.txtUsername.Text.Trim() )) ||  
-                 ( string.IsNullOrEmpty(this.txtPassword.Text.Trim() )) )
+            if ((string.IsNullOrEmpty(this.txtUsername.Text.Trim())) ||
+                 (string.IsNullOrEmpty(this.txtPassword.Text.Trim())))
             {
                 MessageBox.Show("Enter your username and password", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +57,7 @@ namespace Fruit_Stock
                 }
                 return;
             }
-            
+
             AC.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
 
             AC.cmd.Parameters.Clear();
@@ -55,7 +69,7 @@ namespace Fruit_Stock
 
             AC.openConnection();
 
-            AC.rd = AC.cmd.ExecuteReader(); 
+            AC.rd = AC.cmd.ExecuteReader();
 
             if (AC.rd.HasRows)
             {
@@ -64,19 +78,15 @@ namespace Fruit_Stock
                     AC.currentUsername = AC.rd[1].ToString();
                     AC.currentStatus = AC.rd[3].ToString();
 
-                    MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus , "\n Login Successed :)",
+                    MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     FrmMain frm = new FrmMain();
                     frm.Show();
 
                 }
-
-                
-                //this.txtPassword.Text = string.Empty;
-                //this.txtUsername.Text = string.Empty;
-
-
+                this.txtPassword.Text = string.Empty;
+                this.txtUsername.Text = string.Empty;
             }
             else
             {
@@ -88,13 +98,14 @@ namespace Fruit_Stock
                     this.txtUsername.Select();
                 }
 
-                MessageBox.Show(AC.currentUsername);
+                this.txtPassword.Text = string.Empty;
+                this.txtUsername.Text = string.Empty;
+                //MessageBox.Show(AC.currentUsername);
 
             }
 
             AC.rd.Close();
             AC.closeConnection();
-        
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -108,7 +119,5 @@ namespace Fruit_Stock
                 txtPassword.PasswordChar = '●';
             }
         }
-
-      
     }
 }
