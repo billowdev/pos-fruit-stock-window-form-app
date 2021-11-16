@@ -21,29 +21,12 @@ namespace Fruit_Stock
         FrmInvoice fInvoice = new FrmInvoice();
         FrmLogin fLogin = new FrmLogin();
 
-        private void btnProfile_Click(object sender, EventArgs e)
+        private void mnuProfile_Click(object sender, EventArgs e)
         {
-            
             fProfile.ShowDialog();
-           
-        }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
-      
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void mnuLogout_Click(object sender, EventArgs e)
-        {
-
-            Application.Exit();
-
-        }
     }
 }
 
