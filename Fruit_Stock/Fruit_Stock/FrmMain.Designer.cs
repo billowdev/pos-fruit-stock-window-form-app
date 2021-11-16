@@ -36,7 +36,12 @@ namespace Fruit_Stock
             this.mnuInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbMain = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.mnuFrmMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuFrmMain
@@ -49,7 +54,8 @@ namespace Fruit_Stock
             this.mnuProfile,
             this.mnuInvoice,
             this.mnuStock,
-            this.mnuHelp});
+            this.mnuHelp,
+            this.mnuExit});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
             this.mnuFrmMain.Size = new System.Drawing.Size(1924, 61);
@@ -91,12 +97,58 @@ namespace Fruit_Stock
             this.mnuHelp.Size = new System.Drawing.Size(87, 57);
             this.mnuHelp.Text = "Help";
             // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(57, 57);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
+            // pbMain
+            // 
+            this.pbMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMain.BackgroundImage")));
+            this.pbMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMain.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMain.InitialImage")));
+            this.pbMain.Location = new System.Drawing.Point(0, 53);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1925, 1024);
+            this.pbMain.TabIndex = 3;
+            this.pbMain.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Mali", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Location = new System.Drawing.Point(435, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(798, 496);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Welcome";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lbName
+            // 
+            this.lbName.Font = new System.Drawing.Font("Mali", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(435, 601);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(798, 128);
+            this.lbName.TabIndex = 7;
+            this.lbName.Text = "Username Status";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1033);
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.mnuFrmMain);
+            this.Controls.Add(this.pbMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuFrmMain;
@@ -107,8 +159,10 @@ namespace Fruit_Stock
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.mnuFrmMain.ResumeLayout(false);
             this.mnuFrmMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,5 +175,9 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuSale;
         private System.Windows.Forms.ToolStripMenuItem mnuStock;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.PictureBox pbMain;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
     }
 }

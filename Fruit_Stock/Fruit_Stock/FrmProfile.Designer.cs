@@ -373,10 +373,15 @@ namespace Fruit_Stock
             // 
             // dgvAllMember
             // 
+            this.dgvAllMember.AllowUserToAddRows = false;
+            this.dgvAllMember.AllowUserToDeleteRows = false;
+            this.dgvAllMember.AllowUserToResizeColumns = false;
+            this.dgvAllMember.AllowUserToResizeRows = false;
             this.dgvAllMember.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllMember.Location = new System.Drawing.Point(219, 183);
             this.dgvAllMember.Name = "dgvAllMember";
+            this.dgvAllMember.ReadOnly = true;
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
             this.dgvAllMember.Size = new System.Drawing.Size(520, 499);

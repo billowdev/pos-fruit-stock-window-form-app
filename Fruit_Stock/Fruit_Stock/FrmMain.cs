@@ -26,7 +26,19 @@ namespace Fruit_Stock
             fProfile.ShowDialog();
         }
 
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Exit", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                Application.Exit();
+            }
+            
+        }
 
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            lbName.Text = "Username: " + AC.currentUsername + " Status " + AC.currentStatus;
+        }
     }
 }
 

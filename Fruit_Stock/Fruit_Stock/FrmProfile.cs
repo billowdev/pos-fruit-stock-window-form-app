@@ -41,6 +41,7 @@ namespace Fruit_Stock
                 lbUserStatus.Hide();
                 showAllMember();
                 FormatDataMember();
+                dgvAllMember.ReadOnly = true;
             }
         }
         // ---------------------------------------------- Function Show All data User ---------------------- // 
@@ -70,9 +71,10 @@ namespace Fruit_Stock
             AC.rd.Close();
             AC.openConnection();
 
+            // when account is user
             if (txtEMPID.Text != "")
             {
-                fillEmployData();
+                fillEmployData(txtEMPID.Text);
             }
         }
 
@@ -99,33 +101,34 @@ namespace Fruit_Stock
                 AC.IsFind = false;
             }
         }
-        // ---------------------------------- Menu Exit ---------------------- // 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        // ---------------------------------- Back to Main ---------------------- // 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         // ---------------------------------- Event Cell mouse up data gridview ---------------------- // 
         private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            txtEMPID.Text = "";
+            txtLastName.Text = "";
+            txtName.Text = "";
+            txtPassword.Text = "";
+            txtPhone.Text = "";
+            txtStatus.Text = "";
+            txtUsername.Text = "";
+
             if (e.RowIndex == dgvAllMember.Rows.Count - 1)
             {
                 return;
             }
-            txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
+            try
+            {
+                txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+            catch { }
 
             if (txtEMPID.Text != "")
             {
-                fillEmployData();
+                fillEmployData(this.txtEMPID.Text);
             }
 
         }
@@ -152,19 +155,20 @@ namespace Fruit_Stock
 
 
         // Function for fill data to text box from table employee reference by empid use for admin and user account
-        private void fillEmployData()
+        private void fillEmployData(string emp_id)
         {
             try
             {
                 AC.closeConnection();
 
                 // it is fill all data from tb_login to dataGridView
+                
                 AC.sql = "SELECT * FROM tb_employee WHERE emp_id = @empid";
                 AC.cmd.Parameters.Clear();
                 AC.cmd.CommandType = CommandType.Text;
                 AC.cmd.CommandText = AC.sql;
 
-                AC.cmd.Parameters.AddWithValue("@empid", this.txtEMPID.Text.Trim().ToString());
+                AC.cmd.Parameters.AddWithValue("@empid", emp_id.Trim().ToString());
                 AC.openConnection();
 
 
@@ -174,6 +178,8 @@ namespace Fruit_Stock
                 {
                     while (AC.rd.Read())
                     {
+                       
+
                         txtName.Text = AC.rd[1].ToString();
                         txtLastName.Text = AC.rd[2].ToString();
 
@@ -193,10 +199,22 @@ namespace Fruit_Stock
                 AC.rd.Close();
                 AC.closeConnection();
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show("Error: "+ ex.Message, "mesg");
             }
+        }
 
+        // ---------------------------------- Menu Exit ---------------------- // 
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // ---------------------------------- Back to Main ---------------------- // 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 
