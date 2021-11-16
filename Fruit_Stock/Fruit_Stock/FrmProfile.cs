@@ -19,7 +19,7 @@ namespace Fruit_Stock
             InitializeComponent();
         }
         OleDbDataAdapter da;
-
+        string sSql;
         FrmLogin fLogin = new FrmLogin();
         private void FrmProfile_Load(object sender, EventArgs e)
         {
@@ -49,10 +49,11 @@ namespace Fruit_Stock
         {
             AC.rd.Close();
             AC.openConnection();
+            sSql = "";
 
-            AC.sql = "select * from tb_login where Username = '" + AC.currentUsername + "'";
+            sSql = " SELECT * FROM tb_login WHERE Username ='" + AC.currentUsername + "'";
             AC.cmd.Connection = AC.conn;
-            AC.cmd.CommandText = AC.sql;
+            AC.cmd.CommandText = sSql;
             AC.cmd.ExecuteNonQuery();
 
             AC.rd = AC.cmd.ExecuteReader();
@@ -117,19 +118,16 @@ namespace Fruit_Stock
             {
                 return;
             }
-            try
+            else
             {
                 txtUsername.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtPassword.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txtStatus.Text = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtEMPID.Text = dgvAllMember.Rows[e.RowIndex].Cells[4].Value.ToString();
-            }
-            catch { }
-
-            if (txtEMPID.Text != "")
-            {
+                
                 fillEmployData(this.txtEMPID.Text);
             }
+
 
         }
 
@@ -157,18 +155,21 @@ namespace Fruit_Stock
         // Function for fill data to text box from table employee reference by empid use for admin and user account
         private void fillEmployData(string emp_id)
         {
+            AC.closeConnection();
             try
             {
-                AC.closeConnection();
 
                 // it is fill all data from tb_login to dataGridView
                 
-                AC.sql = "SELECT * FROM tb_employee WHERE emp_id = @empid";
-                AC.cmd.Parameters.Clear();
-                AC.cmd.CommandType = CommandType.Text;
-                AC.cmd.CommandText = AC.sql;
 
-                AC.cmd.Parameters.AddWithValue("@empid", emp_id.Trim().ToString());
+                sSql = "";
+                sSql = " SELECT * FROM tb_employee WHERE emp_id='"+ emp_id + "'";
+
+                AC.cmd.CommandType = CommandType.Text;
+                AC.cmd.CommandText = sSql;
+
+                //AC.cmd.Parameters.Clear();
+                //AC.cmd.Parameters.AddWithValue("@empid", emp_id.Trim().ToString());
                 AC.openConnection();
 
 
@@ -201,7 +202,7 @@ namespace Fruit_Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: "+ ex.Message, "mesg");
+                MessageBox.Show("Error on private void fillEmployData(string emp_id): " + ex.Message, "mesg");
             }
         }
 
