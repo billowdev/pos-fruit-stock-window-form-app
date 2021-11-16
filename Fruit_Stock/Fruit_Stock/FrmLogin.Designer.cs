@@ -47,9 +47,10 @@ namespace Fruit_Stock
             this.btnLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogin.BackgroundImage")));
             this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(595, 578);
+            this.btnLogin.Location = new System.Drawing.Point(357, 563);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(133, 53);
@@ -65,7 +66,7 @@ namespace Fruit_Stock
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1217, 692);
+            this.btnExit.Location = new System.Drawing.Point(749, 578);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(121, 64);
@@ -76,7 +77,7 @@ namespace Fruit_Stock
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
-            this.txtUsername.Location = new System.Drawing.Point(476, 406);
+            this.txtUsername.Location = new System.Drawing.Point(238, 391);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(373, 43);
@@ -85,7 +86,7 @@ namespace Fruit_Stock
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
-            this.txtPassword.Location = new System.Drawing.Point(476, 485);
+            this.txtPassword.Location = new System.Drawing.Point(238, 470);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
@@ -97,7 +98,7 @@ namespace Fruit_Stock
             this.pbShopkeeper.BackColor = System.Drawing.Color.Transparent;
             this.pbShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbShopkeeper.BackgroundImage")));
             this.pbShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbShopkeeper.Location = new System.Drawing.Point(485, 48);
+            this.pbShopkeeper.Location = new System.Drawing.Point(250, 36);
             this.pbShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbShopkeeper.Name = "pbShopkeeper";
             this.pbShopkeeper.Size = new System.Drawing.Size(349, 326);
@@ -109,7 +110,7 @@ namespace Fruit_Stock
             this.pbFruitFrontShopkeeper.BackColor = System.Drawing.Color.Transparent;
             this.pbFruitFrontShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbFruitFrontShopkeeper.BackgroundImage")));
             this.pbFruitFrontShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbFruitFrontShopkeeper.Location = new System.Drawing.Point(613, 241);
+            this.pbFruitFrontShopkeeper.Location = new System.Drawing.Point(305, 220);
             this.pbFruitFrontShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbFruitFrontShopkeeper.Name = "pbFruitFrontShopkeeper";
             this.pbFruitFrontShopkeeper.Size = new System.Drawing.Size(100, 90);
@@ -122,7 +123,7 @@ namespace Fruit_Stock
             this.cbShowPassword.BackColor = System.Drawing.Color.Transparent;
             this.cbShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShowPassword.ForeColor = System.Drawing.Color.White;
-            this.cbShowPassword.Location = new System.Drawing.Point(865, 494);
+            this.cbShowPassword.Location = new System.Drawing.Point(627, 479);
             this.cbShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbShowPassword.Name = "cbShowPassword";
             this.cbShowPassword.Size = new System.Drawing.Size(151, 24);
@@ -135,10 +136,9 @@ namespace Fruit_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1365, 768);
+            this.ClientSize = new System.Drawing.Size(882, 653);
             this.Controls.Add(this.cbShowPassword);
             this.Controls.Add(this.pbFruitFrontShopkeeper);
             this.Controls.Add(this.pbShopkeeper);
@@ -147,14 +147,15 @@ namespace Fruit_Stock
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1979, 1078);
-            this.MinimumSize = new System.Drawing.Size(1365, 766);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fruit Shop Login Form";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbShopkeeper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruitFrontShopkeeper)).EndInit();

@@ -31,15 +31,17 @@ namespace Fruit_Stock
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.mnuFrmMain = new System.Windows.Forms.MenuStrip();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInvoice = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMain = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbMain = new System.Windows.Forms.PictureBox();
             this.mnuFrmMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
@@ -50,23 +52,48 @@ namespace Fruit_Stock
             this.mnuFrmMain.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.mnuFrmMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuFrmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logOutToolStripMenuItem,
             this.mnuSale,
             this.mnuProfile,
             this.mnuInvoice,
             this.mnuStock,
-            this.mnuHelp,
-            this.mnuExit});
+            this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
             this.mnuFrmMain.Size = new System.Drawing.Size(1924, 61);
             this.mnuFrmMain.TabIndex = 1;
             this.mnuFrmMain.Text = "menuStrip1";
             // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuLogout,
+            this.mnuExit});
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(56, 57);
+            this.logOutToolStripMenuItem.Text = "File";
+            // 
+            // mnuLogout
+            // 
+            this.mnuLogout.Name = "mnuLogout";
+            this.mnuLogout.Size = new System.Drawing.Size(253, 32);
+            this.mnuLogout.Text = "log out (ยังใช้ไม่ได้)";
+            this.mnuLogout.Click += new System.EventHandler(this.mnuLogout_Click);
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
             // mnuSale
             // 
+            this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.mnuSale.Name = "mnuSale";
             this.mnuSale.Size = new System.Drawing.Size(62, 57);
             this.mnuSale.Text = "Sale";
+            this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
             // 
             // mnuProfile
             // 
@@ -82,6 +109,7 @@ namespace Fruit_Stock
             this.mnuInvoice.Name = "mnuInvoice";
             this.mnuInvoice.Size = new System.Drawing.Size(108, 57);
             this.mnuInvoice.Text = "Invoice";
+            this.mnuInvoice.Click += new System.EventHandler(this.mnuInvoice_Click);
             // 
             // mnuStock
             // 
@@ -97,12 +125,30 @@ namespace Fruit_Stock
             this.mnuHelp.Size = new System.Drawing.Size(87, 57);
             this.mnuHelp.Text = "Help";
             // 
-            // mnuExit
+            // lbName
             // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(57, 57);
-            this.mnuExit.Text = "Exit";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            this.lbName.Font = new System.Drawing.Font("Mali", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(532, 627);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(745, 79);
+            this.lbName.TabIndex = 7;
+            this.lbName.Text = "Username Status";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Mali", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Location = new System.Drawing.Point(532, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(745, 447);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Welcome";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // pbMain
             // 
@@ -114,31 +160,6 @@ namespace Fruit_Stock
             this.pbMain.Size = new System.Drawing.Size(1925, 1024);
             this.pbMain.TabIndex = 3;
             this.pbMain.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Mali", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(435, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(798, 496);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Welcome";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // lbName
-            // 
-            this.lbName.Font = new System.Drawing.Font("Mali", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(435, 601);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(798, 128);
-            this.lbName.TabIndex = 7;
-            this.lbName.Text = "Username Status";
-            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMain
             // 
@@ -175,9 +196,11 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuSale;
         private System.Windows.Forms.ToolStripMenuItem mnuStock;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
-        private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.PictureBox pbMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuLogout;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
     }
 }

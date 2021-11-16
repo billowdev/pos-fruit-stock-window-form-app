@@ -16,5 +16,10 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
+
+        private void FrmSale_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

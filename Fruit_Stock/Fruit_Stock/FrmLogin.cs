@@ -66,17 +66,16 @@ namespace Fruit_Stock
 
                     MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus , "\n Login Successed :)",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    FrmMain frm = new FrmMain();
+                    frm.Show();
 
                 }
 
                 
-                this.txtPassword.Text = string.Empty;
+                //this.txtPassword.Text = string.Empty;
+                //this.txtUsername.Text = string.Empty;
 
-                this.Hide();
-
-                FrmMain f = new FrmMain();
-                f.ShowDialog();
-                f = null;
 
             }
             else
@@ -88,11 +87,14 @@ namespace Fruit_Stock
                 {
                     this.txtUsername.Select();
                 }
+
+                MessageBox.Show(AC.currentUsername);
+
             }
 
             AC.rd.Close();
             AC.closeConnection();
-
+        
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)

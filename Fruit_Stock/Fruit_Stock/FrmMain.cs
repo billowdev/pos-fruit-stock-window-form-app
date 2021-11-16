@@ -26,18 +26,48 @@ namespace Fruit_Stock
             fProfile.ShowDialog();
         }
 
+
+   
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+            //if (AC.currentUsername == null)
+            //{
+            //    fLogin.ShowDialog();
+            //}
+            if (AC.currentUsername != null)
+            {
+                lbName.Text = "Username: " + AC.currentUsername + " Status " + AC.currentStatus;
+            }
+        }
+
+        private void mnuLogout_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("Logout", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                fLogin.ShowDialog();
+                this.Close();
+                AC.currentUsername = null;
+            }
+        }
+
         private void mnuExit_Click(object sender, EventArgs e)
         {
             if ((MessageBox.Show("Exit", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {
                 Application.Exit();
             }
-            
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void mnuInvoice_Click(object sender, EventArgs e)
         {
-            lbName.Text = "Username: " + AC.currentUsername + " Status " + AC.currentStatus;
+            fInvoice.ShowDialog();
+        }
+
+        private void mnuSale_Click(object sender, EventArgs e)
+        {
+            FrmSale fSale = new FrmSale();
+            fSale.ShowDialog();
         }
     }
 }

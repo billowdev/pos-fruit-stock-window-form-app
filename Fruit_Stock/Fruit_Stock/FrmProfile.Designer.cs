@@ -512,7 +512,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.mnuProfile);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.mnuProfile;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1440, 1018);

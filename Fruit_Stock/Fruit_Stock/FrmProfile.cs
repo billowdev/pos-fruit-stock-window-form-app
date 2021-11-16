@@ -26,6 +26,7 @@ namespace Fruit_Stock
             // ---------------------------------------------- User  ---------------------- // 
             if (AC.currentStatus == "user")
             {
+                lbAllData.Hide();
                 showAllDataUser();
                 txtStatus.Hide();
                 dgvAllMember.Hide();
@@ -33,6 +34,7 @@ namespace Fruit_Stock
                 btnNew.Enabled = false;
                 btnSave.Enabled = false;
                 btnCancel.Enabled = false;
+                txtStatus.Hide();
 
             }
             // -------------------------------------------- Admin --------------------------------------- //

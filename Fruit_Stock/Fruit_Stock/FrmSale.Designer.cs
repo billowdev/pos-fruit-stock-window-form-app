@@ -30,17 +30,12 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTotal = new System.Windows.Forms.Label();
-            this.lbPrice = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.printDoc = new System.Drawing.Printing.PrintDocument();
@@ -60,76 +55,26 @@ namespace Fruit_Stock
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(85, 185);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(89, 46);
-            this.btnBrowse.TabIndex = 14;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.BackColor = System.Drawing.Color.White;
-            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.ForeColor = System.Drawing.Color.Black;
-            this.txtDiscount.Location = new System.Drawing.Point(803, 645);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(298, 34);
-            this.txtDiscount.TabIndex = 13;
-            // 
             // lbTotal
             // 
             this.lbTotal.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbTotal.Location = new System.Drawing.Point(807, 698);
+            this.lbTotal.Location = new System.Drawing.Point(824, 604);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(294, 40);
             this.lbTotal.TabIndex = 11;
             this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbPrice
-            // 
-            this.lbPrice.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrice.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbPrice.Location = new System.Drawing.Point(807, 585);
-            this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(294, 40);
-            this.lbPrice.TabIndex = 12;
-            this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(751, 718);
+            this.label4.Location = new System.Drawing.Point(755, 624);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Total";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(721, 655);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Discount";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(749, 598);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Price";
             // 
             // mnuDelete
             // 
@@ -155,8 +100,8 @@ namespace Fruit_Stock
             // 
             // Column4
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle25;
             this.Column4.HeaderText = "Sale Quantity";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -164,8 +109,8 @@ namespace Fruit_Stock
             // 
             // Column3
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle26;
             this.Column3.HeaderText = "Unit";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
@@ -180,8 +125,8 @@ namespace Fruit_Stock
             // 
             // Column1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle27;
             this.Column1.HeaderText = "Product ID";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -211,8 +156,8 @@ namespace Fruit_Stock
             // 
             // Column5
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle28;
             this.Column5.HeaderText = "Amount";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -240,7 +185,7 @@ namespace Fruit_Stock
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 43);
+            this.label1.Location = new System.Drawing.Point(39, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 0;
@@ -262,17 +207,14 @@ namespace Fruit_Stock
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1838, 835);
-            this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.lbTotal);
-            this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvShow);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmSale";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSale";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSale_FormClosing);
             this.cmuMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -283,14 +225,8 @@ namespace Fruit_Stock
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Label lbTotal;
-        private System.Windows.Forms.Label lbPrice;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
         private System.Drawing.Printing.PrintDocument printDoc;

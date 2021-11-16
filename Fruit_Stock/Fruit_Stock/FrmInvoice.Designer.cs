@@ -173,9 +173,9 @@ namespace Fruit_Stock
             // 
             // btnProduct
             // 
-            this.btnProduct.Location = new System.Drawing.Point(357, 35);
+            this.btnProduct.Location = new System.Drawing.Point(357, 29);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(99, 28);
+            this.btnProduct.Size = new System.Drawing.Size(99, 34);
             this.btnProduct.TabIndex = 0;
             this.btnProduct.Text = "Product";
             this.btnProduct.UseVisualStyleBackColor = true;
@@ -285,8 +285,8 @@ namespace Fruit_Stock
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmInvoice";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "Invoice (รับสินค้า)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmInvoice_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

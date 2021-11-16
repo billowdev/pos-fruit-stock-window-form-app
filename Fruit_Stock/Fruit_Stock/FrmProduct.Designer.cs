@@ -48,11 +48,9 @@ namespace Fruit_Stock
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDetail = new System.Windows.Forms.TextBox();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.lbBarcode = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPage)).BeginInit();
@@ -223,14 +221,6 @@ namespace Fruit_Stock
             this.txtDetail.Size = new System.Drawing.Size(582, 117);
             this.txtDetail.TabIndex = 2;
             // 
-            // txtBarcode
-            // 
-            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.Location = new System.Drawing.Point(137, 295);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(301, 30);
-            this.txtBarcode.TabIndex = 2;
-            // 
             // txtUnit
             // 
             this.txtUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,16 +245,6 @@ namespace Fruit_Stock
             this.txtCode.Size = new System.Drawing.Size(207, 30);
             this.txtCode.TabIndex = 2;
             // 
-            // lbBarcode
-            // 
-            this.lbBarcode.AutoSize = true;
-            this.lbBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBarcode.Location = new System.Drawing.Point(44, 295);
-            this.lbBarcode.Name = "lbBarcode";
-            this.lbBarcode.Size = new System.Drawing.Size(85, 25);
-            this.lbBarcode.TabIndex = 1;
-            this.lbBarcode.Text = "Barcode";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -278,11 +258,9 @@ namespace Fruit_Stock
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtDetail);
-            this.groupBox1.Controls.Add(this.txtBarcode);
             this.groupBox1.Controls.Add(this.txtUnit);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtCode);
-            this.groupBox1.Controls.Add(this.lbBarcode);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -345,11 +323,9 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDetail;
-        private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.Label lbBarcode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
     }
