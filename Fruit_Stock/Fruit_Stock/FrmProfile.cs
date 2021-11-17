@@ -196,7 +196,7 @@ namespace Fruit_Stock
                             rdbFemale.Checked = true;
                         }
 
-                        dtpBirthDate.Value = Convert.ToDateTime(AC.rd[4]);
+                        dtpBirthDate.Value  = Convert.ToDateTime(AC.rd[4]);
                         txtPhone.Text = AC.rd[5].ToString();
                     }
                 }
@@ -267,12 +267,23 @@ namespace Fruit_Stock
                 if (MessageBox.Show("คุณต้องการแก้ไขข้อมูลใช่หรือไม่", "ยืนยัน",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    sqlEdit = " update tb_employee set emp_name = '" + txtName.Text
-                        + "',emp_lastname = '" + txtLastName.Text
-                        + "',emp_gender = '" + stateGenter
-                        + "',emp_bdate = '" + dtpBirthDate.Value
-                        + "',emp_phone = '" + txtPhone.Text
-                        + "'where emp_id = '" + txtEMPID.Text + "'";
+                    //sqlEdit = " UPDATE tb_employee SET emp_name = '" + txtName.Text
+                    //    + "',emp_lastname = '" + txtLastName.Text
+                    //    + "',emp_gender = '" + stateGenter
+                    //    + "',emp_bdate = '" + dtpBirthDate.Value
+                    //    + "',emp_phone = '" + txtPhone.Text
+                    //    + "'where emp_id = '" + txtEMPID.Text + "'";
+
+                    sqlEdit = " UPDATE tb_employee SET emp_name = @name, emp_lastname=@lastname ,emp_gender=@gender ,emp_bdate=@bdate ,emp_phone=@phone WHERE emp_id=@id;";
+
+
+                    AC.cmd.Parameters.Clear();
+                    AC.cmd.Parameters.AddWithValue("@name", this.txtName.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@lastname", this.txtLastName.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@gender", stateGenter.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@bdate", this.dtpBirthDate.Value.Date);
+                    AC.cmd.Parameters.AddWithValue("@phone", this.txtPhone.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@id", this.txtEMPID.Text.Trim().ToString());
 
                     AC.openConnection();
                     AC.cmd.CommandType = CommandType.Text;
@@ -282,29 +293,33 @@ namespace Fruit_Stock
                     AC.cmd.ExecuteNonQuery();
 
                     AC.closeConnection();
+                    AC.cmd.Cancel();
 
-                    sqlEdit = " update tb_login set Username = '" + txtUsername.Text
-                            + "',Password = '" + txtPassword.Text
-                            + "'where emp_id = '" + txtEMPID.Text + "'";
+                    sqlEdit = " UPDATE tb_login SET Username=@user, Password=@pass, Status=@status, WHERE emp_id=@empid";
+
+                    AC.cmd.Parameters.Clear();
+                    AC.cmd.Parameters.AddWithValue("@user", this.txtUsername.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@pass", this.txtPassword.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@status", this.txtStatus.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@empid", this.txtEMPID.Text.Trim().ToString());
 
                     AC.openConnection();
                     AC.cmd.CommandType = CommandType.Text;
                     AC.cmd.CommandText = sqlEdit;
 
                     //AC.cmd.Connection = Conn;
-
                     AC.cmd.ExecuteNonQuery();
 
-
-
+                    
                     MessageBox.Show("แก้ไขข้อมูลเรียบร้อยแล้ว");
                     clearAll();
                     showAllMember();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("ข้อมูลผิดพลาด", "ผิดพลาด",
+                
+                MessageBox.Show("ข้อมูลผิดพลาด: "+ ex.ToString(), "ผิดพลาด",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -332,8 +347,11 @@ namespace Fruit_Stock
                         + txtName.Text + "','"
                         + txtLastName.Text + "','"
                         + stateGenter + "','"
-                        + dtpBirthDate.Value + "','"
+                        + dtpBirthDate.Value.Date + "','"
                         + txtPhone.Text + "')";
+
+                    AC.closeConnection();
+                    AC.rd.Close();
 
                     AC.openConnection();
 
@@ -346,9 +364,12 @@ namespace Fruit_Stock
 
                     AC.closeConnection();
 
-                    sqlAdd = "update tb_login set Username = '" + 
-                        txtUsername.Text + "',Password = '" +
-                        txtPassword.Text + "'where emp_id='" + txtEMPID.Text + "')";
+                    sqlAdd = " INSERT INTO tb_login(auto_id, Username, Password, Status) VALUES(,@user, @pass, @status) WHERE emp_id=@id";
+                    AC.cmd.Parameters.Clear();
+                    AC.cmd.Parameters.AddWithValue("@user", this.txtUsername.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@pass", this.txtPassword.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@status", this.txtStatus.Text.Trim().ToString());
+                    AC.cmd.Parameters.AddWithValue("@id", this.txtEMPID.Text.Trim().ToString());
 
                     AC.openConnection();
 
@@ -362,11 +383,14 @@ namespace Fruit_Stock
                     clearAll();
                     showAllMember();
 
+                    AC.closeConnection();
+                    AC.rd.Close();
+
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("ไม่สามารถติดต่อฐานข้อมูลได้", "ผิดพลาด");
+                MessageBox.Show("ไม่สามารถติดต่อฐานข้อมูลได้: "+ ex.Message , "ผิดพลาด");
             }
         }
     }
