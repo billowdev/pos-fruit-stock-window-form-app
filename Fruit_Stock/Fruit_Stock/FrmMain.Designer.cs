@@ -64,7 +64,7 @@ namespace Fruit_Stock
             this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
-            this.mnuFrmMain.Size = new System.Drawing.Size(1924, 61);
+            this.mnuFrmMain.Size = new System.Drawing.Size(1920, 61);
             this.mnuFrmMain.TabIndex = 1;
             this.mnuFrmMain.Text = "menuStrip1";
             // 
@@ -79,7 +79,7 @@ namespace Fruit_Stock
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Size = new System.Drawing.Size(129, 32);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -156,9 +156,9 @@ namespace Fruit_Stock
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stsTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 981);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 977);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1924, 52);
+            this.statusStrip1.Size = new System.Drawing.Size(1920, 52);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -186,7 +186,7 @@ namespace Fruit_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1033);
+            this.ClientSize = new System.Drawing.Size(1920, 1029);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lbUsernameStatus);
             this.Controls.Add(this.mnuFrmMain);

@@ -78,8 +78,9 @@ namespace Fruit_Stock
                     AC.currentUsername = AC.rd[1].ToString();
                     AC.currentStatus = AC.rd[3].ToString();
 
-                    MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
+                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     this.Hide();
                     FrmMain frm = new FrmMain();
                     frm.Show();

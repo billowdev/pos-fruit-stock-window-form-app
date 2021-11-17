@@ -51,12 +51,11 @@ namespace Fruit_Stock
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.pbProfile = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.dgvAllMember = new System.Windows.Forms.DataGridView();
             this.lbAllData = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
             this.lbUserStatus = new System.Windows.Forms.Label();
@@ -264,18 +263,6 @@ namespace Fruit_Stock
             this.pbProfile.TabIndex = 6;
             this.pbProfile.TabStop = false;
             // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.Silver;
-            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnBack.Location = new System.Drawing.Point(30, 594);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(96, 98);
-            this.btnBack.TabIndex = 5;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // dgvAllMember
             // 
             this.dgvAllMember.AllowUserToAddRows = false;
@@ -313,6 +300,7 @@ namespace Fruit_Stock
             this.btnNew.TabIndex = 8;
             this.btnNew.Text = "เพิ่ม";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnEdit
             // 
@@ -323,33 +311,35 @@ namespace Fruit_Stock
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "แก้ไข";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnCancel
+            // btnDelete
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(439, 581);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(102, 39);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "ยกเลิก";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnDelete.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(573, 581);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(102, 39);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Text = "ลบ";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(571, 581);
+            this.btnSave.Location = new System.Drawing.Point(444, 581);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(102, 39);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gbOperating
             // 
             this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbOperating.Controls.Add(this.lbUserStatus);
             this.gbOperating.Controls.Add(this.btnSave);
-            this.gbOperating.Controls.Add(this.btnCancel);
+            this.gbOperating.Controls.Add(this.btnDelete);
             this.gbOperating.Controls.Add(this.txtStatus);
             this.gbOperating.Controls.Add(this.btnEdit);
             this.gbOperating.Controls.Add(this.lbUsername);
@@ -412,52 +402,52 @@ namespace Fruit_Stock
             this.mnuEdit,
             this.mnuDelete});
             this.cmuMenu.Name = "cmuMenu";
-            this.cmuMenu.Size = new System.Drawing.Size(211, 128);
+            this.cmuMenu.Size = new System.Drawing.Size(110, 100);
             // 
             // mnuBack
             // 
             this.mnuBack.Name = "mnuBack";
-            this.mnuBack.Size = new System.Drawing.Size(210, 24);
+            this.mnuBack.Size = new System.Drawing.Size(109, 24);
             this.mnuBack.Text = "Back";
             // 
             // mnuNew
             // 
             this.mnuNew.Name = "mnuNew";
-            this.mnuNew.Size = new System.Drawing.Size(210, 24);
+            this.mnuNew.Size = new System.Drawing.Size(109, 24);
             this.mnuNew.Text = "เพิ่ม";
             // 
             // mnuEdit
             // 
             this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(210, 24);
+            this.mnuEdit.Size = new System.Drawing.Size(109, 24);
             this.mnuEdit.Text = "แก้ไข";
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(210, 24);
+            this.mnuDelete.Size = new System.Drawing.Size(109, 24);
             this.mnuDelete.Text = "ลบ";
             // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1521, 1018);
+            this.ClientSize = new System.Drawing.Size(1521, 800);
             this.Controls.Add(this.pbProfile);
             this.Controls.Add(this.dgvAllMember);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lbAllData);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
-            this.MinimumSize = new System.Drawing.Size(1440, 1018);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1440, 800);
             this.Name = "FrmProfile";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Profile";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FrmProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();
@@ -491,13 +481,12 @@ namespace Fruit_Stock
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.RadioButton rdbMale;
         private System.Windows.Forms.RadioButton rdbFemale;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.PictureBox pbProfile;
         private System.Windows.Forms.DataGridView dgvAllMember;
         private System.Windows.Forms.Label lbAllData;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbOperating;
         private AppData appData;

@@ -82,6 +82,7 @@ namespace Fruit_Stock
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(373, 43);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Text = "akkarapon";
             // 
             // txtPassword
             // 
@@ -92,6 +93,7 @@ namespace Fruit_Stock
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(373, 43);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Text = "akp1234";
             // 
             // pbShopkeeper
             // 

@@ -24,7 +24,11 @@ namespace Fruit_Stock
 
         private void mnuProfile_Click(object sender, EventArgs e)
         {
-            fProfile.ShowDialog();
+
+                lbUsernameStatus.Hide();
+                fProfile.ShowDialog();
+                //fProfile.MdiParent = this;
+
         }
 
 
@@ -34,7 +38,8 @@ namespace Fruit_Stock
 
             if (AC.currentUsername == "")
             {
-                fLogin.ShowDialog();
+
+                fLogin.Show();
             }
 
             if (AC.currentUsername != "")
