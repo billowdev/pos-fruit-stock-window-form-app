@@ -30,10 +30,10 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbTotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +50,13 @@ namespace Fruit_Stock
             this.txtDocNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.cmuMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTotal
@@ -60,7 +64,7 @@ namespace Fruit_Stock
             this.lbTotal.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbTotal.Location = new System.Drawing.Point(824, 604);
+            this.lbTotal.Location = new System.Drawing.Point(100, 29);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(294, 40);
             this.lbTotal.TabIndex = 11;
@@ -70,7 +74,7 @@ namespace Fruit_Stock
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(755, 624);
+            this.label4.Location = new System.Drawing.Point(48, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 20);
             this.label4.TabIndex = 8;
@@ -100,8 +104,8 @@ namespace Fruit_Stock
             // 
             // Column4
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle9;
             this.Column4.HeaderText = "Sale Quantity";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -109,8 +113,8 @@ namespace Fruit_Stock
             // 
             // Column3
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle10;
             this.Column3.HeaderText = "Unit";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
@@ -125,8 +129,8 @@ namespace Fruit_Stock
             // 
             // Column1
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column1.HeaderText = "Product ID";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -138,6 +142,7 @@ namespace Fruit_Stock
             this.dgvShow.AllowUserToDeleteRows = false;
             this.dgvShow.AllowUserToResizeColumns = false;
             this.dgvShow.AllowUserToResizeRows = false;
+            this.dgvShow.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.dgvShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShow.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -146,7 +151,7 @@ namespace Fruit_Stock
             this.Column4,
             this.Column5});
             this.dgvShow.ContextMenuStrip = this.cmuMenu;
-            this.dgvShow.Location = new System.Drawing.Point(13, 126);
+            this.dgvShow.Location = new System.Drawing.Point(13, 188);
             this.dgvShow.Name = "dgvShow";
             this.dgvShow.RowHeadersVisible = false;
             this.dgvShow.RowHeadersWidth = 51;
@@ -156,8 +161,8 @@ namespace Fruit_Stock
             // 
             // Column5
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle12;
             this.Column5.HeaderText = "Amount";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -165,16 +170,17 @@ namespace Fruit_Stock
             // 
             // btnSale
             // 
+            this.btnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnSale.Location = new System.Drawing.Point(933, 21);
             this.btnSale.Name = "btnSale";
             this.btnSale.Size = new System.Drawing.Size(144, 55);
             this.btnSale.TabIndex = 2;
             this.btnSale.Text = "Sale";
-            this.btnSale.UseVisualStyleBackColor = true;
+            this.btnSale.UseVisualStyleBackColor = false;
             // 
             // txtDocNo
             // 
-            this.txtDocNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.txtDocNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtDocNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDocNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocNo.Location = new System.Drawing.Point(118, 30);
@@ -193,34 +199,70 @@ namespace Fruit_Stock
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.groupBox1.Controls.Add(this.btnBrowse);
             this.groupBox1.Controls.Add(this.btnSale);
             this.groupBox1.Controls.Add(this.txtDocNo);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1106, 97);
+            this.groupBox1.Size = new System.Drawing.Size(1106, 141);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnBrowse.Location = new System.Drawing.Point(42, 82);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(115, 42);
+            this.btnBrowse.TabIndex = 2;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.groupBox2.Controls.Add(this.lbTotal);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Location = new System.Drawing.Point(298, 665);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(481, 138);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnClose.Location = new System.Drawing.Point(1057, 761);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(115, 42);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FrmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1838, 835);
-            this.Controls.Add(this.lbTotal);
-            this.Controls.Add(this.label4);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(1184, 819);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvShow);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmSale";
+            this.Text = "Sale";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSale_FormClosing);
             this.cmuMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -241,5 +283,8 @@ namespace Fruit_Stock
         private System.Windows.Forms.TextBox txtDocNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnClose;
     }
 }

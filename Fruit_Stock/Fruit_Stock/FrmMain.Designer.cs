@@ -201,6 +201,7 @@ namespace Fruit_Stock
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.mnuFrmMain.ResumeLayout(false);
             this.mnuFrmMain.PerformLayout();

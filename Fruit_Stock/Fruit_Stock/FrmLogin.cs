@@ -25,7 +25,16 @@ namespace Fruit_Stock
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                //Application.Exit();
+                try
+                {
+                    Environment.Exit(1);
+                }
+                catch { }
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -119,6 +128,15 @@ namespace Fruit_Stock
             {
                 txtPassword.PasswordChar = '●';
             }
+        }
+
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+          MessageBox.Show("ขอบคุณที่ใช้โปรแกรม", "Msg",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+          
+            
         }
     }
 }
