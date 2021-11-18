@@ -37,7 +37,7 @@ namespace Fruit_Stock
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.lbUsernameStatus = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
@@ -60,7 +60,7 @@ namespace Fruit_Stock
             this.mnuSale,
             this.mnuProfile,
             this.mnuInvoice,
-            this.mnuStock,
+            this.mnuProduct,
             this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
@@ -107,12 +107,13 @@ namespace Fruit_Stock
             this.mnuInvoice.Text = "Invoice";
             this.mnuInvoice.Click += new System.EventHandler(this.mnuInvoice_Click);
             // 
-            // mnuStock
+            // mnuProduct
             // 
-            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
-            this.mnuStock.Name = "mnuStock";
-            this.mnuStock.Size = new System.Drawing.Size(94, 57);
-            this.mnuStock.Text = "Stock";
+            this.mnuProduct.Image = ((System.Drawing.Image)(resources.GetObject("mnuProduct.Image")));
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Size = new System.Drawing.Size(115, 57);
+            this.mnuProduct.Text = "Product";
+            this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
             // 
             // mnuHelp
             // 
@@ -201,7 +202,6 @@ namespace Fruit_Stock
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.mnuFrmMain.ResumeLayout(false);
             this.mnuFrmMain.PerformLayout();
@@ -218,7 +218,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuProfile;
         private System.Windows.Forms.ToolStripMenuItem mnuInvoice;
         private System.Windows.Forms.ToolStripMenuItem mnuSale;
-        private System.Windows.Forms.ToolStripMenuItem mnuStock;
+        private System.Windows.Forms.ToolStripMenuItem mnuProduct;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.PictureBox pbMain;
         private System.Windows.Forms.Label lbUsernameStatus;

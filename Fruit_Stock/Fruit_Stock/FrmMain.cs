@@ -17,76 +17,84 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        FrmProfile fProfile = new FrmProfile();
-        FrmInvoice fInvoice = new FrmInvoice();
-        FrmLogin fLogin = new FrmLogin();
-        FrmSale fSale = new FrmSale();
 
+        oCenter ocn = new oCenter();
+        
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            pbMain.Hide();
+            FrmLogin Frm = new FrmLogin();
+            Frm.ShowDialog();
+
+
+        }
         private void mnuProfile_Click(object sender, EventArgs e)
         {
 
+            if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
+            {
                 lbUsernameStatus.Hide();
-                fProfile.ShowDialog();
-                //fProfile.MdiParent = this;
-
-        }
-
-
-   
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-
-            if (AC.currentUsername == "")
-            {
-
-                fLogin.Show();
-            }
-
-            if (AC.currentUsername != "")
-            {
-                lbUsernameStatus.Text = "Welcome:" + AC.currentUsername;
+                FrmProfile Frm = new FrmProfile();
+                Frm.MdiParent = this;
+                Frm.Show();
             }
         }
+
+
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Logout", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            oCenter.currentUsername = "";
+            if (ocn.pub_CloseChildForm(this, "FrmLogin") == false)
             {
-                fLogin.ShowDialog();
-                this.Close();
-                AC.currentUsername = "";
+                lbUsernameStatus.Hide();
+                FrmLogin Frm = new FrmLogin();
+                Frm.MdiParent = this;
+                Frm.Show();
             }
         }
 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                //Application.Exit();
-                try
-                {
-                    Environment.Exit(1);
-                }
-                catch { }
-            }
-        }
 
         private void mnuInvoice_Click(object sender, EventArgs e)
         {
-            fInvoice.ShowDialog();
+            if (ocn.pub_CloseChildForm(this, "FrmInvoice") == false)
+            {
+                lbUsernameStatus.Hide();
+                FrmInvoice Frm = new FrmInvoice();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+
         }
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
 
-            fSale.Show();
-            fSale.MdiParent = this;
-           
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
+            {
+                lbUsernameStatus.Hide();
+                FrmSale Frm = new FrmSale();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+
+
+        }
+
+        private void mnuProduct_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
+            {
+                lbUsernameStatus.Hide();
+                FrmProduct Frm = new FrmProduct();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
         }
 
         private void mnuHelp_Click(object sender, EventArgs e)
         {
+            lbUsernameStatus.Hide();
             System.Diagnostics.Process.Start("https://www.google.com");
         }
 
@@ -96,12 +104,17 @@ namespace Fruit_Stock
 
         }
 
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        private void mnuExit_Click(object sender, EventArgs e)
         {
-            
-            MessageBox.Show("ขอบคุณที่ใช้โปรแกรม", "Msg",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Application.Exit();
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit();
+                }
+                catch { }
+            }
         }
     }
 }

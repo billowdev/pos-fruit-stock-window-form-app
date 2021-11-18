@@ -16,13 +16,13 @@ namespace Fruit_Stock
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            //Application.Run(new FrmLogin());
             //Application.Run(new FrmProfile());
             //Application.Run(new FrmInvoice());
             //Application.Run(new FrmHistoryInvoice());
             //Application.Run(new FrmStock());
             //Application.Run(new FrmHelp());
-            //Application.Run(new FrmMain());
+            Application.Run(new FrmMain());
         }
     }
 }

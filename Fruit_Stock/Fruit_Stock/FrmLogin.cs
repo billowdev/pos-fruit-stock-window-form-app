@@ -17,7 +17,7 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-
+        oCenter ocn = new oCenter();
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
@@ -28,10 +28,9 @@ namespace Fruit_Stock
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {
-                //Application.Exit();
                 try
                 {
-                    Environment.Exit(1);
+                    Application.Exit();
                 }
                 catch { }
             }
@@ -39,84 +38,102 @@ namespace Fruit_Stock
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text != "" && txtPassword.Text != "")
+            if (txtUsername.Text.Trim() == "")
             {
-                Check_login();
+                MessageBox.Show("Enter Username", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
+                return;
             }
-            else
+            if (txtPassword.Text.Trim() == "")
             {
-                MessageBox.Show("กรุณากรอกรหัส", "Msg",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-
-        private void Check_login()
-        {
-            // login
-            if ((string.IsNullOrEmpty(this.txtUsername.Text.Trim())) ||
-                 (string.IsNullOrEmpty(this.txtPassword.Text.Trim())))
-            {
-                MessageBox.Show("Enter your username and password", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.txtUsername.CanSelect)
-                {
-                    this.txtUsername.Select();
-                }
+                MessageBox.Show("Enter Password", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
                 return;
             }
 
-            AC.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
+            oCenter ocn = new oCenter();
+            DataSet dsLogin = new DataSet();
 
-            AC.cmd.Parameters.Clear();
-            AC.cmd.CommandType = CommandType.Text;
-            AC.cmd.CommandText = AC.sql;
+            string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
+                " Password='" + txtPassword.Text.Trim() + "'";
 
-            AC.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
-            AC.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
+            dsLogin = ocn.puds_LoadData(sSql, "tb_login", dsLogin);
 
-            AC.openConnection();
-
-            AC.rd = AC.cmd.ExecuteReader();
-
-            if (AC.rd.HasRows)
+            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
             {
-                while (AC.rd.Read())
-                {
-                    AC.currentUsername = AC.rd[1].ToString();
-                    AC.currentStatus = AC.rd[3].ToString();
-
-                    //MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
-                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Hide();
-                    FrmMain frm = new FrmMain();
-                    frm.Show();
-
-                }
-                this.txtPassword.Text = string.Empty;
-                this.txtUsername.Text = string.Empty;
+                oCenter.currentUsername = txtUsername.Text;
+                this.Close();
             }
             else
             {
-                MessageBox.Show("ผิดพลาด", "Invalid Username or Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.txtUsername.CanSelect)
-                {
-                    this.txtUsername.Select();
-                }
-
-                this.txtPassword.Text = string.Empty;
-                this.txtUsername.Text = string.Empty;
-                //MessageBox.Show(AC.currentUsername);
-
+                MessageBox.Show("Login Fail !!!", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            AC.rd.Close();
-            AC.closeConnection();
         }
+
+        //private void Check_login()
+        //{
+        //    // login
+        //    if ((string.IsNullOrEmpty(this.txtUsername.Text.Trim())) ||
+        //         (string.IsNullOrEmpty(this.txtPassword.Text.Trim())))
+        //    {
+        //        MessageBox.Show("Enter your username and password", "Error",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //        if (this.txtUsername.CanSelect)
+        //        {
+        //            this.txtUsername.Select();
+        //        }
+        //        return;
+        //    }
+
+        //    oCenter.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
+
+        //    oCenter.cmd.Parameters.Clear();
+        //    oCenter.cmd.CommandType = CommandType.Text;
+        //    oCenter.cmd.CommandText = oCenter.sql;
+
+        //    oCenter.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
+        //    oCenter.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
+            
+        //    //oCenter.openConnection();
+
+        //    oCenter.rd = oCenter.cmd.ExecuteReader();
+
+        //    if (oCenter.rd.HasRows)
+        //    {
+        //        while (oCenter.rd.Read())
+        //        {
+        //            oCenter.currentUsername = oCenter.rd[1].ToString();
+        //            oCenter.currentStatus = oCenter.rd[3].ToString();
+
+        //            //MessageBox.Show("Welcome  " + oCenter.currentUsername + "\n Your Status is ... " + oCenter.currentStatus, "\n Login Successed :)",
+        //            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        this.txtPassword.Text = string.Empty;
+        //        this.txtUsername.Text = string.Empty;
+        //        this.Hide();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("ผิดพลาด", "Invalid Username or Password",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //        if (this.txtUsername.CanSelect)
+        //        {
+        //            this.txtUsername.Select();
+        //        }
+
+        //        this.txtPassword.Text = string.Empty;
+        //        this.txtUsername.Text = string.Empty;
+        //        //MessageBox.Show(oCenter.currentUsername);
+
+        //    }
+
+        //    oCenter.rd.Close();
+        //    oCenter.closeConnection();
+        //}
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
         {
@@ -130,13 +147,5 @@ namespace Fruit_Stock
             }
         }
 
-        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-          MessageBox.Show("ขอบคุณที่ใช้โปรแกรม", "Msg",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
-          
-            
-        }
     }
 }

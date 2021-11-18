@@ -105,7 +105,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="static_classes\db_connect_access.cs" />
+    <Compile Include="static_classes\oCenter.cs" />
     <EmbeddedResource Include="FrmHistoryInvoice.resx">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </EmbeddedResource>
