@@ -23,7 +23,7 @@ namespace Fruit_Stock
         private void FrmMain_Load(object sender, EventArgs e)
         {
             pbMain.Hide();
-            FrmLogin Frm = new FrmLogin();
+            Login Frm = new Login();
             Frm.ShowDialog();
 
 

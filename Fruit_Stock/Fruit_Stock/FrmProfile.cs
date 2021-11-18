@@ -20,7 +20,6 @@ namespace Fruit_Stock
         }
         OleDbDataAdapter da;
         string sSql;
-        FrmLogin fLogin = new FrmLogin();
         string stateGenter = "";
 
         oCenter ocn = new oCenter();
@@ -30,8 +29,7 @@ namespace Fruit_Stock
             // ---===================User  ---------------------- // 
             if (oCenter.currentStatus == "user")
             {
-                lbAllData.Hide();
-                showAllDataUser();
+                ShowForUserLogin();
                 txtStatus.Hide();
                 dgvAllMember.Hide();
                 //btnEdit.Enabled = false;
@@ -39,17 +37,21 @@ namespace Fruit_Stock
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
                 txtStatus.Hide();
-                pbProfile.Hide();
                 mnuDelete.Enabled = false;
                 mnuNew.Enabled = false;
+
             }
             // ================================== Admin ================================== //
             else
             {
-                dgvUserData.Hide();
+                lsvUser.Hide();
                 lbUserStatus.Hide();
                 ShowAllMember();
                 FormatDataEmployee();
+
+                showAllDataUser();
+                FormatDataUser();
+
                 dgvAllMember.ReadOnly = true;
             }
         }
@@ -57,19 +59,38 @@ namespace Fruit_Stock
         // ================================== Function Show All data User ================================== // 
         private void showAllDataUser()
         {
-          
+            string sSqlLoginData = "SELECT * FROM tb_login";
+
+            if (oCenter.IsFind == true)
+            {
+                oCenter.ds.Tables["tb_login"].Clear();
+            }
+
+            da = new OleDbDataAdapter(sSqlLoginData, oCenter.conn);
+            da.Fill(oCenter.ds, "tb_login");
+
+            if (oCenter.ds.Tables["tb_login"].Rows.Count != 0)
+            {
+                oCenter.IsFind = true;
+                dgvAllMember.ReadOnly = true;
+                dgvAllMember.DataSource = oCenter.ds.Tables["tb_login"];
+            }
+            else
+            {
+                oCenter.IsFind = false;
+            }
         }
 
         // ================================== Function Show All Member for Admin ================================== // 
         private void ShowAllMember()
         {
-            string sqlStu = "select * from tb_employee";
+            string sSqlEmp = "select * from tb_employee";
             if (oCenter.IsFind == true)
             {
                 oCenter.ds.Tables["tb_employee"].Clear();
             }
 
-            da = new OleDbDataAdapter(sqlStu, oCenter.conn);
+            da = new OleDbDataAdapter(sSqlEmp, oCenter.conn);
             da.Fill(oCenter.ds, "tb_employee");
 
             if (oCenter.ds.Tables["tb_employee"].Rows.Count != 0)
@@ -85,20 +106,98 @@ namespace Fruit_Stock
 
         }
 
+        private void ShowForUserLogin()
+        {
+            oCenter.rd.Close();
+            oCenter.pusvOpenConnection();
+            sSql = "";
+
+            sSql = " SELECT * FROM tb_login WHERE Username ='" + oCenter.currentUsername + "'";
+            oCenter.cmd.Connection = oCenter.conn;
+            oCenter.cmd.CommandText = sSql;
+            oCenter.cmd.ExecuteNonQuery();
+
+            oCenter.rd = oCenter.cmd.ExecuteReader();
+
+            if (oCenter.rd.HasRows)
+            {
+                while (oCenter.rd.Read())
+                {
+                    txtUsername.Text = oCenter.rd[1].ToString();
+                    txtPassword.Text = oCenter.rd[2].ToString();
+                    lbUserStatus.Text = oCenter.rd[3].ToString();
+                    txtEMPID.Text = oCenter.rd[4].ToString();
+                }
+            }
+
+            oCenter.rd.Close();
+            oCenter.pusvCloseConnection();
+
+            FillEmployData(txtEMPID.Text);
+            
+        }
 
         // ================================== Event Cell mouse up data gridview ================================== // 
         private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-         
+          
         }
 
 
 
 
         // Function for fill data to text box from table employee reference by empid use for admin and user account
-        private void fillEmployData(string emp_id)
+        private void FillEmployData(string emp_id)
         {
-          
+            oCenter.pusvCloseConnection();
+            try
+            {
+
+                // it is fill all data from tb_login to dataGridView
+
+
+                sSql = "";
+                sSql = " SELECT * FROM tb_employee WHERE emp_id='" + emp_id + "'";
+
+                oCenter.cmd.CommandType = CommandType.Text;
+                oCenter.cmd.CommandText = sSql;
+
+                //oCenter.cmd.Parameters.Clear();
+                //oCenter.cmd.Parameters.AddWithValue("@empid", emp_id.Trim().ToString());
+                oCenter.pusvOpenConnection();
+
+
+                oCenter.rd = oCenter.cmd.ExecuteReader();
+
+                if (oCenter.rd.HasRows)
+                {
+                    while (oCenter.rd.Read())
+                    {
+
+
+                        txtName.Text = oCenter.rd[1].ToString();
+                        txtLastName.Text = oCenter.rd[2].ToString();
+
+                        if (oCenter.rd[3].ToString() == "ชาย")
+                        {
+                            rdbMale.Checked = true;
+                        }
+                        else
+                        {
+                            rdbFemale.Checked = true;
+                        }
+
+                        dtpBirthDate.Value = Convert.ToDateTime(oCenter.rd[4]);
+                        txtPhone.Text = oCenter.rd[5].ToString();
+                    }
+                }
+                oCenter.rd.Close();
+                oCenter.pusvCloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error on private void fillEmployData(string emp_id): " + ex.Message, "mesg");
+            }
         }
 
         // ---------------------------------- Menu Exit ---------------------- // 
@@ -153,7 +252,6 @@ namespace Fruit_Stock
 
         }
 
-
         private void FormatDataEmployee()
         {
             DataGridViewCellStyle cs = new DataGridViewCellStyle();
@@ -172,21 +270,36 @@ namespace Fruit_Stock
             dgvAllMember.Columns[3].Width = 60;
             dgvAllMember.Columns[4].Width = 160;
             dgvAllMember.Columns[5].Width = 160;
+        }
 
+        private void FormatDataUser()
+        {
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
+            dgvAllMember.Columns[0].HeaderText = "ชื่อผู้ใช้";
+            dgvAllMember.Columns[1].HeaderText = "รหัสผ่าน";
+            dgvAllMember.Columns[2].HeaderText = "สถานะ";
+            dgvAllMember.Columns[3].HeaderText = "รหัสพนักงาน";
+
+            dgvAllMember.Columns[0].Width = 120;
+            dgvAllMember.Columns[1].Width = 120;
+            dgvAllMember.Columns[2].Width = 120;
+            dgvAllMember.Columns[3].Width = 120;
         }
 
         private void btnUserData_Click(object sender, EventArgs e)
         {
             dgvAllMember.Hide();
-            dgvUserData.Show();
-            btnEmployeeData.Enabled = false;
+            lsvUser.Show();
+
         }
 
         private void btnEmployeeData_Click(object sender, EventArgs e)
         {
+            lsvUser.Hide();
             dgvAllMember.Show();
-            dgvUserData.Hide();
-            btnUserData.Enabled = false;
+
         }
     }
 }

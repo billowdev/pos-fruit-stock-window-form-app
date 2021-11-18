@@ -159,7 +159,6 @@ namespace Fruit_Stock
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fruit Shop Login Form";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbShopkeeper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruitFrontShopkeeper)).EndInit();
             this.ResumeLayout(false);
