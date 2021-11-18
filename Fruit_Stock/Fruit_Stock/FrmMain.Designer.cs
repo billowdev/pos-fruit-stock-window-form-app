@@ -64,7 +64,7 @@ namespace Fruit_Stock
             this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
-            this.mnuFrmMain.Size = new System.Drawing.Size(1920, 61);
+            this.mnuFrmMain.Size = new System.Drawing.Size(1920, 58);
             this.mnuFrmMain.TabIndex = 1;
             this.mnuFrmMain.Text = "menuStrip1";
             // 
@@ -95,7 +95,7 @@ namespace Fruit_Stock
             // 
             this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(102, 57);
+            this.mnuProfile.Size = new System.Drawing.Size(102, 54);
             this.mnuProfile.Text = "Profile";
             this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
             // 
@@ -199,7 +199,6 @@ namespace Fruit_Stock
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);

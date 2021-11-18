@@ -17,9 +17,9 @@ namespace Fruit_Stock.static_classes
         public static OleDbDataReader rd;
         public static DataSet ds = new DataSet();
 
-        public static string currentUsername = "";
-        public static string currentStatus="";
-        public static string sql;
+        public static string currentUsername;
+        public static string currentStatus;
+        public string sql;
 
         public static bool IsFind = false;
         bool bCheckConnect = false;
@@ -91,7 +91,7 @@ namespace Fruit_Stock.static_classes
 
             }
         }
-
+    // Method ปิดหน้าซ้ำ
        public Boolean pub_CloseChildForm(Form _FrmCtrls, string _sFrmName)
         {
             foreach (Form Frm in _FrmCtrls.MdiChildren)
@@ -129,6 +129,31 @@ namespace Fruit_Stock.static_classes
 
             }
             return ds;
+        }
+
+        public bool pubActionData(string _sSql)
+        {
+            bool bCheck = false;
+            try
+            {
+                if (bCheckConnect == false)
+                {
+                    pusvOpenConnection();
+                }
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = _sSql;
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
+
+                bCheck = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message.ToString(), "Msg",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bCheck = false;
+            }
+            return bCheck;
         }
     }
 }

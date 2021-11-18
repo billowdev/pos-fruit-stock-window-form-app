@@ -22,17 +22,16 @@ namespace Fruit_Stock
         
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            pbMain.Hide();
-            Login Frm = new Login();
-            Frm.ShowDialog();
-
-
+            lbUsernameStatus.Text = oCenter.currentUsername;
         }
+
         private void mnuProfile_Click(object sender, EventArgs e)
         {
+            
 
             if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
             {
+                pbMain.Hide();
                 lbUsernameStatus.Hide();
                 FrmProfile Frm = new FrmProfile();
                 Frm.MdiParent = this;
@@ -44,9 +43,11 @@ namespace Fruit_Stock
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {
+            
             oCenter.currentUsername = "";
             if (ocn.pub_CloseChildForm(this, "FrmLogin") == false)
             {
+                pbMain.Hide();
                 lbUsernameStatus.Hide();
                 FrmLogin Frm = new FrmLogin();
                 Frm.MdiParent = this;
@@ -59,6 +60,7 @@ namespace Fruit_Stock
         {
             if (ocn.pub_CloseChildForm(this, "FrmInvoice") == false)
             {
+                pbMain.Hide();
                 lbUsernameStatus.Hide();
                 FrmInvoice Frm = new FrmInvoice();
                 Frm.MdiParent = this;
@@ -69,22 +71,21 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-
             if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
+                pbMain.Hide();
                 lbUsernameStatus.Hide();
                 FrmSale Frm = new FrmSale();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
-
-
         }
 
         private void mnuProduct_Click(object sender, EventArgs e)
         {
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
             {
+                pbMain.Hide();
                 lbUsernameStatus.Hide();
                 FrmProduct Frm = new FrmProduct();
                 Frm.MdiParent = this;
@@ -94,6 +95,7 @@ namespace Fruit_Stock
 
         private void mnuHelp_Click(object sender, EventArgs e)
         {
+            pbMain.Hide();
             lbUsernameStatus.Hide();
             System.Diagnostics.Process.Start("https://www.google.com");
         }

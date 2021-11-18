@@ -21,6 +21,7 @@ namespace Fruit_Stock
         OleDbDataAdapter da;
         string sSql;
         string stateGenter = "";
+        string sData1, sData2;
 
         oCenter ocn = new oCenter();
 
@@ -44,42 +45,18 @@ namespace Fruit_Stock
             // ================================== Admin ================================== //
             else
             {
-                lsvUser.Hide();
+               
                 lbUserStatus.Hide();
                 ShowAllMember();
                 FormatDataEmployee();
 
-                showAllDataUser();
                 FormatDataUser();
 
                 dgvAllMember.ReadOnly = true;
             }
         }
 
-        // ================================== Function Show All data User ================================== // 
-        private void showAllDataUser()
-        {
-            string sSqlLoginData = "SELECT * FROM tb_login";
-
-            if (oCenter.IsFind == true)
-            {
-                oCenter.ds.Tables["tb_login"].Clear();
-            }
-
-            da = new OleDbDataAdapter(sSqlLoginData, oCenter.conn);
-            da.Fill(oCenter.ds, "tb_login");
-
-            if (oCenter.ds.Tables["tb_login"].Rows.Count != 0)
-            {
-                oCenter.IsFind = true;
-                dgvAllMember.ReadOnly = true;
-                dgvAllMember.DataSource = oCenter.ds.Tables["tb_login"];
-            }
-            else
-            {
-                oCenter.IsFind = false;
-            }
-        }
+        
 
         // ================================== Function Show All Member for Admin ================================== // 
         private void ShowAllMember()
@@ -288,19 +265,7 @@ namespace Fruit_Stock
             dgvAllMember.Columns[3].Width = 120;
         }
 
-        private void btnUserData_Click(object sender, EventArgs e)
-        {
-            dgvAllMember.Hide();
-            lsvUser.Show();
-
-        }
-
-        private void btnEmployeeData_Click(object sender, EventArgs e)
-        {
-            lsvUser.Hide();
-            dgvAllMember.Show();
-
-        }
+   
     }
 }
         

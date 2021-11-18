@@ -61,14 +61,9 @@ namespace Fruit_Stock
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUserData = new System.Windows.Forms.Button();
-            this.btnEmployeeData = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lsvUser = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             this.cmuMenu.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtStatus
@@ -272,7 +267,7 @@ namespace Fruit_Stock
             this.dgvAllMember.ReadOnly = true;
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
-            this.dgvAllMember.Size = new System.Drawing.Size(682, 382);
+            this.dgvAllMember.Size = new System.Drawing.Size(682, 514);
             this.dgvAllMember.TabIndex = 7;
             this.dgvAllMember.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllMember_CellMouseUp);
             // 
@@ -414,53 +409,6 @@ namespace Fruit_Stock
             this.mnuDelete.Size = new System.Drawing.Size(128, 30);
             this.mnuDelete.Text = "ลบ";
             // 
-            // btnUserData
-            // 
-            this.btnUserData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnUserData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserData.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserData.Location = new System.Drawing.Point(236, 21);
-            this.btnUserData.Name = "btnUserData";
-            this.btnUserData.Size = new System.Drawing.Size(183, 46);
-            this.btnUserData.TabIndex = 8;
-            this.btnUserData.Text = "ข้อมูลบัญชีผู้ใช้";
-            this.btnUserData.UseVisualStyleBackColor = false;
-            this.btnUserData.Click += new System.EventHandler(this.btnUserData_Click);
-            // 
-            // btnEmployeeData
-            // 
-            this.btnEmployeeData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnEmployeeData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeData.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployeeData.Location = new System.Drawing.Point(14, 20);
-            this.btnEmployeeData.Name = "btnEmployeeData";
-            this.btnEmployeeData.Size = new System.Drawing.Size(183, 46);
-            this.btnEmployeeData.TabIndex = 8;
-            this.btnEmployeeData.Text = "ข้อมูลพนักงาน";
-            this.btnEmployeeData.UseVisualStyleBackColor = false;
-            this.btnEmployeeData.Click += new System.EventHandler(this.btnEmployeeData_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.groupBox1.Controls.Add(this.btnUserData);
-            this.groupBox1.Controls.Add(this.btnEmployeeData);
-            this.groupBox1.Location = new System.Drawing.Point(104, 414);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 83);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            // 
-            // lsvUser
-            // 
-            this.lsvUser.HideSelection = false;
-            this.lsvUser.Location = new System.Drawing.Point(65, 48);
-            this.lsvUser.Name = "lsvUser";
-            this.lsvUser.Size = new System.Drawing.Size(535, 274);
-            this.lsvUser.TabIndex = 11;
-            this.lsvUser.UseCompatibleStateImageBehavior = false;
-            this.lsvUser.View = System.Windows.Forms.View.Details;
-            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -468,8 +416,6 @@ namespace Fruit_Stock
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1422, 653);
-            this.Controls.Add(this.lsvUser);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
@@ -488,7 +434,6 @@ namespace Fruit_Stock
             this.gbOperating.ResumeLayout(false);
             this.gbOperating.PerformLayout();
             this.cmuMenu.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -525,9 +470,5 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuNew;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
-        private System.Windows.Forms.Button btnUserData;
-        private System.Windows.Forms.Button btnEmployeeData;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView lsvUser;
     }
 }

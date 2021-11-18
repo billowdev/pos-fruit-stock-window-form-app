@@ -322,7 +322,6 @@ namespace Fruit_Stock
             this.Name = "FrmInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Invoice (รับสินค้า)";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmInvoice_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
