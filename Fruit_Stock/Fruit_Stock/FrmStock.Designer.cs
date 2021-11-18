@@ -1,7 +1,7 @@
 ﻿
 namespace Fruit_Stock
 {
-    partial class FrmInvoice
+    partial class FrmStock
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInvoice));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStock));
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
@@ -305,12 +305,13 @@ namespace Fruit_Stock
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmInvoice
+            // FrmStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.ClientSize = new System.Drawing.Size(1348, 742);
+            this.ClientSize = new System.Drawing.Size(1348, 750);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvData);
@@ -319,9 +320,10 @@ namespace Fruit_Stock
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
-            this.Name = "FrmInvoice";
+            this.Name = "FrmStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Invoice (รับสินค้า)";
+            this.Text = "Stock(รับสินค้า)";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

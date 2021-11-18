@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
+using System.Data.OleDb;
 
 namespace Fruit_Stock
 {
@@ -18,6 +19,7 @@ namespace Fruit_Stock
             InitializeComponent();
         }
         oCenter ocn = new oCenter();
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
@@ -42,11 +44,15 @@ namespace Fruit_Stock
                 return;
             }
             Check_login();
+
+           
+
         }
+
 
         private void Check_login()
         {
-
+            
             oCenter.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
 
             oCenter.cmd.Parameters.Clear();
@@ -66,16 +72,12 @@ namespace Fruit_Stock
                 {
                     oCenter.currentUsername = oCenter.rd[0].ToString();
                     oCenter.currentStatus = oCenter.rd[2].ToString();
-
-                    //MessageBox.Show("Welcome  " + oCenter.currentUsername + "\n Your Status is ... " + oCenter.currentStatus, "\n Login Successed :)",
-                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    oCenter.currentid = oCenter.rd[3].ToString();
                 }
-                this.txtPassword.Text = string.Empty;
-                this.txtUsername.Text = string.Empty;
-                FrmMain Frm = new FrmMain();
-                Frm.Show();
-                this.Hide();
+
+                
             }
+           
             else
             {
                 MessageBox.Show("ผิดพลาด", "Invalid Username or Password",
@@ -86,14 +88,39 @@ namespace Fruit_Stock
                     this.txtUsername.Select();
                 }
 
-                //this.txtPassword.Text = string.Empty;
-                //this.txtUsername.Text = string.Empty;
-                //MessageBox.Show(oCenter.currentUsername);
 
             }
 
             oCenter.rd.Close();
-            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+
+            // get name
+            string sSqlName = " SELECT * FROM tb_employee WHERE emp_id=@empid";
+
+            oCenter.cmd.Parameters.Clear();
+            oCenter.cmd.Parameters.AddWithValue("@empid", oCenter.currentid);
+            oCenter.cmd.CommandType = CommandType.Text;
+            oCenter.cmd.CommandText = sSqlName;
+            oCenter.rd = oCenter.cmd.ExecuteReader();
+
+            string nName;
+            string nLastName;
+            if (oCenter.rd.HasRows)
+            {
+                while (oCenter.rd.Read())
+                {
+                    nName = oCenter.rd["emp_name"].ToString();
+                    nLastName = oCenter.rd["emp_lastname"].ToString();
+                    oCenter.currentName = nName + " " + nLastName;
+                }
+            }
+            oCenter.rd.Close();
+
+            this.txtPassword.Text = string.Empty;
+            this.txtUsername.Text = string.Empty;
+            FrmMain Frm = new FrmMain();
+            Frm.Show();
+            this.Hide();
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)

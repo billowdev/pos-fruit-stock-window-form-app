@@ -57,11 +57,11 @@
     <Compile Include="FrmHistoryInvoice.Designer.cs">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInvoice.cs">
+    <Compile Include="FrmStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInvoice.Designer.cs">
-      <DependentUpon>FrmInvoice.cs</DependentUpon>
+    <Compile Include="FrmStock.Designer.cs">
+      <DependentUpon>FrmStock.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -104,8 +104,8 @@
     <EmbeddedResource Include="FrmHistoryInvoice.resx">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInvoice.resx">
-      <DependentUpon>FrmInvoice.cs</DependentUpon>
+    <EmbeddedResource Include="FrmStock.resx">
+      <DependentUpon>FrmStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
