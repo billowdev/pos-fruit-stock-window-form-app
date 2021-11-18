@@ -17,76 +17,64 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        oCenter ocn = new oCenter();
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                    Application.Exit();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text != "" && txtPassword.Text != "")
+            if (txtUsername.Text.Trim() == "")
             {
-                Check_login();
+                MessageBox.Show("Enter Username", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
+                return;
             }
-            else
+            if (txtPassword.Text.Trim() == "")
             {
-                MessageBox.Show("กรุณากรอกรหัส", "Msg",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Enter Password", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
+                return;
             }
-
+            Check_login();
         }
 
         private void Check_login()
         {
-            // login
-            if ((string.IsNullOrEmpty(this.txtUsername.Text.Trim())) ||
-                 (string.IsNullOrEmpty(this.txtPassword.Text.Trim())))
+
+            oCenter.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
+
+            oCenter.cmd.Parameters.Clear();
+            oCenter.cmd.CommandType = CommandType.Text;
+            oCenter.cmd.CommandText = oCenter.sql;
+
+            oCenter.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
+            oCenter.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
+
+            oCenter.pusvOpenConnection();
+
+            oCenter.rd = oCenter.cmd.ExecuteReader();
+
+            if (oCenter.rd.HasRows)
             {
-                MessageBox.Show("Enter your username and password", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.txtUsername.CanSelect)
+                while (oCenter.rd.Read())
                 {
-                    this.txtUsername.Select();
-                }
-                return;
-            }
+                    oCenter.currentUsername = oCenter.rd[0].ToString();
+                    oCenter.currentStatus = oCenter.rd[2].ToString();
 
-            AC.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
-
-            AC.cmd.Parameters.Clear();
-            AC.cmd.CommandType = CommandType.Text;
-            AC.cmd.CommandText = AC.sql;
-
-            AC.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
-            AC.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
-
-            AC.openConnection();
-
-            AC.rd = AC.cmd.ExecuteReader();
-
-            if (AC.rd.HasRows)
-            {
-                while (AC.rd.Read())
-                {
-                    AC.currentUsername = AC.rd[1].ToString();
-                    AC.currentStatus = AC.rd[3].ToString();
-
-                    MessageBox.Show("Welcome  " + AC.currentUsername + "\n Your Status is ... " + AC.currentStatus, "\n Login Successed :)",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    FrmMain frm = new FrmMain();
-                    frm.Show();
-
+                    //MessageBox.Show("Welcome  " + oCenter.currentUsername + "\n Your Status is ... " + oCenter.currentStatus, "\n Login Successed :)",
+                    //    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 this.txtPassword.Text = string.Empty;
                 this.txtUsername.Text = string.Empty;
+                FrmMain Frm = new FrmMain();
+                Frm.Show();
+                this.Hide();
             }
             else
             {
@@ -98,14 +86,14 @@ namespace Fruit_Stock
                     this.txtUsername.Select();
                 }
 
-                this.txtPassword.Text = string.Empty;
-                this.txtUsername.Text = string.Empty;
-                //MessageBox.Show(AC.currentUsername);
+                //this.txtPassword.Text = string.Empty;
+                //this.txtUsername.Text = string.Empty;
+                //MessageBox.Show(oCenter.currentUsername);
 
             }
 
-            AC.rd.Close();
-            AC.closeConnection();
+            oCenter.rd.Close();
+            oCenter.pusvCloseConnection();
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -119,5 +107,6 @@ namespace Fruit_Stock
                 txtPassword.PasswordChar = '●';
             }
         }
+
     }
 }

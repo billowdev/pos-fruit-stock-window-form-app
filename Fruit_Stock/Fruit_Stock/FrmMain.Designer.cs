@@ -37,7 +37,7 @@ namespace Fruit_Stock
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInvoice = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.lbUsernameStatus = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
@@ -60,11 +60,11 @@ namespace Fruit_Stock
             this.mnuSale,
             this.mnuProfile,
             this.mnuInvoice,
-            this.mnuStock,
+            this.mnuProduct,
             this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
-            this.mnuFrmMain.Size = new System.Drawing.Size(1924, 61);
+            this.mnuFrmMain.Size = new System.Drawing.Size(1920, 58);
             this.mnuFrmMain.TabIndex = 1;
             this.mnuFrmMain.Text = "menuStrip1";
             // 
@@ -79,7 +79,7 @@ namespace Fruit_Stock
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Size = new System.Drawing.Size(129, 32);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -95,7 +95,7 @@ namespace Fruit_Stock
             // 
             this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
             this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(102, 57);
+            this.mnuProfile.Size = new System.Drawing.Size(102, 54);
             this.mnuProfile.Text = "Profile";
             this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
             // 
@@ -107,12 +107,13 @@ namespace Fruit_Stock
             this.mnuInvoice.Text = "Invoice";
             this.mnuInvoice.Click += new System.EventHandler(this.mnuInvoice_Click);
             // 
-            // mnuStock
+            // mnuProduct
             // 
-            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
-            this.mnuStock.Name = "mnuStock";
-            this.mnuStock.Size = new System.Drawing.Size(94, 57);
-            this.mnuStock.Text = "Stock";
+            this.mnuProduct.Image = ((System.Drawing.Image)(resources.GetObject("mnuProduct.Image")));
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Size = new System.Drawing.Size(115, 57);
+            this.mnuProduct.Text = "Product";
+            this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
             // 
             // mnuHelp
             // 
@@ -156,9 +157,9 @@ namespace Fruit_Stock
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stsTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 981);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 977);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1924, 52);
+            this.statusStrip1.Size = new System.Drawing.Size(1920, 52);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -186,7 +187,7 @@ namespace Fruit_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1033);
+            this.ClientSize = new System.Drawing.Size(1920, 1029);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lbUsernameStatus);
             this.Controls.Add(this.mnuFrmMain);
@@ -198,7 +199,6 @@ namespace Fruit_Stock
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
@@ -217,7 +217,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuProfile;
         private System.Windows.Forms.ToolStripMenuItem mnuInvoice;
         private System.Windows.Forms.ToolStripMenuItem mnuSale;
-        private System.Windows.Forms.ToolStripMenuItem mnuStock;
+        private System.Windows.Forms.ToolStripMenuItem mnuProduct;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.PictureBox pbMain;
         private System.Windows.Forms.Label lbUsernameStatus;

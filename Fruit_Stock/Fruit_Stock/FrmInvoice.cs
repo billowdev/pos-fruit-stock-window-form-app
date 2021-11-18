@@ -17,9 +17,6 @@ namespace Fruit_Stock
             InitializeComponent();
         }
 
-        private void FrmInvoice_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-        }
+       
     }
 }

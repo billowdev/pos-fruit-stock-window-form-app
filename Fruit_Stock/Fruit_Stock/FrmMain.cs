@@ -17,64 +17,86 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        FrmProfile fProfile = new FrmProfile();
-        FrmInvoice fInvoice = new FrmInvoice();
-        FrmLogin fLogin = new FrmLogin();
-        FrmSale fSale = new FrmSale();
+
+        oCenter ocn = new oCenter();
+        
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            lbUsernameStatus.Text = oCenter.currentUsername;
+        }
 
         private void mnuProfile_Click(object sender, EventArgs e)
         {
-            fProfile.ShowDialog();
-        }
+            
 
-
-   
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-
-            if (AC.currentUsername == "")
+            if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
             {
-                fLogin.ShowDialog();
-            }
-
-            if (AC.currentUsername != "")
-            {
-                lbUsernameStatus.Text = "Welcome:" + AC.currentUsername;
+                pbMain.Hide();
+                lbUsernameStatus.Hide();
+                FrmProfile Frm = new FrmProfile();
+                Frm.MdiParent = this;
+                Frm.Show();
             }
         }
+
+
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Logout", "msg", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            
+            oCenter.currentUsername = "";
+            if (ocn.pub_CloseChildForm(this, "FrmLogin") == false)
             {
-                fLogin.ShowDialog();
-                this.Close();
-                AC.currentUsername = "";
+                pbMain.Hide();
+                lbUsernameStatus.Hide();
+                FrmLogin Frm = new FrmLogin();
+                Frm.MdiParent = this;
+                Frm.Show();
             }
         }
 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                Application.Exit();
-            }
-        }
 
         private void mnuInvoice_Click(object sender, EventArgs e)
         {
-            fInvoice.ShowDialog();
+            if (ocn.pub_CloseChildForm(this, "FrmInvoice") == false)
+            {
+                pbMain.Hide();
+                lbUsernameStatus.Hide();
+                FrmInvoice Frm = new FrmInvoice();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+
         }
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            
-            fSale.ShowDialog();
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
+            {
+                pbMain.Hide();
+                lbUsernameStatus.Hide();
+                FrmSale Frm = new FrmSale();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+        }
+
+        private void mnuProduct_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
+            {
+                pbMain.Hide();
+                lbUsernameStatus.Hide();
+                FrmProduct Frm = new FrmProduct();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
         }
 
         private void mnuHelp_Click(object sender, EventArgs e)
         {
+            pbMain.Hide();
+            lbUsernameStatus.Hide();
             System.Diagnostics.Process.Start("https://www.google.com");
         }
 
@@ -84,8 +106,18 @@ namespace Fruit_Stock
 
         }
 
- 
-
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit();
+                }
+                catch { }
+            }
+        }
     }
 }
 
