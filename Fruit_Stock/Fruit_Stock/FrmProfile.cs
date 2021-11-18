@@ -46,7 +46,7 @@ namespace Fruit_Stock
             // ================================== Admin ================================== //
             else
             {
-                dtpBirthDate.CustomFormat = "dd MMM yyyy";
+                
                 lbUserStatus.Hide();
                 ShowAllMember();
                 FormatDataEmployee();
@@ -57,7 +57,7 @@ namespace Fruit_Stock
             }
         }
 
-        
+
 
         // ================================== Function Show All Member for Admin ================================== // 
         private void ShowAllMember()
@@ -139,7 +139,7 @@ namespace Fruit_Stock
             oCenter.pusvCloseConnection();
 
             FillEmployData(txtEMPID.Text);
-            
+
         }
 
         // ================================== Event Cell mouse up data gridview ================================== // 
@@ -167,16 +167,16 @@ namespace Fruit_Stock
                 {
                     rdbFemale.Checked = true;
                 }
-
+                //dtpBirthDate.CustomFormat = "dd.MMM-yyyy";
                 dtpBirthDate.Value = Convert.ToDateTime(dgvAllMember.Rows[e.RowIndex].Cells[4].Value);
 
                 txtPhone.Text = dgvAllMember.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 oCenter.pusvOpenConnection();
                 string sSqlSelect =
-                
+
                 sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
-                
+
                 oCenter.rd.Close();
                 oCenter.pusvOpenConnection();
 
@@ -239,7 +239,7 @@ namespace Fruit_Stock
                 {
                     while (oCenter.rd.Read())
                     {
-                          
+
                         txtName.Text = oCenter.rd[1].ToString();
                         txtLastName.Text = oCenter.rd[2].ToString();
 
@@ -325,7 +325,7 @@ namespace Fruit_Stock
                     sqlEdit = " UPDATE tb_employee SET emp_name='" + txtName.Text
                         + "',emp_lastname='" + txtLastName.Text
                         + "',emp_gender='" + stateGenter
-                        + "',emp_bdate='" + Convert.ToDateTime(dtpBirthDate.Value.ToString("dd/mm/yyyy"))
+                        + "',emp_bdate='" + dtpBirthDate.Value.GetDateTimeFormats('d')[0]
                         + "'WHERE emp_id= '" + sEMPID + "'";
 
                     sqlEditLogin = " UPDATE tb_login SET Username='" + txtUsername.Text
@@ -359,7 +359,7 @@ namespace Fruit_Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ข้อมูลผิดพลาด", "ผิดพลาด",
+                MessageBox.Show("ข้อมูลผิดพลาด:" + ex.Message, "ผิดพลาด",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -367,6 +367,73 @@ namespace Fruit_Stock
         private void btnSave_Click(object sender, EventArgs e)
         {
             checkStateGender();
+            if (txtEMPID.Text == "" ||
+                txtName.Text == "" ||
+                txtLastName.Text == "" ||
+                txtUsername.Text == "" ||
+                txtPassword.Text == ""||
+                txtStatus.Text == ""||
+                txtPhone.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อมูลให้ครบ", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //txtEMPID.Focus();
+                return;
+            }
+
+            string sqlAddEmp = "";
+            string sqlAddLogin = "";
+            //OleDbCommand oCenter.cmd = new OleDbCommand();
+            //OleDbCommand oCenter.cmd = new OleDbCommand();
+            try
+            {
+                if (MessageBox.Show("เพิ่มข้อมูลใช่หรือไม่", "เพิ่มข้อมูล",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    sqlAddEmp = " INSERT INTO tb_employee(emp_id,emp_name,emp_lastname,emp_gender,emp_bdate,emp_phone) VALUES(@id,@name,@lastname,@gender,@bdate,@phone)";
+                    sqlAddLogin = " INSERT INTO tb_login(Username, [Password], Status, emp_id) VALUES(@status,@user,@pass,@id)";
+                    
+                    oCenter.cmd.Parameters.Clear();
+
+                    oCenter.cmd.Parameters.AddWithValue("@id", txtEMPID.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@name", txtName.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@lastname", txtLastName.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@gender", stateGenter);
+                    oCenter.cmd.Parameters.AddWithValue("@bdate", dtpBirthDate.Value);
+                    oCenter.cmd.Parameters.AddWithValue("@phone", txtPhone.Text.Trim().ToString());
+
+                    oCenter.pusvOpenConnection();
+                    oCenter.cmd.CommandType = CommandType.Text;
+                    oCenter.cmd.CommandText = sqlAddEmp;
+                    oCenter.cmd.Connection = oCenter.conn;
+                    oCenter.cmd.ExecuteNonQuery();
+                   
+                    // ---------------------------- tb_login ------------------------ //
+
+                    oCenter.pusvOpenConnection();
+
+                    oCenter.cmd.Parameters.Clear();
+                    oCenter.cmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@pass", txtPassword.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@status", txtStatus.Text.Trim().ToString());
+                    oCenter.cmd.Parameters.AddWithValue("@id", txtEMPID.Text.Trim().ToString());
+
+                    oCenter.cmd.CommandType = CommandType.Text;
+                    oCenter.cmd.CommandText = sqlAddLogin;
+                    oCenter.cmd.Connection = oCenter.conn;
+                    oCenter.cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("ได้บันทึกข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
+
+
+                    clearAll();
+                    ShowAllMember();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ไม่สามารถติดต่อฐานข้อมูลได้:"+ ex.Message, "ผิดพลาด");
+            }
 
 
         }
@@ -389,6 +456,36 @@ namespace Fruit_Stock
             dgvAllMember.Columns[3].Width = 60;
             dgvAllMember.Columns[4].Width = 160;
             dgvAllMember.Columns[5].Width = 160;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEMPID.Text == "")
+                {
+                    MessageBox.Show("กรุณาเลือกข้อมูลที่จะลบ", "ผิดพลาด");
+                    return;
+                }
+                String sqlDel = "delete from tb_hisstudent where stu_id = '" + txtStdID.Text + "'";
+                oCenter.pusvOpenConnection();
+
+                OleDbCommand comDel = new OleDbCommand(sqlDel, Conn);
+
+                if (MessageBox.Show("คุณต้องการลบข้อมูลนี้ใช่หรือไม่", "ยืนยัน",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+
+                    comDel.ExecuteNonQuery();
+                    MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
+                    ClearAllStudent();
+                    ShowAllStudent();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void FormatDataUser()

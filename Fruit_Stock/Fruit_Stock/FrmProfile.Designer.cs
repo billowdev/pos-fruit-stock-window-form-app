@@ -215,7 +215,9 @@ namespace Fruit_Stock
             // dtpBirthDate
             // 
             this.dtpBirthDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.dtpBirthDate.CustomFormat = "dd.MM.yyyy";
             this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirthDate.Location = new System.Drawing.Point(173, 210);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(308, 30);
@@ -310,6 +312,7 @@ namespace Fruit_Stock
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "ลบ";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
