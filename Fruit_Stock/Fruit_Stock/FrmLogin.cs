@@ -109,9 +109,8 @@ namespace Fruit_Stock
             {
                 while (oCenter.rd.Read())
                 {
-                    nName = oCenter.rd["emp_name"].ToString();
-                    nLastName = oCenter.rd["emp_lastname"].ToString();
-                    oCenter.currentName = nName + " " + nLastName;
+                    oCenter.currentName = oCenter.rd["emp_name"].ToString();
+                    oCenter.currentLastName = oCenter.rd["emp_lastname"].ToString();
                 }
             }
             oCenter.rd.Close();

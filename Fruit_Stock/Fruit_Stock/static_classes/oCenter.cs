@@ -20,6 +20,7 @@ namespace Fruit_Stock.static_classes
         public static string currentUsername;
         public static string currentStatus;
         public static string currentName;
+        public static string currentLastName;
         public static string currentid;
         public static string sql;
 

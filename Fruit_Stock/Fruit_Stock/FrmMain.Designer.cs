@@ -43,12 +43,15 @@ namespace Fruit_Stock
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timTime = new System.Windows.Forms.Timer(this.components);
             this.stsName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.timTime = new System.Windows.Forms.Timer(this.components);
+            this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
+            this.pbLoad = new System.Windows.Forms.PictureBox();
+            this.lbWelcome = new System.Windows.Forms.Label();
             this.mnuFrmMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoad)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuFrmMain
@@ -143,8 +146,7 @@ namespace Fruit_Stock
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stsTime,
-            this.stsName,
-            this.toolStripProgressBar1});
+            this.stsName});
             this.statusStrip1.Location = new System.Drawing.Point(0, 977);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1920, 52);
@@ -166,28 +168,57 @@ namespace Fruit_Stock
             this.stsTime.Size = new System.Drawing.Size(56, 46);
             this.stsTime.Text = "Time";
             // 
-            // timTime
-            // 
-            this.timTime.Enabled = true;
-            this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
-            // 
             // stsName
             // 
+            this.stsName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.stsName.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.stsName.Name = "stsName";
             this.stsName.Size = new System.Drawing.Size(210, 46);
             this.stsName.Text = "Name + Lastname";
             // 
-            // toolStripProgressBar1
+            // timTime
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 44);
+            this.timTime.Enabled = true;
+            this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
+            // 
+            // timTimeLoading
+            // 
+            this.timTimeLoading.Enabled = true;
+            this.timTimeLoading.Interval = 8500;
+            this.timTimeLoading.Tick += new System.EventHandler(this.timTimeLoading_Tick);
+            // 
+            // pbLoad
+            // 
+            this.pbLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLoad.Image = ((System.Drawing.Image)(resources.GetObject("pbLoad.Image")));
+            this.pbLoad.Location = new System.Drawing.Point(0, 58);
+            this.pbLoad.Name = "pbLoad";
+            this.pbLoad.Size = new System.Drawing.Size(1920, 919);
+            this.pbLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLoad.TabIndex = 8;
+            this.pbLoad.TabStop = false;
+            // 
+            // lbWelcome
+            // 
+            this.lbWelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.lbWelcome.Font = new System.Drawing.Font("Mali", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.ForeColor = System.Drawing.Color.White;
+            this.lbWelcome.Image = ((System.Drawing.Image)(resources.GetObject("lbWelcome.Image")));
+            this.lbWelcome.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbWelcome.Location = new System.Drawing.Point(533, 168);
+            this.lbWelcome.Name = "lbWelcome";
+            this.lbWelcome.Size = new System.Drawing.Size(895, 607);
+            this.lbWelcome.TabIndex = 9;
+            this.lbWelcome.Text = "Welcome";
+            this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1029);
+            this.Controls.Add(this.lbWelcome);
+            this.Controls.Add(this.pbLoad);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mnuFrmMain);
             this.Controls.Add(this.pbMain);
@@ -206,6 +237,7 @@ namespace Fruit_Stock
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -226,6 +258,8 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripStatusLabel stsTime;
         private System.Windows.Forms.Timer timTime;
         private System.Windows.Forms.ToolStripStatusLabel stsName;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Timer timTimeLoading;
+        private System.Windows.Forms.PictureBox pbLoad;
+        private System.Windows.Forms.Label lbWelcome;
     }
 }

@@ -22,14 +22,17 @@ namespace Fruit_Stock
         
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            stsName.Text = "| Welcome: " + oCenter.currentName +
-                            " Your Status is : " + oCenter.currentStatus + " |";
+            stsName.Text = "";
+            //stsName.Text = "| Welcome: " + oCenter.currentName +" " + oCenter.currentLastName +
+            //                " Your Status is : " + oCenter.currentStatus + " |";
 
+            lbWelcome.Text = "Welcome " + oCenter.currentName;
+            lbWelcome.Hide();
         }
 
         private void mnuProfile_Click(object sender, EventArgs e)
         {
-            
+            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
             {
                 pbMain.Hide();
@@ -39,24 +42,9 @@ namespace Fruit_Stock
             }
         }
 
-
-
-        private void mnuLogout_Click(object sender, EventArgs e)
-        {
-            
-            oCenter.currentUsername = "";
-            if (ocn.pub_CloseChildForm(this, "FrmLogin") == false)
-            {
-                pbMain.Hide();
-                FrmLogin Frm = new FrmLogin();
-                Frm.MdiParent = this;
-                Frm.Show();
-            }
-        }
-
-
         private void mnuStock_Click(object sender, EventArgs e)
         {
+            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmStock") == false)
             {
                 pbMain.Hide();
@@ -69,6 +57,7 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
+            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
                 pbMain.Hide();
@@ -80,6 +69,7 @@ namespace Fruit_Stock
 
         private void mnuProduct_Click(object sender, EventArgs e)
         {
+            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
             {
                 pbMain.Hide();
@@ -91,6 +81,7 @@ namespace Fruit_Stock
 
         private void mnuHelp_Click(object sender, EventArgs e)
         {
+            lbWelcome.Hide();
             pbMain.Hide();
             System.Diagnostics.Process.Start("https://www.google.com");
         }
@@ -114,7 +105,14 @@ namespace Fruit_Stock
             }
         }
 
- 
+        private void timTimeLoading_Tick(object sender, EventArgs e)
+        {
+            timTimeLoading.Stop();
+            pbLoad.Dispose();
+            lbWelcome.Show();
+            stsName.Text = "| Welcome: " + oCenter.currentName + " " + oCenter.currentLastName +
+                            " Your Status is : " + oCenter.currentStatus + " |";
+        }
     }
 }
 
