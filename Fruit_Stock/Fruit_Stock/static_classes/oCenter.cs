@@ -19,7 +19,7 @@ namespace Fruit_Stock.static_classes
 
         public static string currentUsername;
         public static string currentStatus;
-        public string sql;
+        public static string sql;
 
         public static bool IsFind = false;
         bool bCheckConnect = false;

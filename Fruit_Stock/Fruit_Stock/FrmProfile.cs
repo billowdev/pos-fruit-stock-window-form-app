@@ -21,6 +21,7 @@ namespace Fruit_Stock
         OleDbDataAdapter da;
         string sSql;
         string stateGenter = "";
+        string sEMPID = "";
         string sData1, sData2;
 
         oCenter ocn = new oCenter();
@@ -45,7 +46,7 @@ namespace Fruit_Stock
             // ================================== Admin ================================== //
             else
             {
-               
+                dtpBirthDate.CustomFormat = "dd MMM yyyy";
                 lbUserStatus.Hide();
                 ShowAllMember();
                 FormatDataEmployee();
@@ -62,6 +63,8 @@ namespace Fruit_Stock
         private void ShowAllMember()
         {
             string sSqlEmp = "select * from tb_employee";
+            string sSqlLogin = "select * from tb_login";
+
             if (oCenter.IsFind == true)
             {
                 oCenter.ds.Tables["tb_employee"].Clear();
@@ -80,6 +83,31 @@ namespace Fruit_Stock
             {
                 oCenter.IsFind = false;
             }
+
+            // ------------------------------------------------------- //
+            DataSet dsLogin = new DataSet();
+            OleDbDataAdapter daLogin = new OleDbDataAdapter(sSqlLogin, oCenter.conn);
+            bool bCheck = false;
+
+            if (bCheck == true)
+            {
+                dsLogin.Tables["tb_login"].Clear();
+            }
+
+            //daLogin = new OleDbDataAdapter();
+            daLogin.Fill(dsLogin, "tb_login");
+
+            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllUser.ReadOnly = true;
+                dgvAllUser.DataSource = dsLogin.Tables["tb_login"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+
 
         }
 
@@ -117,7 +145,70 @@ namespace Fruit_Stock
         // ================================== Event Cell mouse up data gridview ================================== // 
         private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-          
+            if (e.RowIndex == dgvAllMember.Rows.Count)
+            {
+                return;
+            }
+            try
+            {
+                sEMPID = dgvAllMember.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                txtEMPID.Text = sEMPID;
+
+                txtName.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtLastName.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
+                stateGenter = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                if (stateGenter == "ชาย")
+                {
+                    rdbMale.Checked = true;
+                }
+                else
+                {
+                    rdbFemale.Checked = true;
+                }
+
+                dtpBirthDate.Value = Convert.ToDateTime(dgvAllMember.Rows[e.RowIndex].Cells[4].Value);
+
+                txtPhone.Text = dgvAllMember.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                oCenter.pusvOpenConnection();
+                string sSqlSelect =
+                
+                sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
+                
+                oCenter.rd.Close();
+                oCenter.pusvOpenConnection();
+
+                //oCenter.sql = "select * from tb_login where Username = '" + oCenter.currentUsername + "'";
+                oCenter.cmd.Connection = oCenter.conn;
+                oCenter.cmd.CommandText = sSqlSelect;
+                oCenter.cmd.ExecuteNonQuery();
+
+                oCenter.rd = oCenter.cmd.ExecuteReader();
+
+                if (oCenter.rd.HasRows)
+                {
+                    while (oCenter.rd.Read())
+                    {
+                        txtUsername.Text = oCenter.rd[0].ToString();
+                        txtPassword.Text = oCenter.rd[1].ToString();
+                        lbUserStatus.Text = oCenter.rd[2].ToString();
+                        txtStatus.Text = oCenter.rd[2].ToString();
+                        txtEMPID.Text = oCenter.rd[3].ToString();
+                    }
+                }
+
+                oCenter.rd.Close();
+                oCenter.pusvOpenConnection();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "Error krub",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -129,9 +220,7 @@ namespace Fruit_Stock
             oCenter.pusvCloseConnection();
             try
             {
-
                 // it is fill all data from tb_login to dataGridView
-
 
                 sSql = "";
                 sSql = " SELECT * FROM tb_employee WHERE emp_id='" + emp_id + "'";
@@ -150,8 +239,7 @@ namespace Fruit_Stock
                 {
                     while (oCenter.rd.Read())
                     {
-
-
+                          
                         txtName.Text = oCenter.rd[1].ToString();
                         txtLastName.Text = oCenter.rd[2].ToString();
 
@@ -219,7 +307,61 @@ namespace Fruit_Stock
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-          
+            if (txtName.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อมูลที่จะแก้ไขให้ครบ", "ผิดพลาด",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                return;
+            }
+            string sqlEdit;
+            string sqlEditLogin;
+            //OleDbCommand comEdit = new OleDbCommand();
+            try
+            {
+                if (MessageBox.Show("คุณต้องการแก้ไขข้อมูลใช่หรือไม่", "ยืนยัน",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    sqlEdit = " UPDATE tb_employee SET emp_name='" + txtName.Text
+                        + "',emp_lastname='" + txtLastName.Text
+                        + "',emp_gender='" + stateGenter
+                        + "',emp_bdate='" + Convert.ToDateTime(dtpBirthDate.Value.ToString("dd/mm/yyyy"))
+                        + "'WHERE emp_id= '" + sEMPID + "'";
+
+                    sqlEditLogin = " UPDATE tb_login SET Username='" + txtUsername.Text
+                        + "',[Password]='" + txtPassword.Text
+                        + "',Status='" + txtStatus.Text
+                        + "'WHERE emp_id= '" + sEMPID + "'";
+
+                    oCenter.pusvOpenConnection();
+
+                    oCenter.cmd.CommandType = CommandType.Text;
+                    oCenter.cmd.CommandText = sqlEdit;
+                    oCenter.cmd.Connection = oCenter.conn;
+                    oCenter.cmd.ExecuteNonQuery();
+
+                    // ================== tb_login ===============/
+                    oCenter.pusvOpenConnection();
+
+                    oCenter.cmd.CommandType = CommandType.Text;
+                    oCenter.cmd.CommandText = sqlEditLogin;
+                    oCenter.cmd.Connection = oCenter.conn;
+                    oCenter.cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("แก้ไขข้อมูลเรียบร้อยแล้ว");
+
+
+
+                    clearAll();
+                    ShowAllMember();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ข้อมูลผิดพลาด", "ผิดพลาด",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -251,18 +393,19 @@ namespace Fruit_Stock
 
         private void FormatDataUser()
         {
+            //dgvAllUser.ColumnCount = 3;
             DataGridViewCellStyle cs = new DataGridViewCellStyle();
             cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
-            dgvAllMember.Columns[0].HeaderText = "ชื่อผู้ใช้";
-            dgvAllMember.Columns[1].HeaderText = "รหัสผ่าน";
-            dgvAllMember.Columns[2].HeaderText = "สถานะ";
-            dgvAllMember.Columns[3].HeaderText = "รหัสพนักงาน";
+            dgvAllUser.ColumnHeadersDefaultCellStyle = cs;
+            dgvAllUser.Columns[0].HeaderText = "Username";
+            dgvAllUser.Columns[1].HeaderText = "Password";
+            dgvAllUser.Columns[2].HeaderText = "Status";
+            dgvAllUser.Columns[3].HeaderText = "รหัสพนักงาน";
 
-            dgvAllMember.Columns[0].Width = 120;
-            dgvAllMember.Columns[1].Width = 120;
-            dgvAllMember.Columns[2].Width = 120;
-            dgvAllMember.Columns[3].Width = 120;
+            dgvAllUser.Columns[0].Width = 240;
+            dgvAllUser.Columns[1].Width = 240;
+            dgvAllUser.Columns[2].Width = 180;
+            dgvAllUser.Columns[3].Width = 220;
         }
 
    

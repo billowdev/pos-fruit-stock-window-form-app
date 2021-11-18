@@ -47,11 +47,11 @@ namespace Fruit_Stock
         private void Check_login()
         {
 
-            ocn.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
+            oCenter.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
 
             oCenter.cmd.Parameters.Clear();
             oCenter.cmd.CommandType = CommandType.Text;
-            oCenter.cmd.CommandText = ocn.sql;
+            oCenter.cmd.CommandText = oCenter.sql;
 
             oCenter.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
             oCenter.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());

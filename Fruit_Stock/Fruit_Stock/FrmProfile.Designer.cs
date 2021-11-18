@@ -61,9 +61,11 @@ namespace Fruit_Stock
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvAllUser = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             this.cmuMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllUser)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStatus
@@ -267,7 +269,7 @@ namespace Fruit_Stock
             this.dgvAllMember.ReadOnly = true;
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
-            this.dgvAllMember.Size = new System.Drawing.Size(682, 514);
+            this.dgvAllMember.Size = new System.Drawing.Size(682, 293);
             this.dgvAllMember.TabIndex = 7;
             this.dgvAllMember.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllMember_CellMouseUp);
             // 
@@ -353,9 +355,9 @@ namespace Fruit_Stock
             this.gbOperating.Controls.Add(this.txtName);
             this.gbOperating.Controls.Add(this.txtEMPID);
             this.gbOperating.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbOperating.Location = new System.Drawing.Point(698, 9);
+            this.gbOperating.Location = new System.Drawing.Point(698, 12);
             this.gbOperating.Name = "gbOperating";
-            this.gbOperating.Size = new System.Drawing.Size(684, 514);
+            this.gbOperating.Size = new System.Drawing.Size(684, 576);
             this.gbOperating.TabIndex = 9;
             this.gbOperating.TabStop = false;
             // 
@@ -409,6 +411,22 @@ namespace Fruit_Stock
             this.mnuDelete.Size = new System.Drawing.Size(128, 30);
             this.mnuDelete.Text = "ลบ";
             // 
+            // dgvAllUser
+            // 
+            this.dgvAllUser.AllowUserToAddRows = false;
+            this.dgvAllUser.AllowUserToDeleteRows = false;
+            this.dgvAllUser.AllowUserToResizeColumns = false;
+            this.dgvAllUser.AllowUserToResizeRows = false;
+            this.dgvAllUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.dgvAllUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAllUser.Location = new System.Drawing.Point(10, 308);
+            this.dgvAllUser.Name = "dgvAllUser";
+            this.dgvAllUser.ReadOnly = true;
+            this.dgvAllUser.RowHeadersWidth = 51;
+            this.dgvAllUser.RowTemplate.Height = 24;
+            this.dgvAllUser.Size = new System.Drawing.Size(682, 280);
+            this.dgvAllUser.TabIndex = 7;
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -416,6 +434,7 @@ namespace Fruit_Stock
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1422, 653);
+            this.Controls.Add(this.dgvAllUser);
             this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
@@ -434,6 +453,7 @@ namespace Fruit_Stock
             this.gbOperating.ResumeLayout(false);
             this.gbOperating.PerformLayout();
             this.cmuMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,5 +490,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuNew;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
+        private System.Windows.Forms.DataGridView dgvAllUser;
     }
 }
