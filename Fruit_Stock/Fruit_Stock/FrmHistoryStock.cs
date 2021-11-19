@@ -19,21 +19,5 @@ namespace Fruit_Stock
         }
         oCenter ocn = new oCenter();
 
-        private void FrmEditStock_Load(object sender, EventArgs e)
-        {
-            FrmStock Frm = new FrmStock();
-            Frm.puvShowAllStock();
-        }
-        
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            if (ocn.pub_CloseChildForm(this, "FrmStock") == false)
-            {
-                
-                FrmStock Frm = new FrmStock();
-                Frm.MdiParent = this;
-                Frm.Show();
-            }
-        }
     }
 }

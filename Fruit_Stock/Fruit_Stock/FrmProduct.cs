@@ -36,7 +36,7 @@ namespace Fruit_Stock
             }
             dgvAllProduct.ReadOnly = true;
             prvShowAllProduct();
-            puvFormatDataGrid();
+            prvFormatDataGrid();
         }
 
         // Method for show all product when form load to data grid view dgvAllProduct
@@ -66,8 +66,11 @@ namespace Fruit_Stock
         }
 
         // Method for format datagridview
-        private void puvFormatDataGrid()
+        private void prvFormatDataGrid()
         {
+            dgvAllProduct.Update();
+            dgvAllProduct.Refresh();
+
             DataGridViewCellStyle cs = new DataGridViewCellStyle();
             cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
             dgvAllProduct.ColumnHeadersDefaultCellStyle = cs;
@@ -239,7 +242,11 @@ namespace Fruit_Stock
             }
         }
 
-      
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllProduct();
+            prvFormatDataGrid();
+        }
     }
 }
 

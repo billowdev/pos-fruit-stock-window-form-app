@@ -31,8 +31,6 @@ namespace Fruit_Stock
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStock));
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
             this.txtProQuantity = new System.Windows.Forms.TextBox();
             this.txtProID = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -42,46 +40,24 @@ namespace Fruit_Stock
             this.lbBarcode = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lbPageNum = new System.Windows.Forms.Label();
-            this.btnLast = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnFirst = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProduct = new System.Windows.Forms.Button();
             this.dgvAllStock = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtProIMID = new System.Windows.Forms.TextBox();
             this.dtpProImport = new System.Windows.Forms.DateTimePicker();
+            this.txtProIMID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bdsPage = new System.Windows.Forms.BindingSource(this.components);
-            this.btnHistoryStock = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(819, 17);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(70, 33);
-            this.btnNext.TabIndex = 10;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(462, 17);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(70, 33);
-            this.btnPrevious.TabIndex = 8;
-            this.btnPrevious.Text = "<<";
-            this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // txtProQuantity
             // 
@@ -105,7 +81,7 @@ namespace Fruit_Stock
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(292, 17);
+            this.btnSearch.Location = new System.Drawing.Point(586, 16);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
@@ -168,59 +144,24 @@ namespace Fruit_Stock
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(11, 16);
-            this.txtSearch.MaximumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(275, 34);
+            this.txtSearch.Size = new System.Drawing.Size(569, 34);
             this.txtSearch.TabIndex = 13;
-            // 
-            // lbPageNum
-            // 
-            this.lbPageNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbPageNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbPageNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbPageNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPageNum.Location = new System.Drawing.Point(538, 18);
-            this.lbPageNum.Name = "lbPageNum";
-            this.lbPageNum.Size = new System.Drawing.Size(275, 32);
-            this.lbPageNum.TabIndex = 11;
-            // 
-            // btnLast
-            // 
-            this.btnLast.Location = new System.Drawing.Point(895, 17);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(70, 33);
-            this.btnLast.TabIndex = 9;
-            this.btnLast.Text = ">l";
-            this.btnLast.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.groupBox2.Controls.Add(this.txtSearch);
-            this.groupBox2.Controls.Add(this.lbPageNum);
-            this.groupBox2.Controls.Add(this.btnLast);
             this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Controls.Add(this.btnNext);
-            this.groupBox2.Controls.Add(this.btnFirst);
-            this.groupBox2.Controls.Add(this.btnPrevious);
             this.groupBox2.Location = new System.Drawing.Point(119, 516);
-            this.groupBox2.MaximumSize = new System.Drawing.Size(971, 71);
-            this.groupBox2.MinimumSize = new System.Drawing.Size(971, 71);
+            this.groupBox2.MaximumSize = new System.Drawing.Size(680, 71);
+            this.groupBox2.MinimumSize = new System.Drawing.Size(680, 71);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(971, 71);
+            this.groupBox2.Size = new System.Drawing.Size(680, 71);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Location = new System.Drawing.Point(386, 17);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(70, 33);
-            this.btnFirst.TabIndex = 7;
-            this.btnFirst.Text = "l<";
-            this.btnFirst.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -296,25 +237,6 @@ namespace Fruit_Stock
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(38, 151);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 25);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Import ID";
-            // 
-            // txtProIMID
-            // 
-            this.txtProIMID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProIMID.Location = new System.Drawing.Point(135, 148);
-            this.txtProIMID.Name = "txtProIMID";
-            this.txtProIMID.Size = new System.Drawing.Size(228, 30);
-            this.txtProIMID.TabIndex = 2;
-            this.txtProIMID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // dtpProImport
             // 
             this.dtpProImport.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
@@ -325,6 +247,25 @@ namespace Fruit_Stock
             this.dtpProImport.Name = "dtpProImport";
             this.dtpProImport.Size = new System.Drawing.Size(308, 30);
             this.dtpProImport.TabIndex = 43;
+            // 
+            // txtProIMID
+            // 
+            this.txtProIMID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProIMID.Location = new System.Drawing.Point(135, 148);
+            this.txtProIMID.Name = "txtProIMID";
+            this.txtProIMID.Size = new System.Drawing.Size(228, 30);
+            this.txtProIMID.TabIndex = 2;
+            this.txtProIMID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(38, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 25);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Import ID";
             // 
             // label5
             // 
@@ -349,16 +290,6 @@ namespace Fruit_Stock
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
-            // btnHistoryStock
-            // 
-            this.btnHistoryStock.Location = new System.Drawing.Point(838, 342);
-            this.btnHistoryStock.Name = "btnHistoryStock";
-            this.btnHistoryStock.Size = new System.Drawing.Size(231, 141);
-            this.btnHistoryStock.TabIndex = 30;
-            this.btnHistoryStock.Text = "History";
-            this.btnHistoryStock.UseVisualStyleBackColor = true;
-            this.btnHistoryStock.Click += new System.EventHandler(this.btnHistoryStock_Click);
-            // 
             // FrmStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -370,7 +301,6 @@ namespace Fruit_Stock
             this.Controls.Add(this.dgvAllStock);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnHistoryStock);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
@@ -393,9 +323,6 @@ namespace Fruit_Stock
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.TextBox txtProQuantity;
         private System.Windows.Forms.TextBox txtProID;
         private System.Windows.Forms.Button btnSearch;
@@ -405,10 +332,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label lbBarcode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label lbPageNum;
-        private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnFirst;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnProduct;
@@ -420,6 +344,5 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpProImport;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnHistoryStock;
     }
 }
