@@ -19,6 +19,9 @@ namespace Fruit_Stock.static_classes
 
         public static string currentUsername;
         public static string currentStatus;
+        public static string currentName;
+        public static string currentLastName;
+        public static string currentid;
         public static string sql;
 
         public static bool IsFind = false;
@@ -106,7 +109,7 @@ namespace Fruit_Stock.static_classes
             return false;
         }
 
-        public DataSet puds_LoadData(string _sSql, string _sNameTable, DataSet _ds)
+        public DataSet pudsLoadData(string _sSql, string _sNameTable, DataSet _ds)
         {
             DataSet ds = new DataSet();
             try
@@ -124,7 +127,7 @@ namespace Fruit_Stock.static_classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex.Message.ToString(), "Msg",
+                MessageBox.Show("Error LoadData :" + ex.Message.ToString(), "Msg",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -149,11 +152,43 @@ namespace Fruit_Stock.static_classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex.Message.ToString(), "Msg",
+                MessageBox.Show("Error ActionData :" + ex.Message.ToString(), "Msg",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 bCheck = false;
             }
             return bCheck;
+        }
+
+
+
+        // AutoID                     Field Name        Table Name Head  Last      
+        // txtEMPID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
+        public string pusAutoID(string _sFname, string _sTname, string _sHname, string _sLname)
+        {
+            int nID = 0;
+            string sID = "";
+            string sSql = "";
+
+            sSql = " SELECT " + _sFname + " FROM " + _sTname + " WHERE " + _sFname
+                    + " LIKE '%" + _sHname + "%'"
+                    + " ORDER BY " + _sFname + " DESC ;";
+
+            // The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+            // ASC|DESC;  (ascending|descending)
+            DataSet dsAutoRun = new DataSet();
+            dsAutoRun = pudsLoadData(sSql, _sTname, dsAutoRun);
+            if (dsAutoRun.Tables[_sTname].Rows.Count > 0)
+            {
+                sID = dsAutoRun.Tables[_sTname].Rows[0][_sFname].ToString();
+                sID = sID.Replace(_sHname, "");
+                nID = Convert.ToInt32(sID) + 1;
+                return _sHname + nID.ToString(_sLname);
+            }
+            else
+            {
+                nID = Convert.ToInt32(_sLname) + 1;
+                return _sHname + nID.ToString(_sLname);
+            }
         }
     }
 }
