@@ -19,6 +19,8 @@ namespace Fruit_Stock
             InitializeComponent();
         }
         oCenter ocn = new oCenter();
+        OleDbDataReader loginReader;
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -31,6 +33,8 @@ namespace Fruit_Stock
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+
             if (txtUsername.Text.Trim() == "")
             {
                 MessageBox.Show("Enter Username", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -43,55 +47,40 @@ namespace Fruit_Stock
                 txtPassword.Focus();
                 return;
             }
-            Check_login();
 
-           
+            // ==========================================
+            oCenter ocn = new oCenter();
+            DataSet dsLogin = new DataSet();
+
+            string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
+                " Password='" + txtPassword.Text.Trim() + "'";
+            dsLogin = ocn.pudsLoadData(sSql, "tb_login", dsLogin);
+
+            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+            {
+                //MessageBox.Show();
+
+                oCenter.currentUsername = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
+                oCenter.currentStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+                oCenter.currentid = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
+
+                puvGetEmployee();
+                FrmMain Frm = new FrmMain();
+                Frm.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Login Fail !!!", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
         }
 
-
-        private void Check_login()
+        
+        private void puvGetEmployee()
         {
-            
-            oCenter.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
-
-            oCenter.cmd.Parameters.Clear();
-            oCenter.cmd.CommandType = CommandType.Text;
-            oCenter.cmd.CommandText = oCenter.sql;
-
-            oCenter.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
-            oCenter.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
-
-            oCenter.pusvOpenConnection();
-
-            oCenter.rd = oCenter.cmd.ExecuteReader();
-
-            if (oCenter.rd.HasRows)
-            {
-                while (oCenter.rd.Read())
-                {
-                    oCenter.currentUsername = oCenter.rd[0].ToString();
-                    oCenter.currentStatus = oCenter.rd[2].ToString();
-                    oCenter.currentid = oCenter.rd[3].ToString();
-                }
-
-                
-            }
-           
-            else
-            {
-                MessageBox.Show("ผิดพลาด", "Invalid Username or Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.txtUsername.CanSelect)
-                {
-                    this.txtUsername.Select();
-                }
-
-
-            }
-
-            oCenter.rd.Close();
             oCenter.pusvOpenConnection();
 
             // get name
@@ -101,25 +90,16 @@ namespace Fruit_Stock
             oCenter.cmd.Parameters.AddWithValue("@empid", oCenter.currentid);
             oCenter.cmd.CommandType = CommandType.Text;
             oCenter.cmd.CommandText = sSqlName;
-            oCenter.rd = oCenter.cmd.ExecuteReader();
+            loginReader = oCenter.cmd.ExecuteReader();
 
-            string nName;
-            string nLastName;
-            if (oCenter.rd.HasRows)
+            if (loginReader.HasRows)
             {
-                while (oCenter.rd.Read())
+                while (loginReader.Read())
                 {
-                    oCenter.currentName = oCenter.rd["emp_name"].ToString();
-                    oCenter.currentLastName = oCenter.rd["emp_lastname"].ToString();
+                    oCenter.currentName = loginReader["emp_name"].ToString();
+                    oCenter.currentLastName = loginReader["emp_lastname"].ToString();
                 }
             }
-            oCenter.rd.Close();
-
-            this.txtPassword.Text = string.Empty;
-            this.txtUsername.Text = string.Empty;
-            FrmMain Frm = new FrmMain();
-            Frm.Show();
-            this.Hide();
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)

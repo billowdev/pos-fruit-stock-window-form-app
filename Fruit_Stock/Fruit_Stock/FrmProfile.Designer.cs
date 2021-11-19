@@ -99,18 +99,20 @@ namespace Fruit_Stock
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(185, 374);
+            this.txtUsername.MaxLength = 50;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(346, 30);
-            this.txtUsername.TabIndex = 1;
+            this.txtUsername.TabIndex = 10;
             // 
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(185, 413);
+            this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(346, 30);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 11;
             // 
             // lbPassword
             // 
@@ -147,6 +149,7 @@ namespace Fruit_Stock
             this.txtEMPID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEMPID.Location = new System.Drawing.Point(173, 34);
+            this.txtEMPID.MaxLength = 6;
             this.txtEMPID.Name = "txtEMPID";
             this.txtEMPID.Size = new System.Drawing.Size(233, 30);
             this.txtEMPID.TabIndex = 1;
@@ -156,18 +159,20 @@ namespace Fruit_Stock
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(173, 74);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(346, 30);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 2;
             // 
             // txtLastName
             // 
             this.txtLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(173, 114);
+            this.txtLastName.MaxLength = 50;
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(346, 30);
-            this.txtLastName.TabIndex = 1;
+            this.txtLastName.TabIndex = 3;
             // 
             // lbLastName
             // 
@@ -218,16 +223,17 @@ namespace Fruit_Stock
             this.dtpBirthDate.Location = new System.Drawing.Point(185, 222);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(308, 30);
-            this.dtpBirthDate.TabIndex = 3;
+            this.dtpBirthDate.TabIndex = 6;
             // 
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(185, 258);
+            this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(264, 30);
-            this.txtPhone.TabIndex = 1;
+            this.txtPhone.TabIndex = 7;
             // 
             // rdbMale
             // 
@@ -250,7 +256,7 @@ namespace Fruit_Stock
             this.rdbFemale.Location = new System.Drawing.Point(128, 22);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(66, 29);
-            this.rdbFemale.TabIndex = 4;
+            this.rdbFemale.TabIndex = 5;
             this.rdbFemale.TabStop = true;
             this.rdbFemale.Text = "หญิง";
             this.rdbFemale.UseVisualStyleBackColor = false;
@@ -282,7 +288,7 @@ namespace Fruit_Stock
             this.btnNew.Location = new System.Drawing.Point(191, 495);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(81, 39);
-            this.btnNew.TabIndex = 8;
+            this.btnNew.TabIndex = 14;
             this.btnNew.Text = "เพิ่ม";
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -295,7 +301,7 @@ namespace Fruit_Stock
             this.btnEdit.Location = new System.Drawing.Point(278, 495);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(79, 39);
-            this.btnEdit.TabIndex = 8;
+            this.btnEdit.TabIndex = 12;
             this.btnEdit.Text = "แก้ไข";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -308,7 +314,7 @@ namespace Fruit_Stock
             this.btnDelete.Location = new System.Drawing.Point(451, 495);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 39);
-            this.btnDelete.TabIndex = 8;
+            this.btnDelete.TabIndex = 15;
             this.btnDelete.Text = "ลบ";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -321,7 +327,7 @@ namespace Fruit_Stock
             this.btnSave.Location = new System.Drawing.Point(363, 495);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 39);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -384,7 +390,7 @@ namespace Fruit_Stock
             this.rdbAdmin.Location = new System.Drawing.Point(115, 21);
             this.rdbAdmin.Name = "rdbAdmin";
             this.rdbAdmin.Size = new System.Drawing.Size(86, 29);
-            this.rdbAdmin.TabIndex = 4;
+            this.rdbAdmin.TabIndex = 9;
             this.rdbAdmin.TabStop = true;
             this.rdbAdmin.Text = "admin";
             this.rdbAdmin.UseVisualStyleBackColor = false;
@@ -397,7 +403,7 @@ namespace Fruit_Stock
             this.rdbUser.Location = new System.Drawing.Point(15, 21);
             this.rdbUser.Name = "rdbUser";
             this.rdbUser.Size = new System.Drawing.Size(71, 29);
-            this.rdbUser.TabIndex = 4;
+            this.rdbUser.TabIndex = 8;
             this.rdbUser.TabStop = true;
             this.rdbUser.Text = "user";
             this.rdbUser.UseVisualStyleBackColor = false;

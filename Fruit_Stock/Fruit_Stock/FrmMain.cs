@@ -22,21 +22,24 @@ namespace Fruit_Stock
         
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            stsName.Text = "";
-            //stsName.Text = "| Welcome: " + oCenter.currentName +" " + oCenter.currentLastName +
-            //                " Your Status is : " + oCenter.currentStatus + " |";
+            stsName.Text = "| Welcome: " + oCenter.currentName + " " + oCenter.currentLastName +
+                            " Your Status is : " + oCenter.currentStatus + " |";
 
             lbWelcome.Text = "Welcome " + oCenter.currentName;
-            lbWelcome.Hide();
+            lbWelcome.Show();
+
+            // option loading page
             pbLoad.Dispose();
+            //lbWelcome.Dispose();
+            //stsName.Text = "";
         }
 
         private void mnuProfile_Click(object sender, EventArgs e)
         {
-            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
             {
-                pbMain.Hide();
+                lbWelcome.Dispose();
+                pbMain.Dispose();
                 FrmProfile Frm = new FrmProfile();
                 Frm.MdiParent = this;
                 Frm.Show();
@@ -45,9 +48,9 @@ namespace Fruit_Stock
 
         private void mnuStock_Click(object sender, EventArgs e)
         {
-            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmStock") == false)
             {
+                lbWelcome.Dispose();
                 pbMain.Hide();
                 FrmStock Frm = new FrmStock();
                 Frm.MdiParent = this;
@@ -58,10 +61,10 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
-                pbMain.Hide();
+                lbWelcome.Dispose();
+                pbMain.Dispose();
                 FrmSale Frm = new FrmSale();
                 Frm.MdiParent = this;
                 Frm.Show();
@@ -70,10 +73,10 @@ namespace Fruit_Stock
 
         private void mnuProduct_Click(object sender, EventArgs e)
         {
-            lbWelcome.Hide();
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
             {
-                pbMain.Hide();
+                lbWelcome.Dispose();
+                pbMain.Dispose();
                 FrmProduct Frm = new FrmProduct();
                 Frm.MdiParent = this;
                 Frm.Show();
@@ -82,8 +85,8 @@ namespace Fruit_Stock
 
         private void mnuHelp_Click(object sender, EventArgs e)
         {
-            lbWelcome.Hide();
-            pbMain.Hide();
+            lbWelcome.Dispose();
+            pbMain.Dispose();
             System.Diagnostics.Process.Start("https://www.google.com");
         }
 

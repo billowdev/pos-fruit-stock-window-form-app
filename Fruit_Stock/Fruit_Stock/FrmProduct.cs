@@ -81,3 +81,28 @@ namespace Fruit_Stock
         }
     }
 }
+
+
+// Load data Code
+
+//oCenter ocn = new oCenter();
+//DataSet dsLogin = new DataSet();
+
+//string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
+//    " Password='" + txtPassword.Text.Trim() + "'";
+//dsLogin = ocn.puds_LoadData(sSql, "tb_login", dsLogin);
+
+//if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+//{
+//    //MessageBox.Show();
+
+//    oCenter.currentUsername = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
+//    oCenter.currentStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+//    oCenter.currentid = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
+
+//    puvGetEmployee();
+//    FrmMain Frm = new FrmMain();
+//    Frm.Show();
+//    this.Hide();
+
+//}
