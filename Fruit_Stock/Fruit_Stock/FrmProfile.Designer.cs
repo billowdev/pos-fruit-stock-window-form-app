@@ -54,6 +54,8 @@ namespace Fruit_Stock
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbStatus = new System.Windows.Forms.GroupBox();
             this.rdbAdmin = new System.Windows.Forms.RadioButton();
             this.rdbUser = new System.Windows.Forms.RadioButton();
@@ -66,8 +68,7 @@ namespace Fruit_Stock
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAllUser = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             this.gbStatus.SuspendLayout();
@@ -340,6 +341,7 @@ namespace Fruit_Stock
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.gbOperating.Controls.Add(this.btnRefresh);
             this.gbOperating.Controls.Add(this.btnSearch);
             this.gbOperating.Controls.Add(this.txtSearch);
             this.gbOperating.Controls.Add(this.gbStatus);
@@ -374,6 +376,28 @@ namespace Fruit_Stock
             this.gbOperating.Size = new System.Drawing.Size(670, 589);
             this.gbOperating.TabIndex = 9;
             this.gbOperating.TabStop = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(326, 512);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(107, 38);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "ค้นหา";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(26, 516);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(294, 34);
+            this.txtSearch.TabIndex = 13;
             // 
             // gbStatus
             // 
@@ -501,24 +525,17 @@ namespace Fruit_Stock
             this.dgvAllUser.Size = new System.Drawing.Size(680, 290);
             this.dgvAllUser.TabIndex = 7;
             // 
-            // txtSearch
+            // btnRefresh
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(22, 530);
-            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(483, 34);
-            this.txtSearch.TabIndex = 13;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(522, 526);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(117, 43);
-            this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnRefresh.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(436, 512);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(107, 38);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "รีเฟรช";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FrmProfile
             // 
@@ -594,5 +611,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.GroupBox gbStatus;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
