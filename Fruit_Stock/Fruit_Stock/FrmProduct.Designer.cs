@@ -29,22 +29,17 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.bdsPage = new System.Windows.Forms.BindingSource(this.components);
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.cmuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmuMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvAllProduct = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lbPageNum = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtProName = new System.Windows.Forms.TextBox();
             this.txtProID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,23 +50,24 @@ namespace Fruit_Stock
             this.label6 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUnit = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPage)).BeginInit();
-            this.cmuMenu.SuspendLayout();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(118, 519);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(140, 523);
+            this.txtSearch.MaximumSize = new System.Drawing.Size(275, 34);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(336, 30);
+            this.txtSearch.Size = new System.Drawing.Size(275, 34);
             this.txtSearch.TabIndex = 13;
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(1063, 516);
+            this.btnLast.Location = new System.Drawing.Point(1024, 523);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(70, 33);
             this.btnLast.TabIndex = 9;
@@ -80,7 +76,7 @@ namespace Fruit_Stock
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(987, 516);
+            this.btnNext.Location = new System.Drawing.Point(948, 523);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(70, 33);
             this.btnNext.TabIndex = 10;
@@ -89,7 +85,7 @@ namespace Fruit_Stock
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(630, 515);
+            this.btnPrevious.Location = new System.Drawing.Point(591, 522);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(70, 33);
             this.btnPrevious.TabIndex = 8;
@@ -98,7 +94,7 @@ namespace Fruit_Stock
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(554, 516);
+            this.btnFirst.Location = new System.Drawing.Point(515, 523);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(70, 33);
             this.btnFirst.TabIndex = 7;
@@ -107,26 +103,12 @@ namespace Fruit_Stock
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(460, 519);
+            this.btnSearch.Location = new System.Drawing.Point(421, 523);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(88, 31);
+            this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // cmuDelete
-            // 
-            this.cmuDelete.Name = "cmuDelete";
-            this.cmuDelete.Size = new System.Drawing.Size(122, 24);
-            this.cmuDelete.Text = "Delete";
-            // 
-            // cmuMenu
-            // 
-            this.cmuMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmuMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmuDelete});
-            this.cmuMenu.Name = "cmuC";
-            this.cmuMenu.Size = new System.Drawing.Size(123, 28);
             // 
             // dgvAllProduct
             // 
@@ -136,24 +118,23 @@ namespace Fruit_Stock
             this.dgvAllProduct.AllowUserToResizeRows = false;
             this.dgvAllProduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.dgvAllProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllProduct.ContextMenuStrip = this.cmuMenu;
-            this.dgvAllProduct.Location = new System.Drawing.Point(231, 278);
-            this.dgvAllProduct.MaximumSize = new System.Drawing.Size(750, 230);
-            this.dgvAllProduct.MinimumSize = new System.Drawing.Size(750, 230);
+            this.dgvAllProduct.Location = new System.Drawing.Point(140, 278);
+            this.dgvAllProduct.MaximumSize = new System.Drawing.Size(950, 230);
+            this.dgvAllProduct.MinimumSize = new System.Drawing.Size(950, 230);
             this.dgvAllProduct.Name = "dgvAllProduct";
             this.dgvAllProduct.RowHeadersVisible = false;
             this.dgvAllProduct.RowHeadersWidth = 51;
             this.dgvAllProduct.RowTemplate.Height = 24;
             this.dgvAllProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllProduct.Size = new System.Drawing.Size(750, 230);
+            this.dgvAllProduct.Size = new System.Drawing.Size(950, 230);
             this.dgvAllProduct.TabIndex = 10;
             this.dgvAllProduct.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllProduct_CellMouseUp);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(496, 212);
+            this.btnAdd.Location = new System.Drawing.Point(641, 174);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(94, 37);
+            this.btnAdd.Size = new System.Drawing.Size(76, 37);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -165,7 +146,7 @@ namespace Fruit_Stock
             this.lbPageNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbPageNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbPageNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPageNum.Location = new System.Drawing.Point(706, 516);
+            this.lbPageNum.Location = new System.Drawing.Point(667, 523);
             this.lbPageNum.Name = "lbPageNum";
             this.lbPageNum.Size = new System.Drawing.Size(275, 32);
             this.lbPageNum.TabIndex = 11;
@@ -174,7 +155,7 @@ namespace Fruit_Stock
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(136, 163);
+            this.label3.Location = new System.Drawing.Point(187, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 29);
             this.label3.TabIndex = 1;
@@ -184,27 +165,17 @@ namespace Fruit_Stock
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(113, 62);
+            this.label2.Location = new System.Drawing.Point(164, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "ชื่อสินค้า";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 521);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 25);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Search";
-            // 
             // txtProName
             // 
             this.txtProName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProName.Location = new System.Drawing.Point(230, 62);
+            this.txtProName.Location = new System.Drawing.Point(281, 57);
             this.txtProName.Name = "txtProName";
             this.txtProName.Size = new System.Drawing.Size(360, 34);
             this.txtProName.TabIndex = 2;
@@ -213,7 +184,7 @@ namespace Fruit_Stock
             // 
             this.txtProID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProID.Location = new System.Drawing.Point(230, 16);
+            this.txtProID.Location = new System.Drawing.Point(281, 17);
             this.txtProID.Name = "txtProID";
             this.txtProID.Size = new System.Drawing.Size(207, 34);
             this.txtProID.TabIndex = 1;
@@ -222,7 +193,7 @@ namespace Fruit_Stock
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 19);
+            this.label1.Location = new System.Drawing.Point(149, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 29);
             this.label1.TabIndex = 1;
@@ -239,13 +210,16 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtProID);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(231, 12);
+            this.groupBox1.Location = new System.Drawing.Point(140, 12);
+            this.groupBox1.MaximumSize = new System.Drawing.Size(950, 250);
+            this.groupBox1.MinimumSize = new System.Drawing.Size(950, 250);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(750, 260);
+            this.groupBox1.Size = new System.Drawing.Size(950, 250);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -253,7 +227,7 @@ namespace Fruit_Stock
             // 
             this.txtProPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProPrice.Location = new System.Drawing.Point(230, 117);
+            this.txtProPrice.Location = new System.Drawing.Point(281, 97);
             this.txtProPrice.Name = "txtProPrice";
             this.txtProPrice.Size = new System.Drawing.Size(219, 34);
             this.txtProPrice.TabIndex = 3;
@@ -262,7 +236,7 @@ namespace Fruit_Stock
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(145, 117);
+            this.label4.Location = new System.Drawing.Point(196, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 29);
             this.label4.TabIndex = 1;
@@ -272,9 +246,9 @@ namespace Fruit_Stock
             // 
             this.lbStockQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStockQuantity.Location = new System.Drawing.Point(225, 216);
+            this.lbStockQuantity.Location = new System.Drawing.Point(285, 174);
             this.lbStockQuantity.Name = "lbStockQuantity";
-            this.lbStockQuantity.Size = new System.Drawing.Size(236, 25);
+            this.lbStockQuantity.Size = new System.Drawing.Size(215, 25);
             this.lbStockQuantity.TabIndex = 1;
             this.lbStockQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -282,7 +256,7 @@ namespace Fruit_Stock
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(54, 212);
+            this.label6.Location = new System.Drawing.Point(114, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 29);
             this.label6.TabIndex = 1;
@@ -290,9 +264,9 @@ namespace Fruit_Stock
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(596, 212);
+            this.btnNew.Location = new System.Drawing.Point(726, 174);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(94, 37);
+            this.btnNew.Size = new System.Drawing.Size(76, 37);
             this.btnNew.TabIndex = 5;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -302,10 +276,20 @@ namespace Fruit_Stock
             // 
             this.txtUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnit.Location = new System.Drawing.Point(230, 160);
+            this.txtUnit.Location = new System.Drawing.Point(281, 137);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(219, 34);
             this.txtUnit.TabIndex = 3;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(817, 174);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(76, 37);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FrmProduct
             // 
@@ -323,7 +307,6 @@ namespace Fruit_Stock
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dgvAllProduct);
             this.Controls.Add(this.lbPageNum);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
@@ -332,8 +315,6 @@ namespace Fruit_Stock
             this.Text = "Product";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmProduct_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPage)).EndInit();
-            this.cmuMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -343,22 +324,17 @@ namespace Fruit_Stock
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource bdsPage;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnFirst;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ToolStripMenuItem cmuDelete;
-        private System.Windows.Forms.ContextMenuStrip cmuMenu;
         private System.Windows.Forms.DataGridView dgvAllProduct;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lbPageNum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProName;
         private System.Windows.Forms.TextBox txtProID;
         private System.Windows.Forms.Label label1;
@@ -369,5 +345,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUnit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

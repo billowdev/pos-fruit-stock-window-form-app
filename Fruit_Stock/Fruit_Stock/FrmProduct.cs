@@ -33,12 +33,12 @@ namespace Fruit_Stock
                 txtProID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
                 txtProName.Focus();
             }
-            puvShowAllProduct();
+            prvShowAllProduct();
             puvFormatDataGrid();
         }
 
         // Method for show all product when form load to data grid view dgvAllProduct
-        private void puvShowAllProduct()
+        private void prvShowAllProduct()
         {
             bCheck = false;
             sSql = "select * from tb_product";
@@ -191,7 +191,37 @@ namespace Fruit_Stock
             cmdInsert.ExecuteNonQuery();
 
             prvClearAll();
-            puvShowAllProduct();
+            prvShowAllProduct();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtProID.Text == "")
+                {
+                    MessageBox.Show("กรุณาเลือกข้อมูลที่จะลบ", "ผิดพลาด");
+                    return;
+                }
+                String sqlDelProduct = "DELETE FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
+                oCenter.pusvOpenConnection();
+
+                OleDbCommand comDelProduct = new OleDbCommand(sqlDelProduct, oCenter.conn);
+
+                if (MessageBox.Show("คุณต้องการลบข้อมูลนี้ใช่หรือไม่", "ยืนยัน",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    comDelProduct.ExecuteNonQuery();
+                    MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
+                    prvClearAll();
+                    prvShowAllProduct();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error btnDelete_Click" + ex.Message.ToString(), "โปรดลองอีกครั้ง",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
