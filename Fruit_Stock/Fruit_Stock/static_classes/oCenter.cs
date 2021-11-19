@@ -127,7 +127,7 @@ namespace Fruit_Stock.static_classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex.Message.ToString(), "Msg",
+                MessageBox.Show("Error LoadData :" + ex.Message.ToString(), "Msg",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -152,7 +152,7 @@ namespace Fruit_Stock.static_classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex.Message.ToString(), "Msg",
+                MessageBox.Show("Error ActionData :" + ex.Message.ToString(), "Msg",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 bCheck = false;
             }

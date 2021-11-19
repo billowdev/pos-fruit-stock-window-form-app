@@ -51,10 +51,10 @@ namespace Fruit_Stock
                 
                 lbUserStatus.Hide();
                 lbID.Hide();
-                ShowAllMember();
-                FormatDataEmployee();
+                prvShowAllMember();
+                prvFormatDataEmployee();
 
-                FormatDataUser();
+                prvFormatDataUser();
 
                 dgvAllMember.ReadOnly = true;
             }
@@ -63,7 +63,7 @@ namespace Fruit_Stock
 
 
         // ================================== Function Show All Member for Admin ================================== // 
-        private void ShowAllMember()
+        private void prvShowAllMember()
         {
             string sSqlEmp = "select * from tb_employee";
             string sSqlLogin = "select * from tb_login";
@@ -263,12 +263,12 @@ namespace Fruit_Stock
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            clearAll();
+            prvClearAll();
             // AutoID                     Field Name        Table Name Head  Last      
             txtEMPID.Text = ocn.pusAutoID("emp_id", "tb_employee", "emp", "000"); // P-0001
         }
 
-        private void clearAll()
+        private void prvClearAll()
         {
             txtEMPID.Text = "";
             txtLastName.Text = "";
@@ -280,7 +280,7 @@ namespace Fruit_Stock
             rdbAdmin.Checked = false;
         }
 
-        private void checkStateGender()
+        private void prvCheckStateGender()
         {
             if (rdbMale.Checked == true)
             {
@@ -318,8 +318,8 @@ namespace Fruit_Stock
                     else
                     {
                         puvEditFunction();
-                        clearAll();
-                        ShowAllMember();
+                        prvClearAll();
+                        prvShowAllMember();
                     }
                 }
             }
@@ -377,7 +377,7 @@ namespace Fruit_Stock
         // ======================================== ##  btnSave_Click Event  ## ================================= //
         private void btnSave_Click(object sender, EventArgs e)
         {
-            checkStateGender();
+            prvCheckStateGender();
             if (txtEMPID.Text == "" ||
                 txtName.Text == "" ||
                 txtLastName.Text == "" ||
@@ -448,8 +448,8 @@ namespace Fruit_Stock
                     MessageBox.Show("ได้บันทึกข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
 
 
-                    clearAll();
-                    ShowAllMember();
+                    prvClearAll();
+                    prvShowAllMember();
 
                 }
             }
@@ -463,7 +463,7 @@ namespace Fruit_Stock
         // ### ======================================== ##  END btnSave_Click Event  ## =================================  ### //
 
         // ### ======================================== ##   Employee Data Grid View Format ## =================================  ### //
-        private void FormatDataEmployee()
+        private void prvFormatDataEmployee()
         {
             DataGridViewCellStyle cs = new DataGridViewCellStyle();
             cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
@@ -511,8 +511,8 @@ namespace Fruit_Stock
                     comDelEmp.ExecuteNonQuery();
                     comDelLogin.ExecuteNonQuery();
                     MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
-                    clearAll();
-                    ShowAllMember();
+                    prvClearAll();
+                    prvShowAllMember();
                 }
             }
             catch (Exception ex)
@@ -526,7 +526,7 @@ namespace Fruit_Stock
 
         // ### ======================================== ##   Data Grid View Format ## =================================  ### //
 
-        private void FormatDataUser()
+        private void prvFormatDataUser()
         {
             //dgvAllUser.ColumnCount = 3;
             DataGridViewCellStyle cs = new DataGridViewCellStyle();

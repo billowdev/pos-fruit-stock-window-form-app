@@ -21,9 +21,18 @@ namespace Fruit_Stock
         }
 
         string sSql="";
+        oCenter ocn = new oCenter();
+        DataSet dsProduct = new DataSet();
+        bool bCheck = false;
 
         private void FrmProduct_Load(object sender, EventArgs e)
         {
+            if (txtProID.Text == "")
+            {
+                // AutoID                     Field Name        Table Name Head  Last      
+                txtProID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
+                txtProName.Focus();
+            }
             puvShowAllProduct();
             puvFormatDataGrid();
         }
@@ -31,32 +40,50 @@ namespace Fruit_Stock
         // Method for show all product when form load to data grid view dgvAllProduct
         private void puvShowAllProduct()
         {
-             sSql = "select * from tb_product";
-
-            // ------------------------------------------------------- //
-            DataSet ds = new DataSet();
-            oCenter.da = new OleDbDataAdapter(sSql, oCenter.conn);
-
-            bool bCheck = false;
+            bCheck = false;
+            sSql = "select * from tb_product";
+            dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
 
             if (bCheck == true)
             {
-                ds.Tables["tb_product"].Clear();
+                dsProduct.Tables["tb_product"].Clear();
             }
 
-            //daLogin = new OleDbDataAdapter();
-            oCenter.da.Fill(ds, "tb_product");
-
-            if (ds.Tables["tb_product"].Rows.Count != 0)
+            if (dsProduct.Tables["tb_product"].Rows.Count != 0)
             {
                 bCheck = true;
                 dgvAllProduct.ReadOnly = true;
-                dgvAllProduct.DataSource = ds.Tables["tb_product"];
+                dgvAllProduct.DataSource = dsProduct.Tables["tb_product"];
             }
             else
             {
                 bCheck = false;
             }
+            
+            /*
+            // ==================  Set Unit to Combo Box
+            if (dsProduct.Tables["tb_product"].Rows.Count != 0)
+            {
+                for (int nRow=0; nRow <= dsProduct.Tables["tb_product"].Rows.Count - 1; nRow++)
+                {
+                    cmbUnit.Items.Add(dsProduct.Tables["tb_product"].Rows[nRow]["pro_unit"].ToString());
+                }
+            }
+
+            // remove duplicate from combo box list
+
+            List<object> list = new List<object>();
+            foreach (object o in cmbUnit.Items)
+            {
+                if (!list.Contains(o))
+                {
+                    list.Add(o);
+                }
+            }
+            cmbUnit.Items.Clear();
+            cmbUnit.Items.AddRange(list.ToArray());
+            */
+            // ----------------------------------------------------------------------------------- //
         }
 
         // Method for format datagridview
@@ -74,35 +101,100 @@ namespace Fruit_Stock
 
             dgvAllProduct.Columns[0].Width = 140;
             dgvAllProduct.Columns[1].Width = 320;
-            dgvAllProduct.Columns[2].Width = 220;
+            dgvAllProduct.Columns[2].Width = 160;
             dgvAllProduct.Columns[3].Width = 160;
-            dgvAllProduct.Columns[4].Width = 220;
+            dgvAllProduct.Columns[4].Width = 160;
             dgvAllProduct.Columns[5].Width = 160;
+        }
+
+        private void cmbUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void dgvAllProduct_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == dgvAllProduct.Rows.Count)
+            {
+                return;
+            }
+            try
+            {
+                txtProID.Text = dgvAllProduct.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtProName.Text = dgvAllProduct.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtProPrice.Text = dgvAllProduct.Rows[e.RowIndex].Cells[2].Value.ToString();
+                //cmbUnit.SelectedItem = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtUnit.Text = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString(); 
+                lbStockQuantity.Text = dgvAllProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "Try again",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            prvClearAll();
+        }
+
+        private void prvClearAll()
+        {
+            txtProID.Text = "";
+            txtProName.Text = "";
+            txtProPrice.Text = "";
+            //cmbUnit.SelectedItem = "";
+            txtUnit.Text = "กิโลกรัม";
+            lbStockQuantity.Text = "0";
+            // AutoID                     Field Name        Table Name Head  Last      
+            txtProID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
+            txtProName.Focus();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (txtProID.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกรหัสสินค้า", "Msg", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                txtProID.Focus();
+                return;
+            }
+            if (txtProName.Text == "" || txtProPrice.Text == "" || txtUnit.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อมูลให้ครบ", "Msg", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            string sSqlInsert = "";
+            sSqlInsert = " INSERT INTO tb_product(pro_id,pro_name,pro_price,pro_unit,pro_quantity,im_id) VALUES(@id,@name,@price,@unit,@quantity,@im_id)";
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+            OleDbCommand cmdInsert = new OleDbCommand();
+            cmdInsert.Parameters.Clear();
+
+            cmdInsert.Parameters.AddWithValue("@id", txtProID.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@name", txtProName.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@price", txtProPrice.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@unit", txtUnit.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@quantity", 0);
+                                     // AutoID     Field Name  Table Name Head  Last      
+            string im_id = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            cmdInsert.Parameters.AddWithValue("@imid", im_id);
+
+            cmdInsert.CommandType = CommandType.Text;
+            cmdInsert.CommandText = sSqlInsert;
+            cmdInsert.Connection = oCenter.conn;
+            cmdInsert.ExecuteNonQuery();
+
+            prvClearAll();
+            puvShowAllProduct();
         }
     }
 }
 
 
-// Load data Code
 
-//oCenter ocn = new oCenter();
-//DataSet dsLogin = new DataSet();
-
-//string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
-//    " Password='" + txtPassword.Text.Trim() + "'";
-//dsLogin = ocn.puds_LoadData(sSql, "tb_login", dsLogin);
-
-//if (dsLogin.Tables["tb_login"].Rows.Count != 0)
-//{
-//    //MessageBox.Show();
-
-//    oCenter.currentUsername = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
-//    oCenter.currentStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
-//    oCenter.currentid = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
-
-//    puvGetEmployee();
-//    FrmMain Frm = new FrmMain();
-//    Frm.Show();
-//    this.Hide();
-
-//}
