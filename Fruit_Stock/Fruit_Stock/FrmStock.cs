@@ -205,6 +205,68 @@ namespace Fruit_Stock
             // =============  END Update Quantity at tb_product after import ========================= //
         }
 
-      
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
+        private void prvSearch()
+        {
+            bool bCheck = false;
+
+            if (txtSearch.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataSet dsSearchStock = new DataSet();
+            string sSqlSelect = " SELECT * FROM tb_import WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
+
+            if (bCheck == true)
+            {
+                dsSearchStock.Tables["tb_import"].Clear();
+            }
+
+            OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
+            da.Fill(dsSearchStock, "tb_import");
+
+            if (dsSearchStock.Tables["tb_import"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllStock.ReadOnly = true;
+                dgvAllStock.DataSource = dsSearchStock.Tables["tb_import"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+            dgvAllStock.Refresh();
+            btnSearch.Enabled = false;
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllStock();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                prvSearch();
+                }
+                else
+                {
+                    MessageBox.Show("Please Refresh and try again", "Msg", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
     }
 }

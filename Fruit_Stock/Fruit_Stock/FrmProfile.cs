@@ -548,6 +548,11 @@ namespace Fruit_Stock
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            prvSearch();
+        }
+
+        private void prvSearch()
+        {
             if (txtSearch.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -558,7 +563,7 @@ namespace Fruit_Stock
             string sSqlSelect = "";
             if (txtSearch.Text.Trim() != "")
             {
-                
+
                 sSqlAdd = " WHERE " + sSql + " emp_id+emp_name+emp_lastname+emp_phone LIKE '%" + txtSearch.Text.Trim() + "%' ";
             }
             DataSet dsSearch = new DataSet();
@@ -584,21 +589,21 @@ namespace Fruit_Stock
 
                 DataSet dsUser = new DataSet();
                 OleDbDataAdapter da_user = new OleDbDataAdapter();
-                
+
                 // If dgvAllMember are have multirow : then Search from tb_login multirow too.. By WHERE emp_id is equal
-                for (int nRow=0; nRow <= dsSearch.Tables["tb_employee"].Rows.Count -1; nRow++)
+                for (int nRow = 0; nRow <= dsSearch.Tables["tb_employee"].Rows.Count - 1; nRow++)
                 {
-                string selectUser = "SELECT * FROM tb_login WHERE emp_id='" 
-                    + dsSearch.Tables["tb_employee"].Rows[nRow]["emp_id"].ToString() + "'";
-                    
-                da_user = new OleDbDataAdapter(selectUser, oCenter.conn);
-                da_user.Fill(dsUser, "tb_login");
+                    string selectUser = "SELECT * FROM tb_login WHERE emp_id='"
+                        + dsSearch.Tables["tb_employee"].Rows[nRow]["emp_id"].ToString() + "'";
+
+                    da_user = new OleDbDataAdapter(selectUser, oCenter.conn);
+                    da_user.Fill(dsUser, "tb_login");
 
                 }
-                
+
                 dgvAllUser.ReadOnly = true;
                 dgvAllUser.DataSource = dsUser.Tables["tb_login"];
-          
+
             }
             else
             {
@@ -608,12 +613,27 @@ namespace Fruit_Stock
             btnSearch.Enabled = false;
         }
 
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             prvShowAllMember();
             txtSearch.Text = "";
             btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                    prvSearch();
+                }
+                else
+                {
+                    MessageBox.Show("Please Refresh and try again", "Msg",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }

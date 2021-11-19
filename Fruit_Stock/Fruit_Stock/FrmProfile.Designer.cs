@@ -410,6 +410,7 @@ namespace Fruit_Stock
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(294, 34);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // gbStatus
             // 

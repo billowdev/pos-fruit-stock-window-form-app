@@ -251,6 +251,10 @@ namespace Fruit_Stock
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            prvSearch();
+        }
+        private void prvSearch()
+        {
             bool bCheck = false;
 
             if (txtSearch.Text == "")
@@ -260,7 +264,7 @@ namespace Fruit_Stock
             }
 
             DataSet dsSearchProduct = new DataSet();
-            string sSqlSelect = " SELECT * FROM tb_product WHERE pro_id+pro_name+pro_unit+im_id LIKE '%" + txtSearch.Text.Trim() +"%' ORDER BY pro_id DESC;";
+            string sSqlSelect = " SELECT * FROM tb_product WHERE pro_id+pro_name+pro_unit+im_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY pro_id DESC;";
 
             if (bCheck == true)
             {
@@ -284,11 +288,28 @@ namespace Fruit_Stock
             btnSearch.Enabled = false;
         }
 
+
         private void btnSearchRefresh_Click(object sender, EventArgs e)
         {
             prvShowAllProduct();
             txtSearch.Text = "";
             btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                    prvSearch();
+                }
+                else
+                {
+                    MessageBox.Show("Please Refresh and try again", "Msg",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }

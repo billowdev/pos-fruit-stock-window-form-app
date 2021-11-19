@@ -52,6 +52,7 @@ namespace Fruit_Stock
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bdsPage = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -81,12 +82,13 @@ namespace Fruit_Stock
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(586, 16);
+            this.btnSearch.Location = new System.Drawing.Point(478, 16);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtProUnit
             // 
@@ -146,14 +148,16 @@ namespace Fruit_Stock
             this.txtSearch.Location = new System.Drawing.Point(11, 16);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(569, 34);
+            this.txtSearch.Size = new System.Drawing.Size(459, 34);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.groupBox2.Controls.Add(this.txtSearch);
+            this.groupBox2.Controls.Add(this.btnRefresh);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Location = new System.Drawing.Point(119, 516);
             this.groupBox2.MaximumSize = new System.Drawing.Size(680, 71);
@@ -290,6 +294,16 @@ namespace Fruit_Stock
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(573, 15);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(88, 33);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // FrmStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,5 +358,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpProImport;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
