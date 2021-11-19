@@ -114,7 +114,6 @@ namespace Fruit_Stock
                 bCheck = false;
             }
 
-            btnSearch.Enabled = true;
             IsFind = false;
         }
 
@@ -175,7 +174,7 @@ namespace Fruit_Stock
                     }
 
                     dtpBirthDate.Value = Convert.ToDateTime(dsEmp.Tables["tb_employee"].Rows[0]["emp_bdate"].ToString());
-                    txtPhone.Text = dsEmp.Tables["tb_employee"].Rows[0]["phone"].ToString();
+                    txtPhone.Text = dsEmp.Tables["tb_employee"].Rows[0]["emp_phone"].ToString();
 
                 }
                 // ======================================== End  it is fill all data from tb_login to dataGridView ================================================== //
@@ -613,6 +612,8 @@ namespace Fruit_Stock
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             prvShowAllMember();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
         }
     }
 }
