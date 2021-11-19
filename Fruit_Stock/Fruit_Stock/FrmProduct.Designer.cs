@@ -51,14 +51,17 @@ namespace Fruit_Stock
             this.btnNew = new System.Windows.Forms.Button();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(140, 523);
+            this.txtSearch.Location = new System.Drawing.Point(11, 16);
             this.txtSearch.MaximumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
@@ -67,7 +70,7 @@ namespace Fruit_Stock
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(1024, 523);
+            this.btnLast.Location = new System.Drawing.Point(895, 17);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(70, 33);
             this.btnLast.TabIndex = 9;
@@ -76,7 +79,7 @@ namespace Fruit_Stock
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(948, 523);
+            this.btnNext.Location = new System.Drawing.Point(819, 17);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(70, 33);
             this.btnNext.TabIndex = 10;
@@ -85,7 +88,7 @@ namespace Fruit_Stock
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(591, 522);
+            this.btnPrevious.Location = new System.Drawing.Point(462, 17);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(70, 33);
             this.btnPrevious.TabIndex = 8;
@@ -94,7 +97,7 @@ namespace Fruit_Stock
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(515, 523);
+            this.btnFirst.Location = new System.Drawing.Point(386, 17);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(70, 33);
             this.btnFirst.TabIndex = 7;
@@ -103,7 +106,7 @@ namespace Fruit_Stock
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(421, 523);
+            this.btnSearch.Location = new System.Drawing.Point(292, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
@@ -117,6 +120,8 @@ namespace Fruit_Stock
             this.dgvAllProduct.AllowUserToResizeColumns = false;
             this.dgvAllProduct.AllowUserToResizeRows = false;
             this.dgvAllProduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.dgvAllProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvAllProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dgvAllProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllProduct.Location = new System.Drawing.Point(140, 278);
             this.dgvAllProduct.MaximumSize = new System.Drawing.Size(950, 230);
@@ -132,11 +137,11 @@ namespace Fruit_Stock
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(641, 174);
+            this.btnAdd.Location = new System.Drawing.Point(565, 170);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(76, 37);
             this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "บันทึก";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -146,7 +151,7 @@ namespace Fruit_Stock
             this.lbPageNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbPageNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbPageNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPageNum.Location = new System.Drawing.Point(667, 523);
+            this.lbPageNum.Location = new System.Drawing.Point(538, 18);
             this.lbPageNum.Name = "lbPageNum";
             this.lbPageNum.Size = new System.Drawing.Size(275, 32);
             this.lbPageNum.TabIndex = 11;
@@ -155,21 +160,21 @@ namespace Fruit_Stock
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(187, 140);
+            this.label3.Location = new System.Drawing.Point(220, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 29);
+            this.label3.Size = new System.Drawing.Size(55, 29);
             this.label3.TabIndex = 1;
-            this.label3.Text = "หน่วย";
+            this.label3.Text = "Unit";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(164, 57);
+            this.label2.Location = new System.Drawing.Point(113, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 29);
+            this.label2.Size = new System.Drawing.Size(162, 29);
             this.label2.TabIndex = 1;
-            this.label2.Text = "ชื่อสินค้า";
+            this.label2.Text = "Product name";
             // 
             // txtProName
             // 
@@ -193,11 +198,11 @@ namespace Fruit_Stock
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 20);
+            this.label1.Location = new System.Drawing.Point(150, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 29);
+            this.label1.Size = new System.Drawing.Size(125, 29);
             this.label1.TabIndex = 1;
-            this.label1.Text = "รหัสสินค้า";
+            this.label1.Text = "Product ID";
             // 
             // groupBox1
             // 
@@ -211,11 +216,12 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.txtProID);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(140, 12);
+            this.groupBox1.Location = new System.Drawing.Point(140, 32);
             this.groupBox1.MaximumSize = new System.Drawing.Size(950, 250);
             this.groupBox1.MinimumSize = new System.Drawing.Size(950, 250);
             this.groupBox1.Name = "groupBox1";
@@ -236,17 +242,17 @@ namespace Fruit_Stock
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(196, 97);
+            this.label4.Location = new System.Drawing.Point(206, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 29);
+            this.label4.Size = new System.Drawing.Size(69, 29);
             this.label4.TabIndex = 1;
-            this.label4.Text = "ราคา";
+            this.label4.Text = "Price";
             // 
             // lbStockQuantity
             // 
             this.lbStockQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStockQuantity.Location = new System.Drawing.Point(285, 174);
+            this.lbStockQuantity.Location = new System.Drawing.Point(281, 174);
             this.lbStockQuantity.Name = "lbStockQuantity";
             this.lbStockQuantity.Size = new System.Drawing.Size(215, 25);
             this.lbStockQuantity.TabIndex = 1;
@@ -256,19 +262,19 @@ namespace Fruit_Stock
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(114, 170);
+            this.label6.Location = new System.Drawing.Point(175, 167);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 29);
+            this.label6.Size = new System.Drawing.Size(100, 29);
             this.label6.TabIndex = 1;
-            this.label6.Text = "จำนวนคงเหลือ";
+            this.label6.Text = "Quantity";
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(726, 174);
+            this.btnNew.Location = new System.Drawing.Point(645, 170);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(76, 37);
             this.btnNew.TabIndex = 5;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "เพิ่มใหม่";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -283,13 +289,42 @@ namespace Fruit_Stock
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(817, 174);
+            this.btnDelete.Location = new System.Drawing.Point(805, 170);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(76, 37);
             this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "ลบ";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(725, 170);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(76, 37);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.groupBox2.Controls.Add(this.txtSearch);
+            this.groupBox2.Controls.Add(this.lbPageNum);
+            this.groupBox2.Controls.Add(this.btnLast);
+            this.groupBox2.Controls.Add(this.btnSearch);
+            this.groupBox2.Controls.Add(this.btnNext);
+            this.groupBox2.Controls.Add(this.btnFirst);
+            this.groupBox2.Controls.Add(this.btnPrevious);
+            this.groupBox2.Location = new System.Drawing.Point(131, 514);
+            this.groupBox2.MaximumSize = new System.Drawing.Size(971, 71);
+            this.groupBox2.MinimumSize = new System.Drawing.Size(971, 71);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(971, 71);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
             // 
             // FrmProduct
             // 
@@ -299,14 +334,8 @@ namespace Fruit_Stock
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1200, 650);
             this.ControlBox = false;
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnLast);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnFirst);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvAllProduct);
-            this.Controls.Add(this.lbPageNum);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
@@ -318,6 +347,8 @@ namespace Fruit_Stock
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +377,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

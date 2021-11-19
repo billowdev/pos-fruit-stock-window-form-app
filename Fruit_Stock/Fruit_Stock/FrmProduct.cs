@@ -31,8 +31,10 @@ namespace Fruit_Stock
             {
                 // AutoID                     Field Name        Table Name Head  Last      
                 txtProID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
+                txtUnit.Text = "กิโลกรัม";
                 txtProName.Focus();
             }
+            dgvAllProduct.ReadOnly = true;
             prvShowAllProduct();
             puvFormatDataGrid();
         }
@@ -114,6 +116,7 @@ namespace Fruit_Stock
 
         private void dgvAllProduct_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            
             if (e.RowIndex == dgvAllProduct.Rows.Count)
             {
                 return;
@@ -124,13 +127,12 @@ namespace Fruit_Stock
                 txtProName.Text = dgvAllProduct.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtProPrice.Text = dgvAllProduct.Rows[e.RowIndex].Cells[2].Value.ToString();
                 //cmbUnit.SelectedItem = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtUnit.Text = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString(); 
+                txtUnit.Text = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString();
                 lbStockQuantity.Text = dgvAllProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message, "Try again",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -170,7 +172,7 @@ namespace Fruit_Stock
 
 
             string sSqlInsert = "";
-            sSqlInsert = " INSERT INTO tb_product(pro_id,pro_name,pro_price,pro_unit,pro_quantity,im_id) VALUES(@id,@name,@price,@unit,@quantity,@im_id)";
+            sSqlInsert = " INSERT INTO tb_product(pro_id,pro_name,pro_price,pro_unit,pro_quantity) VALUES(@id,@name,@price,@unit,@quantity)";
             oCenter.pusvCloseConnection();
             oCenter.pusvOpenConnection();
             OleDbCommand cmdInsert = new OleDbCommand();
@@ -182,8 +184,8 @@ namespace Fruit_Stock
             cmdInsert.Parameters.AddWithValue("@unit", txtUnit.Text.Trim().ToString());
             cmdInsert.Parameters.AddWithValue("@quantity", 0);
                                      // AutoID     Field Name  Table Name Head  Last      
-            string im_id = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
-            cmdInsert.Parameters.AddWithValue("@imid", im_id);
+            //string im_id = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            //cmdInsert.Parameters.AddWithValue("@imid", im_id);
 
             cmdInsert.CommandType = CommandType.Text;
             cmdInsert.CommandText = sSqlInsert;
@@ -209,7 +211,7 @@ namespace Fruit_Stock
                 OleDbCommand comDelProduct = new OleDbCommand(sqlDelProduct, oCenter.conn);
 
                 if (MessageBox.Show("คุณต้องการลบข้อมูลนี้ใช่หรือไม่", "ยืนยัน",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     comDelProduct.ExecuteNonQuery();
                     MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
@@ -223,6 +225,44 @@ namespace Fruit_Stock
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("คุณต้องการแก้ข้อมูลนี้ใช่หรือไม่", "ยืนยัน",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string sqlEdit;
+
+                    sqlEdit = " UPDATE tb_product SET pro_name='" + txtProName.Text
+                        + "',pro_price='" + txtProPrice.Text
+                        + "',pro_unit='" + txtUnit.Text
+                        + "'WHERE pro_id='" + txtProID.Text + "'";
+
+                    oCenter.pusvCloseConnection();
+                    oCenter.pusvOpenConnection();
+                    OleDbCommand cmdEdit = new OleDbCommand();
+                    cmdEdit.CommandType = CommandType.Text;
+                    cmdEdit.CommandText = sqlEdit;
+                    cmdEdit.Connection = oCenter.conn;
+                    cmdEdit.ExecuteNonQuery();
+
+                    MessageBox.Show("แก้ไขข้อมูลเรียบร้อยแล้ว");
+                    prvClearAll();
+                    prvShowAllProduct();
+                }
+
+
+            } catch (Exception ex)
+            {
+                
+                MessageBox.Show("Erro EDIT:" + ex.Message, "Msg", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+      
     }
 }
 
