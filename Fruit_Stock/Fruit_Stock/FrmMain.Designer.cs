@@ -183,7 +183,6 @@ namespace Fruit_Stock
             // 
             // timTimeLoading
             // 
-            this.timTimeLoading.Enabled = true;
             this.timTimeLoading.Interval = 8500;
             this.timTimeLoading.Tick += new System.EventHandler(this.timTimeLoading_Tick);
             // 

@@ -28,6 +28,7 @@ namespace Fruit_Stock
 
             lbWelcome.Text = "Welcome " + oCenter.currentName;
             lbWelcome.Hide();
+            pbLoad.Dispose();
         }
 
         private void mnuProfile_Click(object sender, EventArgs e)
@@ -97,11 +98,9 @@ namespace Fruit_Stock
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {
-                try
-                {
-                    Application.Exit();
-                }
-                catch { }
+
+                //Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                Environment.Exit(1);
             }
         }
 

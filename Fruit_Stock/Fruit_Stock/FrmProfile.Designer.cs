@@ -263,12 +263,14 @@ namespace Fruit_Stock
             this.dgvAllMember.AllowUserToResizeRows = false;
             this.dgvAllMember.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.dgvAllMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllMember.Location = new System.Drawing.Point(10, 9);
+            this.dgvAllMember.Location = new System.Drawing.Point(14, 32);
+            this.dgvAllMember.MaximumSize = new System.Drawing.Size(680, 290);
+            this.dgvAllMember.MinimumSize = new System.Drawing.Size(680, 290);
             this.dgvAllMember.Name = "dgvAllMember";
             this.dgvAllMember.ReadOnly = true;
             this.dgvAllMember.RowHeadersWidth = 51;
             this.dgvAllMember.RowTemplate.Height = 24;
-            this.dgvAllMember.Size = new System.Drawing.Size(682, 293);
+            this.dgvAllMember.Size = new System.Drawing.Size(680, 290);
             this.dgvAllMember.TabIndex = 7;
             this.dgvAllMember.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllMember_CellMouseUp);
             // 
@@ -277,7 +279,7 @@ namespace Fruit_Stock
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(191, 467);
+            this.btnNew.Location = new System.Drawing.Point(191, 495);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(81, 39);
             this.btnNew.TabIndex = 8;
@@ -290,7 +292,7 @@ namespace Fruit_Stock
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(278, 467);
+            this.btnEdit.Location = new System.Drawing.Point(278, 495);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(79, 39);
             this.btnEdit.TabIndex = 8;
@@ -303,7 +305,7 @@ namespace Fruit_Stock
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(451, 467);
+            this.btnDelete.Location = new System.Drawing.Point(451, 495);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 39);
             this.btnDelete.TabIndex = 8;
@@ -316,7 +318,7 @@ namespace Fruit_Stock
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(363, 467);
+            this.btnSave.Location = new System.Drawing.Point(363, 495);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 39);
             this.btnSave.TabIndex = 8;
@@ -355,9 +357,11 @@ namespace Fruit_Stock
             this.gbOperating.Controls.Add(this.txtName);
             this.gbOperating.Controls.Add(this.txtEMPID);
             this.gbOperating.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbOperating.Location = new System.Drawing.Point(698, 12);
+            this.gbOperating.Location = new System.Drawing.Point(700, 32);
+            this.gbOperating.MaximumSize = new System.Drawing.Size(670, 570);
+            this.gbOperating.MinimumSize = new System.Drawing.Size(670, 570);
             this.gbOperating.Name = "gbOperating";
-            this.gbOperating.Size = new System.Drawing.Size(668, 540);
+            this.gbOperating.Size = new System.Drawing.Size(670, 570);
             this.gbOperating.TabIndex = 9;
             this.gbOperating.TabStop = false;
             // 
@@ -477,12 +481,14 @@ namespace Fruit_Stock
             this.dgvAllUser.AllowUserToResizeRows = false;
             this.dgvAllUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.dgvAllUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllUser.Location = new System.Drawing.Point(10, 308);
+            this.dgvAllUser.Location = new System.Drawing.Point(14, 331);
+            this.dgvAllUser.MaximumSize = new System.Drawing.Size(680, 290);
+            this.dgvAllUser.MinimumSize = new System.Drawing.Size(680, 290);
             this.dgvAllUser.Name = "dgvAllUser";
             this.dgvAllUser.ReadOnly = true;
             this.dgvAllUser.RowHeadersWidth = 51;
             this.dgvAllUser.RowTemplate.Height = 24;
-            this.dgvAllUser.Size = new System.Drawing.Size(682, 280);
+            this.dgvAllUser.Size = new System.Drawing.Size(680, 290);
             this.dgvAllUser.TabIndex = 7;
             // 
             // FrmProfile
@@ -491,13 +497,13 @@ namespace Fruit_Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1422, 653);
+            this.ClientSize = new System.Drawing.Size(1440, 700);
             this.ControlBox = false;
             this.Controls.Add(this.dgvAllUser);
             this.Controls.Add(this.dgvAllMember);
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 700);
             this.MinimizeBox = false;
