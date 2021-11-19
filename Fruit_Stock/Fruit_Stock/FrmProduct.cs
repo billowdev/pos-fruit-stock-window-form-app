@@ -62,29 +62,6 @@ namespace Fruit_Stock
                 bCheck = false;
             }
             
-            /*
-            // ==================  Set Unit to Combo Box
-            if (dsProduct.Tables["tb_product"].Rows.Count != 0)
-            {
-                for (int nRow=0; nRow <= dsProduct.Tables["tb_product"].Rows.Count - 1; nRow++)
-                {
-                    cmbUnit.Items.Add(dsProduct.Tables["tb_product"].Rows[nRow]["pro_unit"].ToString());
-                }
-            }
-
-            // remove duplicate from combo box list
-
-            List<object> list = new List<object>();
-            foreach (object o in cmbUnit.Items)
-            {
-                if (!list.Contains(o))
-                {
-                    list.Add(o);
-                }
-            }
-            cmbUnit.Items.Clear();
-            cmbUnit.Items.AddRange(list.ToArray());
-            */
             // ----------------------------------------------------------------------------------- //
         }
 

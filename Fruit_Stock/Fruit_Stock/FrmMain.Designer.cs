@@ -147,9 +147,9 @@ namespace Fruit_Stock
             this.toolStripStatusLabel1,
             this.stsTime,
             this.stsName});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 977);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 992);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1920, 52);
+            this.statusStrip1.Size = new System.Drawing.Size(1920, 37);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -158,22 +158,22 @@ namespace Fruit_Stock
             this.toolStripStatusLabel1.AutoSize = false;
             this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(300, 46);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(300, 31);
             this.toolStripStatusLabel1.Text = "โปรแกรมสต๊อกสินค้า ร้านผลไม้";
             // 
             // stsTime
             // 
             this.stsTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.stsTime.Name = "stsTime";
-            this.stsTime.Size = new System.Drawing.Size(56, 46);
+            this.stsTime.Size = new System.Drawing.Size(56, 31);
             this.stsTime.Text = "Time";
             // 
             // stsName
             // 
-            this.stsName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.stsName.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.stsName.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.stsName.Name = "stsName";
-            this.stsName.Size = new System.Drawing.Size(210, 46);
+            this.stsName.Size = new System.Drawing.Size(210, 31);
             this.stsName.Text = "Name + Lastname";
             // 
             // timTime
@@ -192,7 +192,7 @@ namespace Fruit_Stock
             this.pbLoad.Image = ((System.Drawing.Image)(resources.GetObject("pbLoad.Image")));
             this.pbLoad.Location = new System.Drawing.Point(0, 58);
             this.pbLoad.Name = "pbLoad";
-            this.pbLoad.Size = new System.Drawing.Size(1920, 919);
+            this.pbLoad.Size = new System.Drawing.Size(1920, 934);
             this.pbLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLoad.TabIndex = 8;
             this.pbLoad.TabStop = false;

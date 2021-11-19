@@ -51,17 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmHistoryStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHistoryStock.Designer.cs">
+      <DependentUpon>FrmHistoryStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHistoryInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmHistoryInvoice.Designer.cs">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmStock.cs">
+    <Compile Include="FrmListProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmStock.Designer.cs">
-      <DependentUpon>FrmStock.cs</DependentUpon>
+    <Compile Include="FrmListProduct.Designer.cs">
+      <DependentUpon>FrmListProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -93,6 +99,12 @@
     <Compile Include="FrmProduct.Designer.cs">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStock.Designer.cs">
+      <DependentUpon>FrmStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -101,11 +113,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="static_classes\oCenter.cs" />
+    <EmbeddedResource Include="FrmHistoryStock.resx">
+      <DependentUpon>FrmHistoryStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHistoryInvoice.resx">
       <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmStock.resx">
-      <DependentUpon>FrmStock.cs</DependentUpon>
+    <EmbeddedResource Include="FrmListProduct.resx">
+      <DependentUpon>FrmListProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -121,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStock.resx">
+      <DependentUpon>FrmStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
