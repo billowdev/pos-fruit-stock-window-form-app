@@ -66,6 +66,8 @@ namespace Fruit_Stock
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAllUser = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             this.gbStatus.SuspendLayout();
@@ -285,7 +287,7 @@ namespace Fruit_Stock
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Location = new System.Drawing.Point(191, 495);
+            this.btnNew.Location = new System.Drawing.Point(195, 461);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(81, 39);
             this.btnNew.TabIndex = 14;
@@ -298,7 +300,7 @@ namespace Fruit_Stock
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(278, 495);
+            this.btnEdit.Location = new System.Drawing.Point(282, 461);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(79, 39);
             this.btnEdit.TabIndex = 12;
@@ -311,7 +313,7 @@ namespace Fruit_Stock
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(451, 495);
+            this.btnDelete.Location = new System.Drawing.Point(455, 461);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 39);
             this.btnDelete.TabIndex = 15;
@@ -324,7 +326,7 @@ namespace Fruit_Stock
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(363, 495);
+            this.btnSave.Location = new System.Drawing.Point(367, 461);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 39);
             this.btnSave.TabIndex = 13;
@@ -338,6 +340,8 @@ namespace Fruit_Stock
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.gbOperating.Controls.Add(this.btnSearch);
+            this.gbOperating.Controls.Add(this.txtSearch);
             this.gbOperating.Controls.Add(this.gbStatus);
             this.gbOperating.Controls.Add(this.lbUserStatus);
             this.gbOperating.Controls.Add(this.groupBox1);
@@ -364,10 +368,10 @@ namespace Fruit_Stock
             this.gbOperating.Controls.Add(this.txtEMPID);
             this.gbOperating.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbOperating.Location = new System.Drawing.Point(700, 32);
-            this.gbOperating.MaximumSize = new System.Drawing.Size(670, 570);
-            this.gbOperating.MinimumSize = new System.Drawing.Size(670, 570);
+            this.gbOperating.MaximumSize = new System.Drawing.Size(670, 589);
+            this.gbOperating.MinimumSize = new System.Drawing.Size(670, 589);
             this.gbOperating.Name = "gbOperating";
-            this.gbOperating.Size = new System.Drawing.Size(670, 570);
+            this.gbOperating.Size = new System.Drawing.Size(670, 589);
             this.gbOperating.TabIndex = 9;
             this.gbOperating.TabStop = false;
             // 
@@ -497,6 +501,25 @@ namespace Fruit_Stock
             this.dgvAllUser.Size = new System.Drawing.Size(680, 290);
             this.dgvAllUser.TabIndex = 7;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(22, 530);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(483, 34);
+            this.txtSearch.TabIndex = 13;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(522, 526);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(117, 43);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // FrmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -569,5 +592,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.RadioButton rdbUser;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox gbStatus;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

@@ -115,6 +115,15 @@ namespace Fruit_Stock
             stsName.Text = "| Welcome: " + oCenter.currentName + " " + oCenter.currentLastName +
                             " Your Status is : " + oCenter.currentStatus + " |";
         }
+
+        private void mnuHistoryStock_Click(object sender, EventArgs e)
+        {
+            lbWelcome.Dispose();
+            pbMain.Dispose();
+            FrmHistoryStock Frm = new FrmHistoryStock();
+            Frm.MdiParent = this;
+            Frm.Show();
+        }
     }
 }
 

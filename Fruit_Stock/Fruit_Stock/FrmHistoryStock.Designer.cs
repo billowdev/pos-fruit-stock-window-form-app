@@ -30,26 +30,20 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.dgvAllStock = new System.Windows.Forms.DataGridView();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpProImport = new System.Windows.Forms.DateTimePicker();
             this.txtProQuantity = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtProName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbBarcode = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lbPageNum = new System.Windows.Forms.Label();
-            this.btnLast = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,8 +57,8 @@ namespace Fruit_Stock
             this.dgvAllStock.AllowUserToResizeRows = false;
             this.dgvAllStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.dgvAllStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllStock.Location = new System.Drawing.Point(73, 211);
-            this.dgvAllStock.MaximumSize = new System.Drawing.Size(987, 355);
+            this.dgvAllStock.Location = new System.Drawing.Point(116, 201);
+            this.dgvAllStock.MaximumSize = new System.Drawing.Size(987, 387);
             this.dgvAllStock.MinimumSize = new System.Drawing.Size(687, 192);
             this.dgvAllStock.Name = "dgvAllStock";
             this.dgvAllStock.ReadOnly = true;
@@ -72,24 +66,14 @@ namespace Fruit_Stock
             this.dgvAllStock.RowHeadersWidth = 51;
             this.dgvAllStock.RowTemplate.Height = 24;
             this.dgvAllStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllStock.Size = new System.Drawing.Size(987, 355);
+            this.dgvAllStock.Size = new System.Drawing.Size(987, 299);
             this.dgvAllStock.TabIndex = 41;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(868, 109);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(94, 45);
-            this.btnBack.TabIndex = 42;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(768, 109);
+            this.btnEdit.Location = new System.Drawing.Point(768, 102);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(94, 45);
+            this.btnEdit.Size = new System.Drawing.Size(194, 63);
             this.btnEdit.TabIndex = 43;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -110,14 +94,13 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.txtProQuantity);
-            this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.txtProName);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lbBarcode);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(73, 22);
+            this.groupBox1.Location = new System.Drawing.Point(116, 12);
             this.groupBox1.MaximumSize = new System.Drawing.Size(987, 183);
             this.groupBox1.MinimumSize = new System.Drawing.Size(987, 183);
             this.groupBox1.Name = "groupBox1";
@@ -144,6 +127,17 @@ namespace Fruit_Stock
             this.txtProQuantity.Size = new System.Drawing.Size(301, 30);
             this.txtProQuantity.TabIndex = 2;
             this.txtProQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(144, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(360, 30);
+            this.textBox1.TabIndex = 2;
             // 
             // txtProName
             // 
@@ -196,101 +190,37 @@ namespace Fruit_Stock
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(144, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(360, 30);
-            this.textBox1.TabIndex = 2;
-            // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.groupBox2.Controls.Add(this.txtSearch);
-            this.groupBox2.Controls.Add(this.lbPageNum);
-            this.groupBox2.Controls.Add(this.btnLast);
             this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Controls.Add(this.btnNext);
-            this.groupBox2.Controls.Add(this.btnFirst);
-            this.groupBox2.Controls.Add(this.btnPrevious);
-            this.groupBox2.Location = new System.Drawing.Point(73, 588);
-            this.groupBox2.MaximumSize = new System.Drawing.Size(987, 71);
-            this.groupBox2.MinimumSize = new System.Drawing.Size(987, 71);
+            this.groupBox2.Location = new System.Drawing.Point(297, 506);
+            this.groupBox2.MaximumSize = new System.Drawing.Size(680, 71);
+            this.groupBox2.MinimumSize = new System.Drawing.Size(680, 71);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(987, 71);
-            this.groupBox2.TabIndex = 45;
+            this.groupBox2.Size = new System.Drawing.Size(680, 71);
+            this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(11, 16);
-            this.txtSearch.MaximumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(275, 34);
+            this.txtSearch.Size = new System.Drawing.Size(569, 34);
             this.txtSearch.TabIndex = 13;
-            // 
-            // lbPageNum
-            // 
-            this.lbPageNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbPageNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbPageNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbPageNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPageNum.Location = new System.Drawing.Point(544, 18);
-            this.lbPageNum.Name = "lbPageNum";
-            this.lbPageNum.Size = new System.Drawing.Size(275, 32);
-            this.lbPageNum.TabIndex = 11;
-            // 
-            // btnLast
-            // 
-            this.btnLast.Location = new System.Drawing.Point(901, 17);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(70, 33);
-            this.btnLast.TabIndex = 9;
-            this.btnLast.Text = ">l";
-            this.btnLast.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(292, 17);
+            this.btnSearch.Location = new System.Drawing.Point(586, 16);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(825, 17);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(70, 33);
-            this.btnNext.TabIndex = 10;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Location = new System.Drawing.Point(392, 17);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(70, 33);
-            this.btnFirst.TabIndex = 7;
-            this.btnFirst.Text = "l<";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(468, 17);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(70, 33);
-            this.btnPrevious.TabIndex = 8;
-            this.btnPrevious.Text = "<<";
-            this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // FrmHistoryStock
             // 
@@ -298,12 +228,14 @@ namespace Fruit_Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.ClientSize = new System.Drawing.Size(1115, 712);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvAllStock);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmHistoryStock";
             this.Text = "ประวัติการนำเข้าสินค้า";
-            this.Load += new System.EventHandler(this.FrmEditStock_Load);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -317,7 +249,6 @@ namespace Fruit_Stock
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAllStock;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -331,11 +262,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label lbPageNum;
-        private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnPrevious;
     }
 }

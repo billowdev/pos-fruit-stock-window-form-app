@@ -14,10 +14,13 @@ namespace Fruit_Stock
 {
     public partial class FrmStock : Form
     {
+      
         public FrmStock()
         {
             InitializeComponent();
         }
+
+
         bool bCheck = false;
         string sSql;
         DataSet dsStock = new DataSet();
@@ -25,13 +28,12 @@ namespace Fruit_Stock
 
         private void FrmStock_Load(object sender, EventArgs e)
         {
-            puvShowAllStock();
+            prvShowAllStock();
             puvFormatDataGrid();
             // AutoID                     Field Name   Table Name Head  Last      
             txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
-
         }
-        public void puvShowAllStock()
+        private void prvShowAllStock()
         {
             bCheck = false;
             sSql = "select * from tb_import";
@@ -53,8 +55,9 @@ namespace Fruit_Stock
                 bCheck = false;
             }
         }
+       
 
-        public void puvClearAll()
+        private void prvClearAll()
         {
             txtProID.Text = "";
             txtProName.Text = "";
@@ -72,6 +75,8 @@ namespace Fruit_Stock
         {
             try
             {
+                dgvAllStock.Update();
+                dgvAllStock.Refresh();
                 DataGridViewCellStyle cs = new DataGridViewCellStyle();
                 cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
                 dgvAllStock.ColumnHeadersDefaultCellStyle = cs;
@@ -195,18 +200,11 @@ namespace Fruit_Stock
             cmdUpdate.Connection = oCenter.conn;
             cmdUpdate.ExecuteNonQuery();
 
-            puvShowAllStock();
-            puvClearAll();
-            
-
+            prvShowAllStock();
+            prvClearAll();
             // =============  END Update Quantity at tb_product after import ========================= //
         }
 
-        private void btnHistoryStock_Click(object sender, EventArgs e)
-        {
-            FrmHistoryStock Frm = new FrmHistoryStock();
-            Frm.MdiParent = this;
-            Frm.Show();
-        }
+      
     }
 }

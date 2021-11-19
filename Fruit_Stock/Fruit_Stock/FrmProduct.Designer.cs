@@ -29,15 +29,8 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnLast = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.dgvAllProduct = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lbPageNum = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtProName = new System.Windows.Forms.TextBox();
@@ -52,66 +45,14 @@ namespace Fruit_Stock
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(11, 16);
-            this.txtSearch.MaximumSize = new System.Drawing.Size(275, 34);
-            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(275, 34);
-            this.txtSearch.TabIndex = 13;
-            // 
-            // btnLast
-            // 
-            this.btnLast.Location = new System.Drawing.Point(895, 17);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(70, 33);
-            this.btnLast.TabIndex = 9;
-            this.btnLast.Text = ">l";
-            this.btnLast.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(819, 17);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(70, 33);
-            this.btnNext.TabIndex = 10;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(462, 17);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(70, 33);
-            this.btnPrevious.TabIndex = 8;
-            this.btnPrevious.Text = "<<";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Location = new System.Drawing.Point(386, 17);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(70, 33);
-            this.btnFirst.TabIndex = 7;
-            this.btnFirst.Text = "l<";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(292, 17);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(88, 33);
-            this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // dgvAllProduct
             // 
@@ -144,17 +85,6 @@ namespace Fruit_Stock
             this.btnAdd.Text = "บันทึก";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lbPageNum
-            // 
-            this.lbPageNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbPageNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbPageNum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbPageNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPageNum.Location = new System.Drawing.Point(538, 18);
-            this.lbPageNum.Name = "lbPageNum";
-            this.lbPageNum.Size = new System.Drawing.Size(275, 32);
-            this.lbPageNum.TabIndex = 11;
             // 
             // label3
             // 
@@ -215,6 +145,7 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtProID);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnNew);
@@ -307,24 +238,47 @@ namespace Fruit_Stock
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // groupBox2
+            // btnRefresh
             // 
-            this.groupBox2.AutoSize = true;
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.groupBox2.Controls.Add(this.txtSearch);
-            this.groupBox2.Controls.Add(this.lbPageNum);
-            this.groupBox2.Controls.Add(this.btnLast);
-            this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Controls.Add(this.btnNext);
-            this.groupBox2.Controls.Add(this.btnFirst);
-            this.groupBox2.Controls.Add(this.btnPrevious);
-            this.groupBox2.Location = new System.Drawing.Point(117, 519);
-            this.groupBox2.MaximumSize = new System.Drawing.Size(971, 71);
-            this.groupBox2.MinimumSize = new System.Drawing.Size(971, 71);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(971, 71);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
+            this.btnRefresh.Location = new System.Drawing.Point(858, 21);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(76, 37);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "รีเฟรช";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
+            this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Controls.Add(this.btnSearch);
+            this.groupBox3.Location = new System.Drawing.Point(235, 519);
+            this.groupBox3.MaximumSize = new System.Drawing.Size(680, 71);
+            this.groupBox3.MinimumSize = new System.Drawing.Size(680, 71);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(680, 71);
+            this.groupBox3.TabIndex = 43;
+            this.groupBox3.TabStop = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(11, 16);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(569, 34);
+            this.txtSearch.TabIndex = 13;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(586, 16);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(88, 33);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // FrmProduct
             // 
@@ -334,7 +288,7 @@ namespace Fruit_Stock
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1200, 650);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvAllProduct);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -347,23 +301,16 @@ namespace Fruit_Stock
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnLast;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvAllProduct;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lbPageNum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtProName;
@@ -378,6 +325,9 @@ namespace Fruit_Stock
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

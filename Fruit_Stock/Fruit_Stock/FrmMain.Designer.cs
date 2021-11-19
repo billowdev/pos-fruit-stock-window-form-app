@@ -35,23 +35,24 @@ namespace Fruit_Stock
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMain = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsName = new System.Windows.Forms.ToolStripStatusLabel();
             this.timTime = new System.Windows.Forms.Timer(this.components);
             this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
-            this.pbLoad = new System.Windows.Forms.PictureBox();
             this.lbWelcome = new System.Windows.Forms.Label();
+            this.pbLoad = new System.Windows.Forms.PictureBox();
+            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbMain = new System.Windows.Forms.PictureBox();
+            this.mnuHistoryStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFrmMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
             // mnuFrmMain
@@ -65,6 +66,7 @@ namespace Fruit_Stock
             this.mnuProfile,
             this.mnuProduct,
             this.mnuStock,
+            this.mnuHistoryStock,
             this.mnuHelp});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
@@ -94,49 +96,6 @@ namespace Fruit_Stock
             this.mnuSale.Size = new System.Drawing.Size(62, 54);
             this.mnuSale.Text = "Sale";
             this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
-            // 
-            // mnuProfile
-            // 
-            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
-            this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(102, 54);
-            this.mnuProfile.Text = "Profile";
-            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
-            // 
-            // mnuProduct
-            // 
-            this.mnuProduct.Image = ((System.Drawing.Image)(resources.GetObject("mnuProduct.Image")));
-            this.mnuProduct.Name = "mnuProduct";
-            this.mnuProduct.Size = new System.Drawing.Size(115, 54);
-            this.mnuProduct.Text = "Product";
-            this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
-            // 
-            // mnuStock
-            // 
-            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
-            this.mnuStock.Name = "mnuStock";
-            this.mnuStock.Size = new System.Drawing.Size(94, 54);
-            this.mnuStock.Text = "Stock";
-            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
-            // 
-            // mnuHelp
-            // 
-            this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
-            this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(87, 54);
-            this.mnuHelp.Text = "Help";
-            this.mnuHelp.Click += new System.EventHandler(this.mnuHelp_Click);
-            // 
-            // pbMain
-            // 
-            this.pbMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMain.BackgroundImage")));
-            this.pbMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbMain.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMain.InitialImage")));
-            this.pbMain.Location = new System.Drawing.Point(0, 53);
-            this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(1925, 1024);
-            this.pbMain.TabIndex = 3;
-            this.pbMain.TabStop = false;
             // 
             // statusStrip1
             // 
@@ -186,17 +145,6 @@ namespace Fruit_Stock
             this.timTimeLoading.Interval = 8500;
             this.timTimeLoading.Tick += new System.EventHandler(this.timTimeLoading_Tick);
             // 
-            // pbLoad
-            // 
-            this.pbLoad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbLoad.Image = ((System.Drawing.Image)(resources.GetObject("pbLoad.Image")));
-            this.pbLoad.Location = new System.Drawing.Point(0, 58);
-            this.pbLoad.Name = "pbLoad";
-            this.pbLoad.Size = new System.Drawing.Size(1920, 934);
-            this.pbLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLoad.TabIndex = 8;
-            this.pbLoad.TabStop = false;
-            // 
             // lbWelcome
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -210,6 +158,67 @@ namespace Fruit_Stock
             this.lbWelcome.TabIndex = 9;
             this.lbWelcome.Text = "Welcome";
             this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // pbLoad
+            // 
+            this.pbLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLoad.Image = ((System.Drawing.Image)(resources.GetObject("pbLoad.Image")));
+            this.pbLoad.Location = new System.Drawing.Point(0, 58);
+            this.pbLoad.Name = "pbLoad";
+            this.pbLoad.Size = new System.Drawing.Size(1920, 934);
+            this.pbLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLoad.TabIndex = 8;
+            this.pbLoad.TabStop = false;
+            // 
+            // mnuProfile
+            // 
+            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
+            this.mnuProfile.Name = "mnuProfile";
+            this.mnuProfile.Size = new System.Drawing.Size(102, 54);
+            this.mnuProfile.Text = "Profile";
+            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
+            // 
+            // mnuProduct
+            // 
+            this.mnuProduct.Image = ((System.Drawing.Image)(resources.GetObject("mnuProduct.Image")));
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Size = new System.Drawing.Size(115, 54);
+            this.mnuProduct.Text = "Product";
+            this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
+            // 
+            // mnuStock
+            // 
+            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
+            this.mnuStock.Name = "mnuStock";
+            this.mnuStock.Size = new System.Drawing.Size(94, 54);
+            this.mnuStock.Text = "Stock";
+            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(87, 54);
+            this.mnuHelp.Text = "Help";
+            this.mnuHelp.Click += new System.EventHandler(this.mnuHelp_Click);
+            // 
+            // pbMain
+            // 
+            this.pbMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMain.BackgroundImage")));
+            this.pbMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMain.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMain.InitialImage")));
+            this.pbMain.Location = new System.Drawing.Point(0, 53);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1925, 1024);
+            this.pbMain.TabIndex = 3;
+            this.pbMain.TabStop = false;
+            // 
+            // mnuHistoryStock
+            // 
+            this.mnuHistoryStock.Name = "mnuHistoryStock";
+            this.mnuHistoryStock.Size = new System.Drawing.Size(142, 54);
+            this.mnuHistoryStock.Text = "History Stock";
+            this.mnuHistoryStock.Click += new System.EventHandler(this.mnuHistoryStock_Click);
             // 
             // FrmMain
             // 
@@ -233,10 +242,10 @@ namespace Fruit_Stock
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.mnuFrmMain.ResumeLayout(false);
             this.mnuFrmMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,5 +269,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.Timer timTimeLoading;
         private System.Windows.Forms.PictureBox pbLoad;
         private System.Windows.Forms.Label lbWelcome;
+        private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
     }
 }
