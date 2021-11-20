@@ -51,7 +51,8 @@ namespace Fruit_Stock
             // ================================== Admin ================================== //
             else
             {
-                
+                // AutoID                     Field Name        Table Name Head  Last      
+                txtEMPID.Text = ocn.pusAutoID("emp_id", "tb_employee", "emp", "000"); // P-0001
                 lbUserStatus.Hide();
                 lbID.Hide();
                 prvShowAllMember();

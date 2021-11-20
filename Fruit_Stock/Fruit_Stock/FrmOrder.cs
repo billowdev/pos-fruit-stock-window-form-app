@@ -44,7 +44,7 @@ namespace Fruit_Stock
             lbTotal.Text = dTotal.ToString("#,##0.00");
             lbChange.Text = dChange.ToString("#,##0.00");
             btnSale.Enabled = false;
-
+            dtpOrder.Value = DateTime.Now;
         }
 
         // Method for show all product when form load to data grid view dgvAllOrder
@@ -187,7 +187,7 @@ namespace Fruit_Stock
 
         private void btnSale_Click(object sender, EventArgs e)
         {
-            dtpOrder.Value = DateTime.Now;
+            
 
             if (txtCash.Text == "")
             {
@@ -200,29 +200,29 @@ namespace Fruit_Stock
                 return;
             }
 
-            // ============= Select All From tb_product Where Proid = txtProID.Text ========================= //
-            oCenter.pusvCloseConnection();
-            oCenter.pusvOpenConnection();
-            OleDbCommand cmdSelect = new OleDbCommand();
-            DataSet dsProduct = new DataSet();
-            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
+            //// ============= Select All From tb_product Where Proid = txtProID.Text ========================= //
+            //oCenter.pusvCloseConnection();
+            //oCenter.pusvOpenConnection();
+            ////OleDbCommand cmdSelect = new OleDbCommand();
+            //DataSet dsProduct = new DataSet();
+            //sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
 
-            dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
-            int previousQty = 0;
+            //dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
+            //int previousQty = 0;
 
-            if (dsProduct.Tables["tb_product"].Rows.Count != 0)
-            {
-                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
-                {
-                    previousQty = 0;
-                }
-                else
-                {
-                    previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
-                }
+            //if (dsProduct.Tables["tb_product"].Rows.Count != 0)
+            //{
+            //    if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
+            //    {
+            //        previousQty = 0;
+            //    }
+            //    else
+            //    {
+            //        previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
+            //    }
 
-            }
-            // ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
+            //}
+            //// ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
 
 
             // ============= Update Quantity at tb_product after import ========================= //
@@ -243,9 +243,9 @@ namespace Fruit_Stock
 
             ocn.dBillTotal = Convert.ToDouble(lbTotal.Text);
             ocn.dBillCash = Convert.ToDouble(txtCash.Text);
-            ocn.dBillChange = Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtCash.Text);
+            ocn.dBillChange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
 
-            lbChange.Text = (Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtCash.Text)).ToString("#,##00.00");
+            lbChange.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text)).ToString("#,##00.00");
 
             // =============  END Update Quantity at tb_product after import ========================= //
 
@@ -253,21 +253,19 @@ namespace Fruit_Stock
             oCenter.pusvOpenConnection();
 
             // ============================================== Insert to tb_order ========================= //
-            OleDbCommand cmdInsert = new OleDbCommand();
-            sSql = " INSERT INTO tb_order(order_id,order_quantity,order_date,cus_id,pro_id) VALUES(@oid,@oqty,@odate,@cid,@pid)";
-            cmdInsert.Parameters.Clear();
-            // parameter are @oid,@oqty,@odate,@cid,@pid
-            cmdInsert.Parameters.AddWithValue("@oid", txtOrderID.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@oqty", txtOrderQty.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@odate", dtpOrder.Value);
-            cmdInsert.Parameters.AddWithValue("@cid", txtCustomerID.Text.Trim());
-            cmdInsert.Parameters.AddWithValue("@pid", txtProID.Text.Trim());
+            OleDbCommand cmdOrder = new OleDbCommand();
+            string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
+                txtOrderID.Text + "','" +
+                txtOrderQty.Text + "','"+
+                dtpOrder.Value + "','" +
+                txtCustomerID.Text + "','" + 
+                txtProID.Text + "')";
 
+            cmdOrder.CommandType = CommandType.Text;
+            cmdOrder.CommandText = sSqlOder;
+            cmdOrder.Connection = oCenter.conn;
+            cmdOrder.ExecuteNonQuery();
 
-            cmdInsert.CommandType = CommandType.Text;
-            cmdInsert.CommandText = sSql;
-            cmdInsert.Connection = oCenter.conn;
-            cmdInsert.ExecuteNonQuery();
             // ============================================== END Insert to tb_order ========================= //
 
 
@@ -291,3 +289,4 @@ namespace Fruit_Stock
 
     }
 }
+
