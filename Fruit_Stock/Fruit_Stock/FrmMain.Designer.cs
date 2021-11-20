@@ -95,8 +95,8 @@ namespace Fruit_Stock
             // 
             this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.mnuSale.Name = "mnuSale";
-            this.mnuSale.Size = new System.Drawing.Size(62, 54);
-            this.mnuSale.Text = "Sale";
+            this.mnuSale.Size = new System.Drawing.Size(77, 54);
+            this.mnuSale.Text = "Order";
             this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
             // 
             // mnuHistoryStock

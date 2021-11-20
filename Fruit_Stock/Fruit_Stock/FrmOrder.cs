@@ -29,16 +29,16 @@ namespace Fruit_Stock
         string sSql = "";
         DataSet dsOrder = new DataSet();
 
-        int previousQty = 0; // Qty Product
-        int newQty = 0;
-        int presentQty = 0; // Qty Product After Operating with newQty
+        double dPreviousQty = 0; // Qty Product
+        double dNewQty = 0;
+        double dPresentQty = 0; // Qty Product After Operating with newQty
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
             prvShowAllOrder();
             prvFormatDataGrid();
             // AutoID                     Field Name        Table Name Head  Last      
-            txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O"+ DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+            txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
 
             txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");
@@ -83,23 +83,24 @@ namespace Fruit_Stock
             dgvAllOrder.ColumnHeadersDefaultCellStyle = cs;
             dgvAllOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
             dgvAllOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            dgvAllOrder.Columns[2].HeaderText = "ราคารวม";
-            dgvAllOrder.Columns[3].HeaderText = "วันที่สั่งซื้อ";
-            dgvAllOrder.Columns[4].HeaderText = "รหัสลูกค้า";
-            dgvAllOrder.Columns[5].HeaderText = "รหัสสินค้า";
+            dgvAllOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+            dgvAllOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+            dgvAllOrder.Columns[4].HeaderText = "รหัสสินค้า";
 
-            dgvAllOrder.Columns[0].Width = 120;
-            dgvAllOrder.Columns[1].Width = 120;
-            dgvAllOrder.Columns[2].Width = 120;
-            dgvAllOrder.Columns[3].Width = 160;
-            dgvAllOrder.Columns[4].Width = 120;
-            dgvAllOrder.Columns[5].Width = 120;
+            dgvAllOrder.Columns[0].Width = 180;
+            dgvAllOrder.Columns[1].Width = 180;
+            dgvAllOrder.Columns[2].Width = 180;
+            dgvAllOrder.Columns[3].Width = 220;
+            dgvAllOrder.Columns[4].Width = 180;
         }
 
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             prvOpenListProduct();
+            lbTotal.Text = "";
+            txtCash.Text = "";
+            lbChange.Text = "";
         }
 
         private void prvOpenListProduct()
@@ -114,7 +115,6 @@ namespace Fruit_Stock
             txtProPrice.Text = Frm.psPprice;
             txtProUnit.Text = Frm.psPunit;
             lbStockQuantity.Text = Frm.psPquantity;
-
         }
         private void prvCalculateTotal()
         {
@@ -138,11 +138,27 @@ namespace Fruit_Stock
                 MessageBox.Show("Please Select other product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //int previousQty = 0; // Qty Product
-            //int newQty = 0;
-            //int presentQty = 0; // Qty Product After Operating with newQty
-            previousQty = Convert.ToInt32(lbStockQuantity.Text);
-            newQty = Convert.ToInt32(txtOrderQty.Text);
+            if (Convert.ToInt32(txtOrderQty.Text) == 0)
+            {
+                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Convert.ToInt32(txtOrderQty.Text) < 0)
+            {
+                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Convert.ToInt32(txtOrderQty.Text) > Convert.ToInt32(lbStockQuantity.Text))
+            {
+                MessageBox.Show("Can't Order more than product stock \n please check stock or select other product", "Warning",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            dPreviousQty = Convert.ToInt32(lbStockQuantity.Text); // Qty Product
+            dNewQty = Convert.ToInt32(txtOrderQty.Text);  // Qty Order
+            dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
 
             lbTotal.Text = dTotal.ToString("#,##0.00");
 
@@ -157,5 +173,121 @@ namespace Fruit_Stock
         {
             prvCalculateTotal();
         }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            FrmListCustomer Frm = new FrmListCustomer();
+            Frm.ShowDialog();
+
+            if (Frm.psCusID != "")
+            {
+                txtCustomerID.Text = Frm.psCusID;
+            }
+        }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            dtpOrder.Value = DateTime.Now;
+
+            if (txtCash.Text == "")
+            {
+                MessageBox.Show("Please Enter Cash", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if ( Convert.ToDouble(txtCash.Text) < Convert.ToDouble(lbTotal.Text))
+            {
+                MessageBox.Show("You must enter cash more than or equal total value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ============= Select All From tb_product Where Proid = txtProID.Text ========================= //
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+            OleDbCommand cmdSelect = new OleDbCommand();
+            DataSet dsProduct = new DataSet();
+            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
+
+            dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
+            int previousQty = 0;
+
+            if (dsProduct.Tables["tb_product"].Rows.Count != 0)
+            {
+                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
+                {
+                    previousQty = 0;
+                }
+                else
+                {
+                    previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
+                }
+
+            }
+            // ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
+
+
+            // ============= Update Quantity at tb_product after import ========================= //
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+
+            OleDbCommand cmdUpdate = new OleDbCommand();
+           
+            sSql = " UPDATE tb_product SET pro_quantity=@updateQty WHERE pro_id=@PID";
+            cmdUpdate.Parameters.Clear();
+            cmdUpdate.Parameters.AddWithValue("@updateQty", dPresentQty);
+            cmdUpdate.Parameters.AddWithValue("@PID", txtProID.Text.Trim().ToString());
+
+            cmdUpdate.CommandType = CommandType.Text;
+            cmdUpdate.CommandText = sSql;
+            cmdUpdate.Connection = oCenter.conn;
+            cmdUpdate.ExecuteNonQuery();
+
+            ocn.dBillTotal = Convert.ToDouble(lbTotal.Text);
+            ocn.dBillCash = Convert.ToDouble(txtCash.Text);
+            ocn.dBillChange = Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtCash.Text);
+
+            lbChange.Text = (Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtCash.Text)).ToString("#,##00.00");
+
+            // =============  END Update Quantity at tb_product after import ========================= //
+
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+
+            // ============================================== Insert to tb_order ========================= //
+            OleDbCommand cmdInsert = new OleDbCommand();
+            sSql = " INSERT INTO tb_order(order_id,order_quantity,order_date,cus_id,pro_id) VALUES(@oid,@oqty,@odate,@cid,@pid)";
+            cmdInsert.Parameters.Clear();
+            // parameter are @oid,@oqty,@odate,@cid,@pid
+            cmdInsert.Parameters.AddWithValue("@oid", txtOrderID.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@oqty", txtOrderQty.Text.Trim().ToString());
+            cmdInsert.Parameters.AddWithValue("@odate", dtpOrder.Value);
+            cmdInsert.Parameters.AddWithValue("@cid", txtCustomerID.Text.Trim());
+            cmdInsert.Parameters.AddWithValue("@pid", txtProID.Text.Trim());
+
+
+            cmdInsert.CommandType = CommandType.Text;
+            cmdInsert.CommandText = sSql;
+            cmdInsert.Connection = oCenter.conn;
+            cmdInsert.ExecuteNonQuery();
+            // ============================================== END Insert to tb_order ========================= //
+
+
+            prvShowAllOrder();
+            prvClearAll();
+
+        }
+
+        private void prvClearAll()
+        {
+            txtOrderID.Text = "";
+            txtOrderQty.Text = "";
+            txtCustomerID.Text = "";
+            txtProID.Text = "";
+            txtProName.Text = "";
+            txtProPrice.Text = "";
+            txtProUnit.Text = "";
+            lbStockQuantity.Text = "";
+            
+        }
+
     }
 }

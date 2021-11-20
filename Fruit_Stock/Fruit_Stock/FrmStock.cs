@@ -28,6 +28,7 @@ namespace Fruit_Stock
 
         private void FrmStock_Load(object sender, EventArgs e)
         {
+            dtpProImport.Value = DateTime.Now;
             prvShowAllStock();
             puvFormatDataGrid();
             // AutoID                     Field Name   Table Name Head  Last      
@@ -164,21 +165,22 @@ namespace Fruit_Stock
             oCenter.pusvOpenConnection();
             OleDbCommand cmdSelect = new OleDbCommand();
             DataSet dsProduct = new DataSet();
-            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text +"'";
+            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
 
             dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
             int previousQty = 0;
 
             if (dsProduct.Tables["tb_product"].Rows.Count != 0)
             {
-                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == ""){
+                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
+                {
                     previousQty = 0;
                 }
                 else
                 {
                     previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
                 }
-                
+
             }
             // ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
 
@@ -276,5 +278,7 @@ namespace Fruit_Stock
                 }
             }
         }
+
+    
     }
 }

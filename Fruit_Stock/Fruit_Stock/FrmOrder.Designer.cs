@@ -126,6 +126,7 @@ namespace Fruit_Stock
             this.btnSale.TabIndex = 2;
             this.btnSale.Text = "Sale";
             this.btnSale.UseVisualStyleBackColor = false;
+            this.btnSale.Click += new System.EventHandler(this.btnSale_Click);
             // 
             // txtOrderID
             // 
@@ -207,20 +208,20 @@ namespace Fruit_Stock
             // btnCustomer
             // 
             this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnCustomer.Location = new System.Drawing.Point(787, 75);
+            this.btnCustomer.Location = new System.Drawing.Point(787, 80);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(98, 33);
+            this.btnCustomer.Size = new System.Drawing.Size(122, 33);
             this.btnCustomer.TabIndex = 2;
-            this.btnCustomer.Text = "Customer";
+            this.btnCustomer.Text = "Add Customer";
             this.btnCustomer.UseVisualStyleBackColor = false;
-            this.btnCustomer.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnBrowse
             // 
             this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnBrowse.Location = new System.Drawing.Point(1015, 21);
+            this.btnBrowse.Location = new System.Drawing.Point(1008, 14);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(159, 39);
+            this.btnBrowse.Size = new System.Drawing.Size(159, 54);
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse Product";
             this.btnBrowse.UseVisualStyleBackColor = false;
@@ -235,6 +236,7 @@ namespace Fruit_Stock
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(298, 34);
             this.txtCustomerID.TabIndex = 18;
+            this.txtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOrderQty
             // 
@@ -245,6 +247,7 @@ namespace Fruit_Stock
             this.txtOrderQty.Name = "txtOrderQty";
             this.txtOrderQty.Size = new System.Drawing.Size(298, 34);
             this.txtOrderQty.TabIndex = 18;
+            this.txtOrderQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -287,7 +290,7 @@ namespace Fruit_Stock
             // 
             this.lbChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbChange.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbChange.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbChange.Location = new System.Drawing.Point(136, 136);
             this.lbChange.Name = "lbChange";
             this.lbChange.Size = new System.Drawing.Size(294, 33);
@@ -318,7 +321,7 @@ namespace Fruit_Stock
             // 
             this.lbTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbTotal.Location = new System.Drawing.Point(135, 34);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(294, 33);
@@ -334,6 +337,7 @@ namespace Fruit_Stock
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(298, 34);
             this.txtCash.TabIndex = 18;
+            this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
