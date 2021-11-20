@@ -42,12 +42,13 @@ namespace Fruit_Stock
             this.label4 = new System.Windows.Forms.Label();
             this.lbStockQuantity = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearchRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -74,6 +75,7 @@ namespace Fruit_Stock
             this.dgvAllProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllProduct.Size = new System.Drawing.Size(950, 230);
             this.dgvAllProduct.TabIndex = 10;
+            this.dgvAllProduct.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAllProduct_CellFormatting);
             this.dgvAllProduct.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllProduct_CellMouseUp);
             // 
             // btnAdd
@@ -208,6 +210,16 @@ namespace Fruit_Stock
             this.label6.TabIndex = 1;
             this.label6.Text = "Quantity";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(858, 21);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(76, 37);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "รีเฟรช";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(807, 184);
@@ -238,47 +250,49 @@ namespace Fruit_Stock
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(858, 21);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(76, 37);
-            this.btnRefresh.TabIndex = 5;
-            this.btnRefresh.Text = "รีเฟรช";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.AutoSize = true;
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
             this.groupBox3.Controls.Add(this.txtSearch);
+            this.groupBox3.Controls.Add(this.btnSearchRefresh);
             this.groupBox3.Controls.Add(this.btnSearch);
-            this.groupBox3.Location = new System.Drawing.Point(235, 519);
-            this.groupBox3.MaximumSize = new System.Drawing.Size(680, 71);
+            this.groupBox3.Location = new System.Drawing.Point(126, 519);
             this.groupBox3.MinimumSize = new System.Drawing.Size(680, 71);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(680, 71);
+            this.groupBox3.Size = new System.Drawing.Size(934, 76);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(11, 16);
+            this.txtSearch.Location = new System.Drawing.Point(60, 21);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(569, 34);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            // 
+            // btnSearchRefresh
+            // 
+            this.btnSearchRefresh.Location = new System.Drawing.Point(741, 22);
+            this.btnSearchRefresh.Name = "btnSearchRefresh";
+            this.btnSearchRefresh.Size = new System.Drawing.Size(88, 33);
+            this.btnSearchRefresh.TabIndex = 6;
+            this.btnSearchRefresh.Text = "Refresh";
+            this.btnSearchRefresh.UseVisualStyleBackColor = true;
+            this.btnSearchRefresh.Click += new System.EventHandler(this.btnSearchRefresh_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(586, 16);
+            this.btnSearch.Location = new System.Drawing.Point(635, 21);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(88, 33);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // FrmProduct
             // 
@@ -329,5 +343,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnSearchRefresh;
     }
 }

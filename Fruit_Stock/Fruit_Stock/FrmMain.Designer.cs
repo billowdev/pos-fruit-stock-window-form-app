@@ -35,6 +35,7 @@ namespace Fruit_Stock
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHistoryStock = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,7 +49,7 @@ namespace Fruit_Stock
             this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.pbMain = new System.Windows.Forms.PictureBox();
-            this.mnuHistoryStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmuCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFrmMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoad)).BeginInit();
@@ -62,8 +63,9 @@ namespace Fruit_Stock
             this.mnuFrmMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuFrmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logOutToolStripMenuItem,
-            this.mnuSale,
             this.mnuProfile,
+            this.cmuCustomer,
+            this.mnuSale,
             this.mnuProduct,
             this.mnuStock,
             this.mnuHistoryStock,
@@ -85,7 +87,7 @@ namespace Fruit_Stock
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(129, 32);
+            this.mnuExit.Size = new System.Drawing.Size(224, 32);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -93,9 +95,16 @@ namespace Fruit_Stock
             // 
             this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.mnuSale.Name = "mnuSale";
-            this.mnuSale.Size = new System.Drawing.Size(62, 54);
-            this.mnuSale.Text = "Sale";
+            this.mnuSale.Size = new System.Drawing.Size(77, 54);
+            this.mnuSale.Text = "Order";
             this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
+            // 
+            // mnuHistoryStock
+            // 
+            this.mnuHistoryStock.Name = "mnuHistoryStock";
+            this.mnuHistoryStock.Size = new System.Drawing.Size(142, 54);
+            this.mnuHistoryStock.Text = "History Stock";
+            this.mnuHistoryStock.Click += new System.EventHandler(this.mnuHistoryStock_Click);
             // 
             // statusStrip1
             // 
@@ -213,12 +222,12 @@ namespace Fruit_Stock
             this.pbMain.TabIndex = 3;
             this.pbMain.TabStop = false;
             // 
-            // mnuHistoryStock
+            // cmuCustomer
             // 
-            this.mnuHistoryStock.Name = "mnuHistoryStock";
-            this.mnuHistoryStock.Size = new System.Drawing.Size(142, 54);
-            this.mnuHistoryStock.Text = "History Stock";
-            this.mnuHistoryStock.Click += new System.EventHandler(this.mnuHistoryStock_Click);
+            this.cmuCustomer.Name = "cmuCustomer";
+            this.cmuCustomer.Size = new System.Drawing.Size(110, 54);
+            this.cmuCustomer.Text = "Customer";
+            this.cmuCustomer.Click += new System.EventHandler(this.cmuCustomer_Click);
             // 
             // FrmMain
             // 
@@ -270,5 +279,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.PictureBox pbLoad;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
+        private System.Windows.Forms.ToolStripMenuItem cmuCustomer;
     }
 }

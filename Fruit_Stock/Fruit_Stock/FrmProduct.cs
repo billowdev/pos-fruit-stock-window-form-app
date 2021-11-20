@@ -23,8 +23,8 @@ namespace Fruit_Stock
         string sSql="";
         oCenter ocn = new oCenter();
         DataSet dsProduct = new DataSet();
-        bool bCheck = false;
-
+        bool IsFind = false;
+       
         private void FrmProduct_Load(object sender, EventArgs e)
         {
             if (txtProID.Text == "")
@@ -32,6 +32,7 @@ namespace Fruit_Stock
                 // AutoID                     Field Name        Table Name Head  Last      
                 txtProID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
                 txtUnit.Text = "กิโลกรัม";
+                lbStockQuantity.Text = "0";
                 txtProName.Focus();
             }
             dgvAllProduct.ReadOnly = true;
@@ -42,24 +43,24 @@ namespace Fruit_Stock
         // Method for show all product when form load to data grid view dgvAllProduct
         private void prvShowAllProduct()
         {
-            bCheck = false;
+            IsFind = false;
             sSql = "select * from tb_product";
             dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
 
-            if (bCheck == true)
+            if (IsFind == true)
             {
                 dsProduct.Tables["tb_product"].Clear();
             }
 
             if (dsProduct.Tables["tb_product"].Rows.Count != 0)
             {
-                bCheck = true;
+                IsFind = true;
                 dgvAllProduct.ReadOnly = true;
                 dgvAllProduct.DataSource = dsProduct.Tables["tb_product"];
             }
             else
             {
-                bCheck = false;
+                IsFind = false;
             }
             
             // ----------------------------------------------------------------------------------- //
@@ -246,6 +247,78 @@ namespace Fruit_Stock
         {
             prvShowAllProduct();
             prvFormatDataGrid();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+        private void prvSearch()
+        {
+            bool bCheck = false;
+
+            if (txtSearch.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataSet dsSearchProduct = new DataSet();
+            string sSqlSelect = " SELECT * FROM tb_product WHERE pro_id+pro_name+pro_unit+im_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY pro_id DESC;";
+
+            if (bCheck == true)
+            {
+                dsSearchProduct.Tables["tb_product"].Clear();
+            }
+
+            OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
+            da.Fill(dsSearchProduct, "tb_product");
+
+            if (dsSearchProduct.Tables["tb_product"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllProduct.ReadOnly = true;
+                dgvAllProduct.DataSource = dsSearchProduct.Tables["tb_product"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+            dgvAllProduct.Refresh();
+            btnSearch.Enabled = false;
+        }
+
+
+        private void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllProduct();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                    prvSearch();
+                }
+                else
+                {
+                    prvShowAllProduct();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
+                }
+            }
+        }
+
+        private void dgvAllProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((e.RowIndex > 0) && (dgvAllProduct.Columns[e.ColumnIndex].Index) == 2)
+            {
+                e.CellStyle.Format = "#,##0.00"; // 3,444.50
+            }
         }
     }
 }

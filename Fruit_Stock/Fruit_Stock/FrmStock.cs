@@ -28,10 +28,12 @@ namespace Fruit_Stock
 
         private void FrmStock_Load(object sender, EventArgs e)
         {
+            dtpProImport.Value = DateTime.Now;
             prvShowAllStock();
             puvFormatDataGrid();
             // AutoID                     Field Name   Table Name Head  Last      
             txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            txtProQuantity.Text = "1";
         }
         private void prvShowAllStock()
         {
@@ -67,7 +69,7 @@ namespace Fruit_Stock
 
             txtProQuantity.Text = "";
             txtProQuantity.Focus();
-            dtpProImport.Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+            dtpProImport.Value = DateTime.Now;
 
         }
 
@@ -86,11 +88,11 @@ namespace Fruit_Stock
                 dgvAllStock.Columns[3].HeaderText = "วันที่";
                 dgvAllStock.Columns[4].HeaderText = "รหัสพนักงาน";
 
-                dgvAllStock.Columns[0].Width = 110;
-                dgvAllStock.Columns[1].Width = 300;
-                dgvAllStock.Columns[2].Width = 100;
-                dgvAllStock.Columns[3].Width = 160;
-                dgvAllStock.Columns[4].Width = 110;
+                dgvAllStock.Columns[0].Width = 140;
+                dgvAllStock.Columns[1].Width = 320;
+                dgvAllStock.Columns[2].Width = 140;
+                dgvAllStock.Columns[3].Width = 260;
+                dgvAllStock.Columns[4].Width = 140;
             }
             catch
             {
@@ -103,9 +105,7 @@ namespace Fruit_Stock
         {
             FrmListProduct Frm = new FrmListProduct();
             Frm.ShowDialog();
-            //Frm.psPid = txtProID.Text;
-            //Frm.psPname = txtProName.Text;
-            //Frm.psPunit = txtProUnit.Text;
+
             if (Frm.psPid != "")
             {
                 txtProID.Text = Frm.psPid;
@@ -142,15 +142,12 @@ namespace Fruit_Stock
 
             // ============================================== Insert to tb_import ========================= //
             OleDbCommand cmdInsert = new OleDbCommand();
-            sSql = " INSERT INTO tb_import(im_id,im_name,im_quantity,im_date,emp_id) VALUES(@id,@name,@quantity,@date,@empid)";
-            cmdInsert.Parameters.Clear();
-
-            cmdInsert.Parameters.AddWithValue("@id", txtProIMID.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@name", txtProName.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@quantity", txtProQuantity.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@date", dtpProImport.Value.GetDateTimeFormats('d')[0]);
-            cmdInsert.Parameters.AddWithValue("@empid", oCenter.currentid);
-          
+            sSql = " INSERT INTO tb_import(im_id, im_name, im_quantity, im_date, emp_id) VALUES('" +
+                txtProIMID.Text + "','" +
+                txtProName.Text + "','" +
+                txtProQuantity.Text + "','" +
+                dtpProImport.Value + "','" +
+                oCenter.currentid + "')";
 
             cmdInsert.CommandType = CommandType.Text;
             cmdInsert.CommandText = sSql;
@@ -163,15 +160,22 @@ namespace Fruit_Stock
             oCenter.pusvOpenConnection();
             OleDbCommand cmdSelect = new OleDbCommand();
             DataSet dsProduct = new DataSet();
-            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text +"'";
+            sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
 
             dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
             int previousQty = 0;
 
             if (dsProduct.Tables["tb_product"].Rows.Count != 0)
             {
-                previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
-                
+                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
+                {
+                    previousQty = 0;
+                }
+                else
+                {
+                    previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
+                }
+
             }
             // ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
 
@@ -205,6 +209,71 @@ namespace Fruit_Stock
             // =============  END Update Quantity at tb_product after import ========================= //
         }
 
-      
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
+        private void prvSearch()
+        {
+            bool bCheck = false;
+
+            if (txtSearch.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataSet dsSearchStock = new DataSet();
+            string sSqlSelect = " SELECT * FROM tb_import WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
+
+            if (bCheck == true)
+            {
+                dsSearchStock.Tables["tb_import"].Clear();
+            }
+
+            OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
+            da.Fill(dsSearchStock, "tb_import");
+
+            if (dsSearchStock.Tables["tb_import"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllStock.ReadOnly = true;
+                dgvAllStock.DataSource = dsSearchStock.Tables["tb_import"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+            dgvAllStock.Refresh();
+            btnSearch.Enabled = false;
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllStock();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                prvSearch();
+                }
+                else
+                {
+                    prvShowAllStock();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
+                }
+            }
+        }
+
+    
     }
 }

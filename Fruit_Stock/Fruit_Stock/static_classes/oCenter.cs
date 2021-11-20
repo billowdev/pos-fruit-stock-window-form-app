@@ -22,7 +22,14 @@ namespace Fruit_Stock.static_classes
         public static string currentName;
         public static string currentLastName;
         public static string currentid;
-        public static string sql;
+        //public static string sql;
+
+        // ==========================================================================================================
+        // value when sale product these use for bill form when sell product bill form showdialog then print bill
+        public double dBillTotal = 0;
+        public double dBillCash = 0;
+        public double dBillChange = 0;
+        // ==========================================================================================================
 
         public static bool IsFind = false;
         bool bCheckConnect = false;
@@ -190,5 +197,6 @@ namespace Fruit_Stock.static_classes
                 return _sHname + nID.ToString(_sLname);
             }
         }
+
     }
 }

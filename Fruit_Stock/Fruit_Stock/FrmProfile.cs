@@ -23,7 +23,7 @@ namespace Fruit_Stock
         string stateGenter = "";
         string sEMPID = "";
         string stateStatus;
-        
+        bool IsFind = false;
 
 
         oCenter ocn = new oCenter();
@@ -43,12 +43,16 @@ namespace Fruit_Stock
                 btnDelete.Enabled = false;
                 mnuDelete.Enabled = false;
                 mnuNew.Enabled = false;
+                btnSearch.Hide();
+                btnRefresh.Hide();
+                txtSearch.Hide();
 
             }
             // ================================== Admin ================================== //
             else
             {
-                
+                // AutoID                     Field Name        Table Name Head  Last      
+                txtEMPID.Text = ocn.pusAutoID("emp_id", "tb_employee", "emp", "000"); // P-0001
                 lbUserStatus.Hide();
                 lbID.Hide();
                 prvShowAllMember();
@@ -111,7 +115,7 @@ namespace Fruit_Stock
                 bCheck = false;
             }
 
-
+            IsFind = false;
         }
 
         private void ShowForUserLogin()
@@ -171,7 +175,7 @@ namespace Fruit_Stock
                     }
 
                     dtpBirthDate.Value = Convert.ToDateTime(dsEmp.Tables["tb_employee"].Rows[0]["emp_bdate"].ToString());
-                    txtPhone.Text = dsEmp.Tables["tb_employee"].Rows[0]["phone"].ToString();
+                    txtPhone.Text = dsEmp.Tables["tb_employee"].Rows[0]["emp_phone"].ToString();
 
                 }
                 // ======================================== End  it is fill all data from tb_login to dataGridView ================================================== //
@@ -543,7 +547,96 @@ namespace Fruit_Stock
             dgvAllUser.Columns[3].Width = 220;
         }
 
-      
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
+        private void prvSearch()
+        {
+            if (txtSearch.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sSqlAdd = "";
+            string sSqlSelect = "";
+            if (txtSearch.Text.Trim() != "")
+            {
+
+                sSqlAdd = " WHERE " + sSql + " emp_id+emp_name+emp_lastname+emp_phone LIKE '%" + txtSearch.Text.Trim() + "%' ";
+            }
+            DataSet dsSearch = new DataSet();
+            sSqlSelect = " SELECT * " +
+                        "FROM tb_employee" +
+                        " " + sSqlAdd + " ORDER BY emp_id Desc;";
+
+
+            if (IsFind == true)
+            {
+                dsSearch.Tables["tb_employee"].Clear();
+            }
+
+            da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
+            da.Fill(dsSearch, "tb_employee");
+
+
+            if (dsSearch.Tables["tb_employee"].Rows.Count != 0)
+            {
+                IsFind = true;
+                dgvAllMember.ReadOnly = true;
+                dgvAllMember.DataSource = dsSearch.Tables["tb_employee"];
+
+                DataSet dsUser = new DataSet();
+                OleDbDataAdapter da_user = new OleDbDataAdapter();
+
+                // If dgvAllMember are have multirow : then Search from tb_login multirow too.. By WHERE emp_id is equal
+                for (int nRow = 0; nRow <= dsSearch.Tables["tb_employee"].Rows.Count - 1; nRow++)
+                {
+                    string selectUser = "SELECT * FROM tb_login WHERE emp_id='"
+                        + dsSearch.Tables["tb_employee"].Rows[nRow]["emp_id"].ToString() + "'";
+
+                    da_user = new OleDbDataAdapter(selectUser, oCenter.conn);
+                    da_user.Fill(dsUser, "tb_login");
+
+                }
+
+                dgvAllUser.ReadOnly = true;
+                dgvAllUser.DataSource = dsUser.Tables["tb_login"];
+
+            }
+            else
+            {
+                IsFind = false;
+            }
+            dgvAllMember.Refresh();
+            btnSearch.Enabled = false;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllMember();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                    prvSearch();
+                }
+                else
+                {
+                    prvShowAllMember();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
+                }
+            }
+        }
     }
 }
         
