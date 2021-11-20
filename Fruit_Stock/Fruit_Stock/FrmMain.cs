@@ -94,9 +94,14 @@ namespace Fruit_Stock
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {
-
-                //Application.Exit(); // Collection was modified; enumeration operation may not execute.'
-                Environment.Exit(1);
+                try
+                {
+                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                }
+                catch
+                {
+                    Environment.Exit(1);
+                }
             }
         }
 
