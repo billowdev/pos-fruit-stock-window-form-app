@@ -43,7 +43,7 @@ namespace Fruit_Stock
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(108, 33);
+            this.label1.Location = new System.Drawing.Point(177, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 25);
             this.label1.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace Fruit_Stock
             this.dtpFromDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.dtpFromDate.CustomFormat = "";
             this.dtpFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFromDate.Location = new System.Drawing.Point(181, 32);
+            this.dtpFromDate.Location = new System.Drawing.Point(250, 34);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(308, 26);
             this.dtpFromDate.TabIndex = 45;
@@ -67,22 +67,23 @@ namespace Fruit_Stock
             this.dgvAllHistoryStock.AllowUserToResizeRows = false;
             this.dgvAllHistoryStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.dgvAllHistoryStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllHistoryStock.Location = new System.Drawing.Point(12, 93);
-            this.dgvAllHistoryStock.MinimumSize = new System.Drawing.Size(687, 192);
+            this.dgvAllHistoryStock.Location = new System.Drawing.Point(12, 82);
+            this.dgvAllHistoryStock.MaximumSize = new System.Drawing.Size(1398, 635);
+            this.dgvAllHistoryStock.MinimumSize = new System.Drawing.Size(1398, 635);
             this.dgvAllHistoryStock.Name = "dgvAllHistoryStock";
             this.dgvAllHistoryStock.ReadOnly = true;
             this.dgvAllHistoryStock.RowHeadersVisible = false;
             this.dgvAllHistoryStock.RowHeadersWidth = 51;
             this.dgvAllHistoryStock.RowTemplate.Height = 24;
             this.dgvAllHistoryStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllHistoryStock.Size = new System.Drawing.Size(1292, 624);
+            this.dgvAllHistoryStock.Size = new System.Drawing.Size(1398, 635);
             this.dgvAllHistoryStock.TabIndex = 44;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(534, 32);
+            this.label2.Location = new System.Drawing.Point(603, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 25);
             this.label2.TabIndex = 0;
@@ -93,25 +94,25 @@ namespace Fruit_Stock
             this.dtpToDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.dtpToDate.CustomFormat = "";
             this.dtpToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpToDate.Location = new System.Drawing.Point(582, 32);
+            this.dtpToDate.Location = new System.Drawing.Point(651, 34);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(308, 26);
             this.dtpToDate.TabIndex = 45;
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1045, 21);
+            this.btnPrint.Location = new System.Drawing.Point(1185, 12);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(104, 37);
+            this.btnPrint.Size = new System.Drawing.Size(163, 64);
             this.btnPrint.TabIndex = 46;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(923, 21);
+            this.btnLoad.Location = new System.Drawing.Point(999, 12);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(104, 37);
+            this.btnLoad.Size = new System.Drawing.Size(158, 64);
             this.btnLoad.TabIndex = 46;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -121,7 +122,7 @@ namespace Fruit_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 745);
+            this.ClientSize = new System.Drawing.Size(1422, 721);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dtpToDate);
@@ -130,6 +131,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmHistoryStockReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmHistoryStockReport";
             this.Load += new System.EventHandler(this.FrmHistoryStockReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllHistoryStock)).EndInit();

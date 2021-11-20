@@ -79,85 +79,56 @@ namespace Fruit_Stock
 
         private void FrmHistoryStockReport_Load(object sender, EventArgs e)
         {
-            //prvShowAllStock();
+            prvShowAllStock();
             prvFormatDataGrid();
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            prvFillterDate();
+            prvFormatDataGrid();
+        }
+
+        private void prvFillterDate()
+        {
             bool IsFind = false;
 
             //prvSearch();
-            
+
 
             DataSet dsHistoryStock = new DataSet();
 
-            //string sSqlLoad = "select * from tb_import where im_id between #" + dtpFromDate.Value.ToString("d") + "# and #" + dtpToDate.Value.ToString("d") + "#";
-            string sSqlLoad = "SELECT * FROM tb_import WHERE im_id Between @FromDate and @ToDate";
+
+            string sSqlLoad = "SELECT * FROM tb_import WHERE im_date Between " +
+                                dtpFromDate.Value.ToString("#dd-MM-yyyy#") + " and " +
+                                dtpToDate.Value.ToString("#dd-MM-yyyy#") + "";
             oCenter.pusvOpenConnection();
-            OleDbDataAdapter da = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
-            da.SelectCommand.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
-            da.SelectCommand.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
-            da.Fill(dsHistoryStock);
-            oCenter.pusvCloseConnection();
-            dgvAllHistoryStock.DataSource = dsHistoryStock;
-            //MessageBox.Show(sSqlLoad);
+            OleDbDataAdapter daLoad = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
 
-            //daLoad = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
-            //daLoad.Fill(dsHistoryStock, "tb_import");
+            daLoad = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
+            daLoad.Fill(dsHistoryStock, "tb_import");
 
-            //if (IsFind == true)
-            //{
-            //    dsHistoryStock.Tables["tb_import"].Clear();
-            //}
-
-            //if (dsStock.Tables["tb_import"].Rows.Count != 0)
-            //{
-            //    IsFind = true;
-            //    dgvAllHistoryStock.ReadOnly = true;
-            //    dgvAllHistoryStock.DataSource = dsHistoryStock.Tables["tb_import"];
-            //}
-            //else
-            //{
-            //    IsFind = false;
-            //}
-            //dgvAllHistoryStock.Refresh();
-
-        }
-
-        private void prvSearch()
-        {
-            
-            bool bCheck = false;
-
-            //string sSqlSelect = " SELECT * FROM tb_import WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
-
-            //string sSqlSelect = " SELECT * FROM tb_import WHERE im_date BETWEEN " +
-            //    dtpFromDate.Value.ToString("dd/MM/yyyy") + " AND " + dtpToDate.Value.ToString("dd/MM/yyyy");
-
-            string sSqlSelect = " SELECT * FROM tb_import WHERE im_date BETWEEN '" + dtpFromDate.Value + "' AND '" + dtpToDate.Value + "'";
-
-
-
-            if (bCheck == true)
+            if (IsFind == true)
             {
-                dsSearchStock.Tables["tb_import"].Clear();
+                dsHistoryStock.Tables["tb_import"].Clear();
             }
 
-            OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
-            da.Fill(dsSearchStock, "tb_import");
-
-            if (dsSearchStock.Tables["tb_import"].Rows.Count != 0)
+            if (dsHistoryStock.Tables["tb_import"].Rows.Count != 0)
             {
-                bCheck = true;
+                IsFind = true;
                 dgvAllHistoryStock.ReadOnly = true;
-                dgvAllHistoryStock.DataSource = dsSearchStock.Tables["tb_import"];
+                dgvAllHistoryStock.DataSource = dsHistoryStock.Tables["tb_import"];
             }
             else
             {
-                bCheck = false;
+                IsFind = false;
             }
             dgvAllHistoryStock.Refresh();
+        }
+        private void prvSearch()
+        {
+            
+            
 
         }
 

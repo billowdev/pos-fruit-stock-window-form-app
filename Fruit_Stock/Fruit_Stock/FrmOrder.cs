@@ -200,31 +200,6 @@ namespace Fruit_Stock
                 return;
             }
 
-            //// ============= Select All From tb_product Where Proid = txtProID.Text ========================= //
-            //oCenter.pusvCloseConnection();
-            //oCenter.pusvOpenConnection();
-            ////OleDbCommand cmdSelect = new OleDbCommand();
-            //DataSet dsProduct = new DataSet();
-            //sSql = " SELECT * FROM tb_product WHERE pro_id='" + txtProID.Text + "'";
-
-            //dsProduct = ocn.pudsLoadData(sSql, "tb_product", dsProduct);
-            //int previousQty = 0;
-
-            //if (dsProduct.Tables["tb_product"].Rows.Count != 0)
-            //{
-            //    if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == "")
-            //    {
-            //        previousQty = 0;
-            //    }
-            //    else
-            //    {
-            //        previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
-            //    }
-
-            //}
-            //// ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
-
-
             // ============= Update Quantity at tb_product after import ========================= //
             oCenter.pusvCloseConnection();
             oCenter.pusvOpenConnection();
