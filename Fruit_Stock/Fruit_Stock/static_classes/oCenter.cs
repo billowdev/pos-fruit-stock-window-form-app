@@ -198,5 +198,47 @@ namespace Fruit_Stock.static_classes
             }
         }
 
+
+        // Method Update Stock
+        public void puvUpdateStock(string _sCode, double _dQuantity, bool _bCheck)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string sSql = " SELECT * FROM tb_product WHERE Code '" + _sCode + "'";
+
+                ds = Cpuds_LoadData(sSql, "tb_product", ds);
+                if (ds.Tables["tb_product"].Rows.Count <= 0)
+                {
+                    MessageBox.Show("Check Data Stock", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+                else
+                {
+                    double dQuantityStock = 0;
+                    if (_bCheck)
+                    {
+                        // true = increase stock
+                        dQuantityStock = _dQuantity + Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString());
+                    }
+                    else
+                    {
+                        // False = Decrease Stock
+                        dQuantityStock = Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString()) - _dQuantity;
+                    }
+
+                    string sSqlUpdateStock = " UPDATE tb_product SET Quantity=" + dQuantityStock + " WHERE Code=" + _sCode + "'";
+                    Cpub_ActionData(sSqlUpdateStock);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message.ToString().ToString(), "Msg", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+        }
+
     }
 }
