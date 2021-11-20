@@ -27,7 +27,7 @@ namespace Fruit_Stock
 
             lbWelcome.Text = "Welcome " + oCenter.currentName;
             lbWelcome.Show();
-
+            stsPageStatus.Text = " >>    หน้าหลัก    <<";
             // option loading page
             pbLoad.Dispose();
             //lbWelcome.Dispose();
@@ -38,6 +38,7 @@ namespace Fruit_Stock
         {
             if (ocn.pub_CloseChildForm(this, "FrmProfile") == false)
             {
+                stsPageStatus.Text = " >>    หน้าข้อมูลพนักงาน    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
                 FrmProfile Frm = new FrmProfile();
@@ -50,6 +51,7 @@ namespace Fruit_Stock
         {
             if (ocn.pub_CloseChildForm(this, "FrmStock") == false)
             {
+                stsPageStatus.Text = " >>    หน้าสต๊อกสินค้า    <<";
                 lbWelcome.Dispose();
                 pbMain.Hide();
                 FrmStock Frm = new FrmStock();
@@ -59,22 +61,13 @@ namespace Fruit_Stock
 
         }
 
-        private void mnuSale_Click(object sender, EventArgs e)
-        {
-            if (ocn.pub_CloseChildForm(this, "FrmOrder") == false)
-            {
-                lbWelcome.Dispose();
-                pbMain.Dispose();
-                FrmOrder Frm = new FrmOrder();
-                Frm.MdiParent = this;
-                Frm.Show();
-            }
-        }
+       
 
         private void mnuProduct_Click(object sender, EventArgs e)
         {
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
             {
+                stsPageStatus.Text = " >>    หน้าเพิ่มสินค้า    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
                 FrmProduct Frm = new FrmProduct();
@@ -118,6 +111,7 @@ namespace Fruit_Stock
 
         private void mnuHistoryStock_Click(object sender, EventArgs e)
         {
+            stsPageStatus.Text = " >>    หน้าประวัติการสต๊อกสินค้า    <<";
             lbWelcome.Dispose();
             pbMain.Dispose();
             FrmHistoryStock Frm = new FrmHistoryStock();
@@ -129,9 +123,23 @@ namespace Fruit_Stock
         {
             if (ocn.pub_CloseChildForm(this, "FrmCustomer") == false)
             {
+                stsPageStatus.Text = " >>    หน้าข้อมูลลูกค้า    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
                 FrmCustomer Frm = new FrmCustomer();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+        }
+
+        private void mnuSale_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmOrder") == false)
+            {
+                stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
+                lbWelcome.Dispose();
+                pbMain.Dispose();
+                FrmOrder Frm = new FrmOrder();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
