@@ -312,6 +312,14 @@ namespace Fruit_Stock
                 }
             }
         }
+
+        private void dgvAllProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((e.RowIndex > 0) && (dgvAllProduct.Columns[e.ColumnIndex].Index) == 2)
+            {
+                e.CellStyle.Format = "#,##0.00"; // 3,444.50
+            }
+        }
     }
 }
 

@@ -61,11 +61,11 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
+            if (ocn.pub_CloseChildForm(this, "FrmOrder") == false)
             {
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmSale Frm = new FrmSale();
+                FrmOrder Frm = new FrmOrder();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
@@ -123,6 +123,18 @@ namespace Fruit_Stock
             FrmHistoryStock Frm = new FrmHistoryStock();
             Frm.MdiParent = this;
             Frm.Show();
+        }
+
+        private void cmuCustomer_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmCustomer") == false)
+            {
+                lbWelcome.Dispose();
+                pbMain.Dispose();
+                FrmCustomer Frm = new FrmCustomer();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
         }
     }
 }

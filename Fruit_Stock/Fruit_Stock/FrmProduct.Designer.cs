@@ -75,6 +75,7 @@ namespace Fruit_Stock
             this.dgvAllProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllProduct.Size = new System.Drawing.Size(950, 230);
             this.dgvAllProduct.TabIndex = 10;
+            this.dgvAllProduct.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAllProduct_CellFormatting);
             this.dgvAllProduct.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllProduct_CellMouseUp);
             // 
             // btnAdd
