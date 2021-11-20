@@ -41,6 +41,7 @@ namespace Fruit_Stock
             this.label3 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProduct = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace Fruit_Stock
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bdsPage = new System.Windows.Forms.BindingSource(this.components);
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -167,6 +167,16 @@ namespace Fruit_Stock
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(573, 15);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(88, 33);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -244,9 +254,9 @@ namespace Fruit_Stock
             // dtpProImport
             // 
             this.dtpProImport.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.dtpProImport.CustomFormat = "dd.MM.yyyy";
+            this.dtpProImport.CustomFormat = "";
             this.dtpProImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpProImport.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpProImport.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpProImport.Location = new System.Drawing.Point(134, 229);
             this.dtpProImport.Name = "dtpProImport";
             this.dtpProImport.Size = new System.Drawing.Size(308, 30);
@@ -293,16 +303,6 @@ namespace Fruit_Stock
             this.pictureBox1.Size = new System.Drawing.Size(257, 242);
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(573, 15);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(88, 33);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FrmStock
             // 

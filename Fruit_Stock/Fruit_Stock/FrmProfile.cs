@@ -630,8 +630,9 @@ namespace Fruit_Stock
                 }
                 else
                 {
-                    MessageBox.Show("Please Refresh and try again", "Msg",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    prvShowAllMember();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
                 }
             }
         }

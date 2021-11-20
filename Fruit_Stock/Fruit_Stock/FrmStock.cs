@@ -32,6 +32,7 @@ namespace Fruit_Stock
             puvFormatDataGrid();
             // AutoID                     Field Name   Table Name Head  Last      
             txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            txtProQuantity.Text = "1";
         }
         private void prvShowAllStock()
         {
@@ -67,7 +68,7 @@ namespace Fruit_Stock
 
             txtProQuantity.Text = "";
             txtProQuantity.Focus();
-            dtpProImport.Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+            dtpProImport.Value = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
 
         }
 
@@ -170,7 +171,13 @@ namespace Fruit_Stock
 
             if (dsProduct.Tables["tb_product"].Rows.Count != 0)
             {
-                previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
+                if (dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() == ""){
+                    previousQty = 0;
+                }
+                else
+                {
+                    previousQty = Convert.ToInt32(dsProduct.Tables["tb_product"].Rows[0]["pro_quantity"].ToString());
+                }
                 
             }
             // ============= END Select All From tb_product Where Proid = txtProID.Text ========================= //
@@ -263,8 +270,9 @@ namespace Fruit_Stock
                 }
                 else
                 {
-                    MessageBox.Show("Please Refresh and try again", "Msg", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    prvShowAllStock();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
                 }
             }
         }
