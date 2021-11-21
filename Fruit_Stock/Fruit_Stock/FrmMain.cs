@@ -19,7 +19,7 @@ namespace Fruit_Stock
         }
 
         oCenter ocn = new oCenter();
-        
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
             stsName.Text = "| Welcome: " + oCenter.currentName + " " + oCenter.currentLastName +
@@ -60,7 +60,7 @@ namespace Fruit_Stock
 
         }
 
-       
+
 
         private void mnuProduct_Click(object sender, EventArgs e)
         {
@@ -141,7 +141,6 @@ namespace Fruit_Stock
             }
         }
 
-       
     }
 }
 

@@ -126,8 +126,10 @@ namespace Fruit_Stock
             
                  // crytal report control
             cryReportBill.ReportSource = rptBill;
-
+            lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+            lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+            lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
         }
 
         private void btnCheckBill_Click(object sender, EventArgs e)

@@ -53,6 +53,8 @@ namespace Fruit_Stock
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAllCustomer = new System.Windows.Forms.DataGridView();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnPrintOne = new System.Windows.Forms.Button();
             this.gbOperating.SuspendLayout();
             this.cmuMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllCustomer)).BeginInit();
@@ -110,6 +112,8 @@ namespace Fruit_Stock
             this.gbOperating.Controls.Add(this.btnSearch);
             this.gbOperating.Controls.Add(this.txtSearch);
             this.gbOperating.Controls.Add(this.btnSave);
+            this.gbOperating.Controls.Add(this.btnPrintOne);
+            this.gbOperating.Controls.Add(this.btnReport);
             this.gbOperating.Controls.Add(this.btnDelete);
             this.gbOperating.Controls.Add(this.btnEdit);
             this.gbOperating.Controls.Add(this.btnNew);
@@ -182,7 +186,7 @@ namespace Fruit_Stock
             // 
             this.lbEMPID.AutoSize = true;
             this.lbEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEMPID.Location = new System.Drawing.Point(95, 31);
+            this.lbEMPID.Location = new System.Drawing.Point(99, 45);
             this.lbEMPID.Name = "lbEMPID";
             this.lbEMPID.Size = new System.Drawing.Size(44, 25);
             this.lbEMPID.TabIndex = 2;
@@ -192,7 +196,7 @@ namespace Fruit_Stock
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(105, 74);
+            this.lbName.Location = new System.Drawing.Point(109, 88);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(34, 25);
             this.lbName.TabIndex = 2;
@@ -202,7 +206,7 @@ namespace Fruit_Stock
             // 
             this.lbLastName.AutoSize = true;
             this.lbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastName.Location = new System.Drawing.Point(61, 111);
+            this.lbLastName.Location = new System.Drawing.Point(65, 125);
             this.lbLastName.Name = "lbLastName";
             this.lbLastName.Size = new System.Drawing.Size(78, 25);
             this.lbLastName.TabIndex = 2;
@@ -212,7 +216,7 @@ namespace Fruit_Stock
             // 
             this.lbPhone.AutoSize = true;
             this.lbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhone.Location = new System.Drawing.Point(22, 165);
+            this.lbPhone.Location = new System.Drawing.Point(26, 179);
             this.lbPhone.Name = "lbPhone";
             this.lbPhone.Size = new System.Drawing.Size(117, 25);
             this.lbPhone.TabIndex = 2;
@@ -222,7 +226,7 @@ namespace Fruit_Stock
             // 
             this.txtCusPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtCusPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusPhone.Location = new System.Drawing.Point(145, 163);
+            this.txtCusPhone.Location = new System.Drawing.Point(149, 177);
             this.txtCusPhone.MaxLength = 10;
             this.txtCusPhone.Name = "txtCusPhone";
             this.txtCusPhone.Size = new System.Drawing.Size(264, 30);
@@ -232,7 +236,7 @@ namespace Fruit_Stock
             // 
             this.txtCusLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtCusLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusLastName.Location = new System.Drawing.Point(145, 114);
+            this.txtCusLastName.Location = new System.Drawing.Point(149, 128);
             this.txtCusLastName.MaxLength = 50;
             this.txtCusLastName.Name = "txtCusLastName";
             this.txtCusLastName.Size = new System.Drawing.Size(346, 30);
@@ -242,7 +246,7 @@ namespace Fruit_Stock
             // 
             this.txtCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtCusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusName.Location = new System.Drawing.Point(145, 74);
+            this.txtCusName.Location = new System.Drawing.Point(149, 88);
             this.txtCusName.MaxLength = 50;
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(346, 30);
@@ -252,7 +256,7 @@ namespace Fruit_Stock
             // 
             this.txtCusID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtCusID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCusID.Location = new System.Drawing.Point(145, 34);
+            this.txtCusID.Location = new System.Drawing.Point(149, 48);
             this.txtCusID.MaxLength = 6;
             this.txtCusID.Name = "txtCusID";
             this.txtCusID.Size = new System.Drawing.Size(233, 30);
@@ -311,6 +315,30 @@ namespace Fruit_Stock
             this.dgvAllCustomer.TabIndex = 11;
             this.dgvAllCustomer.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllCustomer_CellMouseUp);
             // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(522, 34);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(107, 56);
+            this.btnReport.TabIndex = 15;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // btnPrintOne
+            // 
+            this.btnPrintOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnPrintOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintOne.Location = new System.Drawing.Point(419, 170);
+            this.btnPrintOne.Name = "btnPrintOne";
+            this.btnPrintOne.Size = new System.Drawing.Size(217, 43);
+            this.btnPrintOne.TabIndex = 15;
+            this.btnPrintOne.Text = "Print One Person";
+            this.btnPrintOne.UseVisualStyleBackColor = false;
+            this.btnPrintOne.Click += new System.EventHandler(this.btnPrintOne_Click);
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -357,5 +385,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuNew;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.DataGridView dgvAllCustomer;
+        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnPrintOne;
     }
 }
