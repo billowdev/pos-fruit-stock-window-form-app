@@ -69,53 +69,60 @@ namespace Fruit_Stock
         // ================================== Function Show All Member for Admin ================================== // 
         private void prvShowAllMember()
         {
-            string sSqlEmp = "select * from tb_employee";
-            string sSqlLogin = "select * from tb_login";
-
-            if (oCenter.IsFind == true)
+            try
             {
-                oCenter.ds.Tables["tb_employee"].Clear();
+                string sSqlEmp = "select * from tb_employee";
+                string sSqlLogin = "select * from tb_login";
+
+                if (oCenter.IsFind == true)
+                {
+                    oCenter.ds.Tables["tb_employee"].Clear();
+                }
+
+                da = new OleDbDataAdapter(sSqlEmp, oCenter.conn);
+                da.Fill(oCenter.ds, "tb_employee");
+
+                if (oCenter.ds.Tables["tb_employee"].Rows.Count != 0)
+                {
+                    oCenter.IsFind = true;
+                    dgvAllMember.ReadOnly = true;
+                    dgvAllMember.DataSource = oCenter.ds.Tables["tb_employee"];
+                }
+                else
+                {
+                    oCenter.IsFind = false;
+                }
+
+                // ------------------------------------------------------- //
+                DataSet dsLogin = new DataSet();
+                OleDbDataAdapter daLogin = new OleDbDataAdapter(sSqlLogin, oCenter.conn);
+                bool bCheck = false;
+
+                if (bCheck == true)
+                {
+                    dsLogin.Tables["tb_login"].Clear();
+                }
+
+                //daLogin = new OleDbDataAdapter();
+                daLogin.Fill(dsLogin, "tb_login");
+
+                if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+                {
+                    bCheck = true;
+                    dgvAllUser.ReadOnly = true;
+                    dgvAllUser.DataSource = dsLogin.Tables["tb_login"];
+                }
+                else
+                {
+                    bCheck = false;
+                }
+
+                IsFind = false;
             }
-
-            da = new OleDbDataAdapter(sSqlEmp, oCenter.conn);
-            da.Fill(oCenter.ds, "tb_employee");
-
-            if (oCenter.ds.Tables["tb_employee"].Rows.Count != 0)
+            catch
             {
-                oCenter.IsFind = true;
-                dgvAllMember.ReadOnly = true;
-                dgvAllMember.DataSource = oCenter.ds.Tables["tb_employee"];
-            }
-            else
-            {
-                oCenter.IsFind = false;
-            }
 
-            // ------------------------------------------------------- //
-            DataSet dsLogin = new DataSet();
-            OleDbDataAdapter daLogin = new OleDbDataAdapter(sSqlLogin, oCenter.conn);
-            bool bCheck = false;
-
-            if (bCheck == true)
-            {
-                dsLogin.Tables["tb_login"].Clear();
             }
-
-            //daLogin = new OleDbDataAdapter();
-            daLogin.Fill(dsLogin, "tb_login");
-
-            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
-            {
-                bCheck = true;
-                dgvAllUser.ReadOnly = true;
-                dgvAllUser.DataSource = dsLogin.Tables["tb_login"];
-            }
-            else
-            {
-                bCheck = false;
-            }
-
-            IsFind = false;
         }
 
         private void ShowForUserLogin()
@@ -298,6 +305,9 @@ namespace Fruit_Stock
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+
             if (txtName.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลที่จะแก้ไขให้ครบ", "ผิดพลาด",
