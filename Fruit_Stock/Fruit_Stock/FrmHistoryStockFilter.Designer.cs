@@ -1,7 +1,7 @@
 ﻿
 namespace Fruit_Stock
 {
-    partial class FrmHistoryStockReport
+    partial class FrmHistoryStockFilter
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistoryStockFilter));
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dgvAllHistoryStock = new System.Windows.Forms.DataGridView();
@@ -107,6 +108,7 @@ namespace Fruit_Stock
             this.btnPrint.TabIndex = 46;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnLoad
             // 
@@ -118,7 +120,7 @@ namespace Fruit_Stock
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // FrmHistoryStockReport
+            // FrmHistoryStockFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +132,12 @@ namespace Fruit_Stock
             this.Controls.Add(this.dgvAllHistoryStock);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FrmHistoryStockReport";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1440, 768);
+            this.MinimizeBox = false;
+            this.Name = "FrmHistoryStockFilter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmHistoryStockReport";
             this.Load += new System.EventHandler(this.FrmHistoryStockReport_Load);

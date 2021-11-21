@@ -1,0 +1,21 @@
+// MUST INSERT
+tb_order column
+-------------------
+order_id,order_quantity,order_date,cus_id,pro_id
+
+tb_product
+----------------------
+pro_id,pro_name,pro_price,pro_unit,pro_quantity,im_id
+
+tb_customer
+----------------------
+cus_id,cus_name,cus_lastname,cus_phone
+
+
+
+======================================================
+			Bill
+======================================================
+======================================================
+			Bill
+======================================================

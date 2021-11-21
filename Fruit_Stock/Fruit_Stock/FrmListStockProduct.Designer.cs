@@ -30,15 +30,16 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListStockProduct));
             this.lsvShow = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmuMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mncDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmuMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,6 +83,11 @@ namespace Fruit_Stock
             this.columnHeader4.Text = "Unit";
             this.columnHeader4.Width = 160;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Stock";
+            this.columnHeader5.Width = 160;
+            // 
             // cmuMenu
             // 
             this.cmuMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -104,11 +110,6 @@ namespace Fruit_Stock
             this.txtSearch.TabIndex = 8;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Stock";
-            this.columnHeader5.Width = 160;
-            // 
             // FrmListStockProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -117,6 +118,7 @@ namespace Fruit_Stock
             this.ClientSize = new System.Drawing.Size(894, 446);
             this.Controls.Add(this.lsvShow);
             this.Controls.Add(this.txtSearch);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmListStockProduct";
             this.Text = "FrmListStockProduct";
             this.Load += new System.EventHandler(this.FrmListStockProduct_Load);

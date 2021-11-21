@@ -13,9 +13,9 @@ using System.Data;
 
 namespace Fruit_Stock
 {
-    public partial class FrmHistoryStockReport : Form
+    public partial class FrmHistoryStockFilter : Form
     {
-        public FrmHistoryStockReport()
+        public FrmHistoryStockFilter()
         {
             InitializeComponent();
         }
@@ -25,6 +25,8 @@ namespace Fruit_Stock
         DataSet dsStock = new DataSet();
         DataSet dsSearchStock = new DataSet();
         OleDbDataAdapter daLoad;
+        DataSet dsHistoryStock = new DataSet();
+        bool IsFind = false;
 
         private void prvShowAllStock()
         {
@@ -79,6 +81,7 @@ namespace Fruit_Stock
 
         private void FrmHistoryStockReport_Load(object sender, EventArgs e)
         {
+
             prvShowAllStock();
             prvFormatDataGrid();
         }
@@ -86,19 +89,13 @@ namespace Fruit_Stock
         private void btnLoad_Click(object sender, EventArgs e)
         {
             prvFillterDate();
-            prvFormatDataGrid();
+            //prvFormatDataGrid();
         }
 
         private void prvFillterDate()
         {
-            bool IsFind = false;
-
+            
             //prvSearch();
-
-
-            DataSet dsHistoryStock = new DataSet();
-
-
             string sSqlLoad = "SELECT * FROM tb_import WHERE im_date Between " +
                                 dtpFromDate.Value.ToString("#dd-MM-yyyy#") + " and " +
                                 dtpToDate.Value.ToString("#dd-MM-yyyy#") + "";
@@ -132,5 +129,18 @@ namespace Fruit_Stock
 
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            //cryHistoryStockReport rptHistoryStock = new cryHistoryStockReport();
+
+            //this.Hide();
+            FrmReportHistoryStock Frm = new FrmReportHistoryStock();
+            Frm.rptHistoryStock.SetDataSource(dsHistoryStock);
+            
+            Frm.ShowDialog();
+            //cry
+            //.ReportSource = rptHistoryStock;
+        }
     }
 }

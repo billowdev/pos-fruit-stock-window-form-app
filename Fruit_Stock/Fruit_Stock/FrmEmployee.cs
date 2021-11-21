@@ -12,9 +12,9 @@ using System.Data.OleDb;
 
 namespace Fruit_Stock
 {
-    public partial class FrmProfile : Form
+    public partial class FrmEmployee : Form
     {
-        public FrmProfile()
+        public FrmEmployee()
         {
             InitializeComponent();
         }
@@ -153,7 +153,7 @@ namespace Fruit_Stock
 
                 // ==================================== it is fill all data from tb_login to dataGridView ====================================================== //
 
-                //oCenter ocn = new oCenter();
+                //CallCenter CC= new CallCenter();
                 DataSet dsEmp = new DataSet();
 
                 sSql = " SELECT * FROM tb_employee WHERE emp_id='" + lbID.Text + "'";
@@ -224,7 +224,7 @@ namespace Fruit_Stock
 
                 // ==================================== Get tb_ogin Data ====================================================== //
 
-                //oCenter ocn = new oCenter();
+                //CallCenter CC= new CallCenter();
                 DataSet dsLogin = new DataSet();
 
                 string sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
@@ -636,6 +636,12 @@ namespace Fruit_Stock
                     btnSearch.Enabled = true;
                 }
             }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FrmEmployeeFilter Frm = new FrmEmployeeFilter();
+            Frm.ShowDialog();
         }
     }
 }

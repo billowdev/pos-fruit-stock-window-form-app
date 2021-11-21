@@ -22,6 +22,9 @@ namespace Fruit_Stock
         oCenter ocn = new oCenter();
         string sProID, sProName, sProPrice, sProUnit, sProQuantity;
         public string psPid, psPname, psPprice, psPunit, psPquantity;
+        public DataGridView pdgvPublic; // for call at other from
+        public int pnCurrentRow; // public current row
+
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -34,20 +37,18 @@ namespace Fruit_Stock
             prvShowData();
         }
 
-        public DataGridView pdgvPublic; // for call at other from
-        public int pnCurrentRow; // public current row
 
         private void lsvShow_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            for (int nI = 0; nI < pdgvPublic.Rows.Count; nI++)
-            {
-                if ((pdgvPublic.Rows[nI].Cells[0].Value.ToString() != "") &&
-                        (pdgvPublic.Rows[nI].Cells[0].Value.ToString() == lsvShow.SelectedItems[0].SubItems[0].Text))
-                {
-                    MessageBox.Show("Product is already exit! \n Select other!!", "msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
+            //for (int nI = 0; nI < pdgvPublic.Rows.Count; nI++)
+            //{
+            //    if ((pdgvPublic.Rows[nI].Cells[0].Value.ToString() != "") &&
+            //            (pdgvPublic.Rows[nI].Cells[0].Value.ToString() == lsvShow.SelectedItems[0].SubItems[0].Text))
+            //    {
+            //        MessageBox.Show("Product is already exit! \n Select other!!", "msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //}
           
             psPid = lsvShow.SelectedItems[0].SubItems[0].Text;
             psPname = lsvShow.SelectedItems[0].SubItems[1].Text;

@@ -35,11 +35,21 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>so_fresh.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +61,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cryBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryEmployee1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryEmployee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryHistoryStockReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryHistoryStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmCheckBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCheckBill.Designer.cs">
+      <DependentUpon>FrmCheckBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,17 +97,11 @@
     <Compile Include="FrmHistoryStock.Designer.cs">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmHistoryInvoice.cs">
+    <Compile Include="FrmHistoryStockFilter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmHistoryInvoice.Designer.cs">
-      <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmHistoryStockReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmHistoryStockReport.Designer.cs">
-      <DependentUpon>FrmHistoryStockReport.cs</DependentUpon>
+    <Compile Include="FrmHistoryStockFilter.Designer.cs">
+      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListCustomer.cs">
       <SubType>Form</SubType>
@@ -105,23 +133,47 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmProfile.cs">
+    <Compile Include="FrmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmProfile.Designer.cs">
-      <DependentUpon>FrmProfile.cs</DependentUpon>
+    <Compile Include="FrmEmployee.Designer.cs">
+      <DependentUpon>FrmEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmOrder.cs">
+    <Compile Include="FrmOrderHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmOrder.Designer.cs">
-      <DependentUpon>FrmOrder.cs</DependentUpon>
+    <Compile Include="FrmOrderHistory.Designer.cs">
+      <DependentUpon>FrmOrderHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSale.Designer.cs">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmProduct.Designer.cs">
       <DependentUpon>FrmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmployeeFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmployeeFilter.Designer.cs">
+      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportEmployee.Designer.cs">
+      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportHistoryStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportHistoryStock.Designer.cs">
+      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmStock.cs">
       <SubType>Form</SubType>
@@ -137,17 +189,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="static_classes\oCenter.cs" />
+    <EmbeddedResource Include="cryBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryBill.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryEmployee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryEmployee1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryHistoryStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryHistoryStockReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCheckBill.resx">
+      <DependentUpon>FrmCheckBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomer.resx">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistoryStock.resx">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistoryInvoice.resx">
-      <DependentUpon>FrmHistoryInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistoryStockReport.resx">
-      <DependentUpon>FrmHistoryStockReport.cs</DependentUpon>
+    <EmbeddedResource Include="FrmHistoryStockFilter.resx">
+      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListCustomer.resx">
       <DependentUpon>FrmListCustomer.cs</DependentUpon>
@@ -164,14 +228,26 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmProfile.resx">
-      <DependentUpon>FrmProfile.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEmployee.resx">
+      <DependentUpon>FrmEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmOrder.resx">
-      <DependentUpon>FrmOrder.cs</DependentUpon>
+    <EmbeddedResource Include="FrmOrderHistory.resx">
+      <DependentUpon>FrmOrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSale.resx">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmployeeFilter.resx">
+      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportEmployee.resx">
+      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportHistoryStock.resx">
+      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStock.resx">
       <DependentUpon>FrmStock.cs</DependentUpon>
@@ -181,7 +257,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="HistoryStockReport.rdlc" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -210,6 +285,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Images\1980x1080.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="so_fresh.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
