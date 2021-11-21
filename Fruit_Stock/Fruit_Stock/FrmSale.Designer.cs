@@ -508,6 +508,7 @@ namespace Fruit_Stock
             this.dgvStateOrder.RowTemplate.Height = 24;
             this.dgvStateOrder.Size = new System.Drawing.Size(663, 243);
             this.dgvStateOrder.TabIndex = 14;
+            this.dgvStateOrder.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvStateOrder_CellBeginEdit);
             // 
             // FrmSale
             // 

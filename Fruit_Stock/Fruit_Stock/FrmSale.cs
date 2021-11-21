@@ -25,6 +25,7 @@ namespace Fruit_Stock
         public double dCash = 0;
         public double dChange = 0;
         public double dTotal = 0;
+        double dCalTotal = 0;
 
         string sSql = "";
         DataSet dsOrder = new DataSet();
@@ -37,13 +38,50 @@ namespace Fruit_Stock
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
+            /*
+             // Column 
+                tb_order column
+                -------------------
+                order_id,order_quantity,order_date,cus_id,pro_id
 
+                tb_product
+                ----------------------
+                pro_id,pro_name,pro_price,pro_unit,pro_quantity,im_id
+
+                tb_customer
+                ----------------------
+                cus_id,cus_name,cus_lastname,cus_phone
+             */
             // ====================================== Data Grid Order ================================ //
-            dtOrder.Columns.Add("");
+            dtOrder.Columns.Add("oOid");
+            dtOrder.Columns.Add("oQty");
+            dtOrder.Columns.Add("oDate");
+            dtOrder.Columns.Add("oCID");
+            dtOrder.Columns.Add("oPID");
+            dtOrder.Columns.Add("oPrice");
+            // ======================== DataGridView State Order =====//
 
+            dgvStateOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
+
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
+            dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+            dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+            dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+            dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+            dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
+            dgvStateOrder.Columns[5].HeaderText = "ราคาสินค้า";
+
+            dgvStateOrder.Columns[0].Width = 160;
+            dgvStateOrder.Columns[1].Width = 120;
+            dgvStateOrder.Columns[2].Width = 240;
+            dgvStateOrder.Columns[3].Width = 160;
+            dgvStateOrder.Columns[4].Width = 160;
+            dgvStateOrder.Columns[4].Width = 160;
 
             // ====================================== END Data Grid Order ================================ //
-            
+
             prvShowAllOrder();
             prvFormatDataGrid();
             // AutoID                     Field Name        Table Name Head  Last      
@@ -164,17 +202,24 @@ namespace Fruit_Stock
                 return;
             }
 
+            //  ===================== Add to data gridview   =====================  //
+            dtOrder.Rows.Add(txtOrderID.Text, txtOrderQty.Text, dtpOrder.Value, txtCustomerID.Text, txtProID.Text, txtProPrice.Text);
+            //  ====================== Calculate Total ======================== //
+            lbTotal.Text = dTotal.ToString("#,##0.00");
+            dgvStateOrder.DataSource = dtOrder;
 
-            dPreviousQty = Convert.ToInt32(lbStockQuantity.Text); // Qty Product
-            dNewQty = Convert.ToInt32(txtOrderQty.Text);  // Qty Order
-            dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
+            for (int nRow=0; nRow <= dtOrder.Rows.Count; nRow++)
+            {
 
+                dCalTotal = Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oQty"].Value) * 
+                    Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oPrice"].Value);
+
+            }
+            dTotal = dCalTotal;
             lbTotal.Text = dTotal.ToString("#,##0.00");
 
-            dTotal = Convert.ToDouble(txtOrderQty.Text) * Convert.ToDouble(txtProPrice.Text);
-
-            lbTotal.Text = dTotal.ToString("#,##0.00");
-
+            //  ===================== END Add to data gridview   =====================  //
+           
             btnSale.Enabled = true;
         }
 
@@ -196,7 +241,10 @@ namespace Fruit_Stock
 
         private void btnSale_Click(object sender, EventArgs e)
         {
-            
+
+            dPreviousQty = Convert.ToInt32(lbStockQuantity.Text); // Qty Product
+            dNewQty = Convert.ToInt32(txtOrderQty.Text);  // Qty Order
+            dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
 
             if (txtCash.Text == "")
             {
@@ -208,6 +256,17 @@ namespace Fruit_Stock
                 MessageBox.Show("You must enter cash more than or equal total value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // Insert From Data Grid
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //{
+            //    StrQuery = @"INSERT INTO tableName VALUES ("
+            //        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ", "
+            //        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ");";
+            //    comm.CommandText = StrQuery;
+            //    comm.ExecuteNonQuery();
+            //}
+
 
             // ============= Update Quantity at tb_product after import ========================= //
             oCenter.pusvCloseConnection();
@@ -253,6 +312,7 @@ namespace Fruit_Stock
             // ============================================== END Insert to tb_order ========================= //
 
 
+
             prvShowAllOrder();
             prvClearAll();
 
@@ -271,6 +331,12 @@ namespace Fruit_Stock
             
         }
 
+        private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+       
     }
 }
 
