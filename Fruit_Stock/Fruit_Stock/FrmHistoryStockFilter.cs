@@ -131,6 +131,7 @@ namespace Fruit_Stock
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            //this.Hide();
             //cryHistoryStockReport rptHistoryStock = new cryHistoryStockReport();
 
             //this.Hide();

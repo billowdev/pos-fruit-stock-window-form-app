@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
+using System.Data;
+using System.Data.OleDb;
 
 namespace Fruit_Stock
 {
@@ -17,426 +19,258 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        oCenter ocn = new oCenter();
-        double dCash = 0;
-        double dChange = 0;
+        bool bCheck = false;
         DataGridView dgvPublic;
+        oCenter ocn = new oCenter();
+        public double dCash = 0;
+        public double dChange = 0;
+        public double dTotal = 0;
+
         string sSql = "";
-        int nCurrentRow;
+        DataSet dsOrder = new DataSet();
 
-        private void prvClear()
+        double dPreviousQty = 0; // Qty Product
+        double dNewQty = 0;
+        double dPresentQty = 0; // Qty Product After Operating with newQty
+        
+        DataTable dtOrder = new DataTable();
+
+        private void FrmOrder_Load(object sender, EventArgs e)
         {
-            txtOrderID.Text = "";
-            txtDiscount.Text = "";
-            lbPrice.Text = "";
-            lbTotal.Text = "";
 
+            // ====================================== Data Grid Order ================================ //
+            dtOrder.Columns.Add("");
+
+
+            // ====================================== END Data Grid Order ================================ //
+            
+            prvShowAllOrder();
+            prvFormatDataGrid();
+            // AutoID                     Field Name        Table Name Head  Last      
             txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
 
-
+            txtCash.Text = dCash.ToString("#,##0.00");
+            lbTotal.Text = dTotal.ToString("#,##0.00");
+            lbChange.Text = dChange.ToString("#,##0.00");
+            btnSale.Enabled = false;
+            dtpOrder.Value = DateTime.Now;
         }
+
+        // Method for show all product when form load to data grid view dgvAllOrder
+        private void prvShowAllOrder()
+        {
+            bCheck = false;
+            sSql = "select * from tb_order";
+            dsOrder = ocn.pudsLoadData(sSql, "tb_order", dsOrder);
+
+            if (bCheck == true)
+            {
+                dsOrder.Tables["tb_order"].Clear();
+            }
+
+            if (dsOrder.Tables["tb_order"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllOrder.ReadOnly = true;
+                dgvAllOrder.DataSource = dsOrder.Tables["tb_order"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+            // ----------------------------------------------------------------------------------- //
+        }
+
+        // Method for format datagridview
+        private void prvFormatDataGrid()
+        {
+            dgvAllOrder.Update();
+            dgvAllOrder.Refresh();
+
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvAllOrder.ColumnHeadersDefaultCellStyle = cs;
+            dgvAllOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+            dgvAllOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+            dgvAllOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+            dgvAllOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+            dgvAllOrder.Columns[4].HeaderText = "รหัสสินค้า";
+
+            dgvAllOrder.Columns[0].Width = 180;
+            dgvAllOrder.Columns[1].Width = 180;
+            dgvAllOrder.Columns[2].Width = 180;
+            dgvAllOrder.Columns[3].Width = 220;
+            dgvAllOrder.Columns[4].Width = 180;
+        }
+
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             prvOpenListProduct();
+            lbTotal.Text = "";
+            txtCash.Text = "";
+            lbChange.Text = "";
         }
 
         private void prvOpenListProduct()
         {
-            dgvPublic = dgvShow;
-            FrmListStockProduct frm = new FrmListStockProduct();
-            frm.pnCurrentRow = nCurrentRow;
-            frm.pdgvPublic = dgvPublic;
-            frm.ShowDialog(this);
-            btnBrowse.Visible = false;
-            if (dgvShow.Rows[nCurrentRow].Cells[0].Value.ToString().Trim() != "")
-            {
-                if (prvShowPrice(dgvShow.Rows[nCurrentRow].Cells[0].Value.ToString().Trim(), nCurrentRow) == "")
-                {
-                    MessageBox.Show("No Cost product", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dgvShow.Rows.RemoveAt(nCurrentRow);
-                    return;
-                }
+            dgvPublic = dgvAllOrder;
+            FrmListStockProduct Frm = new FrmListStockProduct();
+            Frm.pdgvPublic = dgvPublic;
+            Frm.ShowDialog(this);
 
-                dgvShow.Rows[nCurrentRow].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
-                dgvShow.Rows[nCurrentRow].DefaultCellStyle.SelectionForeColor = Color.Maroon;
-                dgvShow.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                dgvShow.CurrentCell = dgvShow.Rows[nCurrentRow].Cells[3];
-                dgvShow.Focus();
-            }
+            txtProID.Text = Frm.psPid;
+            txtProName.Text = Frm.psPname;
+            txtProPrice.Text = Frm.psPprice;
+            txtProUnit.Text = Frm.psPunit;
+            lbStockQuantity.Text = Frm.psPquantity;
         }
-
-        private string prvShowPrice(string _sSendpro_id, int _nRow)
+        private void prvCalculateTotal()
         {
-            string sCheck = "";
-            DataSet ds = new DataSet();
-            sSql = " SELECT (SELECT TOP 1 pro_price FROM tb_product WHERE pro_id=tb_product.pro_id) AS Cost " +
-                " FROM tb_product WHERE pro_id='" + _sSendpro_id + "'";
-            ds = ocn.pudsLoadData(sSql, "tb_product", ds);
-            if (ds.Tables["tb_product"].Rows.Count != 0)
+            if (txtOrderQty.Text == "")
             {
-                sCheck = ds.Tables["tb_product"].Rows[0]["pro_price"].ToString();
-                dgvShow.Rows[_nRow].Cells[4].Value = sCheck;
+                MessageBox.Show("Enter Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-
-            return sCheck;
-
-        }
-
-        private void prvSum()
-        {
-            lbPrice.Text = "0.00";
-            lbTotal.Text = "0.00";
-
-            double dAmount = 0;
-            for (int nRow = 0; nRow < dgvShow.Rows.Count; nRow++)
+            if (txtProID.Text == "")
             {
-                if (dgvShow.Rows[nRow].Cells[5].Value.ToString().Trim() != "")
-                {
-                    dAmount += Convert.ToDouble(dgvShow.Rows[nRow].Cells[5].Value.ToString().Trim());
-                }
-                lbTotal.Text = dAmount.ToString("#,##0.00");
-                double dTotal = 0;
-                double dDiscount = 0;
-
-                if (txtDiscount.Text.Trim() != "")
-                {
-                    dDiscount = Convert.ToDouble(txtDiscount.Text.Trim());
-                }
-
-                dTotal = dAmount - dDiscount;
-                lbTotal.Text = dTotal.ToString("#,##0.00");
+                MessageBox.Show("Add Product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtCustomerID.Text == "")
+            {
+                MessageBox.Show("Add Customer", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (lbStockQuantity.Text == "")
+            {
+                MessageBox.Show("Please Select other product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Convert.ToInt32(txtOrderQty.Text) == 0)
+            {
+                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Convert.ToInt32(txtOrderQty.Text) < 0)
+            {
+                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (Convert.ToInt32(txtOrderQty.Text) > Convert.ToInt32(lbStockQuantity.Text))
+            {
+                MessageBox.Show("Can't Order more than product stock \n please check stock or select other product", "Warning",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
+
+            dPreviousQty = Convert.ToInt32(lbStockQuantity.Text); // Qty Product
+            dNewQty = Convert.ToInt32(txtOrderQty.Text);  // Qty Order
+            dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
+
+            lbTotal.Text = dTotal.ToString("#,##0.00");
+
+            dTotal = Convert.ToDouble(txtOrderQty.Text) * Convert.ToDouble(txtProPrice.Text);
+
+            lbTotal.Text = dTotal.ToString("#,##0.00");
+
+            btnSale.Enabled = true;
         }
-        // Method Update Stock
-        private void prvUpdateStock()
+
+        private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
-            for (int nRow = 0; nRow < dgvShow.Rows.Count; nRow++)
+            prvCalculateTotal();
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            FrmListCustomer Frm = new FrmListCustomer();
+            Frm.ShowDialog();
+
+            if (Frm.psCusID != "")
             {
-                ocn.puvUpdateStock(dgvShow.Rows[nRow].Cells[0].Value.ToString(),
-                    Convert.ToDouble(dgvShow.Rows[nRow].Cells[3].Value.ToString()), false);
+                txtCustomerID.Text = Frm.psCusID;
             }
         }
 
         private void btnSale_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDouble(lbTotal.Text.Trim()) <= 0.00)
+            
+
+            if (txtCash.Text == "")
             {
-                MessageBox.Show("sum cost it will not 0.00", "Msg", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show("Please Enter Cash", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (dgvShow.Rows.Count <= 0)
+            if ( Convert.ToDouble(txtCash.Text) < Convert.ToDouble(lbTotal.Text))
             {
-                MessageBox.Show("Please Select Product", "Msg", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show("You must enter cash more than or equal total value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            for (int nRow = 0; nRow < dgvShow.Rows.Count; nRow++)
-            {
-                if (dgvShow.Rows[nRow].Cells[0].Value.ToString().Trim() == "")
-                {
-                    MessageBox.Show("Input Data No Successs", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+            // ============= Update Quantity at tb_product after import ========================= //
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
 
-                if (dgvShow.Rows[nRow].Cells[1].Value.ToString().Trim() == "")
-                {
-                    MessageBox.Show("Input Data No Successs", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+            OleDbCommand cmdUpdate = new OleDbCommand();
+           
+            sSql = " UPDATE tb_product SET pro_quantity=@updateQty WHERE pro_id=@PID";
+            cmdUpdate.Parameters.Clear();
+            cmdUpdate.Parameters.AddWithValue("@updateQty", dPresentQty);
+            cmdUpdate.Parameters.AddWithValue("@PID", txtProID.Text.Trim().ToString());
 
-                if (dgvShow.Rows[nRow].Cells[2].Value.ToString().Trim() == "")
-                {
-                    MessageBox.Show("Input Data No Successs", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+            cmdUpdate.CommandType = CommandType.Text;
+            cmdUpdate.CommandText = sSql;
+            cmdUpdate.Connection = oCenter.conn;
+            cmdUpdate.ExecuteNonQuery();
 
-                if (dgvShow.Rows[nRow].Cells[3].Value.ToString().Trim() == "")
-                {
-                    MessageBox.Show("Input Data No Successs", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+            ocn.dBillTotal = Convert.ToDouble(lbTotal.Text);
+            ocn.dBillCash = Convert.ToDouble(txtCash.Text);
+            ocn.dBillChange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
 
-                if (dgvShow.Rows[nRow].Cells[4].Value.ToString().Trim() == "")
-                {
-                    MessageBox.Show("Input Data No Successs", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
+            lbChange.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text)).ToString("#,##00.00");
 
-                if (Convert.ToDouble(dgvShow.Rows[nRow].Cells[3].Value.ToString().Trim()) <= 0.00)
-                {
-                    MessageBox.Show("Input Quantity >= 0", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    dgvShow.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                    dgvShow.CurrentCell = dgvShow.Rows[nRow].Cells[3];
-                    dgvShow.Focus();
-                    return;
-                }
+            // =============  END Update Quantity at tb_product after import ========================= //
 
-                if (Convert.ToDouble(dgvShow.Rows[nRow].Cells[5].Value.ToString().Trim()) <= 0.00)
-                {
-                    MessageBox.Show("Sum Cost >= 0", "Msg", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    dgvShow.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                    dgvShow.CurrentCell = dgvShow.Rows[nRow].Cells[5];
-                    dgvShow.Focus();
-                    return;
-                }
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
 
-                DataSet dsCheckStock = new DataSet();
-                sSql = " SELECT * FROM tb_product WHERE pro_id='" + dgvShow.Rows[nRow].Cells[0].Value.ToString() + "'";
-                dsCheckStock = ocn.pudsLoadData(sSql, "tb_product", dsCheckStock);
-                if (dsCheckStock.Tables["tb_product"].Rows.Count != 0)
-                {
-                    // check ว่าขายเกินไหม
-                    if (Convert.ToDouble(dgvShow.Rows[nRow].Cells[3].Value.ToString()) >
-                        Convert.ToDouble(dsCheckStock.Tables["tb_product"].Rows[0]["pro_quantity"].ToString()))
-                    {
-                        MessageBox.Show("Can't Sale this Product ID: " + dgvShow.Rows[nRow].Cells[0].Value.ToString(), "Msg",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show(" The product is not in stock Product ID:  " + dgvShow.Rows[nRow].Cells[0].ToString(), "msg",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+            // ============================================== Insert to tb_order ========================= //
+            OleDbCommand cmdOrder = new OleDbCommand();
+            string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
+                txtOrderID.Text + "','" +
+                txtOrderQty.Text + "','"+
+                dtpOrder.Value + "','" +
+                txtCustomerID.Text + "','" + 
+                txtProID.Text + "')";
 
-                    // ====================================
-                    // Check Bill
-                    if (txtDiscount.Text == "")
-                    {
-                        txtDiscount.Text = "0.00";
-                    }
+            cmdOrder.CommandType = CommandType.Text;
+            cmdOrder.CommandText = sSqlOder;
+            cmdOrder.Connection = oCenter.conn;
+            cmdOrder.ExecuteNonQuery();
 
-                    dCash = 0;
-                    dChange = 0;
+            // ============================================== END Insert to tb_order ========================= //
 
-                    FrmCheckBill Frm = new FrmCheckBill();
-                    Frm.pdTotal = Convert.ToDouble(lbTotal.Text);
-                    Frm.ShowDialog();
-                    dCash = Frm.pdCash;
-                    dChange = Frm.pdChange;
 
-                    // ====================================
-                    DataSet ds = new DataSet();
-                    sSql = " SELECT * FROM tb_order";
+            prvShowAllOrder();
+            prvClearAll();
 
-                    ds = ocn.pudsLoadData(sSql, "tb_order", ds);
-                    if (ds.Tables["tb_order"].Rows.Count <= 0)
-                    {
-                        DataRow dr = ds.Tables["tb_order"].NewRow();
-                        dr["order_id"] = txtOrderID.Text;
-                        dr["DocDate"] = DateTime.Now.ToString("dd/MM/yyyy");
-                        dr["Price"] = Convert.ToDouble(lbPrice.Text);
-                        dr["Discount"] = Convert.ToDouble(txtDiscount.Text);
-                        dr["Total"] = Convert.ToDouble(lbTotal.Text);
-
-                        ds.Tables["tb_order"].Rows.Add(dr);
-
-                        oCenter.da.Update(ds, "tb_order");
-                    }
-
-                    string sDelete = " DELETE FROM SaleSub WHERE DocNo='" + txtOrderID.Text + "'";
-                    ocn.pubActionData(sDelete);
-
-                    for (int nSale = 0; nSale < dgvShow.Rows.Count; nSale++)
-                    {
-                        DataSet dsAddSub = new DataSet();
-                        sSql = " SELECT * FROM tb_orderSub WHERE ID=0";
-
-                        dsAddSub = ocn.pudsLoadData(sSql, "tb_orderSub", dsAddSub);
-                        if (dsAddSub.Tables["tb_orderSub"].Rows.Count <= 0)
-                        {
-                            DataRow dr = dsAddSub.Tables["tb_orderSub"].NewRow();
-                            dr["DocNo"] = txtOrderID.Text;
-                            dr["DocDate"] = DateTime.Now.ToString("dd/MM/yyyy");
-                            dr["pro_id"] = dgvShow.Rows[nSale].Cells[0].Value.ToString();
-                            dr["Name"] = dgvShow.Rows[nSale].Cells[1].Value.ToString();
-                            dr["Unit"] = dgvShow.Rows[nSale].Cells[2].Value.ToString();
-                            dr["Quantity"] = Convert.ToDouble(dgvShow.Rows[nSale].Cells[3].Value.ToString());
-                            dr["Agv"] = Convert.ToDouble(dgvShow.Rows[nSale].Cells[4].Value.ToString());
-                            dr["Total"] = Convert.ToDouble(dgvShow.Rows[nSale].Cells[5].Value.ToString());
-
-                            dsAddSub.Tables["tb_orderSub"].Rows.Add(dr);
-                            oCenter.da.Update(dsAddSub, "tb_orderSub");
-                        }
-                    }
-                    prvUpdateStock();
-                    printDoc.Print();
-                    prvClear();
-
-                }
-            }
         }
 
-        private void dgvShow_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        private void prvClearAll()
         {
-            dgvShow.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            if (dgvShow.Rows[e.RowIndex].Cells[0].Value.ToString() == "")
-            {
-                DataGridViewCell oCell = dgvShow.CurrentCell;
-                Rectangle oRect = dgvShow.GetCellDisplayRectangle(oCell.ColumnIndex, oCell.RowIndex, true);
-                btnBrowse.Top = oRect.Top + dgvShow.Top;
-                btnBrowse.Height = oRect.Height;
-                btnBrowse.Left = dgvShow.Left + (dgvShow.Columns[0].Width - btnBrowse.Width);
-                btnBrowse.Visible = true;
-                btnBrowse.Focus();
-                e.Cancel = true;
-
-            }
+            txtOrderID.Text = "";
+            txtOrderQty.Text = "";
+            txtCustomerID.Text = "";
+            txtProID.Text = "";
+            txtProName.Text = "";
+            txtProPrice.Text = "";
+            txtProUnit.Text = "";
+            lbStockQuantity.Text = "";
+            
         }
 
-        private void dgvShow_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == 0)
-            {
-                dgvShow.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
-                dgvShow.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Maroon;
-                nCurrentRow = e.RowIndex;
-
-            }
-        }
-
-        private void dgvShow_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 3)))
-            {
-                if (dgvShow.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "")
-                {
-                    dgvShow.Rows[e.RowIndex].Cells[3].Value = 0;
-                }
-                if (dgvShow.Rows[e.RowIndex].Cells[4].Value.ToString().Trim() == "")
-                {
-                    dgvShow.Rows[e.RowIndex].Cells[4].Value = 0;
-                }
-                dgvShow.Rows[e.RowIndex].Cells[5].Value = (Convert.ToDouble(dgvShow.Rows[e.RowIndex].Cells[3].Value.ToString())
-                    * Convert.ToDouble(dgvShow.Rows[e.RowIndex].Cells[4].Value.ToString())).ToString("#,##0.00");
-                prvSum();
-                dgvShow.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dgvShow.Rows[e.RowIndex].Selected = true;
-                dgvShow.Focus();
-            }
-        }
-
-        private void dgvShow_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if ((e.RowIndex >= 0) && e.ColumnIndex >= 0)
-            {
-                switch (e.ColumnIndex)
-                {
-                    case 3:
-                    case 4:
-                    case 5:
-                        e.CellStyle.Format = "#,##0.00";
-                        break;
-                }
-            }
-        }
-
-        private void dgvShow_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if ((e.RowIndex >= 0 && e.ColumnIndex >= 0))
-            {
-                DataGridViewCell oCell = dgvShow.CurrentCell;
-                Rectangle oRect = dgvShow.GetCellDisplayRectangle(oCell.ColumnIndex, oCell.RowIndex, true);
-                btnBrowse.Top = oRect.Top + dgvShow.Top;
-                btnBrowse.Height = oRect.Height;
-                btnBrowse.Left = dgvShow.Left + (dgvShow.Columns[0].Width - btnBrowse.Width);
-                btnBrowse.Visible = true;
-                btnBrowse.Focus();
-
-            }
-            else
-            {
-                btnBrowse.Visible = false;
-            }
-        }
-
-        private void dgvShow_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if ((e.RowIndex >= 0 && e.ColumnIndex >= 0))
-            {
-                DataGridViewCell oCell = dgvShow.CurrentCell;
-                Rectangle oRect = dgvShow.GetCellDisplayRectangle(oCell.ColumnIndex, oCell.RowIndex, true);
-                if (e.ColumnIndex == 0)
-                {
-                    btnBrowse.Top = oRect.Top + dgvShow.Top;
-                    btnBrowse.Height = oRect.Height;
-                    btnBrowse.Left = dgvShow.Left + (dgvShow.Columns[0].Width - btnBrowse.Width);
-                    btnBrowse.Visible = true;
-                    btnBrowse.Focus();
-                }
-                else if (e.ColumnIndex == 3)
-                {
-                    dgvShow.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                }
-                else
-                {
-                    btnBrowse.Visible = false;
-                    dgvShow.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                }
-            }
-        }
-
-        private void txtDiscount_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                prvSum();
-                txtDiscount.Text = Convert.ToDouble(txtDiscount.Text).ToString("#,##0.00");
-            }
-        }
-
-        private void mnuAdd_Click(object sender, EventArgs e)
-        {
-            dgvShow.Rows.Add();
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[0].Value = "";
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[1].Value = "";
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[2].Value = "";
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[3].Value = "";
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[4].Value = "";
-            dgvShow.Rows[dgvShow.Rows.Count - 1].Cells[5].Value = "";
-
-            dgvShow.FirstDisplayedScrollingColumnIndex = dgvShow.Rows.Count - 1;
-            nCurrentRow = dgvShow.Rows.Count - 1;
-            prvOpenListProduct();
-        }
-
-        private void mnuDelete_Click(object sender, EventArgs e)
-        {
-            if (((nCurrentRow > -1) && (nCurrentRow < dgvShow.Rows.Count)) &&
-               MessageBox.Show("Are you sure to Delete ?", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Question,
-               MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
-                return;
-            }
-            dgvShow.Rows.RemoveAt(nCurrentRow);
-            dgvShow.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            prvSum();
-            btnBrowse.Visible = false;
-            if (nCurrentRow < dgvShow.Rows.Count)
-            {
-                dgvShow.Rows[nCurrentRow].Selected = true;
-            }
-            else if (dgvShow.Rows.Count > 0)
-            {
-                nCurrentRow = dgvShow.Rows.Count - 1;
-                dgvShow.Rows[nCurrentRow].Selected = true;
-            }
-        }
-
-        private void FrmSale_Load(object sender, EventArgs e)
-        {
-            prvClear();
-        }
     }
 }
+

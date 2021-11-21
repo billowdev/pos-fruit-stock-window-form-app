@@ -24,6 +24,8 @@ namespace Fruit_Stock
         string sSql = "";
         oCenter ocn = new oCenter();
 
+
+        // =============================== Method Show All Customer to DataGridView ===================================== //
         private void prvShowAllCustomer()
         {
             IsFind = false;
@@ -48,6 +50,7 @@ namespace Fruit_Stock
 
             // ----------------------------------------------------------------------------------- //
         }
+        // =============================== END Method Show All Customer to DataGridView ===================================== //
 
         // Method for format datagridview
         private void prvFormatDataGrid()
@@ -69,68 +72,8 @@ namespace Fruit_Stock
             dgvAllCustomer.Columns[3].Width = 140;
 
         }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            prvSearch();
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            prvShowAllCustomer();
-            txtSearch.Text = "";
-            btnSearch.Enabled = true;
-        }
-
-        private void FrmCustomer_Load(object sender, EventArgs e)
-        {
-            prvShowAllCustomer();
-            prvFormatDataGrid();
-            // AutoID                     Field Name        Table Name Head  Last      
-            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C"+ DateTime.Now.ToString("MMyy"), "00000"); // PID001
-           
-        }
-
-        private void dgvAllCustomer_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex == dgvAllCustomer.Rows.Count)
-            {
-                return;
-            }
-            try
-            {
-                txtCusID.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[0].Value.ToString();
-                txtCusName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtCusLastName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtCusPhone.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 13)
-            {
-                if (btnSearch.Enabled == true)
-                {
-                    prvSearch();
-                }
-                else
-                {
-                    prvShowAllCustomer();
-                    //txtSearch.Text = "";
-                    btnSearch.Enabled = true;
-                }
-            }
-        }
+        
+        // =============================== Method Search ===================================== //
         private void prvSearch()
         {
             bool bCheck = false;
@@ -165,6 +108,9 @@ namespace Fruit_Stock
             dgvAllCustomer.Refresh();
             btnSearch.Enabled = false;
         }
+        // =============================== END Method Search ===================================== //
+
+        // =============================== METHOD CLEAR ===================================== //
         private void prvClearAll()
         {
             txtCusID.Text = "";
@@ -172,8 +118,10 @@ namespace Fruit_Stock
             txtCusLastName.Text = "";
             txtCusPhone.Text = "";
         }
+        // =============================== END METHOD CLEAR ===================================== //
 
-        private void prvAdd()
+        // =============================== INSERT DATA INTO tb_customer ===================================== //
+        private void prvAdd() 
         {
             if (txtCusID.Text == "")
             {
@@ -189,7 +137,6 @@ namespace Fruit_Stock
                 return;
             }
 
-
             string sSqlInsert = "";
             sSqlInsert = " INSERT INTO tb_customer(cus_id,cus_name,cus_lastname,cus_phone) VALUES(@id,@name,@lastname,@phone)";
             oCenter.pusvCloseConnection();
@@ -200,6 +147,7 @@ namespace Fruit_Stock
             cmdInsert.Parameters.AddWithValue("@id", txtCusID.Text.Trim().ToString());
             cmdInsert.Parameters.AddWithValue("@name", txtCusName.Text.Trim().ToString());
             cmdInsert.Parameters.AddWithValue("@lastname", txtCusLastName.Text.Trim().ToString());
+
             cmdInsert.Parameters.AddWithValue("@phone", txtCusPhone.Text.Trim().ToString());
 
             cmdInsert.CommandType = CommandType.Text;
@@ -211,10 +159,7 @@ namespace Fruit_Stock
             prvShowAllCustomer();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            prvAdd();
-        }
+        // =============================== END INSERT DATA INTO tb_customer ===================================== //
 
         private void prvDelete()
         {
@@ -244,11 +189,6 @@ namespace Fruit_Stock
                 MessageBox.Show("Error btnDelete_Click" + ex.Message.ToString(), "โปรดลองอีกครั้ง",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            prvDelete();
         }
 
         private void prvEdit()
@@ -286,16 +226,81 @@ namespace Fruit_Stock
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void dgvAllCustomer_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            prvEdit();
+            if (e.RowIndex == dgvAllCustomer.Rows.Count)
+            {
+                return;
+            }
+            try
+            {
+                txtCusID.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtCusName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtCusLastName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtCusPhone.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                if (btnSearch.Enabled == true)
+                {
+                    prvSearch();
+                }
+                else
+                {
+                    prvShowAllCustomer();
+                    //txtSearch.Text = "";
+                    btnSearch.Enabled = true;
+                }
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             prvClearAll();
             // AutoID                     Field Name        Table Name Head  Last      
-            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("MMyy"), "00000"); // PID001
+            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000");
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            prvAdd();
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            prvEdit();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            prvDelete();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            prvShowAllCustomer();
+            txtSearch.Text = "";
+            btnSearch.Enabled = true;
+        }
+
+        private void FrmCustomer_Load(object sender, EventArgs e)
+        {
+            prvShowAllCustomer();
+            prvFormatDataGrid();
+            // AutoID                     Field Name        Table Name Head  Last      
+            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000"); // C211121001
+
         }
     }
 }

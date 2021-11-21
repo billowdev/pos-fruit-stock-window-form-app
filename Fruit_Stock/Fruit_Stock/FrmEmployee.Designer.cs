@@ -30,6 +30,7 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEmployee));
             this.lbStatus = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -63,13 +64,13 @@ namespace Fruit_Stock
             this.lbUserStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbID = new System.Windows.Forms.Label();
+            this.btnReport = new System.Windows.Forms.Button();
             this.cmuMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuBack = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAllUser = new System.Windows.Forms.DataGridView();
-            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).BeginInit();
             this.gbOperating.SuspendLayout();
             this.gbStatus.SuspendLayout();
@@ -482,6 +483,19 @@ namespace Fruit_Stock
             this.lbID.TabIndex = 0;
             this.lbID.Text = "labelID";
             // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(426, 25);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(106, 42);
+            this.btnReport.TabIndex = 14;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // cmuMenu
             // 
             this.cmuMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -540,20 +554,7 @@ namespace Fruit_Stock
             this.dgvAllUser.Size = new System.Drawing.Size(680, 290);
             this.dgvAllUser.TabIndex = 7;
             // 
-            // btnReport
-            // 
-            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(426, 25);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(106, 42);
-            this.btnReport.TabIndex = 14;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = false;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
-            // FrmProfile
+            // FrmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -566,11 +567,12 @@ namespace Fruit_Stock
             this.Controls.Add(this.gbOperating);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 700);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1440, 700);
-            this.Name = "FrmProfile";
+            this.Name = "FrmEmployee";
             this.Text = "Profile";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

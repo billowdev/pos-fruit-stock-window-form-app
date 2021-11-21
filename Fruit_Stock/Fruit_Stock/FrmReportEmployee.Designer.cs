@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportEmployee));
             this.cryReportEmployee = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@ namespace Fruit_Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 667);
             this.Controls.Add(this.cryReportEmployee);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmReportEmployee";
             this.Text = "FrmReportEmployee";
             this.Load += new System.EventHandler(this.FrmReportEmployee_Load);

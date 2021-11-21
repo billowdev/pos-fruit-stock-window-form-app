@@ -22,6 +22,9 @@ namespace Fruit_Stock
         oCenter ocn = new oCenter();
         string sProID, sProName, sProPrice, sProUnit, sProQuantity;
         public string psPid, psPname, psPprice, psPunit, psPquantity;
+        public DataGridView pdgvPublic; // for call at other from
+        public int pnCurrentRow; // public current row
+
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -34,8 +37,6 @@ namespace Fruit_Stock
             prvShowData();
         }
 
-        public DataGridView pdgvPublic; // for call at other from
-        public int pnCurrentRow; // public current row
 
         private void lsvShow_MouseDoubleClick(object sender, MouseEventArgs e)
         {

@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEmployeeFilter));
             this.btnPrint = new System.Windows.Forms.Button();
             this.dgvAllMember = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -95,9 +96,12 @@ namespace Fruit_Stock
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dgvAllMember);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1440, 771);
             this.MinimizeBox = false;
             this.Name = "FrmEmployeeFilter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmReportEmployee";
             this.Load += new System.EventHandler(this.FrmReportEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllMember)).EndInit();

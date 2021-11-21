@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>so_fresh.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -58,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cryBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cryEmployee1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,11 +139,11 @@
     <Compile Include="FrmEmployee.Designer.cs">
       <DependentUpon>FrmEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmOrder.cs">
+    <Compile Include="FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmOrder.Designer.cs">
-      <DependentUpon>FrmOrder.cs</DependentUpon>
+    <Compile Include="FrmSale.Designer.cs">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProduct.cs">
       <SubType>Form</SubType>
@@ -160,12 +169,6 @@
     <Compile Include="FrmReportHistoryStock.Designer.cs">
       <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSale.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSale.Designer.cs">
-      <DependentUpon>FrmSale.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +183,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="static_classes\oCenter.cs" />
+    <EmbeddedResource Include="cryBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryBill.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="cryEmployee.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryEmployee1.cs</LastGenOutput>
@@ -218,8 +225,8 @@
     <EmbeddedResource Include="FrmEmployee.resx">
       <DependentUpon>FrmEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmOrder.resx">
-      <DependentUpon>FrmOrder.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSale.resx">
+      <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
@@ -232,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReportHistoryStock.resx">
       <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmSale.resx">
-      <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStock.resx">
       <DependentUpon>FrmStock.cs</DependentUpon>
@@ -275,6 +279,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="so_fresh.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

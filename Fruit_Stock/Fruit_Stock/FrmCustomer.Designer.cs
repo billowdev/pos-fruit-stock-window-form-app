@@ -30,6 +30,7 @@ namespace Fruit_Stock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomer));
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -97,7 +98,6 @@ namespace Fruit_Stock
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(369, 34);
             this.txtSearch.TabIndex = 13;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // gbOperating
@@ -320,6 +320,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.gbOperating);
             this.Controls.Add(this.dgvAllCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCustomer";
             this.Text = "FrmCustomer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

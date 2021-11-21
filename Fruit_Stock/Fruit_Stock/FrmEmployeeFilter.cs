@@ -143,7 +143,7 @@ namespace Fruit_Stock
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            //this.Hide();
             // Form Report Employee
             FrmReportEmployee Frm = new FrmReportEmployee();
                                          // DataGridView

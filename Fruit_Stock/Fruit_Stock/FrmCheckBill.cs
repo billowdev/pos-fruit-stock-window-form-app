@@ -21,6 +21,8 @@ namespace Fruit_Stock
         public double pdChange = 0;
         public bool pbCheckAction = false;
 
+        public cryBill rptBill = new cryBill();
+
         private void prv_CheckBill()
         {
             if (Convert.ToDouble(lbTotal.Text) <= 0)
@@ -43,6 +45,10 @@ namespace Fruit_Stock
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
+            
+                 // crytal report control
+            cryReportBill.ReportSource = rptBill;
+
             lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
         }
 

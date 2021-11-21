@@ -29,6 +29,7 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistoryStock));
             this.dgvAllStock = new System.Windows.Forms.DataGridView();
             this.btnReport = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -290,6 +291,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvAllStock);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHistoryStock";
             this.Text = "ประวัติการนำเข้าสินค้า";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

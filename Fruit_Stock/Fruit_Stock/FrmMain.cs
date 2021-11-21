@@ -29,7 +29,6 @@ namespace Fruit_Stock
             lbWelcome.Show();
             stsPageStatus.Text = " >>    หน้าหลัก    <<";
             // option loading page
-            pbLoad.Dispose();
             //lbWelcome.Dispose();
             //stsName.Text = "";
         }
@@ -105,14 +104,6 @@ namespace Fruit_Stock
             }
         }
 
-        private void timTimeLoading_Tick(object sender, EventArgs e)
-        {
-            timTimeLoading.Stop();
-            pbLoad.Dispose();
-            lbWelcome.Show();
-            stsName.Text = "| Welcome: " + oCenter.currentName + " " + oCenter.currentLastName +
-                            " Your Status is : " + oCenter.currentStatus + " |";
-        }
 
         private void mnuHistoryStock_Click(object sender, EventArgs e)
         {
@@ -139,16 +130,18 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            if (ocn.pub_CloseChildForm(this, "FrmOrder") == false)
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
                 stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmOrder Frm = new FrmOrder();
+                FrmSale Frm = new FrmSale();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
         }
+
+       
     }
 }
 
