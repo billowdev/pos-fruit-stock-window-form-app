@@ -201,6 +201,8 @@ namespace Fruit_Stock
 
         private void btnSale_Click(object sender, EventArgs e)
         {
+            FrmCheckBill Frm = new FrmCheckBill();
+            Frm.ShowDialog();
 
            
 

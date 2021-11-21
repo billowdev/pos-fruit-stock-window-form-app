@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fruit_Stock.static_classes;
 
 namespace Fruit_Stock
 {
@@ -20,6 +21,8 @@ namespace Fruit_Stock
         public double pdCash = 0;
         public double pdChange = 0;
         public bool pbCheckAction = false;
+        
+        oCenter ocn = new oCenter();
 
         double dPreviousQty = 0; // Qty Product
         double dNewQty = 0;
@@ -126,15 +129,28 @@ namespace Fruit_Stock
             
                  // crytal report control
             cryReportBill.ReportSource = rptBill;
+
             lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
         }
 
+        cryBill rptCryBill = new cryBill();
         private void btnCheckBill_Click(object sender, EventArgs e)
         {
-            prv_CheckBill();
+            //prv_CheckBill();
+
+            rptCryBill.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+            rptCryBill.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+            // AutoID                     Field Name        Table Name Head  Last      
+            string sPrint = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+           
+            //rptCryBill.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, response, true, "test");
+
+            rptCryBill.SummaryInfo.ReportTitle = sPrint;
+            rptCryBill.PrintToPrinter(1, false, 0, 1);
+
         }
 
         private void txtCash_TextChanged(object sender, EventArgs e)
