@@ -193,8 +193,11 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmHistoryStockReport Frm = new FrmHistoryStockReport();
+            FrmHistoryStockFilter Frm = new FrmHistoryStockFilter();
             Frm.ShowDialog();
+
+            //FrmReportHistoryStock Frm = new FrmReportHistoryStock();
+            //Frm.ShowDialog();
         }
     }
     }

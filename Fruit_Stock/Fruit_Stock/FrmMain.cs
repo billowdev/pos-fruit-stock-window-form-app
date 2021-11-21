@@ -41,7 +41,7 @@ namespace Fruit_Stock
                 stsPageStatus.Text = " >>    หน้าข้อมูลพนักงาน    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmProfile Frm = new FrmProfile();
+                FrmEmployee Frm = new FrmEmployee();
                 Frm.MdiParent = this;
                 Frm.Show();
             }

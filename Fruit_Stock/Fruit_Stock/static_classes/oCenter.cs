@@ -207,7 +207,7 @@ namespace Fruit_Stock.static_classes
                 DataSet ds = new DataSet();
                 string sSql = " SELECT * FROM tb_product WHERE Code '" + _sCode + "'";
 
-                ds = Cpuds_LoadData(sSql, "tb_product", ds);
+                ds = pudsLoadData(sSql, "tb_product", ds);
                 if (ds.Tables["tb_product"].Rows.Count <= 0)
                 {
                     MessageBox.Show("Check Data Stock", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -228,7 +228,7 @@ namespace Fruit_Stock.static_classes
                     }
 
                     string sSqlUpdateStock = " UPDATE tb_product SET Quantity=" + dQuantityStock + " WHERE Code=" + _sCode + "'";
-                    Cpub_ActionData(sSqlUpdateStock);
+                    pubActionData(sSqlUpdateStock);
 
                 }
             }
