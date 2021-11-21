@@ -22,7 +22,7 @@ namespace Fruit_Stock
         bool IsFind = false;
         DataSet ds = new DataSet();
         string sSql = "";
-        oCenter ocn = new oCenter();
+        oCenter CC = new oCenter();
 
 
         // =============================== Method Show All Customer to DataGridView ===================================== //
@@ -30,7 +30,7 @@ namespace Fruit_Stock
         {
             IsFind = false;
             sSql = "select * from tb_customer";
-            ds = ocn.pudsLoadData(sSql, "tb_customer", ds);
+            ds = CC.pudsLoadData(sSql, "tb_customer", ds);
             
             if (IsFind == true)
             {
@@ -266,7 +266,7 @@ namespace Fruit_Stock
         {
             prvClearAll();
             // AutoID                     Field Name        Table Name Head  Last      
-            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000");
+            txtCusID.Text = CC.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000");
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -299,7 +299,7 @@ namespace Fruit_Stock
             prvShowAllCustomer();
             prvFormatDataGrid();
             // AutoID                     Field Name        Table Name Head  Last      
-            txtCusID.Text = ocn.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000"); // C211121001
+            txtCusID.Text = CC.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000"); // C211121001
 
         }
     }

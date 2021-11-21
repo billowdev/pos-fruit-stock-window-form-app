@@ -35,8 +35,7 @@ namespace Fruit_Stock
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.printDoc = new System.Drawing.Printing.PrintDocument();
             this.cmuMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dgvAllOrder = new System.Windows.Forms.DataGridView();
-            this.btnSale = new System.Windows.Forms.Button();
+            this.btnCheckBill = new System.Windows.Forms.Button();
             this.txtOrderID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,12 +49,7 @@ namespace Fruit_Stock
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbChange = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
-            this.txtCash = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -72,7 +66,6 @@ namespace Fruit_Stock
             this.label9 = new System.Windows.Forms.Label();
             this.dgvStateOrder = new System.Windows.Forms.DataGridView();
             this.cmuMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllOrder)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -101,34 +94,16 @@ namespace Fruit_Stock
             this.cmuMenu.Name = "contextMenuStrip1";
             this.cmuMenu.Size = new System.Drawing.Size(178, 52);
             // 
-            // dgvAllOrder
+            // btnCheckBill
             // 
-            this.dgvAllOrder.AllowUserToAddRows = false;
-            this.dgvAllOrder.AllowUserToDeleteRows = false;
-            this.dgvAllOrder.AllowUserToResizeColumns = false;
-            this.dgvAllOrder.AllowUserToResizeRows = false;
-            this.dgvAllOrder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.dgvAllOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllOrder.ContextMenuStrip = this.cmuMenu;
-            this.dgvAllOrder.Location = new System.Drawing.Point(31, 472);
-            this.dgvAllOrder.MaximumSize = new System.Drawing.Size(663, 455);
-            this.dgvAllOrder.Name = "dgvAllOrder";
-            this.dgvAllOrder.RowHeadersVisible = false;
-            this.dgvAllOrder.RowHeadersWidth = 51;
-            this.dgvAllOrder.RowTemplate.Height = 24;
-            this.dgvAllOrder.Size = new System.Drawing.Size(663, 153);
-            this.dgvAllOrder.TabIndex = 7;
-            // 
-            // btnSale
-            // 
-            this.btnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnSale.Location = new System.Drawing.Point(1008, 81);
-            this.btnSale.Name = "btnSale";
-            this.btnSale.Size = new System.Drawing.Size(166, 44);
-            this.btnSale.TabIndex = 2;
-            this.btnSale.Text = "Sale";
-            this.btnSale.UseVisualStyleBackColor = false;
-            this.btnSale.Click += new System.EventHandler(this.btnSale_Click);
+            this.btnCheckBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnCheckBill.Location = new System.Drawing.Point(110, 99);
+            this.btnCheckBill.Name = "btnCheckBill";
+            this.btnCheckBill.Size = new System.Drawing.Size(283, 44);
+            this.btnCheckBill.TabIndex = 2;
+            this.btnCheckBill.Text = "Bill";
+            this.btnCheckBill.UseVisualStyleBackColor = false;
+            this.btnCheckBill.Click += new System.EventHandler(this.btnSale_Click);
             // 
             // txtOrderID
             // 
@@ -162,7 +137,6 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.btnBrowse);
             this.groupBox1.Controls.Add(this.txtCustomerID);
             this.groupBox1.Controls.Add(this.txtOrderQty);
-            this.groupBox1.Controls.Add(this.btnSale);
             this.groupBox1.Controls.Add(this.txtOrderID);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -221,9 +195,9 @@ namespace Fruit_Stock
             // btnBrowse
             // 
             this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnBrowse.Location = new System.Drawing.Point(1008, 14);
+            this.btnBrowse.Location = new System.Drawing.Point(1002, 20);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(159, 54);
+            this.btnBrowse.Size = new System.Drawing.Size(159, 99);
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse Product";
             this.btnBrowse.UseVisualStyleBackColor = false;
@@ -274,88 +248,32 @@ namespace Fruit_Stock
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.groupBox2.Controls.Add(this.lbChange);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.lbTotal);
-            this.groupBox2.Controls.Add(this.txtCash);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(709, 407);
+            this.groupBox2.Controls.Add(this.btnCheckBill);
+            this.groupBox2.Location = new System.Drawing.Point(771, 427);
             this.groupBox2.MinimumSize = new System.Drawing.Size(440, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 183);
+            this.groupBox2.Size = new System.Drawing.Size(440, 215);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
-            // 
-            // lbChange
-            // 
-            this.lbChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbChange.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbChange.Location = new System.Drawing.Point(136, 136);
-            this.lbChange.Name = "lbChange";
-            this.lbChange.Size = new System.Drawing.Size(294, 33);
-            this.lbChange.TabIndex = 17;
-            this.lbChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(5, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 20);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Order Summary";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 20);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Cash";
             // 
             // lbTotal
             // 
             this.lbTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbTotal.Location = new System.Drawing.Point(135, 34);
+            this.lbTotal.Location = new System.Drawing.Point(105, 38);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(294, 33);
             this.lbTotal.TabIndex = 16;
             this.lbTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtCash
-            // 
-            this.txtCash.BackColor = System.Drawing.Color.White;
-            this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.ForeColor = System.Drawing.Color.Black;
-            this.txtCash.Location = new System.Drawing.Point(132, 87);
-            this.txtCash.Name = "txtCash";
-            this.txtCash.Size = new System.Drawing.Size(298, 34);
-            this.txtCash.TabIndex = 18;
-            this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 20);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Change";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(76, 43);
+            this.label3.Location = new System.Drawing.Point(46, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 20);
             this.label3.TabIndex = 13;
@@ -385,11 +303,9 @@ namespace Fruit_Stock
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(709, 175);
-            this.groupBox3.MaximumSize = new System.Drawing.Size(470, 226);
-            this.groupBox3.MinimumSize = new System.Drawing.Size(470, 226);
+            this.groupBox3.Location = new System.Drawing.Point(773, 178);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(470, 226);
+            this.groupBox3.Size = new System.Drawing.Size(438, 243);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             // 
@@ -397,18 +313,18 @@ namespace Fruit_Stock
             // 
             this.txtProUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProUnit.Location = new System.Drawing.Point(192, 141);
+            this.txtProUnit.Location = new System.Drawing.Point(167, 141);
             this.txtProUnit.Name = "txtProUnit";
-            this.txtProUnit.Size = new System.Drawing.Size(219, 34);
+            this.txtProUnit.Size = new System.Drawing.Size(250, 34);
             this.txtProUnit.TabIndex = 3;
             // 
             // txtProPrice
             // 
             this.txtProPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProPrice.Location = new System.Drawing.Point(192, 101);
+            this.txtProPrice.Location = new System.Drawing.Point(167, 101);
             this.txtProPrice.Name = "txtProPrice";
-            this.txtProPrice.Size = new System.Drawing.Size(219, 34);
+            this.txtProPrice.Size = new System.Drawing.Size(250, 34);
             this.txtProPrice.TabIndex = 3;
             // 
             // label13
@@ -425,16 +341,16 @@ namespace Fruit_Stock
             // 
             this.txtProName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProName.Location = new System.Drawing.Point(192, 61);
+            this.txtProName.Location = new System.Drawing.Point(167, 61);
             this.txtProName.Name = "txtProName";
-            this.txtProName.Size = new System.Drawing.Size(272, 34);
+            this.txtProName.Size = new System.Drawing.Size(250, 34);
             this.txtProName.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(128, 108);
+            this.label4.Location = new System.Drawing.Point(104, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 20);
             this.label4.TabIndex = 1;
@@ -444,9 +360,9 @@ namespace Fruit_Stock
             // 
             this.lbStockQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStockQuantity.Location = new System.Drawing.Point(197, 187);
+            this.lbStockQuantity.Location = new System.Drawing.Point(172, 187);
             this.lbStockQuantity.Name = "lbStockQuantity";
-            this.lbStockQuantity.Size = new System.Drawing.Size(215, 25);
+            this.lbStockQuantity.Size = new System.Drawing.Size(246, 25);
             this.lbStockQuantity.TabIndex = 1;
             this.lbStockQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -454,7 +370,7 @@ namespace Fruit_Stock
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 185);
+            this.label2.Location = new System.Drawing.Point(18, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 1;
@@ -464,16 +380,16 @@ namespace Fruit_Stock
             // 
             this.txtProID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProID.Location = new System.Drawing.Point(192, 21);
+            this.txtProID.Location = new System.Drawing.Point(167, 21);
             this.txtProID.Name = "txtProID";
-            this.txtProID.Size = new System.Drawing.Size(207, 34);
+            this.txtProID.Size = new System.Drawing.Size(250, 34);
             this.txtProID.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(137, 148);
+            this.label7.Location = new System.Drawing.Point(113, 151);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 20);
             this.label7.TabIndex = 1;
@@ -483,7 +399,7 @@ namespace Fruit_Stock
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(63, 68);
+            this.label8.Location = new System.Drawing.Point(38, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(113, 20);
             this.label8.TabIndex = 1;
@@ -493,7 +409,7 @@ namespace Fruit_Stock
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(87, 31);
+            this.label9.Location = new System.Drawing.Point(62, 31);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 20);
             this.label9.TabIndex = 1;
@@ -502,13 +418,14 @@ namespace Fruit_Stock
             // dgvStateOrder
             // 
             this.dgvStateOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStateOrder.Location = new System.Drawing.Point(31, 184);
+            this.dgvStateOrder.Location = new System.Drawing.Point(31, 169);
             this.dgvStateOrder.Name = "dgvStateOrder";
             this.dgvStateOrder.RowHeadersWidth = 51;
             this.dgvStateOrder.RowTemplate.Height = 24;
-            this.dgvStateOrder.Size = new System.Drawing.Size(663, 243);
+            this.dgvStateOrder.Size = new System.Drawing.Size(734, 473);
             this.dgvStateOrder.TabIndex = 14;
             this.dgvStateOrder.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvStateOrder_CellBeginEdit);
+            this.dgvStateOrder.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStateOrder_CellEndEdit);
             // 
             // FrmSale
             // 
@@ -521,7 +438,6 @@ namespace Fruit_Stock
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dgvAllOrder);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -532,7 +448,6 @@ namespace Fruit_Stock
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmOrder_Load);
             this.cmuMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllOrder)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -549,17 +464,14 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
         private System.Drawing.Printing.PrintDocument printDoc;
         private System.Windows.Forms.ContextMenuStrip cmuMenu;
-        private System.Windows.Forms.DataGridView dgvAllOrder;
-        private System.Windows.Forms.Button btnSale;
+        private System.Windows.Forms.Button btnCheckBill;
         private System.Windows.Forms.TextBox txtOrderID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbTotal;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtProUnit;
@@ -576,14 +488,11 @@ namespace Fruit_Stock
         private System.Windows.Forms.TextBox txtOrderQty;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.DateTimePicker dtpOrder;
         private System.Windows.Forms.Label lbDate;
-        private System.Windows.Forms.Label lbChange;
         private System.Windows.Forms.Button btnCalculateTotal;
-        private System.Windows.Forms.TextBox txtCash;
         private System.Windows.Forms.DataGridView dgvStateOrder;
     }
 }

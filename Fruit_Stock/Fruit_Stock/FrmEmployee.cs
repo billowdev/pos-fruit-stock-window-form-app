@@ -153,7 +153,7 @@ namespace Fruit_Stock
 
                 // ==================================== it is fill all data from tb_login to dataGridView ====================================================== //
 
-                //oCenter ocn = new oCenter();
+                //CallCenter CC= new CallCenter();
                 DataSet dsEmp = new DataSet();
 
                 sSql = " SELECT * FROM tb_employee WHERE emp_id='" + lbID.Text + "'";
@@ -224,7 +224,7 @@ namespace Fruit_Stock
 
                 // ==================================== Get tb_ogin Data ====================================================== //
 
-                //oCenter ocn = new oCenter();
+                //CallCenter CC= new CallCenter();
                 DataSet dsLogin = new DataSet();
 
                 string sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
