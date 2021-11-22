@@ -24,6 +24,8 @@ namespace Fruit_Stock
         DataSet dsOrder = new DataSet();
         oCenter ocn = new oCenter();
 
+      
+
         //    private void prvShowAllOrder()
         //    {
         //        sSql = "select * from tb_order";

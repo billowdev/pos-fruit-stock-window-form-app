@@ -50,9 +50,6 @@ namespace Fruit_Stock
             this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
             this.lbWelcome = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
-            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFrmMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
@@ -82,10 +79,9 @@ namespace Fruit_Stock
             // 
             this.logOutToolStripMenuItem.AutoSize = false;
             this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuExit,
-            this.themeToolStripMenuItem});
+            this.mnuExit});
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(90, 54);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 54);
             this.logOutToolStripMenuItem.Text = "File";
             // 
             // mnuExit
@@ -239,27 +235,6 @@ namespace Fruit_Stock
             this.pbMain.TabIndex = 3;
             this.pbMain.TabStop = false;
             // 
-            // themeToolStripMenuItem
-            // 
-            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pinkToolStripMenuItem,
-            this.darkToolStripMenuItem});
-            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.themeToolStripMenuItem.Text = "Theme";
-            // 
-            // pinkToolStripMenuItem
-            // 
-            this.pinkToolStripMenuItem.Name = "pinkToolStripMenuItem";
-            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.pinkToolStripMenuItem.Text = "Pink";
-            // 
-            // darkToolStripMenuItem
-            // 
-            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.darkToolStripMenuItem.Text = "Dark";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -310,8 +285,5 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
         private System.Windows.Forms.ToolStripMenuItem cmuCustomer;
         private System.Windows.Forms.ToolStripStatusLabel stsPageStatus;
-        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     }
 }

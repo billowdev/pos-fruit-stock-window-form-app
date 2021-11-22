@@ -55,7 +55,6 @@ namespace Fruit_Stock
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbOperating = new System.Windows.Forms.GroupBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbStatus = new System.Windows.Forms.GroupBox();
@@ -343,7 +342,6 @@ namespace Fruit_Stock
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbOperating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(248)))), ((int)(((byte)(254)))));
-            this.gbOperating.Controls.Add(this.btnRefresh);
             this.gbOperating.Controls.Add(this.btnSearch);
             this.gbOperating.Controls.Add(this.txtSearch);
             this.gbOperating.Controls.Add(this.gbStatus);
@@ -373,30 +371,18 @@ namespace Fruit_Stock
             this.gbOperating.Controls.Add(this.txtEMPID);
             this.gbOperating.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbOperating.Location = new System.Drawing.Point(700, 32);
-            this.gbOperating.MaximumSize = new System.Drawing.Size(670, 589);
-            this.gbOperating.MinimumSize = new System.Drawing.Size(670, 589);
+            this.gbOperating.MaximumSize = new System.Drawing.Size(585, 589);
+            this.gbOperating.MinimumSize = new System.Drawing.Size(585, 589);
             this.gbOperating.Name = "gbOperating";
-            this.gbOperating.Size = new System.Drawing.Size(670, 589);
+            this.gbOperating.Size = new System.Drawing.Size(585, 589);
             this.gbOperating.TabIndex = 9;
             this.gbOperating.TabStop = false;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(436, 512);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(107, 38);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "รีเฟรช";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(326, 512);
+            this.btnSearch.Location = new System.Drawing.Point(393, 512);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(107, 38);
             this.btnSearch.TabIndex = 6;
@@ -411,7 +397,7 @@ namespace Fruit_Stock
             this.txtSearch.Location = new System.Drawing.Point(26, 516);
             this.txtSearch.MinimumSize = new System.Drawing.Size(275, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(294, 34);
+            this.txtSearch.Size = new System.Drawing.Size(361, 34);
             this.txtSearch.TabIndex = 13;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -560,7 +546,7 @@ namespace Fruit_Stock
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1440, 700);
+            this.ClientSize = new System.Drawing.Size(1300, 650);
             this.ControlBox = false;
             this.Controls.Add(this.dgvAllUser);
             this.Controls.Add(this.dgvAllMember);
@@ -571,7 +557,6 @@ namespace Fruit_Stock
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 700);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1440, 700);
             this.Name = "FrmEmployee";
             this.Text = "Profile";
             this.TopMost = true;
@@ -629,7 +614,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.GroupBox gbStatus;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnReport;
     }
 }

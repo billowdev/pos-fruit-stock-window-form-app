@@ -114,7 +114,7 @@ namespace Fruit_Stock
             // 
             this.btnLoad.Location = new System.Drawing.Point(999, 12);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(158, 64);
+            this.btnLoad.Size = new System.Drawing.Size(167, 64);
             this.btnLoad.TabIndex = 46;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;

@@ -48,7 +48,7 @@ namespace Fruit_Stock
             prvShowAllOrder();
             prvFormatDataGrid();
             // AutoID                     Field Name        Table Name Head  Last      
-            txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "000"); // PID001
 
             txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");
@@ -105,10 +105,13 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            // AutoID                     Field Name        Table Name Head  Last      
+
             prvOpenListProduct();
             lbTotal.Text = "";
             txtCash.Text = "";
             lbChange.Text = "";
+            
         }
         private void prvOpenListProduct()
         {
@@ -253,8 +256,8 @@ namespace Fruit_Stock
             prvClearAll();
 
 
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
 
-          
 
         }
         private void prvClearAll()
