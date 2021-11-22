@@ -64,7 +64,6 @@ namespace Fruit_Stock
             
         }
 
-
         private void prvFormatDataGrid()
         {
             try
@@ -193,14 +192,6 @@ namespace Fruit_Stock
                 prvUpdateProduct(sPID, sOQty);
 
             }
-
-            ocn.dBillTotal = Convert.ToDouble(lbTotal.Text);
-            ocn.dBillCash = Convert.ToDouble(txtCash.Text);
-            ocn.dBillChange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
-
-            lbChange.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text)).ToString("#,##00.00");
-
-
 
             // ===================================================================================================================================
 

@@ -100,9 +100,7 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-
             txtOrderID.Text = stateOrder;
-
             prvOpenListProduct();
             prvFormatData();
            
@@ -200,9 +198,9 @@ namespace Fruit_Stock
                             (Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text)).ToString("#,##0.00")
                             );
             //  ====================== Calculate Total ======================== //
-
+            sumTotal += Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text);
             dgvStateOrder.DataSource = dtOrder;
-
+            
             lbTotal.Text = sumTotal.ToString("#,##0.00");
 
             //  ===================== END Add to data gridview   =====================  //
@@ -210,13 +208,11 @@ namespace Fruit_Stock
             btnCheckBill.Enabled = true;
         }
 
-        string rawID = "";
         UInt32 dRaw = 0;
-        List<string> sStr = new List<string>();
 
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
-
+            
             if (sListGlobalCheck.Count > 0)
             {
                 foreach (var item in sListGlobalCheck)
