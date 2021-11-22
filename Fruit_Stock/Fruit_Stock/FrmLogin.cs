@@ -23,19 +23,8 @@ namespace Fruit_Stock
         // ==========================================
         DataSet dsLogin = new DataSet();
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void prvCheckLogin()
         {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                    Application.Exit();
-            }
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            
-
             if (txtUsername.Text.Trim() == "")
             {
                 MessageBox.Show("Enter Username", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -48,9 +37,6 @@ namespace Fruit_Stock
                 txtPassword.Focus();
                 return;
             }
-
-           
-
             string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
                 " Password='" + txtPassword.Text.Trim() + "'";
             dsLogin = ocn.pudsLoadData(sSql, "tb_login", dsLogin);
@@ -63,7 +49,7 @@ namespace Fruit_Stock
                 oCenter.currentStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
                 oCenter.currentid = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
 
-                puvGetEmployee();
+                prvGetEmployee();
                 FrmMain Frm = new FrmMain();
                 Frm.Show();
                 this.Hide();
@@ -74,11 +60,9 @@ namespace Fruit_Stock
                 MessageBox.Show("Login Fail !!!", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
         }
 
-        
-        private void puvGetEmployee()
+        private void prvGetEmployee()
         {
             oCenter.pusvOpenConnection();
 
@@ -99,6 +83,27 @@ namespace Fruit_Stock
                     oCenter.currentLastName = loginReader["emp_lastname"].ToString();
                 }
             }
+        }
+
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            prvCheckLogin();
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)

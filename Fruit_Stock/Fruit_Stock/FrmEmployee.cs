@@ -408,22 +408,31 @@ namespace Fruit_Stock
            |  Purpose:  Format data grid view Employee
            |
            *-------------------------------------------------------------------*/
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
-            dgvAllMember.Columns[0].HeaderText = "รหัสพนักงาน";
-            dgvAllMember.Columns[1].HeaderText = "ชื่อ";
-            dgvAllMember.Columns[2].HeaderText = "นามสกุล";
-            dgvAllMember.Columns[3].HeaderText = "เพศ";
-            dgvAllMember.Columns[4].HeaderText = "วันเดือนปีเกิด";
-            dgvAllMember.Columns[5].HeaderText = "เบอร์โทร";
+            try
+            {
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
+                dgvAllMember.Columns[0].HeaderText = "รหัสพนักงาน";
+                dgvAllMember.Columns[1].HeaderText = "ชื่อ";
+                dgvAllMember.Columns[2].HeaderText = "นามสกุล";
+                dgvAllMember.Columns[3].HeaderText = "เพศ";
+                dgvAllMember.Columns[4].HeaderText = "วันเดือนปีเกิด";
+                dgvAllMember.Columns[5].HeaderText = "เบอร์โทร";
 
-            dgvAllMember.Columns[0].Width = 120;
-            dgvAllMember.Columns[1].Width = 220;
-            dgvAllMember.Columns[2].Width = 220;
-            dgvAllMember.Columns[3].Width = 60;
-            dgvAllMember.Columns[4].Width = 160;
-            dgvAllMember.Columns[5].Width = 160;
+                dgvAllMember.Columns[0].Width = 120;
+                dgvAllMember.Columns[1].Width = 220;
+                dgvAllMember.Columns[2].Width = 220;
+                dgvAllMember.Columns[3].Width = 60;
+                dgvAllMember.Columns[4].Width = 160;
+                dgvAllMember.Columns[5].Width = 160;
+            }
+            catch
+            {
+
+            }
+
+           
         }
         // ### ======================================== ##   END Data Grid View Format ## =================================  ### //
 

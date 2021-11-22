@@ -15,7 +15,6 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmLi
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmCustomer.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmListCustomer.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmCheckBill.resources
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmReportHistoryStock.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\ShockwaveFlashObjects.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
@@ -31,12 +30,9 @@ D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\stdole.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.csproj.CopyComplete
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmHistoryStockFilter.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmEmployee.resources
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmEmployeeFilter.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmSale.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmOrderHistory.resources
-D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\obj\Debug\Fruit_Stock.FrmReportCustomer.resources
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\AxShockwaveFlashObjects.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 D:\GitHub\Project-Fruit-Shop\Fruit_Stock\Fruit_Stock\bin\Debug\CrystalDecisions.ReportSource.dll

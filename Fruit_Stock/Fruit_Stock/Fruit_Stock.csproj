@@ -125,6 +125,12 @@
       <DependentUpon>cryHistoryStockReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="cryOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmCheckBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,10 @@
     <EmbeddedResource Include="cryHistoryStockReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryHistoryStockReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryOrder.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCheckBill.resx">
       <DependentUpon>FrmCheckBill.cs</DependentUpon>

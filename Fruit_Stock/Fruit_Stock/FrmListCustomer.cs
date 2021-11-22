@@ -28,24 +28,7 @@ namespace Fruit_Stock
 
         oCenter ocn = new oCenter();
 
-        private void FrmListCustomer_Load(object sender, EventArgs e)
-        {
-            prvShowData();
-            txtSearch.Text = "";
-        }
-
-        private void lsvShow_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            psCusID = lsvShow.SelectedItems[0].SubItems[0].Text;
-            psCusName = lsvShow.SelectedItems[0].SubItems[1].Text;
-            psCusLastName = lsvShow.SelectedItems[0].SubItems[2].Text;
-            psCusPhone = lsvShow.SelectedItems[0].SubItems[3].Text;
-
-            if (lsvShow.SelectedItems[0].SubItems[0].Text != "")
-            {
-                this.Close();
-            }
-        }
+      
         private void prvShowData()
         {
             lsvShow.Items.Clear();
@@ -106,6 +89,31 @@ namespace Fruit_Stock
 
             // Add item to listview
             lsvShow.Items.Add(oItem);
+        }
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+       
+        private void FrmListCustomer_Load(object sender, EventArgs e)
+        {
+            prvShowData();
+            txtSearch.Text = "";
+        }
+
+        private void lsvShow_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            psCusID = lsvShow.SelectedItems[0].SubItems[0].Text;
+            psCusName = lsvShow.SelectedItems[0].SubItems[1].Text;
+            psCusLastName = lsvShow.SelectedItems[0].SubItems[2].Text;
+            psCusPhone = lsvShow.SelectedItems[0].SubItems[3].Text;
+
+            if (lsvShow.SelectedItems[0].SubItems[0].Text != "")
+            {
+                this.Close();
+            }
         }
 
     }

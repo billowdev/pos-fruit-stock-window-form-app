@@ -24,7 +24,11 @@ namespace Fruit_Stock
         public cryDetailCustomer rptDetailCustomer = new cryDetailCustomer();
 
         public cryHistoryStockReport rptHistoryStock = new cryHistoryStockReport();
+        
+        public cryOrder rptOrder = new cryOrder();
+        
         public string sReport = "";
+
 
         private void FrmReportEmployee_Load(object sender, EventArgs e)
         {
@@ -46,7 +50,9 @@ namespace Fruit_Stock
                 case "AllHistoryStock":
                     cryViewer.ReportSource = rptHistoryStock;
                     break;
-
+                case "AllOrder":
+                    cryViewer.ReportSource = rptOrder;
+                    break;
                 default:
                     break;
                     

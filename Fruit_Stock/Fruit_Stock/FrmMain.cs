@@ -120,6 +120,19 @@ namespace Fruit_Stock
             }
         }
 
+        private void cmuHistoryOrder_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmOrderHistory") == false)
+            {
+                stsPageStatus.Text = " >>    หน้าประวัติการสั่งซื้อสินค้า    <<";
+                lbWelcome.Dispose();
+                pbMain.Dispose();
+                FrmOrderHistory Frm = new FrmOrderHistory();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+        }
+
         private void mnuExit_Click(object sender, EventArgs e)
         {
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
@@ -136,6 +149,34 @@ namespace Fruit_Stock
             }
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                }
+                catch
+                {
+                    Environment.Exit(1);
+                }
+            }
+        }
+
+        private void cmuFTSale_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
+            {
+                stsPageStatus.Text = " >>    หน้าขาย    <<";
+                lbWelcome.Dispose();
+                pbMain.Dispose();
+                FrmSale Frm = new FrmSale();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+        }
     }
 }
 

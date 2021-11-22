@@ -49,10 +49,13 @@ namespace Fruit_Stock
 
         private void prvClearAll()
         {
-
+            txtEMPID.Text = "";
+            txtEMPName.Text = "";
+            txtProIMID.Text = "";
+            txtProName.Text = "";
             txtProQuantity.Text = "";
-            txtProQuantity.Focus();
-            dtpProImport.Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+            txtSearch.Focus();
+            dtpProImport.Value = DateTime.Now;
 
         }
 
@@ -81,19 +84,9 @@ namespace Fruit_Stock
             {
 
             }
-
         }
 
-        private void FrmHistoryStock_Load(object sender, EventArgs e)
-        {
-            prvShowAllStock();
-            prvFormatDataGrid();
-        }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            prvSearch();
-        }
         private void prvSearch()
         {
 
@@ -129,8 +122,26 @@ namespace Fruit_Stock
 
         }
 
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+        private void FrmHistoryStock_Load(object sender, EventArgs e)
+        {
+            prvShowAllStock();
+            prvFormatDataGrid();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            prvClearAll();
             prvShowAllStock();
             txtSearch.Text = "";
             btnSearch.Enabled = true;
@@ -230,14 +241,16 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReportHistoryStock Frm = new FrmReportHistoryStock();
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "AllHistoryStock";
             Frm.rptHistoryStock.SetDataSource(dsStock);
-
             Frm.ShowDialog();
 
             //FrmReportHistoryStock Frm = new FrmReportHistoryStock();
             //Frm.ShowDialog();
         }
+
+      
     }
 }
 

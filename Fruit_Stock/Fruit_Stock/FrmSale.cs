@@ -86,32 +86,39 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
             prvOpenListProduct();
             prvFormatData();
+
         }
        
         private void prvFormatData()
         {
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
-            dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
-            dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
-            dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
-            dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
-            dgvStateOrder.Columns[5].HeaderText = "หน่วย";
-            dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
-            dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
+            try
+            {
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
+                dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+                dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+                dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+                dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+                dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
+                dgvStateOrder.Columns[5].HeaderText = "หน่วย";
+                dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
+                dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
 
-            dgvStateOrder.Columns[0].Width = 120;
-            dgvStateOrder.Columns[1].Width = 120;
-            dgvStateOrder.Columns[2].Width = 180;
-            dgvStateOrder.Columns[3].Width = 160;
-            dgvStateOrder.Columns[4].Width = 160;
-            dgvStateOrder.Columns[5].Width = 160;
-            dgvStateOrder.Columns[6].Width = 100;
-            dgvStateOrder.Columns[7].Width = 120;
+                dgvStateOrder.Columns[0].Width = 120;
+                dgvStateOrder.Columns[1].Width = 120;
+                dgvStateOrder.Columns[2].Width = 180;
+                dgvStateOrder.Columns[3].Width = 160;
+                dgvStateOrder.Columns[4].Width = 160;
+                dgvStateOrder.Columns[5].Width = 160;
+                dgvStateOrder.Columns[6].Width = 100;
+                dgvStateOrder.Columns[7].Width = 120;
+            }
+            catch { }
+           
         }
         private void prvOpenListProduct()
         {
@@ -119,7 +126,6 @@ namespace Fruit_Stock
             FrmListStockProduct Frm = new FrmListStockProduct();
 
             Frm.ShowDialog(this);
-            
 
             txtProID.Text = Frm.psPid;
             txtProName.Text = Frm.psPname;
@@ -195,11 +201,23 @@ namespace Fruit_Stock
             btnCheckBill.Enabled = true;
         }
 
-       
-       
 
+
+        List<string> sStr = new List<string>();
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+            string rawID = txtOrderID.Text;
+            rawID = "O112200001";
+            //string[] aString = new string[10];
+            foreach (var i in rawID)
+            {
+                sStr.Add(i.ToString());
+            }
+            string test = sStr[]; 
+         
+
+
             if (sListGlobalCheck.Count > 0)
             {
                 foreach (var item in sListGlobalCheck)
@@ -233,14 +251,18 @@ namespace Fruit_Stock
 
         private void btnSale_Click(object sender, EventArgs e)
         {
+            if (bCheck == true)
+            {
+                dtOrder.Clear();
+            }
             FrmCheckBill Frm = new FrmCheckBill();
-            
+            DataSet dsSend = new DataSet();
+            dsSend.Tables.Add(dtOrder);
 
-            Frm.pdgvOrder = pdgvStateOrder;
+            Frm.pds = dsSend;
             //Frm.pDS.Tables.Add(dtOrder);
             Frm.ShowDialog();
             bfCheck = false;
-
         }
 
         private void prvClearAll()

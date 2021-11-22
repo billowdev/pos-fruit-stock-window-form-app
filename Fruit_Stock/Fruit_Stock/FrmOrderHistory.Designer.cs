@@ -50,12 +50,12 @@ namespace Fruit_Stock
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgvAllStock = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgvAllOrderHistory = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllOrderHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -66,6 +66,7 @@ namespace Fruit_Stock
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReport
             // 
@@ -75,6 +76,7 @@ namespace Fruit_Stock
             this.btnReport.TabIndex = 43;
             this.btnReport.Text = "Report";
             this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // txtSearch
             // 
@@ -84,6 +86,8 @@ namespace Fruit_Stock
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(532, 34);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // dtpProImport
             // 
@@ -113,8 +117,9 @@ namespace Fruit_Stock
             this.txtProIMID.Location = new System.Drawing.Point(144, 20);
             this.txtProIMID.Name = "txtProIMID";
             this.txtProIMID.ReadOnly = true;
-            this.txtProIMID.Size = new System.Drawing.Size(360, 30);
+            this.txtProIMID.Size = new System.Drawing.Size(301, 30);
             this.txtProIMID.TabIndex = 2;
+            this.txtProIMID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEMPID
             // 
@@ -126,7 +131,6 @@ namespace Fruit_Stock
             this.txtEMPID.ReadOnly = true;
             this.txtEMPID.Size = new System.Drawing.Size(375, 30);
             this.txtEMPID.TabIndex = 2;
-            this.txtEMPID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEMPName
             // 
@@ -148,8 +152,9 @@ namespace Fruit_Stock
             this.txtProName.Location = new System.Drawing.Point(144, 63);
             this.txtProName.Name = "txtProName";
             this.txtProName.ReadOnly = true;
-            this.txtProName.Size = new System.Drawing.Size(360, 30);
+            this.txtProName.Size = new System.Drawing.Size(301, 30);
             this.txtProName.TabIndex = 2;
+            this.txtProName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnRefresh
             // 
@@ -159,6 +164,7 @@ namespace Fruit_Stock
             this.btnRefresh.TabIndex = 6;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label4
             // 
@@ -250,6 +256,7 @@ namespace Fruit_Stock
             this.btnLoad.TabIndex = 51;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // dtpToDate
             // 
@@ -291,46 +298,6 @@ namespace Fruit_Stock
             this.label7.TabIndex = 48;
             this.label7.Text = "From: ";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(517, 151);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 25);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "รหัสสินค้า";
-            // 
-            // dgvAllStock
-            // 
-            this.dgvAllStock.AllowUserToAddRows = false;
-            this.dgvAllStock.AllowUserToDeleteRows = false;
-            this.dgvAllStock.AllowUserToResizeColumns = false;
-            this.dgvAllStock.AllowUserToResizeRows = false;
-            this.dgvAllStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.dgvAllStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllStock.Location = new System.Drawing.Point(12, 241);
-            this.dgvAllStock.MaximumSize = new System.Drawing.Size(1258, 350);
-            this.dgvAllStock.MinimumSize = new System.Drawing.Size(1258, 350);
-            this.dgvAllStock.Name = "dgvAllStock";
-            this.dgvAllStock.ReadOnly = true;
-            this.dgvAllStock.RowHeadersVisible = false;
-            this.dgvAllStock.RowHeadersWidth = 51;
-            this.dgvAllStock.RowTemplate.Height = 24;
-            this.dgvAllStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllStock.Size = new System.Drawing.Size(1258, 350);
-            this.dgvAllStock.TabIndex = 45;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(26, 148);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 25);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "รหัสลูกค้า";
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
@@ -343,18 +310,61 @@ namespace Fruit_Stock
             this.textBox1.TabIndex = 2;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(26, 148);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 25);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "รหัสลูกค้า";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(517, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "รหัสสินค้า";
+            // 
+            // dgvAllOrderHistory
+            // 
+            this.dgvAllOrderHistory.AllowUserToAddRows = false;
+            this.dgvAllOrderHistory.AllowUserToDeleteRows = false;
+            this.dgvAllOrderHistory.AllowUserToResizeColumns = false;
+            this.dgvAllOrderHistory.AllowUserToResizeRows = false;
+            this.dgvAllOrderHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.dgvAllOrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAllOrderHistory.Location = new System.Drawing.Point(12, 241);
+            this.dgvAllOrderHistory.MaximumSize = new System.Drawing.Size(1258, 350);
+            this.dgvAllOrderHistory.MinimumSize = new System.Drawing.Size(1258, 350);
+            this.dgvAllOrderHistory.Name = "dgvAllOrderHistory";
+            this.dgvAllOrderHistory.ReadOnly = true;
+            this.dgvAllOrderHistory.RowHeadersVisible = false;
+            this.dgvAllOrderHistory.RowHeadersWidth = 51;
+            this.dgvAllOrderHistory.RowTemplate.Height = 24;
+            this.dgvAllOrderHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAllOrderHistory.Size = new System.Drawing.Size(1258, 350);
+            this.dgvAllOrderHistory.TabIndex = 45;
+            // 
             // FrmOrderHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 603);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgvAllStock);
+            this.Controls.Add(this.dgvAllOrderHistory);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmOrderHistory";
             this.Text = "FrmOrderHistory";
+            this.Load += new System.EventHandler(this.FrmOrderHistory_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAllStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAllOrderHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -378,7 +388,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvAllStock;
+        private System.Windows.Forms.DataGridView dgvAllOrderHistory;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.DateTimePicker dtpFromDate;

@@ -177,6 +177,7 @@ namespace Fruit_Stock
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(563, 34);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // btnRefresh
@@ -228,6 +229,7 @@ namespace Fruit_Stock
             this.txtProIMID.ReadOnly = true;
             this.txtProIMID.Size = new System.Drawing.Size(360, 30);
             this.txtProIMID.TabIndex = 2;
+            this.txtProIMID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEMPID
             // 
@@ -239,6 +241,7 @@ namespace Fruit_Stock
             this.txtEMPID.ReadOnly = true;
             this.txtEMPID.Size = new System.Drawing.Size(252, 30);
             this.txtEMPID.TabIndex = 2;
+            this.txtEMPID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtEMPName
             // 

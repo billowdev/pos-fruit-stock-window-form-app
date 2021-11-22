@@ -22,28 +22,6 @@ namespace Fruit_Stock
         public string psPid, psPname, psPunit;
         public DataGridView pdgvPublic;
 
-        private void lsvProduct_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-            psPid = lsvProduct.SelectedItems[0].SubItems[0].Text;
-            psPname = lsvProduct.SelectedItems[0].SubItems[1].Text;
-            psPunit = lsvProduct.SelectedItems[0].SubItems[2].Text;
-
-            if (lsvProduct.SelectedItems[0].SubItems[0].Text != "")
-            {
-                this.Close();
-            }
-        }
-
-        oCenter ocn = new oCenter();
-
-        private void FrmListProduct_Load(object sender, EventArgs e)
-        {
-
-            txtSearch.Text = "";
-            prvShowData();
-        }
-
         private void prvAddItem(string _sPid, string _sName, string _sUnit)
         {
             // item pid
@@ -95,6 +73,35 @@ namespace Fruit_Stock
                 }
             }
             txtSearch.Text = "";
+        }
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+
+
+        private void lsvProduct_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            psPid = lsvProduct.SelectedItems[0].SubItems[0].Text;
+            psPname = lsvProduct.SelectedItems[0].SubItems[1].Text;
+            psPunit = lsvProduct.SelectedItems[0].SubItems[2].Text;
+
+            if (lsvProduct.SelectedItems[0].SubItems[0].Text != "")
+            {
+                this.Close();
+            }
+        }
+
+        oCenter ocn = new oCenter();
+
+        private void FrmListProduct_Load(object sender, EventArgs e)
+        {
+
+            txtSearch.Text = "";
+            prvShowData();
         }
 
     }
