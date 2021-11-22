@@ -33,15 +33,13 @@ namespace Fruit_Stock
             this.btnReport = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.txtProID = new System.Windows.Forms.TextBox();
             this.txtOderID = new System.Windows.Forms.TextBox();
             this.txtProName = new System.Windows.Forms.TextBox();
-            this.txtEMPName = new System.Windows.Forms.TextBox();
+            this.txtProID = new System.Windows.Forms.TextBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lbBarcode = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,6 +52,8 @@ namespace Fruit_Stock
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAllOrderHistory = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCusName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllOrderHistory)).BeginInit();
             this.SuspendLayout();
@@ -100,15 +100,6 @@ namespace Fruit_Stock
             this.dtpOrderDate.Size = new System.Drawing.Size(308, 30);
             this.dtpOrderDate.TabIndex = 43;
             // 
-            // txtProID
-            // 
-            this.txtProID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProID.Location = new System.Drawing.Point(144, 103);
-            this.txtProID.Name = "txtProID";
-            this.txtProID.Size = new System.Drawing.Size(301, 30);
-            this.txtProID.TabIndex = 2;
-            this.txtProID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtOderID
             // 
             this.txtOderID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
@@ -126,30 +117,31 @@ namespace Fruit_Stock
             this.txtProName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtProName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProName.Location = new System.Drawing.Point(608, 101);
+            this.txtProName.Location = new System.Drawing.Point(608, 143);
             this.txtProName.Name = "txtProName";
             this.txtProName.ReadOnly = true;
             this.txtProName.Size = new System.Drawing.Size(375, 30);
             this.txtProName.TabIndex = 2;
+            this.txtProName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtEMPName
+            // txtProID
             // 
-            this.txtEMPName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.txtEMPName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEMPName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEMPName.Location = new System.Drawing.Point(608, 146);
-            this.txtEMPName.Name = "txtEMPName";
-            this.txtEMPName.ReadOnly = true;
-            this.txtEMPName.Size = new System.Drawing.Size(300, 30);
-            this.txtEMPName.TabIndex = 2;
-            this.txtEMPName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtProID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProID.Location = new System.Drawing.Point(608, 107);
+            this.txtProID.Name = "txtProID";
+            this.txtProID.ReadOnly = true;
+            this.txtProID.Size = new System.Drawing.Size(300, 30);
+            this.txtProID.TabIndex = 2;
+            this.txtProID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtQuantity
             // 
             this.txtQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(144, 63);
+            this.txtQuantity.Location = new System.Drawing.Point(144, 62);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(301, 30);
@@ -180,21 +172,11 @@ namespace Fruit_Stock
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(520, 101);
+            this.label1.Location = new System.Drawing.Point(520, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "ชื่อสินค้า";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(41, 106);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 25);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "รหัสสินค้า";
             // 
             // lbBarcode
             // 
@@ -210,7 +192,7 @@ namespace Fruit_Stock
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 63);
+            this.label2.Location = new System.Drawing.Point(38, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 25);
             this.label2.TabIndex = 1;
@@ -229,17 +211,17 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.dtpOrderDate);
             this.groupBox1.Controls.Add(this.btnReport);
-            this.groupBox1.Controls.Add(this.txtProID);
             this.groupBox1.Controls.Add(this.txtOderID);
+            this.groupBox1.Controls.Add(this.txtCusName);
             this.groupBox1.Controls.Add(this.txtCustomerID);
             this.groupBox1.Controls.Add(this.txtProName);
-            this.groupBox1.Controls.Add(this.txtEMPName);
+            this.groupBox1.Controls.Add(this.txtProID);
             this.groupBox1.Controls.Add(this.txtQuantity);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lbBarcode);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -303,7 +285,7 @@ namespace Fruit_Stock
             this.txtCustomerID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
             this.txtCustomerID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCustomerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerID.Location = new System.Drawing.Point(144, 148);
+            this.txtCustomerID.Location = new System.Drawing.Point(144, 101);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.ReadOnly = true;
             this.txtCustomerID.Size = new System.Drawing.Size(301, 30);
@@ -314,7 +296,7 @@ namespace Fruit_Stock
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(44, 148);
+            this.label8.Location = new System.Drawing.Point(44, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 25);
             this.label8.TabIndex = 1;
@@ -324,7 +306,7 @@ namespace Fruit_Stock
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(517, 151);
+            this.label3.Location = new System.Drawing.Point(517, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 25);
             this.label3.TabIndex = 1;
@@ -351,6 +333,28 @@ namespace Fruit_Stock
             this.dgvAllOrderHistory.TabIndex = 45;
             this.dgvAllOrderHistory.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllOrderHistory_CellMouseUp);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(44, 143);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 25);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "ชื่อลูกค้า";
+            // 
+            // txtCusName
+            // 
+            this.txtCusName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtCusName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCusName.Location = new System.Drawing.Point(144, 143);
+            this.txtCusName.Name = "txtCusName";
+            this.txtCusName.ReadOnly = true;
+            this.txtCusName.Size = new System.Drawing.Size(301, 30);
+            this.txtCusName.TabIndex = 2;
+            this.txtCusName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmOrderHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -376,15 +380,13 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DateTimePicker dtpOrderDate;
-        private System.Windows.Forms.TextBox txtProID;
         private System.Windows.Forms.TextBox txtOderID;
         private System.Windows.Forms.TextBox txtProName;
-        private System.Windows.Forms.TextBox txtEMPName;
+        private System.Windows.Forms.TextBox txtProID;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbBarcode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -397,5 +399,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCusName;
+        private System.Windows.Forms.Label label5;
     }
 }

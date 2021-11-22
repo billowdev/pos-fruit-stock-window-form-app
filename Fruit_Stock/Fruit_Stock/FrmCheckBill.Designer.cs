@@ -52,7 +52,7 @@ namespace Fruit_Stock
             this.btnClose.Location = new System.Drawing.Point(961, 689);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(112, 41);
-            this.btnClose.TabIndex = 10;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -62,7 +62,7 @@ namespace Fruit_Stock
             this.btnCheckBill.Location = new System.Drawing.Point(817, 689);
             this.btnCheckBill.Name = "btnCheckBill";
             this.btnCheckBill.Size = new System.Drawing.Size(112, 41);
-            this.btnCheckBill.TabIndex = 11;
+            this.btnCheckBill.TabIndex = 3;
             this.btnCheckBill.Text = "Check Bill";
             this.btnCheckBill.UseVisualStyleBackColor = true;
             this.btnCheckBill.Click += new System.EventHandler(this.btnCheckBill_Click);
@@ -70,10 +70,10 @@ namespace Fruit_Stock
             // txtCash
             // 
             this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCash.Location = new System.Drawing.Point(788, 568);
+            this.txtCash.Location = new System.Drawing.Point(788, 511);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(335, 34);
-            this.txtCash.TabIndex = 9;
+            this.txtCash.TabIndex = 1;
             this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
             // 
@@ -113,7 +113,7 @@ namespace Fruit_Stock
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(742, 568);
+            this.label2.Location = new System.Drawing.Point(742, 524);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 17);
             this.label2.TabIndex = 5;
@@ -131,7 +131,7 @@ namespace Fruit_Stock
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(717, 516);
+            this.label4.Location = new System.Drawing.Point(719, 568);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 5;
@@ -140,10 +140,10 @@ namespace Fruit_Stock
             // txtDiscount
             // 
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(788, 516);
+            this.txtDiscount.Location = new System.Drawing.Point(788, 563);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(335, 34);
-            this.txtDiscount.TabIndex = 9;
+            this.txtDiscount.TabIndex = 2;
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 

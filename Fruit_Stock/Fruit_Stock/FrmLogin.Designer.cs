@@ -50,7 +50,7 @@ namespace Fruit_Stock
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(171, 531);
+            this.btnLogin.Location = new System.Drawing.Point(183, 531);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(133, 53);
@@ -66,7 +66,7 @@ namespace Fruit_Stock
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(325, 531);
+            this.btnExit.Location = new System.Drawing.Point(337, 531);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(121, 53);
@@ -77,7 +77,7 @@ namespace Fruit_Stock
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
-            this.txtUsername.Location = new System.Drawing.Point(148, 400);
+            this.txtUsername.Location = new System.Drawing.Point(160, 400);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(321, 43);
@@ -87,7 +87,7 @@ namespace Fruit_Stock
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("TH Sarabun New", 16F, System.Drawing.FontStyle.Bold);
-            this.txtPassword.Location = new System.Drawing.Point(148, 460);
+            this.txtPassword.Location = new System.Drawing.Point(160, 460);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
@@ -100,7 +100,7 @@ namespace Fruit_Stock
             this.pbShopkeeper.BackColor = System.Drawing.Color.Transparent;
             this.pbShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbShopkeeper.BackgroundImage")));
             this.pbShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbShopkeeper.Location = new System.Drawing.Point(136, 57);
+            this.pbShopkeeper.Location = new System.Drawing.Point(148, 57);
             this.pbShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbShopkeeper.Name = "pbShopkeeper";
             this.pbShopkeeper.Size = new System.Drawing.Size(349, 326);
@@ -112,7 +112,7 @@ namespace Fruit_Stock
             this.pbFruitFrontShopkeeper.BackColor = System.Drawing.Color.Transparent;
             this.pbFruitFrontShopkeeper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbFruitFrontShopkeeper.BackgroundImage")));
             this.pbFruitFrontShopkeeper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbFruitFrontShopkeeper.Location = new System.Drawing.Point(191, 241);
+            this.pbFruitFrontShopkeeper.Location = new System.Drawing.Point(203, 241);
             this.pbFruitFrontShopkeeper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbFruitFrontShopkeeper.Name = "pbFruitFrontShopkeeper";
             this.pbFruitFrontShopkeeper.Size = new System.Drawing.Size(100, 90);
@@ -125,7 +125,7 @@ namespace Fruit_Stock
             this.cbShowPassword.BackColor = System.Drawing.Color.Transparent;
             this.cbShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShowPassword.ForeColor = System.Drawing.Color.White;
-            this.cbShowPassword.Location = new System.Drawing.Point(478, 469);
+            this.cbShowPassword.Location = new System.Drawing.Point(490, 469);
             this.cbShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbShowPassword.Name = "cbShowPassword";
             this.cbShowPassword.Size = new System.Drawing.Size(151, 24);

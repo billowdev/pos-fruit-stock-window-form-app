@@ -143,24 +143,11 @@ namespace Fruit_Stock
             }
         }
 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                try
-                {
-                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
-                }
-                catch
-                {
-                    Environment.Exit(1);
-                }
-            }
-        }
+ 
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            oCenter.pusvCloseConnection();
             if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
             {

@@ -41,17 +41,18 @@ namespace Fruit_Stock
             this.cryViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cryViewer.Location = new System.Drawing.Point(0, 0);
             this.cryViewer.Name = "cryViewer";
-            this.cryViewer.Size = new System.Drawing.Size(1039, 667);
+            this.cryViewer.Size = new System.Drawing.Size(1203, 740);
             this.cryViewer.TabIndex = 1;
             // 
             // FrmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1039, 667);
+            this.ClientSize = new System.Drawing.Size(1203, 740);
             this.Controls.Add(this.cryViewer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmReportEmployee";
             this.Load += new System.EventHandler(this.FrmReportEmployee_Load);
             this.ResumeLayout(false);

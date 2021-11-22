@@ -52,23 +52,27 @@ namespace Fruit_Stock
         // Method for format datagridview
         private void prvFormatDataGrid()
         {
-            dgvAllOrderHistory.Update();
-            dgvAllOrderHistory.Refresh();
+            try
+            {
+                dgvAllOrderHistory.Update();
+                dgvAllOrderHistory.Refresh();
 
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvAllOrderHistory.ColumnHeadersDefaultCellStyle = cs;
-            dgvAllOrderHistory.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
-            dgvAllOrderHistory.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            dgvAllOrderHistory.Columns[2].HeaderText = "วันที่สั่งซื้อ";
-            dgvAllOrderHistory.Columns[3].HeaderText = "รหัสลูกค้า";
-            dgvAllOrderHistory.Columns[4].HeaderText = "รหัสสินค้า";
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvAllOrderHistory.ColumnHeadersDefaultCellStyle = cs;
+                dgvAllOrderHistory.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+                dgvAllOrderHistory.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+                dgvAllOrderHistory.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+                dgvAllOrderHistory.Columns[3].HeaderText = "รหัสลูกค้า";
+                dgvAllOrderHistory.Columns[4].HeaderText = "รหัสสินค้า";
 
-            dgvAllOrderHistory.Columns[0].Width = 260;
-            dgvAllOrderHistory.Columns[1].Width = 200;
-            dgvAllOrderHistory.Columns[2].Width = 300;
-            dgvAllOrderHistory.Columns[3].Width = 220;
-            dgvAllOrderHistory.Columns[4].Width = 260;
+                dgvAllOrderHistory.Columns[0].Width = 260;
+                dgvAllOrderHistory.Columns[1].Width = 200;
+                dgvAllOrderHistory.Columns[2].Width = 300;
+                dgvAllOrderHistory.Columns[3].Width = 220;
+                dgvAllOrderHistory.Columns[4].Width = 260;
+            } catch { }
+            
         }
 
         private void prvSearch()
@@ -109,7 +113,7 @@ namespace Fruit_Stock
         private void prvClearAll()
         {
             txtProName.Text = "";
-            txtEMPName.Text = "";
+            txtProID.Text = "";
             txtOderID.Text = "";
             txtQuantity.Text = "";
             txtProID.Text = "";
@@ -209,8 +213,30 @@ namespace Fruit_Stock
                 txtOderID.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtQuantity.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[1].Value.ToString();
                 dtpOrderDate.Value = Convert.ToDateTime(dgvAllOrderHistory.Rows[e.RowIndex].Cells[2].Value);
-                txtProName.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtCustomerID.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtProID.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[4].Value.ToString();
+                
+                string sSqlSelect = "select * from tb_product where pro_id='"+ txtProID.Text + "'";
+                DataSet sds = new DataSet();
+                sds = ocn.pudsLoadData(sSqlSelect, "tb_product", sds);
+                if (sds.Tables["tb_product"].Rows.Count > 0)
+                {
+                    txtProName.Text = sds.Tables["tb_product"].Rows[0]["pro_name"].ToString();
+                }
+
+                oCenter.pusvCloseConnection();
+                oCenter.pusvOpenConnection();
+
+                string sSqlSelect2 = "select * from tb_customer where cus_id='" + txtCustomerID.Text + "'";
+             
+                sds = ocn.pudsLoadData(sSqlSelect2, "tb_customer", sds);
+                if (sds.Tables["tb_customer"].Rows.Count > 0)
+                {
+                    txtCusName.Text = sds.Tables["tb_customer"].Rows[0]["cus_name"].ToString() + " " + sds.Tables["tb_customer"].Rows[0]["cus_lastname"].ToString();
+                }
+
+
+
             }
             catch { }
 

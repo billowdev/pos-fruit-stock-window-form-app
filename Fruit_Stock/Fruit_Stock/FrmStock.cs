@@ -31,8 +31,8 @@ namespace Fruit_Stock
             dtpProImport.Value = DateTime.Now;
             prvShowAllStock();
             puvFormatDataGrid();
-            // AutoID                     Field Name   Table Name Head  Last      
-            txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            // AutoID                      Field Name   Table      Name        Head             Last      
+            txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "I" + DateTime.Now.Date.ToString("MMyy"), "000"); // PID001
             txtProQuantity.Text = "1";
         }
         private void prvShowAllStock()
@@ -65,7 +65,7 @@ namespace Fruit_Stock
             txtProName.Text = "";
             txtProUnit.Text = "";
             // AutoID                     Field Name   Table Name Head  Last      
-            txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+            txtProIMID.Text = ocn.pusAutoID("im_id", "tb_import", "I" + DateTime.Now.Date.ToString("MMyy"), "000"); // PID001
 
             txtProQuantity.Text = "";
             txtProQuantity.Focus();
