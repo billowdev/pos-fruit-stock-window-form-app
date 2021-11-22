@@ -54,11 +54,11 @@ namespace Fruit_Stock
             //}
 
             //// Insert From Data Grid
-            ////for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            ////for (int i = 0; i < dgvOrder.Rows.Count; i++)
             ////{
             ////    StrQuery = @"INSERT INTO tableName VALUES ("
-            ////        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ", "
-            ////        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ");";
+            ////        + dgvOrder.Rows[i].Cells["ColumnName"].Text + ", "
+            ////        + dgvOrder.Rows[i].Cells["ColumnName"].Text + ");";
             ////    comm.CommandText = StrQuery;
             ////    comm.ExecuteNonQuery();
             ////}
@@ -128,12 +128,50 @@ namespace Fruit_Stock
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
+            DataTable dtOrder = new DataTable();
+            // ====================================== Data Grid Order ================================ //
+            dtOrder.Columns.Add("oOid");
+            dtOrder.Columns.Add("oQty");
+            dtOrder.Columns.Add("oDate");
+            dtOrder.Columns.Add("oCID");
+            dtOrder.Columns.Add("oPID");
+            dtOrder.Columns.Add("oUnit");
+            dtOrder.Columns.Add("oPrice");
+            dtOrder.Columns.Add("oTotal");
 
-            // crytal report control
-            cryReportBill.ReportSource = pdgvOrder;
-            cryBill cr = new cryBill();
-            //cr.SetDataSource(pDS);
-            cryReportBill.ReportSource = pdgvOrder;
+            // ======================== DataGridView State Order =====//
+            FrmSale Frm = new FrmSale();
+            pdgvOrder = Frm.pdgvStateOrder;
+            //dgvOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
+            dgvOrder.DataSource = pDS;
+
+
+            //DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            //cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            //dgvOrder.ColumnHeadersDefaultCellStyle = cs;
+            //dgvOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+            //dgvOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+            //dgvOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+            //dgvOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+            //dgvOrder.Columns[4].HeaderText = "รหัสสินค้า";
+            //dgvOrder.Columns[5].HeaderText = "หน่วย";
+            //dgvOrder.Columns[6].HeaderText = "ราคาสินค้า";
+            //dgvOrder.Columns[7].HeaderText = "ราคารวม";
+
+            //dgvOrder.Columns[0].Width = 160;
+            //dgvOrder.Columns[1].Width = 120;
+            //dgvOrder.Columns[2].Width = 240;
+            //dgvOrder.Columns[3].Width = 160;
+            //dgvOrder.Columns[4].Width = 160;
+            //dgvOrder.Columns[5].Width = 160;
+            //dgvOrder.Columns[6].Width = 120;
+            //dgvOrder.Columns[7].Width = 140;
+
+            //// crytal report control
+            //cryReportBill.ReportSource = pdgvOrder;
+            //cryBill cr = new cryBill();
+            ////cr.SetDataSource(pDS);
+            //cryReportBill.ReportSource = pdgvOrder;
 
             lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");

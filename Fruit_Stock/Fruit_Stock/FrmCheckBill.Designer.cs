@@ -37,7 +37,6 @@ namespace Fruit_Stock
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cryReportBill = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -130,16 +129,6 @@ namespace Fruit_Stock
             this.label1.TabIndex = 6;
             this.label1.Text = "Price";
             // 
-            // cryReportBill
-            // 
-            this.cryReportBill.ActiveViewIndex = -1;
-            this.cryReportBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryReportBill.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryReportBill.Location = new System.Drawing.Point(495, 2);
-            this.cryReportBill.Name = "cryReportBill";
-            this.cryReportBill.Size = new System.Drawing.Size(648, 481);
-            this.cryReportBill.TabIndex = 12;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -205,12 +194,12 @@ namespace Fruit_Stock
             // dgvOrder
             // 
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrder.Location = new System.Drawing.Point(24, 12);
+            this.dgvOrder.Location = new System.Drawing.Point(12, 12);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.RowHeadersWidth = 51;
             this.dgvOrder.RowTemplate.Height = 24;
-            this.dgvOrder.Size = new System.Drawing.Size(465, 459);
-            this.dgvOrder.TabIndex = 13;
+            this.dgvOrder.Size = new System.Drawing.Size(1130, 473);
+            this.dgvOrder.TabIndex = 15;
             // 
             // FrmCheckBill
             // 
@@ -220,7 +209,6 @@ namespace Fruit_Stock
             this.ClientSize = new System.Drawing.Size(1176, 753);
             this.ControlBox = false;
             this.Controls.Add(this.dgvOrder);
-            this.Controls.Add(this.cryReportBill);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCheckBill);
             this.Controls.Add(this.txtDiscount);
@@ -254,7 +242,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryReportBill;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Label label5;

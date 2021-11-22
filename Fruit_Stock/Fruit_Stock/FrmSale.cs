@@ -20,7 +20,7 @@ namespace Fruit_Stock
             InitializeComponent();
         }
         bool bCheck = false;
-        DataGridView pdgvStateOrder;
+        public DataGridView pdgvStateOrder;
 
         oCenter ocn = new oCenter();
         public double dCash = 0;
@@ -174,7 +174,6 @@ namespace Fruit_Stock
             
             dgvStateOrder.DataSource = dtOrder;
 
-
             //for (int nRow = 0; nRow <= dtOrder.Rows.Count; nRow++)
             //{
 
@@ -232,8 +231,10 @@ namespace Fruit_Stock
         private void btnSale_Click(object sender, EventArgs e)
         {
             FrmCheckBill Frm = new FrmCheckBill();
+            
+
             Frm.pdgvOrder = pdgvStateOrder;
-            Frm.pDS.Tables.Add(dtOrder);
+            //Frm.pDS.Tables.Add(dtOrder);
             Frm.ShowDialog();
             bfCheck = false;
 
@@ -274,6 +275,8 @@ namespace Fruit_Stock
                 dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvStateOrder.Rows[e.RowIndex].Selected = true;
                 dgvStateOrder.Focus();
+
+                pdgvStateOrder = dgvStateOrder;
             }
         }
 
@@ -290,8 +293,6 @@ namespace Fruit_Stock
                     dAmount += Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim());
                 }
                 lbTotal.Text = dAmount.ToString("#,##0.00");
-                double dTotal = 0;
-                double dDiscount = 0;
             }
 
         }
