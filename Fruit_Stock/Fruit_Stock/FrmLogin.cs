@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Fruit_Stock.static_classes;
 using System.Data.OleDb;
+using Fruit_Stock.static_classes;
 
 namespace Fruit_Stock
 {
@@ -20,7 +20,8 @@ namespace Fruit_Stock
         }
         oCenter ocn = new oCenter();
         OleDbDataReader loginReader;
-
+        // ==========================================
+        DataSet dsLogin = new DataSet();
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -48,9 +49,7 @@ namespace Fruit_Stock
                 return;
             }
 
-            // ==========================================
-            oCenter ocn = new oCenter();
-            DataSet dsLogin = new DataSet();
+           
 
             string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
                 " Password='" + txtPassword.Text.Trim() + "'";

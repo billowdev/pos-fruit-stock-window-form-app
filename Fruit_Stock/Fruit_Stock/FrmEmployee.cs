@@ -46,6 +46,7 @@ namespace Fruit_Stock
                 btnSearch.Hide();
                 btnRefresh.Hide();
                 txtSearch.Hide();
+                btnReport.Hide();
 
             }
             // ================================== Admin ================================== //
