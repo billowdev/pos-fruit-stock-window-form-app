@@ -109,12 +109,22 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            if (ocn.pub_CloseChildForm(this, "FrmOrderProduct") == false)
+            //if (ocn.pub_CloseChildForm(this, "FrmOrderProduct") == false)
+            //{
+            //    stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
+            //    lbWelcome.Dispose();
+            //    pbMain.Dispose();
+            //    FrmOrderProduct Frm = new FrmOrderProduct();
+            //    Frm.MdiParent = this;
+            //    Frm.Show();
+            //}
+
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
-                stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
+                stsPageStatus.Text = " >>    หน้าขายสินค้า     <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmOrderProduct Frm = new FrmOrderProduct();
+                FrmSale Frm = new FrmSale();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
@@ -165,18 +175,6 @@ namespace Fruit_Stock
             }
         }
 
-        private void cmuFTSale_Click(object sender, EventArgs e)
-        {
-            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
-            {
-                stsPageStatus.Text = " >>    หน้าขาย    <<";
-                lbWelcome.Dispose();
-                pbMain.Dispose();
-                FrmSale Frm = new FrmSale();
-                Frm.MdiParent = this;
-                Frm.Show();
-            }
-        }
     }
 }
 

@@ -49,19 +49,23 @@ namespace Fruit_Stock
         }
         public DataSet pDS = new DataSet();
         public cryBill rptBill = new cryBill();
+        double dTotal = 0;
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
             prvFormatDataGrid();
       
             dgvOrder.DataSource = pds.Tables[0];
+            for (int nRow = 0; nRow < pds.Tables[0].Rows.Count; nRow++)
+            {
+                dTotal += Convert.ToDouble(pds.Tables[0].Rows[nRow][7].ToString());
+            }
+
+            lbTotal.Text = Convert.ToDouble(dTotal).ToString("#,##0.00");
 
             lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
-            lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
-
-            
         }
 
         private void prvFormatDataGrid()
@@ -156,7 +160,30 @@ namespace Fruit_Stock
         }
 
         string sOID, sOQty, sCusID, sPID, sDate;
-        
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbTotal.Text == "")
+                {
+                    return;
+                }
+
+                if (Convert.ToDouble(lbTotal.Text) <= 0)
+                {
+                    return;
+                }
+                double dOut = Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtDiscount.Text);
+                lbTotalAfter.Text = dOut.ToString("#,##0.00");
+            }
+            catch
+            {
+                txtDiscount.Text = "0";
+                lbTotalAfter.Text = "0.00";
+                return;
+            }
+        }
 
 
         cryBill rptCryBill = new cryBill();
@@ -216,18 +243,23 @@ namespace Fruit_Stock
                 {
                     return;
                 }
+                if (lbTotalAfter.Text == "")
+                {
+                    return;
+                }
 
                 if (Convert.ToDouble(lbTotal.Text) <= 0)
                 {
                     return;
                 }
-
-                double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
+                if (Convert.ToDouble(lbTotalAfter.Text) <= 0)
+                {
+                    return;
+                }
+                double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotalAfter.Text);
                 lbChange.Text = dOut.ToString("#,##0.00");
-
-
             }
-            catch (Exception ex)
+            catch 
             {
                 txtCash.Text = "0";
                 lbChange.Text = "0.00";

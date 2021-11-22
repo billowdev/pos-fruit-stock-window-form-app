@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
@@ -238,10 +237,8 @@ namespace Fruit_Stock
                 txtCusLastName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txtCusPhone.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
+            
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)

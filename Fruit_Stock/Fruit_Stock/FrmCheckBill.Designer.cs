@@ -76,7 +76,6 @@ namespace Fruit_Stock
             this.txtCash.TabIndex = 9;
             this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
-            this.txtCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCash_KeyDown);
             // 
             // lbChange
             // 
@@ -146,8 +145,7 @@ namespace Fruit_Stock
             this.txtDiscount.Size = new System.Drawing.Size(335, 34);
             this.txtDiscount.TabIndex = 9;
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDiscount.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
-            this.txtDiscount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCash_KeyDown);
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 
             // label5
             // 
@@ -224,6 +222,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmCheckBill";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCheckBill";
             this.Load += new System.EventHandler(this.FrmCheckBill_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();

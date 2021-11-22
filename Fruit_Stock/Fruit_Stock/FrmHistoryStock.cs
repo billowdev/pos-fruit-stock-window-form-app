@@ -179,10 +179,7 @@ namespace Fruit_Stock
                 dtpProImport.Value = Convert.ToDateTime(dgvAllStock.Rows[e.RowIndex].Cells[3].Value);
                 txtEMPID.Text = dgvAllStock.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch {}
 
             // ==================================== Get Employee Data ====================================================== //
             

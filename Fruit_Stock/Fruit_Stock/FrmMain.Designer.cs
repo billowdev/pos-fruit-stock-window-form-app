@@ -49,7 +49,6 @@ namespace Fruit_Stock
             this.timTime = new System.Windows.Forms.Timer(this.components);
             this.lbWelcome = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
-            this.cmuFTSale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFrmMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
@@ -69,8 +68,7 @@ namespace Fruit_Stock
             this.cmuHistoryOrder,
             this.mnuProfile,
             this.mnuHelp,
-            this.mnuExitProgram,
-            this.cmuFTSale});
+            this.mnuExitProgram});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
             this.mnuFrmMain.Size = new System.Drawing.Size(1920, 58);
@@ -234,13 +232,6 @@ namespace Fruit_Stock
             this.pbMain.TabIndex = 3;
             this.pbMain.TabStop = false;
             // 
-            // cmuFTSale
-            // 
-            this.cmuFTSale.Name = "cmuFTSale";
-            this.cmuFTSale.Size = new System.Drawing.Size(96, 54);
-            this.cmuFTSale.Text = "FrmSale";
-            this.cmuFTSale.Click += new System.EventHandler(this.cmuFTSale_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -290,6 +281,5 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripStatusLabel stsPageStatus;
         private System.Windows.Forms.ToolStripMenuItem cmuHistoryOrder;
         private System.Windows.Forms.ToolStripMenuItem mnuExitProgram;
-        private System.Windows.Forms.ToolStripMenuItem cmuFTSale;
     }
 }

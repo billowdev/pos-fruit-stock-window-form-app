@@ -19,8 +19,7 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        DataGridView dgvPublic;
-        DataGridView dgvBill;
+
         string sSql = "";
         bool bCheck = false;
         DataSet dsOrder = new DataSet();
