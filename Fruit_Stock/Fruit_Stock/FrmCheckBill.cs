@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Fruit_Stock.static_classes;
+using System.Data.OleDb;
 
 namespace Fruit_Stock
 {
@@ -20,120 +22,148 @@ namespace Fruit_Stock
         public double pdCash = 0;
         public double pdChange = 0;
         public bool pbCheckAction = false;
-
+        public DataGridView pdgvOrder;
+        oCenter ocn = new oCenter();
+        public DataSet pds = new DataSet();
+        public DataSet pds2 = new DataSet();
+        bool bCheck = false;
         double dPreviousQty = 0; // Qty Product
         double dNewQty = 0;
         double dPresentQty = 0; // Qty Product After Operating with newQty
-
-        public cryBill rptBill = new cryBill();
+        
 
         private void prv_CheckBill()
         {
-            //if (Convert.ToDouble(lbTotal.Text) <= 0)
-            //{
-            //    MessageBox.Show("total price should not less than zero", "Msg",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-
-            //dPreviousQty = Convert.ToInt32(lbStockQuantity.Text); // Qty Product
-            //dNewQty = Convert.ToInt32(txtOrderQty.Text);  // Qty Order
-            //dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
-
-            //if (txtCash.Text == "")
-            //{
-            //    MessageBox.Show("Please Enter Cash", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //if (Convert.ToDouble(txtCash.Text) < Convert.ToDouble(lbTotal.Text))
-            //{
-            //    MessageBox.Show("You must enter cash more than or equal total value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //// Insert From Data Grid
-            ////for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            ////{
-            ////    StrQuery = @"INSERT INTO tableName VALUES ("
-            ////        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ", "
-            ////        + dataGridView1.Rows[i].Cells["ColumnName"].Text + ");";
-            ////    comm.CommandText = StrQuery;
-            ////    comm.ExecuteNonQuery();
-            ////}
-
-
-            //// ============= Update Quantity at tb_product after import ========================= //
-            //oCenter.pusvCloseConnection();
-            //oCenter.pusvOpenConnection();
-
-            //OleDbCommand cmdUpdate = new OleDbCommand();
-
-            //sSql = " UPDATE tb_product SET pro_quantity=@updateQty WHERE pro_id=@PID";
-            //cmdUpdate.Parameters.Clear();
-            //cmdUpdate.Parameters.AddWithValue("@updateQty", dPresentQty);
-            //cmdUpdate.Parameters.AddWithValue("@PID", txtProID.Text.Trim().ToString());
-
-            //cmdUpdate.CommandType = CommandType.Text;
-            //cmdUpdate.CommandText = sSql;
-            //cmdUpdate.Connection = oCenter.conn;
-            //cmdUpdate.ExecuteNonQuery();
-
-            //ocn.dBillTotal = Convert.ToDouble(lbTotal.Text);
-            //ocn.dBillCash = Convert.ToDouble(txtCash.Text);
-            //ocn.dBillChange = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
-
-            //lbAmount.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text)).ToString("#,##00.00");
-
-            //// =============  END Update Quantity at tb_product after import ========================= //
-
-            //oCenter.pusvCloseConnection();
-            //oCenter.pusvOpenConnection();
-
-            //// ============================================== Insert to tb_order ========================= //
-            //OleDbCommand cmdOrder = new OleDbCommand();
-            //string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
-            //    txtOrderID.Text + "','" +
-            //    txtOrderQty.Text + "','" +
-            //    dtpOrder.Value + "','" +
-            //    txtCustomerID.Text + "','" +
-            //    txtProID.Text + "')";
-
-            //cmdOrder.CommandType = CommandType.Text;
-            //cmdOrder.CommandText = sSqlOder;
-            //cmdOrder.Connection = oCenter.conn;
-            //cmdOrder.ExecuteNonQuery();
-
-            //// ============================================== END Insert to tb_order ========================= //
-
-
-
-            //prvShowAllOrder();
-            //prvClearAll();
-
             pdCash = Convert.ToDouble(txtCash.Text);
             pdChange = Convert.ToDouble(lbChange.Text);
             pbCheckAction = true;
             this.Close();
-
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
             pbCheckAction = false;
             this.Close();
         }
+        public DataSet pDS = new DataSet();
+        public cryBill rptBill = new cryBill();
+        double dTotal = 0;
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
+            txtCash.Focus();
+            dgvOrder.DataSource = pds.Tables[0];
+
+            prvFormatDataGrid();
+      
+            for (int nRow = 0; nRow < pds.Tables[0].Rows.Count; nRow++)
+            {
+                dTotal += Convert.ToDouble(pds.Tables[0].Rows[nRow][7].ToString());
+            }
+
+            lbTotal.Text = Convert.ToDouble(dTotal).ToString("#,##0.00");
+
+            lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+            lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+            lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+
             
-                 // crytal report control
-            cryReportBill.ReportSource = rptBill;
-
-            lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
         }
 
-        private void btnCheckBill_Click(object sender, EventArgs e)
+        private void prvFormatDataGrid()
         {
-            prv_CheckBill();
+            try
+            {
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvOrder.ColumnHeadersDefaultCellStyle = cs;
+                dgvOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+                dgvOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+                dgvOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+                dgvOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+                dgvOrder.Columns[4].HeaderText = "รหัสสินค้า";
+                dgvOrder.Columns[5].HeaderText = "หน่วย";
+                dgvOrder.Columns[6].HeaderText = "ราคาสินค้า";
+                dgvOrder.Columns[7].HeaderText = "ราคารวม";
+
+                dgvOrder.Columns[0].Width = 120;
+                dgvOrder.Columns[1].Width = 120;
+                dgvOrder.Columns[2].Width = 180;
+                dgvOrder.Columns[3].Width = 160;
+                dgvOrder.Columns[4].Width = 160;
+                dgvOrder.Columns[5].Width = 160;
+                dgvOrder.Columns[6].Width = 100;
+                dgvOrder.Columns[7].Width = 120;
+            }
+            catch { }
+            
         }
+
+        private void prvUpdateProduct(string _sPID, string _dUpdateQty)
+        {
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+            string sSql = " SELECT * FROM tb_product WHERE pro_id='" + _sPID + "'";
+            DataSet checkDS = new DataSet();
+
+            checkDS = ocn.pudsLoadData(sSql, "tb_product", checkDS);
+
+            if (checkDS.Tables["tb_product"].Rows.Count != 0)
+            {
+                dPreviousQty = Convert.ToInt32( checkDS.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() ); // Qty Product
+                dNewQty = Convert.ToDouble(_dUpdateQty);  // Qty Order
+                dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
+
+                // ============= Update Quantity at tb_product after import ========================= //
+                oCenter.pusvCloseConnection();
+                oCenter.pusvOpenConnection();
+
+                OleDbCommand cmdUpdate = new OleDbCommand();
+
+                sSql = " UPDATE tb_product SET pro_quantity=@updateQty WHERE pro_id=@PID";
+                cmdUpdate.Parameters.Clear();
+                cmdUpdate.Parameters.AddWithValue("@updateQty", _dUpdateQty);
+                cmdUpdate.Parameters.AddWithValue("@PID", _sPID);
+
+                cmdUpdate.CommandType = CommandType.Text;
+                cmdUpdate.CommandText = sSql;
+                cmdUpdate.Connection = oCenter.conn;
+                cmdUpdate.ExecuteNonQuery();
+
+                // =============  END Update Quantity at tb_product after import ========================= //
+            }
+            else
+            {
+                MessageBox.Show("Update Fail", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+        }
+
+        private void prvInsertOrder(string _sOID, string _sOQty, string _sCusID, string _sPID, string _sDate)
+        {
+
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+            try
+            {
+                // ============================================== Insert to tb_order ========================= //
+                OleDbCommand cmdOrder = new OleDbCommand();
+                string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
+                    _sOID + "','" +
+                    _sOQty + "','" +
+                    _sDate + "','" +
+                    _sCusID + "','" +
+                    _sPID + "')";
+
+                cmdOrder.CommandType = CommandType.Text;
+                cmdOrder.CommandText = sSqlOder;
+                cmdOrder.Connection = oCenter.conn;
+                cmdOrder.ExecuteNonQuery();
+            } catch(Exception ex) { MessageBox.Show(ex.Message); }
+            
+        }
+
+        string sOID, sOQty, sCusID, sPID, sDate;
 
         private void txtCash_TextChanged(object sender, EventArgs e)
         {
@@ -148,26 +178,76 @@ namespace Fruit_Stock
                 {
                     return;
                 }
-
                 double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
-                lbChange.Text = dOut.ToString("#,##0.00");
-
-
+                lbTotalAfter.Text = dOut.ToString("#,##0.00");
             }
-            catch (Exception ex)
+            catch
             {
                 txtCash.Text = "0";
-                lbChange.Text = "0.00";
+                lbTotalAfter.Text = "0.00";
                 return;
             }
         }
 
-        private void txtCash_KeyDown(object sender, KeyEventArgs e)
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyValue == 13)
+            try
             {
-                prv_CheckBill();
+                if (lbTotal.Text == "")
+                {
+                    return;
+                }
+
+                if (Convert.ToDouble(lbTotal.Text) <= 0)
+                {
+                    return;
+                }
+                double dOut = Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtDiscount.Text);
+                lbTotalAfter.Text = dOut.ToString("#,##0.00");
+            }
+            catch
+            {
+                txtDiscount.Text = "0";
+                lbTotalAfter.Text = "0.00";
+                return;
             }
         }
+
+        private void btnCheckBill_Click(object sender, EventArgs e)
+        {
+            //dtOrder.Columns.Add("oOid");
+            //dtOrder.Columns.Add("oQty");
+            //dtOrder.Columns.Add("oDate");
+            //dtOrder.Columns.Add("oCID");
+            //dtOrder.Columns.Add("oPID");
+            //dtOrder.Columns.Add("oUnit");
+            //dtOrder.Columns.Add("oPrice");
+            //dtOrder.Columns.Add("oTotal");
+
+            for (int iTem=0; iTem < pds.Tables[0].Rows.Count; iTem++)
+            {
+                sOID = pds.Tables[0].Rows[iTem]["oOid"].ToString();
+                sOQty = pds.Tables[0].Rows[iTem]["oQty"].ToString();
+                sDate = pds.Tables[0].Rows[iTem]["oDate"].ToString();
+                sCusID = pds.Tables[0].Rows[iTem]["oCID"].ToString();
+                sPID = pds.Tables[0].Rows[iTem]["oPID"].ToString();
+
+                prvInsertOrder(sOID, sOQty, sCusID, sPID, sDate);
+
+                prvUpdateProduct(sPID, sOQty);
+
+            }
+
+            // ===================================================================================================================================
+            //FrmReport Frm = new FrmReport();
+            //Frm.sReport = "CheckBill";
+            //Frm.rptBill.SetDataSource(pds);
+            //Frm.ShowDialog();
+            this.Close();
+
+        }
+
+
+
     }
 }

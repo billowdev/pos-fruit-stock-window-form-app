@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
 using System.Data.OleDb;
-using System.Data;
 
 namespace Fruit_Stock
 {
@@ -111,10 +110,8 @@ namespace Fruit_Stock
                 txtUnit.Text = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString();
                 lbStockQuantity.Text = dgvAllProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
-            catch (Exception ex)
-            {
+            catch { }
 
-            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -151,27 +148,30 @@ namespace Fruit_Stock
                 return;
             }
 
+            try
+            {
+                string sSqlInsert = "";
+                sSqlInsert = " INSERT INTO tb_product(pro_id,pro_name,pro_price,pro_unit,pro_quantity) VALUES(@id,@name,@price,@unit,@quantity)";
+                oCenter.pusvCloseConnection();
+                oCenter.pusvOpenConnection();
+                OleDbCommand cmdInsert = new OleDbCommand();
+                cmdInsert.Parameters.Clear();
 
-            string sSqlInsert = "";
-            sSqlInsert = " INSERT INTO tb_product(pro_id,pro_name,pro_price,pro_unit,pro_quantity) VALUES(@id,@name,@price,@unit,@quantity)";
-            oCenter.pusvCloseConnection();
-            oCenter.pusvOpenConnection();
-            OleDbCommand cmdInsert = new OleDbCommand();
-            cmdInsert.Parameters.Clear();
+                cmdInsert.Parameters.AddWithValue("@id", txtProID.Text.Trim().ToString());
+                cmdInsert.Parameters.AddWithValue("@name", txtProName.Text.Trim().ToString());
+                cmdInsert.Parameters.AddWithValue("@price", txtProPrice.Text.Trim().ToString());
+                cmdInsert.Parameters.AddWithValue("@unit", txtUnit.Text.Trim().ToString());
+                cmdInsert.Parameters.AddWithValue("@quantity", 0);
+                // AutoID     Field Name  Table Name Head  Last      
+                //string im_id = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
+                //cmdInsert.Parameters.AddWithValue("@imid", im_id);
 
-            cmdInsert.Parameters.AddWithValue("@id", txtProID.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@name", txtProName.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@price", txtProPrice.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@unit", txtUnit.Text.Trim().ToString());
-            cmdInsert.Parameters.AddWithValue("@quantity", 0);
-                                     // AutoID     Field Name  Table Name Head  Last      
-            //string im_id = ocn.pusAutoID("im_id", "tb_import", "im", "000000"); // im000001
-            //cmdInsert.Parameters.AddWithValue("@imid", im_id);
-
-            cmdInsert.CommandType = CommandType.Text;
-            cmdInsert.CommandText = sSqlInsert;
-            cmdInsert.Connection = oCenter.conn;
-            cmdInsert.ExecuteNonQuery();
+                cmdInsert.CommandType = CommandType.Text;
+                cmdInsert.CommandText = sSqlInsert;
+                cmdInsert.Connection = oCenter.conn;
+                cmdInsert.ExecuteNonQuery();
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+            
 
             prvClearAll();
             prvShowAllProduct();

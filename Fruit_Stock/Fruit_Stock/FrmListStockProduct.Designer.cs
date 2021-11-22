@@ -120,6 +120,7 @@ namespace Fruit_Stock
             this.Controls.Add(this.txtSearch);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmListStockProduct";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmListStockProduct";
             this.Load += new System.EventHandler(this.FrmListStockProduct_Load);
             this.cmuMenu.ResumeLayout(false);

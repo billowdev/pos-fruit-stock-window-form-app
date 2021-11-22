@@ -29,12 +29,38 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReport));
+            this.cryViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.SuspendLayout();
+            // 
+            // cryViewer
+            // 
+            this.cryViewer.ActiveViewIndex = -1;
+            this.cryViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryViewer.Location = new System.Drawing.Point(0, 0);
+            this.cryViewer.Name = "cryViewer";
+            this.cryViewer.Size = new System.Drawing.Size(1203, 740);
+            this.cryViewer.TabIndex = 1;
+            // 
+            // FrmReport
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmReport";
+            this.ClientSize = new System.Drawing.Size(1203, 740);
+            this.Controls.Add(this.cryViewer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FrmReportEmployee";
+            this.Load += new System.EventHandler(this.FrmReportEmployee_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryViewer;
     }
 }

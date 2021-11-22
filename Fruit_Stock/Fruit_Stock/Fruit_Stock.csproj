@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\lacak\Desktop\FruitStock\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +53,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>so_fresh.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F82400A272E0F0FCD94FC1D3FF42CDB7161549FD</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Fruit_Stock_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -67,6 +95,24 @@
       <DependentUpon>cryBill.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="cryCustomer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryCustomer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryDetailCustomer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryDetailCustomer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryDetailEmployee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryDetailEmployee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cryEmployee1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,6 +123,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>cryHistoryStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryOrder.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FrmCheckBill.cs">
@@ -96,12 +148,6 @@
     </Compile>
     <Compile Include="FrmHistoryStock.Designer.cs">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmHistoryStockFilter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmHistoryStockFilter.Designer.cs">
-      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListCustomer.cs">
       <SubType>Form</SubType>
@@ -145,6 +191,12 @@
     <Compile Include="FrmOrderHistory.Designer.cs">
       <DependentUpon>FrmOrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOrderProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrderProduct.Designer.cs">
+      <DependentUpon>FrmOrderProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,23 +209,11 @@
     <Compile Include="FrmProduct.Designer.cs">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEmployeeFilter.cs">
+    <Compile Include="FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEmployeeFilter.Designer.cs">
-      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmReportEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReportEmployee.Designer.cs">
-      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmReportHistoryStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReportHistoryStock.Designer.cs">
-      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
+    <Compile Include="FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmStock.cs">
       <SubType>Form</SubType>
@@ -193,6 +233,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryBill.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="cryCustomer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryCustomer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryDetailCustomer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryDetailCustomer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryDetailEmployee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryDetailEmployee.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="cryEmployee.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryEmployee1.cs</LastGenOutput>
@@ -200,6 +252,10 @@
     <EmbeddedResource Include="cryHistoryStockReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryHistoryStockReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryOrder.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCheckBill.resx">
       <DependentUpon>FrmCheckBill.cs</DependentUpon>
@@ -209,9 +265,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistoryStock.resx">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistoryStockFilter.resx">
-      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListCustomer.resx">
       <DependentUpon>FrmListCustomer.cs</DependentUpon>
@@ -234,20 +287,17 @@
     <EmbeddedResource Include="FrmOrderHistory.resx">
       <DependentUpon>FrmOrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderProduct.resx">
+      <DependentUpon>FrmOrderProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEmployeeFilter.resx">
-      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmReportEmployee.resx">
-      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmReportHistoryStock.resx">
-      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
+    <EmbeddedResource Include="FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStock.resx">
       <DependentUpon>FrmStock.cs</DependentUpon>
@@ -258,6 +308,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="Fruit_Stock_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -291,6 +342,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="so_fresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

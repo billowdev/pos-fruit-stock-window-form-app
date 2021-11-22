@@ -62,7 +62,7 @@ namespace Fruit_Stock
             // columnHeader2
             // 
             this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 280;
+            this.columnHeader2.Width = 183;
             // 
             // columnHeader3
             // 

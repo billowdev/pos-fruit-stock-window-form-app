@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
@@ -76,7 +75,6 @@ namespace Fruit_Stock
         // =============================== Method Search ===================================== //
         private void prvSearch()
         {
-            bool bCheck = false;
 
             if (txtSearch.Text == "")
             {
@@ -84,26 +82,26 @@ namespace Fruit_Stock
                 return;
             }
 
-            DataSet dsSearchProduct = new DataSet();
+            //DataSet ds = new DataSet();
             string sSqlSelect = " SELECT * FROM tb_customer WHERE cus_id+cus_name+cus_lastname+cus_phone LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY cus_id DESC;";
 
-            if (bCheck == true)
+            if (IsFind == true)
             {
-                dsSearchProduct.Tables["tb_customer"].Clear();
+                ds.Tables["tb_customer"].Clear();
             }
 
             OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
-            da.Fill(dsSearchProduct, "tb_customer");
+            da.Fill(ds, "tb_customer");
 
-            if (dsSearchProduct.Tables["tb_customer"].Rows.Count != 0)
+            if (ds.Tables["tb_customer"].Rows.Count != 0)
             {
-                bCheck = true;
+                IsFind = true;
                 dgvAllCustomer.ReadOnly = true;
-                dgvAllCustomer.DataSource = dsSearchProduct.Tables["tb_customer"];
+                dgvAllCustomer.DataSource = ds.Tables["tb_customer"];
             }
             else
             {
-                bCheck = false;
+                IsFind = false;
             }
             dgvAllCustomer.Refresh();
             btnSearch.Enabled = false;
@@ -239,10 +237,8 @@ namespace Fruit_Stock
                 txtCusLastName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txtCusPhone.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
+            
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -300,6 +296,39 @@ namespace Fruit_Stock
             prvFormatDataGrid();
             // AutoID                     Field Name        Table Name Head  Last      
             txtCusID.Text = CC.pusAutoID("cus_id", "tb_customer", "C" + DateTime.Now.ToString("ddMMyy"), "000"); // C211121001
+
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "AllCustomer";
+            Frm.rptCustomer.SetDataSource(ds);
+            Frm.ShowDialog();
+
+            //Frm.ShowDialog();
+        }
+
+        private void btnPrintOne_Click(object sender, EventArgs e)
+        {
+            if (txtCusID.Text == "" || txtCusName.Text == "" || txtCusPhone.Text == "" || txtCusLastName.Text == "")
+            {
+                MessageBox.Show("Please select customer ");
+                return;
+            }
+            DataSet dsCustomer = new DataSet();
+
+            sSql = " select * from tb_customer where cus_id='" + txtCusID.Text + "'";
+        
+            OleDbDataAdapter da = new OleDbDataAdapter(sSql, oCenter.conn);
+            da.Fill(dsCustomer, "tb_customer");
+            
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "DetailCustomer";
+            Frm.rptDetailCustomer.SetDataSource(dsCustomer);
+            Frm.ShowDialog();
 
         }
     }
