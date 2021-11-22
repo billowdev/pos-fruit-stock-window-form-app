@@ -37,6 +37,8 @@ namespace Fruit_Stock
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbOperating = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnPrintOne = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -53,8 +55,6 @@ namespace Fruit_Stock
             this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAllCustomer = new System.Windows.Forms.DataGridView();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnPrintOne = new System.Windows.Forms.Button();
             this.gbOperating.SuspendLayout();
             this.cmuMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllCustomer)).BeginInit();
@@ -145,6 +145,30 @@ namespace Fruit_Stock
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnPrintOne
+            // 
+            this.btnPrintOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnPrintOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintOne.Location = new System.Drawing.Point(419, 170);
+            this.btnPrintOne.Name = "btnPrintOne";
+            this.btnPrintOne.Size = new System.Drawing.Size(217, 43);
+            this.btnPrintOne.TabIndex = 15;
+            this.btnPrintOne.Text = "Print One Person";
+            this.btnPrintOne.UseVisualStyleBackColor = false;
+            this.btnPrintOne.Click += new System.EventHandler(this.btnPrintOne_Click);
+            // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(522, 34);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(107, 56);
+            this.btnReport.TabIndex = 15;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnDelete
             // 
@@ -314,30 +338,6 @@ namespace Fruit_Stock
             this.dgvAllCustomer.Size = new System.Drawing.Size(616, 547);
             this.dgvAllCustomer.TabIndex = 11;
             this.dgvAllCustomer.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllCustomer_CellMouseUp);
-            // 
-            // btnReport
-            // 
-            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(522, 34);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(107, 56);
-            this.btnReport.TabIndex = 15;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = false;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
-            // btnPrintOne
-            // 
-            this.btnPrintOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnPrintOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintOne.Location = new System.Drawing.Point(419, 170);
-            this.btnPrintOne.Name = "btnPrintOne";
-            this.btnPrintOne.Size = new System.Drawing.Size(217, 43);
-            this.btnPrintOne.TabIndex = 15;
-            this.btnPrintOne.Text = "Print One Person";
-            this.btnPrintOne.UseVisualStyleBackColor = false;
-            this.btnPrintOne.Click += new System.EventHandler(this.btnPrintOne_Click);
             // 
             // FrmCustomer
             // 

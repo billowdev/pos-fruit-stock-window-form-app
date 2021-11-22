@@ -227,7 +227,7 @@ namespace Fruit_Stock
             this.groupBox2.Location = new System.Drawing.Point(690, 393);
             this.groupBox2.MinimumSize = new System.Drawing.Size(440, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 183);
+            this.groupBox2.Size = new System.Drawing.Size(464, 203);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             // 

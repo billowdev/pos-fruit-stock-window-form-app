@@ -251,6 +251,11 @@ namespace Fruit_Stock
 
             prvShowAllOrder();
             prvClearAll();
+
+
+
+          
+
         }
         private void prvClearAll()
         {

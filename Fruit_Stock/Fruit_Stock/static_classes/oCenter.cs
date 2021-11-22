@@ -42,7 +42,8 @@ namespace Fruit_Stock.static_classes
             return connectionString;
         }
 
-        public void puvOpenConnection()
+        // Method Connect Database
+        private void prvOpenConnection()
         {
             try
             {
@@ -101,7 +102,7 @@ namespace Fruit_Stock.static_classes
 
             }
         }
-    // Method ปิดหน้าซ้ำ
+        // Method ปิดหน้าซ้ำ
        public Boolean pub_CloseChildForm(Form _FrmCtrls, string _sFrmName)
         {
             foreach (Form Frm in _FrmCtrls.MdiChildren)
@@ -124,7 +125,7 @@ namespace Fruit_Stock.static_classes
                 _ds.Clear();
                 if (bCheckConnect == false)
                 {
-                    puvOpenConnection();
+                    prvOpenConnection();
                 }
                 OleDbDataAdapter oleDA = new OleDbDataAdapter(_sSql, conn);
                 OleDbCommandBuilder oleCMDB = new OleDbCommandBuilder(oleDA);
@@ -140,33 +141,6 @@ namespace Fruit_Stock.static_classes
             }
             return ds;
         }
-
-        public bool pubActionData(string _sSql)
-        {
-            bool bCheck = false;
-            try
-            {
-                if (bCheckConnect == false)
-                {
-                    pusvOpenConnection();
-                }
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = _sSql;
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-
-                bCheck = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error ActionData :" + ex.Message.ToString(), "Msg",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bCheck = false;
-            }
-            return bCheck;
-        }
-
-
 
         // AutoID                     Field Name        Table Name Head  Last      
         // txtEMPID.Text = ocn.pusAutoID("pro_id", "tb_product", "PID", "000"); // PID001
@@ -199,46 +173,75 @@ namespace Fruit_Stock.static_classes
         }
 
 
+        //public bool pubActionData(string _sSql)
+        //{
+        //    bool bCheck = false;
+        //    try
+        //    {
+        //        if (bCheckConnect == false)
+        //        {
+        //            pusvOpenConnection();
+        //        }
+        //        cmd.CommandType = CommandType.Text;
+        //        cmd.CommandText = _sSql;
+        //        cmd.Connection = conn;
+        //        cmd.ExecuteNonQuery();
+
+        //        bCheck = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error ActionData :" + ex.Message.ToString(), "Msg",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        bCheck = false;
+        //    }
+        //    return bCheck;
+        //}
+
+
+
+        
+
         // Method Update Stock
-        public void puvUpdateStock(string _sCode, double _dQuantity, bool _bCheck)
-        {
-            try
-            {
-                DataSet ds = new DataSet();
-                string sSql = " SELECT * FROM tb_product WHERE Code '" + _sCode + "'";
+        //public void puvUpdateStock(string _sCode, double _dQuantity, bool _bCheck)
+        //{
+        //    try
+        //    {
+        //        DataSet ds = new DataSet();
+        //        string sSql = " SELECT * FROM tb_product WHERE Code '" + _sCode + "'";
 
-                ds = pudsLoadData(sSql, "tb_product", ds);
-                if (ds.Tables["tb_product"].Rows.Count <= 0)
-                {
-                    MessageBox.Show("Check Data Stock", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        ds = pudsLoadData(sSql, "tb_product", ds);
+        //        if (ds.Tables["tb_product"].Rows.Count <= 0)
+        //        {
+        //            MessageBox.Show("Check Data Stock", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                }
-                else
-                {
-                    double dQuantityStock = 0;
-                    if (_bCheck)
-                    {
-                        // true = increase stock
-                        dQuantityStock = _dQuantity + Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString());
-                    }
-                    else
-                    {
-                        // False = Decrease Stock
-                        dQuantityStock = Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString()) - _dQuantity;
-                    }
+        //        }
+        //        else
+        //        {
+        //            double dQuantityStock = 0;
+        //            if (_bCheck)
+        //            {
+        //                // true = increase stock
+        //                dQuantityStock = _dQuantity + Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString());
+        //            }
+        //            else
+        //            {
+        //                // False = Decrease Stock
+        //                dQuantityStock = Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString()) - _dQuantity;
+        //            }
 
-                    string sSqlUpdateStock = " UPDATE tb_product SET Quantity=" + dQuantityStock + " WHERE Code=" + _sCode + "'";
-                    pubActionData(sSqlUpdateStock);
+        //            string sSqlUpdateStock = " UPDATE tb_product SET Quantity=" + dQuantityStock + " WHERE Code=" + _sCode + "'";
+        //            pubActionData(sSqlUpdateStock);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:" + ex.Message.ToString().ToString(), "Msg", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error:" + ex.Message.ToString().ToString(), "Msg", MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error);
+        //        return;
+        //    }
+        //}
 
     }
 }
