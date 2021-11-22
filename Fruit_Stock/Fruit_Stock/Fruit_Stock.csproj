@@ -101,6 +101,18 @@
       <DependentUpon>cryCustomer.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="cryDetailCustomer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryDetailCustomer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryDetailEmployee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryDetailEmployee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cryEmployee1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,12 +142,6 @@
     </Compile>
     <Compile Include="FrmHistoryStock.Designer.cs">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmHistoryStockFilter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmHistoryStockFilter.Designer.cs">
-      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListCustomer.cs">
       <SubType>Form</SubType>
@@ -185,12 +191,6 @@
     <Compile Include="FrmOrderProduct.Designer.cs">
       <DependentUpon>FrmOrderProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmReportCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReportCustomer.Designer.cs">
-      <DependentUpon>FrmReportCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,23 +203,11 @@
     <Compile Include="FrmProduct.Designer.cs">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEmployeeFilter.cs">
+    <Compile Include="FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEmployeeFilter.Designer.cs">
-      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmReportEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReportEmployee.Designer.cs">
-      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmReportHistoryStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReportHistoryStock.Designer.cs">
-      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
+    <Compile Include="FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmStock.cs">
       <SubType>Form</SubType>
@@ -243,6 +231,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryCustomer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="cryDetailCustomer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryDetailCustomer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryDetailEmployee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryDetailEmployee.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="cryEmployee.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cryEmployee1.cs</LastGenOutput>
@@ -259,9 +255,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistoryStock.resx">
       <DependentUpon>FrmHistoryStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistoryStockFilter.resx">
-      <DependentUpon>FrmHistoryStockFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListCustomer.resx">
       <DependentUpon>FrmListCustomer.cs</DependentUpon>
@@ -287,23 +280,14 @@
     <EmbeddedResource Include="FrmOrderProduct.resx">
       <DependentUpon>FrmOrderProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmReportCustomer.resx">
-      <DependentUpon>FrmReportCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEmployeeFilter.resx">
-      <DependentUpon>FrmEmployeeFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmReportEmployee.resx">
-      <DependentUpon>FrmReportEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmReportHistoryStock.resx">
-      <DependentUpon>FrmReportHistoryStock.cs</DependentUpon>
+    <EmbeddedResource Include="FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStock.resx">
       <DependentUpon>FrmStock.cs</DependentUpon>

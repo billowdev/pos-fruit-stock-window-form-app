@@ -47,7 +47,6 @@ namespace Fruit_Stock
             this.stsName = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsPageStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timTime = new System.Windows.Forms.Timer(this.components);
-            this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
             this.lbWelcome = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
             this.mnuFrmMain.SuspendLayout();
@@ -81,13 +80,13 @@ namespace Fruit_Stock
             this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExit});
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 54);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(100, 54);
             this.logOutToolStripMenuItem.Text = "File";
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Size = new System.Drawing.Size(129, 32);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -206,10 +205,6 @@ namespace Fruit_Stock
             this.timTime.Enabled = true;
             this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
             // 
-            // timTimeLoading
-            // 
-            this.timTimeLoading.Interval = 8500;
-            // 
             // lbWelcome
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -280,7 +275,6 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripStatusLabel stsTime;
         private System.Windows.Forms.Timer timTime;
         private System.Windows.Forms.ToolStripStatusLabel stsName;
-        private System.Windows.Forms.Timer timTimeLoading;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
         private System.Windows.Forms.ToolStripMenuItem cmuCustomer;

@@ -28,9 +28,6 @@ namespace Fruit_Stock
             lbWelcome.Text = "Welcome " + oCenter.currentName;
             lbWelcome.Show();
             stsPageStatus.Text = " >>    หน้าหลัก    <<";
-            // option loading page
-            //lbWelcome.Dispose();
-            //stsName.Text = "";
         }
 
         private void mnuProfile_Click(object sender, EventArgs e)
@@ -61,7 +58,6 @@ namespace Fruit_Stock
         }
 
 
-
         private void mnuProduct_Click(object sender, EventArgs e)
         {
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
@@ -87,23 +83,6 @@ namespace Fruit_Stock
             stsTime.Text = DateTime.Now.AddSeconds(1).ToString("dd/MM/yyyy HH:MM:ss");
 
         }
-
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                try
-                {
-                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
-                }
-                catch
-                {
-                    Environment.Exit(1);
-                }
-            }
-        }
-
 
         private void mnuHistoryStock_Click(object sender, EventArgs e)
         {
@@ -138,6 +117,22 @@ namespace Fruit_Stock
                 FrmOrderProduct Frm = new FrmOrderProduct();
                 Frm.MdiParent = this;
                 Frm.Show();
+            }
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                }
+                catch
+                {
+                    Environment.Exit(1);
+                }
             }
         }
 

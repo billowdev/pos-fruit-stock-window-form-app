@@ -304,7 +304,9 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReportCustomer Frm = new FrmReportCustomer();
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "AllCustomer";
             Frm.rptCustomer.SetDataSource(ds);
             Frm.ShowDialog();
 
@@ -318,21 +320,19 @@ namespace Fruit_Stock
                 MessageBox.Show("Please select customer ");
                 return;
             }
-           if (IsFind == true)
-            {
-                ds.Clear();
-            }
+            DataSet dsCustomer = new DataSet();
 
             sSql = " select * from tb_customer where cus_id='" + txtCusID.Text + "'";
         
             OleDbDataAdapter da = new OleDbDataAdapter(sSql, oCenter.conn);
-            da.Fill(ds, "tb_customer");
+            da.Fill(dsCustomer, "tb_customer");
             
-            FrmReportCustomer Frm = new FrmReportCustomer();
-            Frm.rptCustomer.SetDataSource(ds);
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "DetailCustomer";
+            Frm.rptDetailCustomer.SetDataSource(dsCustomer);
             Frm.ShowDialog();
 
-            IsFind = false;
         }
     }
 }
