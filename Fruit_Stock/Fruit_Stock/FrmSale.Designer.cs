@@ -173,9 +173,9 @@ namespace Fruit_Stock
             // btnCalculateTotal
             // 
             this.btnCalculateTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnCalculateTotal.Location = new System.Drawing.Point(787, 21);
+            this.btnCalculateTotal.Location = new System.Drawing.Point(790, 20);
             this.btnCalculateTotal.Name = "btnCalculateTotal";
-            this.btnCalculateTotal.Size = new System.Drawing.Size(98, 33);
+            this.btnCalculateTotal.Size = new System.Drawing.Size(122, 39);
             this.btnCalculateTotal.TabIndex = 2;
             this.btnCalculateTotal.Text = "Calculate";
             this.btnCalculateTotal.UseVisualStyleBackColor = false;
@@ -184,9 +184,9 @@ namespace Fruit_Stock
             // btnCustomer
             // 
             this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
-            this.btnCustomer.Location = new System.Drawing.Point(787, 80);
+            this.btnCustomer.Location = new System.Drawing.Point(790, 76);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(122, 33);
+            this.btnCustomer.Size = new System.Drawing.Size(122, 38);
             this.btnCustomer.TabIndex = 2;
             this.btnCustomer.Text = "Add Customer";
             this.btnCustomer.UseVisualStyleBackColor = false;

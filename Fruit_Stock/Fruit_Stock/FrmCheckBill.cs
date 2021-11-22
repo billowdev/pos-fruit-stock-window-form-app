@@ -21,14 +21,14 @@ namespace Fruit_Stock
         public double pdCash = 0;
         public double pdChange = 0;
         public bool pbCheckAction = false;
-        
+        public DataGridView pdgvOrder;
         oCenter ocn = new oCenter();
 
         double dPreviousQty = 0; // Qty Product
         double dNewQty = 0;
         double dPresentQty = 0; // Qty Product After Operating with newQty
 
-        public cryBill rptBill = new cryBill();
+        
 
         private void prv_CheckBill()
         {
@@ -123,12 +123,17 @@ namespace Fruit_Stock
             pbCheckAction = false;
             this.Close();
         }
+        public DataSet pDS = new DataSet();
+        public cryBill rptBill = new cryBill();
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
-            
-                 // crytal report control
-            cryReportBill.ReportSource = rptBill;
+
+            // crytal report control
+            cryReportBill.ReportSource = pdgvOrder;
+            cryBill cr = new cryBill();
+            //cr.SetDataSource(pDS);
+            cryReportBill.ReportSource = pdgvOrder;
 
             lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotal.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");

@@ -20,7 +20,7 @@ namespace Fruit_Stock
             InitializeComponent();
         }
         bool bCheck = false;
-       
+        DataGridView pdgvStateOrder;
 
         oCenter ocn = new oCenter();
         public double dCash = 0;
@@ -29,8 +29,15 @@ namespace Fruit_Stock
         double dCalTotal = 0;
         double sumTotal = 0;
 
-        DataGridView dgvPublic;
+        DataSet dsCheck = new DataSet();
+        int nCurrentRow;
+        bool bfCheck = false;
+
+        List<string> sListGlobalCheck = new List<string>();
+        
+
         DataTable dtOrder = new DataTable();
+        DataTable dtRawOrder = new DataTable();
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
@@ -57,6 +64,7 @@ namespace Fruit_Stock
             dtOrder.Columns.Add("oUnit");
             dtOrder.Columns.Add("oPrice");
             dtOrder.Columns.Add("oTotal");
+
             // ======================== DataGridView State Order =====//
 
             dgvStateOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
@@ -100,14 +108,16 @@ namespace Fruit_Stock
         {
             prvOpenListProduct();
         }
+       
 
         private void prvOpenListProduct()
         {
             
             FrmListStockProduct Frm = new FrmListStockProduct();
+
             Frm.ShowDialog(this);
-            //dgvPublic = dgvStateOrder;
-            //Frm.pdgvPublic = dgvAllOrder;
+            
+
             txtProID.Text = Frm.psPid;
             txtProName.Text = Frm.psPname;
             txtProPrice.Text = Frm.psPprice;
@@ -183,9 +193,29 @@ namespace Fruit_Stock
             btnCheckBill.Enabled = true;
         }
 
+       
+       
+
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
+            if (sListGlobalCheck.Count > 0)
+            {
+                foreach (var item in sListGlobalCheck)
+                {
+                    if (item == txtProID.Text)
+                    {
+                        MessageBox.Show("ไม่สามารถสั่งสินค้า ชนิดนี้ซ้ำอีกได้เนื่องจาก อยู่ในสถานะออร์เดอร์", "กรุณารีเฟรชออร์เดอร์ หรือ เลือกสินค้าตัวใหม่", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
+            string raw = txtProID.Text;
+            sListGlobalCheck.Add(raw);
+
             prvCalculateTotal();
+            bfCheck = true;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -202,9 +232,10 @@ namespace Fruit_Stock
         private void btnSale_Click(object sender, EventArgs e)
         {
             FrmCheckBill Frm = new FrmCheckBill();
+            Frm.pdgvOrder = pdgvStateOrder;
+            Frm.pDS.Tables.Add(dtOrder);
             Frm.ShowDialog();
-
-           
+            bfCheck = false;
 
         }
 

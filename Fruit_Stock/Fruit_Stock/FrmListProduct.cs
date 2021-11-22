@@ -20,9 +20,11 @@ namespace Fruit_Stock
         }
         string sPid, sPname, sPUnit;
         public string psPid, psPname, psPunit;
+        public DataGridView pdgvPublic;
 
         private void lsvProduct_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+
             psPid = lsvProduct.SelectedItems[0].SubItems[0].Text;
             psPname = lsvProduct.SelectedItems[0].SubItems[1].Text;
             psPunit = lsvProduct.SelectedItems[0].SubItems[2].Text;

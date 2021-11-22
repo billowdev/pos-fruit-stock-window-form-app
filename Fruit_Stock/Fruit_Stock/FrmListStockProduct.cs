@@ -40,16 +40,7 @@ namespace Fruit_Stock
 
         private void lsvShow_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //for (int nI = 0; nI < pdgvPublic.Rows.Count; nI++)
-            //{
-            //    if ((pdgvPublic.Rows[nI].Cells[0].Value.ToString() != "") &&
-            //            (pdgvPublic.Rows[nI].Cells[0].Value.ToString() == lsvShow.SelectedItems[0].SubItems[0].Text))
-            //    {
-            //        MessageBox.Show("Product is already exit! \n Select other!!", "msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-            //}
-          
+
             psPid = lsvShow.SelectedItems[0].SubItems[0].Text;
             psPname = lsvShow.SelectedItems[0].SubItems[1].Text;
             psPprice = lsvShow.SelectedItems[0].SubItems[2].Text;

@@ -146,7 +146,7 @@ namespace Fruit_Stock
             //this.Hide();
             // Form Report Employee
             FrmReportEmployee Frm = new FrmReportEmployee();
-                                         // DataGridView
+                                         // DataSet
             Frm.rptEmployee.SetDataSource(dsUser);
             Frm.ShowDialog();
         }
