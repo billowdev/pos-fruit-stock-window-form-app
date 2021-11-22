@@ -34,13 +34,14 @@ namespace Fruit_Stock
         string conStr;
         List<string> sListGlobalCheck = new List<string>();
         bool bCheckFirstOrder = true;
-
         DataTable dtOrder = new DataTable();
         string stateOrder = "";
-
+        bool bBillFinish = false;
         public DataSet dsSend = new DataSet();
 
         DataTable RawTable = new DataTable();
+
+
         private void FrmOrder_Load(object sender, EventArgs e)
         {
             // AutoID                     Field Name        Table Name Head  Last      
@@ -122,12 +123,12 @@ namespace Fruit_Stock
                 dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
                 dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
 
-                dgvStateOrder.Columns[0].Width = 120;
-                dgvStateOrder.Columns[1].Width = 120;
+                dgvStateOrder.Columns[0].Width = 140;
+                dgvStateOrder.Columns[1].Width = 80;
                 dgvStateOrder.Columns[2].Width = 180;
                 dgvStateOrder.Columns[3].Width = 160;
-                dgvStateOrder.Columns[4].Width = 160;
-                dgvStateOrder.Columns[5].Width = 160;
+                dgvStateOrder.Columns[4].Width = 120;
+                dgvStateOrder.Columns[5].Width = 140;
                 dgvStateOrder.Columns[6].Width = 100;
                 dgvStateOrder.Columns[7].Width = 120;
             }
@@ -138,7 +139,6 @@ namespace Fruit_Stock
         {
             
             FrmListStockProduct Frm = new FrmListStockProduct();
-
             Frm.ShowDialog(this);
 
             txtProID.Text = Frm.psPid;
@@ -213,7 +213,7 @@ namespace Fruit_Stock
                     string[] aStr = new string[] { stateOrder };
 
                     var newList = aStr[0].Skip(0);
-
+                    
                     foreach (var str in newList)
                     {
                         if (str.ToString() != "O")
@@ -274,7 +274,7 @@ namespace Fruit_Stock
                 txtCustomerID.Text = Frm.psCusID;
             }
         }
-        bool bBillFinish = false;
+        
         private void btnSale_Click(object sender, EventArgs e)
         {
             if (txtCustomerID.Text == "" || txtOrderID.Text == "" || txtOrderQty.Text == "" || txtProID.Text == "")
@@ -305,31 +305,28 @@ namespace Fruit_Stock
             bBillFinish = false;
         }
 
-        private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            //dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
+       
 
         private void dgvStateOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 3)))
-            {
-                if (dgvStateOrder.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "")
-                {
-                    dgvStateOrder.Rows[e.RowIndex].Cells[3].Value = 0;
-                }
-                if (dgvStateOrder.Rows[e.RowIndex].Cells[4].Value.ToString().Trim() == "")
-                {
-                    dgvStateOrder.Rows[e.RowIndex].Cells[4].Value = 0;
-                }
+            //if ((e.RowIndex >= 0) && ((e.ColumnIndex == 3)))
+            //{
+            //    if (dgvStateOrder.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "")
+            //    {
+            //        dgvStateOrder.Rows[e.RowIndex].Cells[3].Value = 0;
+            //    }
+            //    if (dgvStateOrder.Rows[e.RowIndex].Cells[4].Value.ToString().Trim() == "")
+            //    {
+            //        dgvStateOrder.Rows[e.RowIndex].Cells[4].Value = 0;
+            //    }
 
-                prvSum();
-                dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dgvStateOrder.Rows[e.RowIndex].Selected = true;
-                dgvStateOrder.Focus();
+            //    prvSum();
+            //    dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //    dgvStateOrder.Rows[e.RowIndex].Selected = true;
+            //    dgvStateOrder.Focus();
 
-                pdgvStateOrder = dgvStateOrder;
-            }
+            //    pdgvStateOrder = dgvStateOrder;
+            //}
         }
 
         private void prvSum()

@@ -31,16 +31,13 @@ namespace Fruit_Stock
         double dNewQty = 0;
         double dPresentQty = 0; // Qty Product After Operating with newQty
         
-        
 
         private void prv_CheckBill()
         {
-   
             pdCash = Convert.ToDouble(txtCash.Text);
             pdChange = Convert.ToDouble(lbChange.Text);
             pbCheckAction = true;
             this.Close();
-
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -53,9 +50,11 @@ namespace Fruit_Stock
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
+            txtCash.Focus();
+            dgvOrder.DataSource = pds.Tables[0];
+
             prvFormatDataGrid();
       
-            dgvOrder.DataSource = pds.Tables[0];
             for (int nRow = 0; nRow < pds.Tables[0].Rows.Count; nRow++)
             {
                 dTotal += Convert.ToDouble(pds.Tables[0].Rows[nRow][7].ToString());
@@ -66,6 +65,8 @@ namespace Fruit_Stock
             lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
             lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
+
+            
         }
 
         private void prvFormatDataGrid()
@@ -132,7 +133,7 @@ namespace Fruit_Stock
             }
             else
             {
-                MessageBox.Show("Login Fail !!!", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Update Fail", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -143,23 +144,50 @@ namespace Fruit_Stock
 
             oCenter.pusvCloseConnection();
             oCenter.pusvOpenConnection();
+            try
+            {
+                // ============================================== Insert to tb_order ========================= //
+                OleDbCommand cmdOrder = new OleDbCommand();
+                string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
+                    _sOID + "','" +
+                    _sOQty + "','" +
+                    _sDate + "','" +
+                    _sCusID + "','" +
+                    _sPID + "')";
 
-            // ============================================== Insert to tb_order ========================= //
-            OleDbCommand cmdOrder = new OleDbCommand();
-            string sSqlOder = "INSERT INTO tb_order(order_id, order_quantity, order_date, cus_id, pro_id) VALUES ('" +
-                _sOID + "','" +
-                _sOQty + "','" +
-                _sDate + "','" +
-                _sCusID + "','" +
-                _sPID + "')";
-
-            cmdOrder.CommandType = CommandType.Text;
-            cmdOrder.CommandText = sSqlOder;
-            cmdOrder.Connection = oCenter.conn;
-            cmdOrder.ExecuteNonQuery();
+                cmdOrder.CommandType = CommandType.Text;
+                cmdOrder.CommandText = sSqlOder;
+                cmdOrder.Connection = oCenter.conn;
+                cmdOrder.ExecuteNonQuery();
+            } catch(Exception ex) { MessageBox.Show(ex.Message); }
+            
         }
 
         string sOID, sOQty, sCusID, sPID, sDate;
+
+        private void txtCash_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbTotal.Text == "")
+                {
+                    return;
+                }
+
+                if (Convert.ToDouble(lbTotal.Text) <= 0)
+                {
+                    return;
+                }
+                double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
+                lbTotalAfter.Text = dOut.ToString("#,##0.00");
+            }
+            catch
+            {
+                txtCash.Text = "0";
+                lbTotalAfter.Text = "0.00";
+                return;
+            }
+        }
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
@@ -187,14 +215,6 @@ namespace Fruit_Stock
 
         private void btnCheckBill_Click(object sender, EventArgs e)
         {
-            //dgvOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
-            //dgvOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            //dgvOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
-            //dgvOrder.Columns[3].HeaderText = "รหัสลูกค้า";
-            //dgvOrder.Columns[4].HeaderText = "รหัสสินค้า";
-            //dgvOrder.Columns[5].HeaderText = "หน่วย";
-            //dgvOrder.Columns[6].HeaderText = "ราคาสินค้า";
-            //dgvOrder.Columns[7].HeaderText = "ราคารวม";
             //dtOrder.Columns.Add("oOid");
             //dtOrder.Columns.Add("oQty");
             //dtOrder.Columns.Add("oDate");
@@ -223,48 +243,11 @@ namespace Fruit_Stock
             //Frm.sReport = "CheckBill";
             //Frm.rptBill.SetDataSource(pds);
             //Frm.ShowDialog();
-           
+            this.Close();
 
         }
 
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (lbTotal.Text == "")
-                {
-                    return;
-                }
-                if (lbTotalAfter.Text == "")
-                {
-                    return;
-                }
 
-                if (Convert.ToDouble(lbTotal.Text) <= 0)
-                {
-                    return;
-                }
-                if (Convert.ToDouble(lbTotalAfter.Text) <= 0)
-                {
-                    return;
-                }
-                double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotalAfter.Text);
-                lbChange.Text = dOut.ToString("#,##0.00");
-            }
-            catch 
-            {
-                txtCash.Text = "0";
-                lbChange.Text = "0.00";
-                return;
-            }
-        }
 
-        private void txtCash_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 13)
-            {
-                prv_CheckBill();
-            }
-        }
     }
 }

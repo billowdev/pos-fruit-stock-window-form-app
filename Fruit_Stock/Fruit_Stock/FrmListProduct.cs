@@ -21,6 +21,7 @@ namespace Fruit_Stock
         string sPid, sPname, sPUnit;
         public string psPid, psPname, psPunit;
         public DataGridView pdgvPublic;
+        oCenter ocn = new oCenter();
 
         private void prvAddItem(string _sPid, string _sName, string _sUnit)
         {
@@ -54,6 +55,7 @@ namespace Fruit_Stock
             {
                 sSql = " SELECT * FROM tb_product WHERE pro_id+pro_name+pro_unit LIKE '%" + txtSearch.Text + "%' AND ORDER BY pro_id DESC;";
             }
+
             DataSet ds = new DataSet();
             ds = ocn.pudsLoadData(sSql, "tb_product", ds);
 
@@ -95,7 +97,6 @@ namespace Fruit_Stock
             }
         }
 
-        oCenter ocn = new oCenter();
 
         private void FrmListProduct_Load(object sender, EventArgs e)
         {

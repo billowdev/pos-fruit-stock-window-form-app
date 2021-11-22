@@ -265,6 +265,7 @@ namespace Fruit_Stock
             this.txtProName.ReadOnly = true;
             this.txtProName.Size = new System.Drawing.Size(360, 30);
             this.txtProName.TabIndex = 2;
+            this.txtProName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 

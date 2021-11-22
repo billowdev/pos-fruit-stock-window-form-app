@@ -21,7 +21,7 @@ namespace Fruit_Stock
 
         // ================================================= DEFIND =============================================  //
        
-        oCenter ocn = new oCenter();         // Object Center    
+        oCenter ocn = new oCenter();         // Object Center    Database connect
         DataSet ds = new DataSet();         // DataSet  pass to dgv and ctystal report
         DataSet dsLogin = new DataSet();    // DataSet For Login data
         
@@ -140,8 +140,8 @@ namespace Fruit_Stock
             /*------------------------------------------------- Detail --------
            |  Function prvShowForUserLogin
            |
-           |  Purpose:  this method user for show all data of employee from database
-           |      Show to data grid veiw (dgvAllMember)
+           |  Purpose:  this method user for show data of user login
+           |      
            |
            *-------------------------------------------------------------------*/
 
@@ -272,17 +272,17 @@ namespace Fruit_Stock
 
             string sqlEdit;
             string sqlEditLogin;
-        
+
             sqlEdit = " UPDATE tb_employee SET emp_name='" + txtName.Text
                 + "',emp_lastname='" + txtLastName.Text
                 + "',emp_gender='" + stateGenter
                 + "',emp_bdate='" + dtpBirthDate.Value.GetDateTimeFormats('d')[0]
-                + "'WHERE emp_id= '" + sEMPID + "'";
+                + "'WHERE emp_id= '" + txtEMPID.Text + "'";
 
             sqlEditLogin = " UPDATE tb_login SET Username='" + txtUsername.Text
                 + "',[Password]='" + txtPassword.Text
                 + "',Status='" + stateStatus
-                + "'WHERE emp_id= '" + sEMPID + "'";
+                + "'WHERE emp_id= '" + txtEMPID.Text + "'";
 
             oCenter.pusvOpenConnection();
 
@@ -315,6 +315,7 @@ namespace Fruit_Stock
            |
            *-------------------------------------------------------------------*/
             prvCheckStateGender();
+            prvCheckStateUsername();
 
             if (txtEMPID.Text == "" ||
                 txtName.Text == "" ||
@@ -328,19 +329,11 @@ namespace Fruit_Stock
                 return;
             }
 
-            string sqlAddEmp = "";
-            string sqlAddLogin = "";
-
             try
             {
-                if (rdbAdmin.Checked == true)
-                {
-                    stateStatus = "admin";
-                }
-                else
-                {
-                    stateStatus = "user";
-                }
+                string sqlAddEmp = "";
+                string sqlAddLogin = "";
+               
 
                 if (MessageBox.Show("เพิ่มข้อมูลใช่หรือไม่", "เพิ่มข้อมูล",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -384,7 +377,6 @@ namespace Fruit_Stock
 
                     // ===============================  END Insert Data Into tb_login & tb_employee =============================== //
                     MessageBox.Show("ได้บันทึกข้อมูลเรียบร้อยแล้ว", "ผลการดำเนินการ");
-
 
                     prvClearAll();
                     prvShowAllMember();
@@ -647,8 +639,7 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            // Form Report Employee
+          
             FrmReport Frm = new FrmReport();
             Frm.sReport = "AllEmployee";
             // DataSet
