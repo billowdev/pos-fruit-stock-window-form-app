@@ -29,48 +29,289 @@ namespace Fruit_Stock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.btnExit = new System.Windows.Forms.Button();
+            this.mnuFrmMain = new System.Windows.Forms.MenuStrip();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmuCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHistoryStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stsName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stsPageStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timTime = new System.Windows.Forms.Timer(this.components);
+            this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
+            this.lbWelcome = new System.Windows.Forms.Label();
+            this.pbMain = new System.Windows.Forms.PictureBox();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFrmMain.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnExit
+            // mnuFrmMain
             // 
-            this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Mali", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1203, 637);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(121, 64);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.mnuFrmMain.AutoSize = false;
+            this.mnuFrmMain.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mnuFrmMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnuFrmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logOutToolStripMenuItem,
+            this.mnuProfile,
+            this.cmuCustomer,
+            this.mnuSale,
+            this.mnuProduct,
+            this.mnuStock,
+            this.mnuHistoryStock,
+            this.mnuHelp});
+            this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
+            this.mnuFrmMain.Name = "mnuFrmMain";
+            this.mnuFrmMain.Size = new System.Drawing.Size(1920, 58);
+            this.mnuFrmMain.TabIndex = 1;
+            this.mnuFrmMain.Text = "menuStrip1";
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.AutoSize = false;
+            this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExit,
+            this.themeToolStripMenuItem});
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(90, 54);
+            this.logOutToolStripMenuItem.Text = "File";
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(224, 32);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
+            // mnuProfile
+            // 
+            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
+            this.mnuProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mnuProfile.Name = "mnuProfile";
+            this.mnuProfile.Size = new System.Drawing.Size(132, 54);
+            this.mnuProfile.Text = "Employee";
+            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
+            // 
+            // cmuCustomer
+            // 
+            this.cmuCustomer.Image = ((System.Drawing.Image)(resources.GetObject("cmuCustomer.Image")));
+            this.cmuCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmuCustomer.Name = "cmuCustomer";
+            this.cmuCustomer.Size = new System.Drawing.Size(130, 54);
+            this.cmuCustomer.Text = "Customer";
+            this.cmuCustomer.Click += new System.EventHandler(this.cmuCustomer_Click);
+            // 
+            // mnuSale
+            // 
+            this.mnuSale.AutoSize = false;
+            this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mnuSale.Image = ((System.Drawing.Image)(resources.GetObject("mnuSale.Image")));
+            this.mnuSale.Name = "mnuSale";
+            this.mnuSale.Size = new System.Drawing.Size(100, 54);
+            this.mnuSale.Text = "Sale";
+            this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
+            // 
+            // mnuProduct
+            // 
+            this.mnuProduct.AutoSize = false;
+            this.mnuProduct.Image = ((System.Drawing.Image)(resources.GetObject("mnuProduct.Image")));
+            this.mnuProduct.Name = "mnuProduct";
+            this.mnuProduct.Size = new System.Drawing.Size(140, 54);
+            this.mnuProduct.Text = "Product";
+            this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
+            // 
+            // mnuStock
+            // 
+            this.mnuStock.AutoSize = false;
+            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
+            this.mnuStock.Name = "mnuStock";
+            this.mnuStock.Size = new System.Drawing.Size(100, 54);
+            this.mnuStock.Text = "Stock";
+            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
+            // 
+            // mnuHistoryStock
+            // 
+            this.mnuHistoryStock.AutoSize = false;
+            this.mnuHistoryStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuHistoryStock.Image")));
+            this.mnuHistoryStock.Name = "mnuHistoryStock";
+            this.mnuHistoryStock.Size = new System.Drawing.Size(180, 54);
+            this.mnuHistoryStock.Text = "History Stock";
+            this.mnuHistoryStock.Click += new System.EventHandler(this.mnuHistoryStock_Click);
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(87, 54);
+            this.mnuHelp.Text = "Help";
+            this.mnuHelp.Click += new System.EventHandler(this.mnuHelp_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.stsTime,
+            this.stsName,
+            this.stsPageStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 992);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1920, 37);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.AutoSize = false;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(300, 31);
+            this.toolStripStatusLabel1.Text = "โปรแกรมสต๊อกสินค้า ร้านผลไม้";
+            // 
+            // stsTime
+            // 
+            this.stsTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.stsTime.Name = "stsTime";
+            this.stsTime.Size = new System.Drawing.Size(56, 31);
+            this.stsTime.Text = "Time";
+            // 
+            // stsName
+            // 
+            this.stsName.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.stsName.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.stsName.Name = "stsName";
+            this.stsName.Size = new System.Drawing.Size(210, 31);
+            this.stsName.Text = "Name + Lastname";
+            // 
+            // stsPageStatus
+            // 
+            this.stsPageStatus.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.stsPageStatus.Name = "stsPageStatus";
+            this.stsPageStatus.Size = new System.Drawing.Size(69, 31);
+            this.stsPageStatus.Text = "Main";
+            this.stsPageStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // timTime
+            // 
+            this.timTime.Enabled = true;
+            this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
+            // 
+            // timTimeLoading
+            // 
+            this.timTimeLoading.Interval = 8500;
+            // 
+            // lbWelcome
+            // 
+            this.lbWelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.lbWelcome.Font = new System.Drawing.Font("Mali", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWelcome.ForeColor = System.Drawing.Color.White;
+            this.lbWelcome.Image = ((System.Drawing.Image)(resources.GetObject("lbWelcome.Image")));
+            this.lbWelcome.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbWelcome.Location = new System.Drawing.Point(533, 168);
+            this.lbWelcome.Name = "lbWelcome";
+            this.lbWelcome.Size = new System.Drawing.Size(895, 607);
+            this.lbWelcome.TabIndex = 9;
+            this.lbWelcome.Text = "Welcome";
+            this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // pbMain
+            // 
+            this.pbMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMain.BackgroundImage")));
+            this.pbMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMain.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMain.InitialImage")));
+            this.pbMain.Location = new System.Drawing.Point(0, 53);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1925, 1024);
+            this.pbMain.TabIndex = 3;
+            this.pbMain.TabStop = false;
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pinkToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // pinkToolStripMenuItem
+            // 
+            this.pinkToolStripMenuItem.Name = "pinkToolStripMenuItem";
+            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.pinkToolStripMenuItem.Text = "Pink";
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
+            this.darkToolStripMenuItem.Text = "Dark";
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1348, 721);
-            this.Controls.Add(this.btnExit);
-            this.DoubleBuffered = true;
+            this.ClientSize = new System.Drawing.Size(1920, 1029);
+            this.Controls.Add(this.lbWelcome);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.mnuFrmMain);
+            this.Controls.Add(this.pbMain);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.mnuFrmMain;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1980, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "FrmMain";
-            this.Text = "Fruit Stock";
+            this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.mnuFrmMain.ResumeLayout(false);
+            this.mnuFrmMain.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.MenuStrip mnuFrmMain;
+        private System.Windows.Forms.ToolStripMenuItem mnuProfile;
+        private System.Windows.Forms.ToolStripMenuItem mnuStock;
+        private System.Windows.Forms.ToolStripMenuItem mnuSale;
+        private System.Windows.Forms.ToolStripMenuItem mnuProduct;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.PictureBox pbMain;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel stsTime;
+        private System.Windows.Forms.Timer timTime;
+        private System.Windows.Forms.ToolStripStatusLabel stsName;
+        private System.Windows.Forms.Timer timTimeLoading;
+        private System.Windows.Forms.Label lbWelcome;
+        private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
+        private System.Windows.Forms.ToolStripMenuItem cmuCustomer;
+        private System.Windows.Forms.ToolStripStatusLabel stsPageStatus;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     }
 }
-

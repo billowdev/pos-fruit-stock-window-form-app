@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 using Fruit_Stock.static_classes;
 
 namespace Fruit_Stock
@@ -17,94 +18,87 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-            //Fruit_Stock.static_classes.Db_connect.openConnection();
-            
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //Fruit_Stock.static_classes.Db_connect.closeConnection();
-
-            //MessageBox.Show("Connection is " + Fruit_Stock.static_classes.Db_connect.conn.State.ToString(),
-            //    "Test Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
-
-  
+        oCenter ocn = new oCenter();
+        OleDbDataReader loginReader;
+        // ==========================================
+        DataSet dsLogin = new DataSet();
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                    Application.Exit();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // login
-            if ( ( string.IsNullOrEmpty(this.txtUsername.Text.Trim() )) ||  
-                 ( string.IsNullOrEmpty(this.txtPassword.Text.Trim() )) )
-            {
-                MessageBox.Show("Enter your username and password", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
 
-                if (this.txtUsername.CanSelect)
-                {
-                    this.txtUsername.Select();
-                }
+            if (txtUsername.Text.Trim() == "")
+            {
+                MessageBox.Show("Enter Username", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsername.Focus();
                 return;
             }
-            
-            Db_connect.sql = "SELECT * FROM tb_login WHERE Username = @us AND Password = @pa";
-
-            Db_connect.cmd.Parameters.Clear();
-            Db_connect.cmd.CommandType = CommandType.Text;
-            Db_connect.cmd.CommandText = Db_connect.sql;
-
-            Db_connect.cmd.Parameters.AddWithValue("@us", this.txtUsername.Text.Trim().ToString());
-            Db_connect.cmd.Parameters.AddWithValue("@pa", this.txtPassword.Text.Trim().ToString());
-
-            Db_connect.openConnection();
-
-            Db_connect.rd = Db_connect.cmd.ExecuteReader(); 
-
-            if (Db_connect.rd.HasRows)
+            if (txtPassword.Text.Trim() == "")
             {
-                while (Db_connect.rd.Read())
-                {
-                    Db_connect.currentUsername = Db_connect.rd[0].ToString();
-                    Db_connect.currentStatus = Db_connect.rd[2].ToString();
+                MessageBox.Show("Enter Password", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Focus();
+                return;
+            }
 
-                    MessageBox.Show("Welcome  " + Db_connect.currentUsername + "\n Your Status is ... " + Db_connect.currentStatus , "\n Login Successed :)",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
 
-                }
-                this.txtUsername.Text = string.Empty;
-                this.txtPassword.Text = string.Empty;
+            string sSql = " SELECT * FROM tb_login WHERE Username='" + txtUsername.Text.Trim() + "' AND" +
+                " Password='" + txtPassword.Text.Trim() + "'";
+            dsLogin = ocn.pudsLoadData(sSql, "tb_login", dsLogin);
 
+            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+            {
+                //MessageBox.Show();
+
+                oCenter.currentUsername = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
+                oCenter.currentStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+                oCenter.currentid = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
+
+                puvGetEmployee();
+                FrmMain Frm = new FrmMain();
+                Frm.Show();
                 this.Hide();
 
-                FrmMain f = new FrmMain();
-                f.ShowDialog();
-                f = null;
-
-                this.Show();
             }
             else
             {
-                MessageBox.Show("ผิดพลาด", "Invalid Username or Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (this.txtUsername.CanSelect)
-                {
-                    this.txtUsername.Select();
-                }
+                MessageBox.Show("Login Fail !!!", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            Db_connect.rd.Close();
-            Db_connect.closeConnection();
+        }
 
+        
+        private void puvGetEmployee()
+        {
+            oCenter.pusvOpenConnection();
+
+            // get name
+            string sSqlName = " SELECT * FROM tb_employee WHERE emp_id=@empid";
+
+            oCenter.cmd.Parameters.Clear();
+            oCenter.cmd.Parameters.AddWithValue("@empid", oCenter.currentid);
+            oCenter.cmd.CommandType = CommandType.Text;
+            oCenter.cmd.CommandText = sSqlName;
+            loginReader = oCenter.cmd.ExecuteReader();
+
+            if (loginReader.HasRows)
+            {
+                while (loginReader.Read())
+                {
+                    oCenter.currentName = loginReader["emp_name"].ToString();
+                    oCenter.currentLastName = loginReader["emp_lastname"].ToString();
+                }
+            }
         }
 
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -118,7 +112,6 @@ namespace Fruit_Stock
                 txtPassword.PasswordChar = '●';
             }
         }
-
 
     }
 }
