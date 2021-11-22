@@ -185,8 +185,6 @@ namespace Fruit_Stock
             }
         }
 
-
-        cryBill rptCryBill = new cryBill();
         private void btnCheckBill_Click(object sender, EventArgs e)
         {
             //dgvOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
@@ -221,17 +219,11 @@ namespace Fruit_Stock
             }
 
             // ===================================================================================================================================
-
-
-            rptCryBill.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
-            rptCryBill.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
-            // AutoID                     Field Name        Table Name Head  Last      
-            string sPrint = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+            //FrmReport Frm = new FrmReport();
+            //Frm.sReport = "CheckBill";
+            //Frm.rptBill.SetDataSource(pds);
+            //Frm.ShowDialog();
            
-            //rptCryBill.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, response, true, "test");
-
-            rptCryBill.SummaryInfo.ReportTitle = sPrint;
-            rptCryBill.PrintToPrinter(1, false, 0, 1);
 
         }
 

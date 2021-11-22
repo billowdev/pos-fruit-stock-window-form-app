@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fruit_Stock.exe" size="4150696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fruit_Stock.exe" size="4151208">
       <assemblyIdentity name="Fruit_Stock" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uRbQrNZDMmPbOy8iNTbdJcluS3/lLdrfvTB+VGZhukE=</dsig:DigestValue>
+        <dsig:DigestValue>c12S527RAq4sm971K1oVD7leaGUyFOkWwYPnFaEodtA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

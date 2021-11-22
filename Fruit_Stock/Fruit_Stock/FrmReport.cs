@@ -26,7 +26,8 @@ namespace Fruit_Stock
         public cryHistoryStockReport rptHistoryStock = new cryHistoryStockReport();
         
         public cryOrder rptOrder = new cryOrder();
-        
+        public cryBill rptBill = new cryBill();
+
         public string sReport = "";
 
 
@@ -53,12 +54,20 @@ namespace Fruit_Stock
                 case "AllOrder":
                     cryViewer.ReportSource = rptOrder;
                     break;
+                case "CheckBill":
+                    cryViewer.ReportSource = rptBill;
+                    rptBill.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                    rptBill.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
+                    rptBill.PrintToPrinter(1, false, 0, 1);
+                    break;
+
                 default:
                     break;
                     
             }
             // crytal report control
 
+            
         }
     }
 }

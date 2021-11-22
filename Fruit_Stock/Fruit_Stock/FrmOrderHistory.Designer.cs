@@ -32,12 +32,12 @@ namespace Fruit_Stock
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dtpProImport = new System.Windows.Forms.DateTimePicker();
-            this.txtProQuantity = new System.Windows.Forms.TextBox();
-            this.txtProIMID = new System.Windows.Forms.TextBox();
-            this.txtEMPID = new System.Windows.Forms.TextBox();
-            this.txtEMPName = new System.Windows.Forms.TextBox();
+            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.txtProID = new System.Windows.Forms.TextBox();
+            this.txtOderID = new System.Windows.Forms.TextBox();
             this.txtProName = new System.Windows.Forms.TextBox();
+            this.txtEMPName = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@ namespace Fruit_Stock
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAllOrderHistory = new System.Windows.Forms.DataGridView();
@@ -89,48 +89,48 @@ namespace Fruit_Stock
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
-            // dtpProImport
+            // dtpOrderDate
             // 
-            this.dtpProImport.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.dtpProImport.CustomFormat = "";
-            this.dtpProImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpProImport.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpProImport.Location = new System.Drawing.Point(144, 186);
-            this.dtpProImport.Name = "dtpProImport";
-            this.dtpProImport.Size = new System.Drawing.Size(308, 30);
-            this.dtpProImport.TabIndex = 43;
+            this.dtpOrderDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.dtpOrderDate.CustomFormat = "";
+            this.dtpOrderDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpOrderDate.Location = new System.Drawing.Point(144, 186);
+            this.dtpOrderDate.Name = "dtpOrderDate";
+            this.dtpOrderDate.Size = new System.Drawing.Size(308, 30);
+            this.dtpOrderDate.TabIndex = 43;
             // 
-            // txtProQuantity
+            // txtProID
             // 
-            this.txtProQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProQuantity.Location = new System.Drawing.Point(144, 103);
-            this.txtProQuantity.Name = "txtProQuantity";
-            this.txtProQuantity.Size = new System.Drawing.Size(301, 30);
-            this.txtProQuantity.TabIndex = 2;
-            this.txtProQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProID.Location = new System.Drawing.Point(144, 103);
+            this.txtProID.Name = "txtProID";
+            this.txtProID.Size = new System.Drawing.Size(301, 30);
+            this.txtProID.TabIndex = 2;
+            this.txtProID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtProIMID
+            // txtOderID
             // 
-            this.txtProIMID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.txtProIMID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProIMID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProIMID.Location = new System.Drawing.Point(144, 20);
-            this.txtProIMID.Name = "txtProIMID";
-            this.txtProIMID.ReadOnly = true;
-            this.txtProIMID.Size = new System.Drawing.Size(301, 30);
-            this.txtProIMID.TabIndex = 2;
-            this.txtProIMID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOderID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtOderID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOderID.Location = new System.Drawing.Point(144, 20);
+            this.txtOderID.Name = "txtOderID";
+            this.txtOderID.ReadOnly = true;
+            this.txtOderID.Size = new System.Drawing.Size(301, 30);
+            this.txtOderID.TabIndex = 2;
+            this.txtOderID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtEMPID
+            // txtProName
             // 
-            this.txtEMPID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.txtEMPID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEMPID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEMPID.Location = new System.Drawing.Point(608, 101);
-            this.txtEMPID.Name = "txtEMPID";
-            this.txtEMPID.ReadOnly = true;
-            this.txtEMPID.Size = new System.Drawing.Size(375, 30);
-            this.txtEMPID.TabIndex = 2;
+            this.txtProName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtProName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProName.Location = new System.Drawing.Point(608, 101);
+            this.txtProName.Name = "txtProName";
+            this.txtProName.ReadOnly = true;
+            this.txtProName.Size = new System.Drawing.Size(375, 30);
+            this.txtProName.TabIndex = 2;
             // 
             // txtEMPName
             // 
@@ -144,17 +144,17 @@ namespace Fruit_Stock
             this.txtEMPName.TabIndex = 2;
             this.txtEMPName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtProName
+            // txtQuantity
             // 
-            this.txtProName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.txtProName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProName.Location = new System.Drawing.Point(144, 63);
-            this.txtProName.Name = "txtProName";
-            this.txtProName.ReadOnly = true;
-            this.txtProName.Size = new System.Drawing.Size(301, 30);
-            this.txtProName.TabIndex = 2;
-            this.txtProName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Location = new System.Drawing.Point(144, 63);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity.Size = new System.Drawing.Size(301, 30);
+            this.txtQuantity.TabIndex = 2;
+            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnRefresh
             // 
@@ -190,17 +190,17 @@ namespace Fruit_Stock
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(68, 103);
+            this.label5.Location = new System.Drawing.Point(41, 106);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 25);
+            this.label5.Size = new System.Drawing.Size(82, 25);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Qty";
+            this.label5.Text = "รหัสสินค้า";
             // 
             // lbBarcode
             // 
             this.lbBarcode.AutoSize = true;
             this.lbBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBarcode.Location = new System.Drawing.Point(26, 186);
+            this.lbBarcode.Location = new System.Drawing.Point(20, 186);
             this.lbBarcode.Name = "lbBarcode";
             this.lbBarcode.Size = new System.Drawing.Size(103, 25);
             this.lbBarcode.TabIndex = 1;
@@ -227,14 +227,14 @@ namespace Fruit_Stock
             this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.dtpProImport);
+            this.groupBox1.Controls.Add(this.dtpOrderDate);
             this.groupBox1.Controls.Add(this.btnReport);
-            this.groupBox1.Controls.Add(this.txtProQuantity);
-            this.groupBox1.Controls.Add(this.txtProIMID);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.txtEMPID);
-            this.groupBox1.Controls.Add(this.txtEMPName);
+            this.groupBox1.Controls.Add(this.txtProID);
+            this.groupBox1.Controls.Add(this.txtOderID);
+            this.groupBox1.Controls.Add(this.txtCustomerID);
             this.groupBox1.Controls.Add(this.txtProName);
+            this.groupBox1.Controls.Add(this.txtEMPName);
+            this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label3);
@@ -298,23 +298,23 @@ namespace Fruit_Stock
             this.label7.TabIndex = 48;
             this.label7.Text = "From: ";
             // 
-            // textBox1
+            // txtCustomerID
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(144, 148);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(301, 30);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCustomerID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(231)))), ((int)(((byte)(244)))));
+            this.txtCustomerID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustomerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerID.Location = new System.Drawing.Point(144, 148);
+            this.txtCustomerID.Name = "txtCustomerID";
+            this.txtCustomerID.ReadOnly = true;
+            this.txtCustomerID.Size = new System.Drawing.Size(301, 30);
+            this.txtCustomerID.TabIndex = 2;
+            this.txtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(26, 148);
+            this.label8.Location = new System.Drawing.Point(44, 148);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 25);
             this.label8.TabIndex = 1;
@@ -349,6 +349,7 @@ namespace Fruit_Stock
             this.dgvAllOrderHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAllOrderHistory.Size = new System.Drawing.Size(1258, 350);
             this.dgvAllOrderHistory.TabIndex = 45;
+            this.dgvAllOrderHistory.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAllOrderHistory_CellMouseUp);
             // 
             // FrmOrderHistory
             // 
@@ -374,12 +375,12 @@ namespace Fruit_Stock
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DateTimePicker dtpProImport;
-        private System.Windows.Forms.TextBox txtProQuantity;
-        private System.Windows.Forms.TextBox txtProIMID;
-        private System.Windows.Forms.TextBox txtEMPID;
-        private System.Windows.Forms.TextBox txtEMPName;
+        private System.Windows.Forms.DateTimePicker dtpOrderDate;
+        private System.Windows.Forms.TextBox txtProID;
+        private System.Windows.Forms.TextBox txtOderID;
         private System.Windows.Forms.TextBox txtProName;
+        private System.Windows.Forms.TextBox txtEMPName;
+        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
@@ -394,7 +395,7 @@ namespace Fruit_Stock
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.Label label8;
     }
 }

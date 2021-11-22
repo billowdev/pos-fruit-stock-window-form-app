@@ -36,10 +36,9 @@ namespace Fruit_Stock
         bool bCheckFirstOrder = true;
 
         DataTable dtOrder = new DataTable();
-        DataTable dtRawOrder = new DataTable();
         string stateOrder = "";
 
-        DataSet dsSend = new DataSet();
+        public DataSet dsSend = new DataSet();
 
         DataTable RawTable = new DataTable();
         private void FrmOrder_Load(object sender, EventArgs e)
@@ -150,8 +149,6 @@ namespace Fruit_Stock
 
             bCheckFirstOrder = false;
         }
-
-        DataSet kds = new DataSet();
         
         private void prvCalculateTotal()
         {
@@ -277,7 +274,7 @@ namespace Fruit_Stock
                 txtCustomerID.Text = Frm.psCusID;
             }
         }
-
+        bool bBillFinish = false;
         private void btnSale_Click(object sender, EventArgs e)
         {
             if (txtCustomerID.Text == "" || txtOrderID.Text == "" || txtOrderQty.Text == "" || txtProID.Text == "")
@@ -300,6 +297,12 @@ namespace Fruit_Stock
             bCheck = false;
             // AutoID                     Field Name        Table Name Head  Last      
             txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); //O112100001
+            bBillFinish = true;
+            if (bBillFinish == true)
+            {
+                dtOrder.Clear();
+            }
+            bBillFinish = false;
         }
 
         private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)

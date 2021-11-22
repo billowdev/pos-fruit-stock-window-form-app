@@ -108,13 +108,13 @@ namespace Fruit_Stock
 
         private void prvClearAll()
         {
-            txtEMPID.Text = "";
-            txtEMPName.Text = "";
-            txtProIMID.Text = "";
             txtProName.Text = "";
-            txtProQuantity.Text = "";
+            txtEMPName.Text = "";
+            txtOderID.Text = "";
+            txtQuantity.Text = "";
+            txtProID.Text = "";
             txtSearch.Focus();
-            dtpProImport.Value = DateTime.Now;
+            dtpOrderDate.Value = DateTime.Now;
         }
 
         private void prvFillterDate()
@@ -196,6 +196,25 @@ namespace Fruit_Stock
             Frm.sReport = "AllOrder";
             Frm.rptOrder.SetDataSource(dsOrder);
             Frm.ShowDialog();
+        }
+
+        private void dgvAllOrderHistory_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == dgvAllOrderHistory.Rows.Count)
+            {
+                return;
+            }
+            try
+            {
+                txtOderID.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtQuantity.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[1].Value.ToString();
+                dtpOrderDate.Value = Convert.ToDateTime(dgvAllOrderHistory.Rows[e.RowIndex].Cells[2].Value);
+                txtProName.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtProID.Text = dgvAllOrderHistory.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+            catch { }
+
+           
         }
     }
 }
