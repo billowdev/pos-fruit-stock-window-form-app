@@ -13,8 +13,6 @@ namespace Fruit_Stock.static_classes
     {
         public static OleDbConnection conn = new OleDbConnection();
         public static OleDbCommand cmd = new OleDbCommand("", conn);
-        public static OleDbDataAdapter da;
-        public static OleDbDataReader rd;
         public static DataSet ds = new DataSet();
 
         public static string currentUsername;
@@ -171,77 +169,6 @@ namespace Fruit_Stock.static_classes
                 return _sHname + nID.ToString(_sLname);
             }
         }
-
-
-        //public bool pubActionData(string _sSql)
-        //{
-        //    bool bCheck = false;
-        //    try
-        //    {
-        //        if (bCheckConnect == false)
-        //        {
-        //            pusvOpenConnection();
-        //        }
-        //        cmd.CommandType = CommandType.Text;
-        //        cmd.CommandText = _sSql;
-        //        cmd.Connection = conn;
-        //        cmd.ExecuteNonQuery();
-
-        //        bCheck = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error ActionData :" + ex.Message.ToString(), "Msg",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        bCheck = false;
-        //    }
-        //    return bCheck;
-        //}
-
-
-
-        
-
-        // Method Update Stock
-        //public void puvUpdateStock(string _sCode, double _dQuantity, bool _bCheck)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = new DataSet();
-        //        string sSql = " SELECT * FROM tb_product WHERE Code '" + _sCode + "'";
-
-        //        ds = pudsLoadData(sSql, "tb_product", ds);
-        //        if (ds.Tables["tb_product"].Rows.Count <= 0)
-        //        {
-        //            MessageBox.Show("Check Data Stock", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        //        }
-        //        else
-        //        {
-        //            double dQuantityStock = 0;
-        //            if (_bCheck)
-        //            {
-        //                // true = increase stock
-        //                dQuantityStock = _dQuantity + Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString());
-        //            }
-        //            else
-        //            {
-        //                // False = Decrease Stock
-        //                dQuantityStock = Convert.ToDouble(ds.Tables["tb_product"].Rows[0]["Quantity"].ToString()) - _dQuantity;
-        //            }
-
-        //            string sSqlUpdateStock = " UPDATE tb_product SET Quantity=" + dQuantityStock + " WHERE Code=" + _sCode + "'";
-        //            pubActionData(sSqlUpdateStock);
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error:" + ex.Message.ToString().ToString(), "Msg", MessageBoxButtons.OK,
-        //            MessageBoxIcon.Error);
-        //        return;
-        //    }
-        //}
 
     }
 }

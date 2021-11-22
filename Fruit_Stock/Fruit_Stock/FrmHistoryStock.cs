@@ -22,6 +22,7 @@ namespace Fruit_Stock
         bool bCheck = false;
         string sSql;
         DataSet dsStock = new DataSet();
+
         private void prvShowAllStock()
         {
             bCheck = false;
@@ -48,10 +49,13 @@ namespace Fruit_Stock
 
         private void prvClearAll()
         {
-
+            txtEMPID.Text = "";
+            txtEMPName.Text = "";
+            txtProIMID.Text = "";
+            txtProName.Text = "";
             txtProQuantity.Text = "";
-            txtProQuantity.Focus();
-            dtpProImport.Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+            txtSearch.Focus();
+            dtpProImport.Value = DateTime.Now;
 
         }
 
@@ -80,22 +84,11 @@ namespace Fruit_Stock
             {
 
             }
-
         }
 
-        private void FrmHistoryStock_Load(object sender, EventArgs e)
-        {
-            prvShowAllStock();
-            prvFormatDataGrid();
-        }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            prvSearch();
-        }
         private void prvSearch()
         {
-            bool bCheck = false;
 
             if (txtSearch.Text == "")
             {
@@ -103,22 +96,22 @@ namespace Fruit_Stock
                 return;
             }
 
-            DataSet dsSearchStock = new DataSet();
+            
             string sSqlSelect = " SELECT * FROM tb_import WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
 
             if (bCheck == true)
             {
-                dsSearchStock.Tables["tb_import"].Clear();
+                dsStock.Tables["tb_import"].Clear();
             }
 
             OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
-            da.Fill(dsSearchStock, "tb_import");
+            da.Fill(dsStock, "tb_import");
 
-            if (dsSearchStock.Tables["tb_import"].Rows.Count != 0)
+            if (dsStock.Tables["tb_import"].Rows.Count != 0)
             {
                 bCheck = true;
                 dgvAllStock.ReadOnly = true;
-                dgvAllStock.DataSource = dsSearchStock.Tables["tb_import"];
+                dgvAllStock.DataSource = dsStock.Tables["tb_import"];
             }
             else
             {
@@ -129,8 +122,26 @@ namespace Fruit_Stock
 
         }
 
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+        private void FrmHistoryStock_Load(object sender, EventArgs e)
+        {
+            prvShowAllStock();
+            prvFormatDataGrid();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
+        }
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            prvClearAll();
             prvShowAllStock();
             txtSearch.Text = "";
             btnSearch.Enabled = true;
@@ -168,10 +179,7 @@ namespace Fruit_Stock
                 dtpProImport.Value = Convert.ToDateTime(dgvAllStock.Rows[e.RowIndex].Cells[3].Value);
                 txtEMPID.Text = dgvAllStock.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch {}
 
             // ==================================== Get Employee Data ====================================================== //
             
@@ -191,14 +199,55 @@ namespace Fruit_Stock
             // ======================================== End  Get tb_ogin Data ================================================== //
         }
 
+
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            prvFillterDate();
+        }
+        private void prvFillterDate()
+        {
+
+            //prvSearch();
+            string sSqlLoad = "SELECT * FROM tb_import WHERE im_date Between " +
+                                dtpFromDate.Value.ToString("#dd-MM-yyyy#") + " and " +
+                                dtpToDate.Value.ToString("#dd-MM-yyyy#") + "";
+            oCenter.pusvOpenConnection();
+            OleDbDataAdapter daLoad = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
+
+            daLoad = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
+            daLoad.Fill(dsStock, "tb_import");
+
+            if (bCheck == true)
+            {
+                dsStock.Tables["tb_import"].Clear();
+            }
+
+            if (dsStock.Tables["tb_import"].Rows.Count != 0)
+            {
+                bCheck = true;
+                dgvAllStock.ReadOnly = true;
+                dgvAllStock.DataSource = dsStock.Tables["tb_import"];
+            }
+            else
+            {
+                bCheck = false;
+            }
+            dgvAllStock.Refresh();
+        }
+
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmHistoryStockFilter Frm = new FrmHistoryStockFilter();
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "AllHistoryStock";
+            Frm.rptHistoryStock.SetDataSource(dsStock);
             Frm.ShowDialog();
 
             //FrmReportHistoryStock Frm = new FrmReportHistoryStock();
             //Frm.ShowDialog();
         }
+
+      
     }
-    }
+}
 

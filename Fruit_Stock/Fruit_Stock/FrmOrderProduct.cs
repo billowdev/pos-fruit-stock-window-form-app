@@ -47,8 +47,7 @@ namespace Fruit_Stock
 
             prvShowAllOrder();
             prvFormatDataGrid();
-            // AutoID                     Field Name        Table Name Head  Last      
-            txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+           
 
             txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");
@@ -105,10 +104,12 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+
             prvOpenListProduct();
             lbTotal.Text = "";
             txtCash.Text = "";
             lbChange.Text = "";
+            
         }
         private void prvOpenListProduct()
         {
@@ -248,14 +249,28 @@ namespace Fruit_Stock
 
             // ============================================== END Insert to tb_order ========================= //
 
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+
+            DataTable odt = new DataTable();
+            //// ====================================== Data Grid Order ================================ //
+            dtOrder.Columns.Add("oder_id");
+            dtOrder.Columns.Add("order_quantity");
+            dtOrder.Columns.Add("order_date");
+            dtOrder.Columns.Add("cus_id");
+            dtOrder.Columns.Add("pro_id");
+
+            dtOrder.Rows.Add(txtOrderID.Text, txtOrderQty.Text, dtpOrder.Value, txtCustomerID.Text, txtProID.Text);
+
+            DataSet dsOrder = new DataSet();
+            dsOrder.Tables.Add(dtOrder);
+
+            FrmCheckBill Frm = new FrmCheckBill();
+            Frm.pds = dsOrder;
+            //Frm.pDS.Tables.Add(dtOrder);
+            Frm.ShowDialog();
 
             prvShowAllOrder();
             prvClearAll();
-
-
-
-          
-
         }
         private void prvClearAll()
         {

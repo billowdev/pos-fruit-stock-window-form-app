@@ -18,22 +18,33 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        OleDbDataAdapter da;
+
+        // ================================================= DEFIND =============================================  //
+       
+        oCenter ocn = new oCenter();         // Object Center    
+        DataSet ds = new DataSet();         // DataSet  pass to dgv and ctystal report
+        DataSet dsLogin = new DataSet();    // DataSet For Login data
+        
+        OleDbDataAdapter da;                // DataAdapter
+        
         string sSql;
         string stateGenter = "";
         string sEMPID = "";
         string stateStatus;
-        bool IsFind = false;
+        string sSqlAdd = "";
+        string sSqlSelect = "";
 
+        bool bCheckLogin = false;
+        bool bCheck = false;
 
-        oCenter ocn = new oCenter();
+        // ================================================= DEFIND =============================================  //
 
         private void FrmProfile_Load(object sender, EventArgs e)
         {
-            // ---===================User  ---------------------- // 
+            // ================================== User ================================== //
             if (oCenter.currentStatus == "user")
             {
-                ShowForUserLogin();
+                prvShowForUserLogin();
                 txtEMPID.Hide();
                 dgvAllMember.Hide();
                 dgvAllUser.Hide();
@@ -41,13 +52,9 @@ namespace Fruit_Stock
                 btnNew.Enabled = false;
                 btnSave.Enabled = false;
                 btnDelete.Enabled = false;
-                mnuDelete.Enabled = false;
-                mnuNew.Enabled = false;
                 btnSearch.Hide();
-                btnRefresh.Hide();
                 txtSearch.Hide();
                 btnReport.Hide();
-
             }
             // ================================== Admin ================================== //
             else
@@ -60,48 +67,51 @@ namespace Fruit_Stock
                 prvFormatDataEmployee();
 
                 prvFormatDataUser();
-
                 dgvAllMember.ReadOnly = true;
             }
         }
 
-
-
-        // ================================== Function Show All Member for Admin ================================== // 
         private void prvShowAllMember()
         {
+            /*------------------------------------------------- Detail ------------
+            |  Function prvShowAllMember
+            |
+            |  Purpose:  this method user for show all data of employee from database
+            |      Show to data grid veiw (dgvAllMember)
+            |
+            *-------------------------------------------------------------------*/
+
             try
             {
                 string sSqlEmp = "select * from tb_employee";
                 string sSqlLogin = "select * from tb_login";
 
-                if (oCenter.IsFind == true)
+                if (bCheck== true)
                 {
-                    oCenter.ds.Tables["tb_employee"].Clear();
+                    ds.Tables["tb_employee"].Clear();
                 }
 
                 da = new OleDbDataAdapter(sSqlEmp, oCenter.conn);
-                da.Fill(oCenter.ds, "tb_employee");
+                da.Fill(ds, "tb_employee");
 
-                if (oCenter.ds.Tables["tb_employee"].Rows.Count != 0)
+                if (ds.Tables["tb_employee"].Rows.Count != 0)
                 {
-                    oCenter.IsFind = true;
+                    bCheck= true;
                     dgvAllMember.ReadOnly = true;
-                    dgvAllMember.DataSource = oCenter.ds.Tables["tb_employee"];
+                    dgvAllMember.DataSource = ds.Tables["tb_employee"];
                 }
                 else
                 {
-                    oCenter.IsFind = false;
+                    bCheck= false;
                 }
 
-                // ------------------------------------------------------- //
-                DataSet dsLogin = new DataSet();
+                // ------------------------- Login Section ------------------------------ //
+                
                 OleDbDataAdapter daLogin = new OleDbDataAdapter(sSqlLogin, oCenter.conn);
-                bool bCheck = false;
 
-                if (bCheck == true)
+                if (bCheckLogin == true)
                 {
-                    dsLogin.Tables["tb_login"].Clear();
+                    ds.Tables["tb_login"].Clear();
                 }
 
                 //daLogin = new OleDbDataAdapter();
@@ -109,16 +119,15 @@ namespace Fruit_Stock
 
                 if (dsLogin.Tables["tb_login"].Rows.Count != 0)
                 {
-                    bCheck = true;
+                    bCheckLogin = true;
                     dgvAllUser.ReadOnly = true;
                     dgvAllUser.DataSource = dsLogin.Tables["tb_login"];
                 }
                 else
                 {
-                    bCheck = false;
+                    bCheckLogin = false;
                 }
-
-                IsFind = false;
+                bCheckLogin = false;
             }
             catch
             {
@@ -126,54 +135,48 @@ namespace Fruit_Stock
             }
         }
 
-        private void ShowForUserLogin()
+        private void prvShowForUserLogin()
         {
-
-            // ==================================== Get tb_ogin Data ====================================================== //
-
-            DataSet dsLogin = new DataSet();
+            /*------------------------------------------------- Detail --------
+           |  Function prvShowForUserLogin
+           |
+           |  Purpose:  this method user for show all data of employee from database
+           |      Show to data grid veiw (dgvAllMember)
+           |
+           *-------------------------------------------------------------------*/
 
             sSql = "";
             sSql = " SELECT * FROM tb_login WHERE Username ='" + oCenter.currentUsername + "'";
-            dsLogin = ocn.pudsLoadData(sSql, "tb_login", dsLogin);
+            ds = ocn.pudsLoadData(sSql, "tb_login", ds);
 
-            if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+            if (ds.Tables["tb_login"].Rows.Count != 0)
             {
 
-                txtUsername.Text = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
-                txtPassword.Text = dsLogin.Tables["tb_login"].Rows[0]["Password"].ToString();
-                lbUserStatus.Text = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+                txtUsername.Text = ds.Tables["tb_login"].Rows[0]["Username"].ToString();
+                txtPassword.Text = ds.Tables["tb_login"].Rows[0]["Password"].ToString();
+                lbUserStatus.Text = ds.Tables["tb_login"].Rows[0]["Status"].ToString();
 
-                txtUsername.Text = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
-                txtPassword.Text = dsLogin.Tables["tb_login"].Rows[0]["Password"].ToString();
-                lbUserStatus.Text = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
-                lbID.Text = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
+                txtUsername.Text = ds.Tables["tb_login"].Rows[0]["Username"].ToString();
+                txtPassword.Text = ds.Tables["tb_login"].Rows[0]["Password"].ToString();
+                lbUserStatus.Text = ds.Tables["tb_login"].Rows[0]["Status"].ToString();
+                lbID.Text = ds.Tables["tb_login"].Rows[0]["emp_id"].ToString();
 
             }
             // ======================================== End  Get tb_ogin Data ================================================== //
 
-            
-
-
-            // for fill data to text box from table employee reference by empid use for admin and user account
+            // Fill data to text box from table employee reference by empid use for admin and user account.
             try
             {
-
-                // ==================================== it is fill all data from tb_login to dataGridView ====================================================== //
-
-                //CallCenter CC= new CallCenter();
-                DataSet dsEmp = new DataSet();
-
+               
                 sSql = " SELECT * FROM tb_employee WHERE emp_id='" + lbID.Text + "'";
-                dsEmp = ocn.pudsLoadData(sSql, "tb_employee", dsEmp);
+                ds = ocn.pudsLoadData(sSql, "tb_employee", ds);
 
-                if (dsEmp.Tables["tb_employee"].Rows.Count != 0)
+                if (ds.Tables["tb_employee"].Rows.Count != 0)
                 {
+                    txtName.Text = ds.Tables["tb_employee"].Rows[0]["emp_name"].ToString();
+                    txtLastName.Text = ds.Tables["tb_employee"].Rows[0]["emp_lastname"].ToString();
 
-                    txtName.Text = dsEmp.Tables["tb_employee"].Rows[0]["emp_name"].ToString();
-                    txtLastName.Text = dsEmp.Tables["tb_employee"].Rows[0]["emp_lastname"].ToString();
-
-                    if (dsEmp.Tables["tb_employee"].Rows[0]["emp_gender"].ToString() == "ชาย")
+                    if (ds.Tables["tb_employee"].Rows[0]["emp_gender"].ToString() == "ชาย")
                     {
                         rdbMale.Checked = true;
                     }
@@ -182,106 +185,30 @@ namespace Fruit_Stock
                         rdbFemale.Checked = true;
                     }
 
-                    dtpBirthDate.Value = Convert.ToDateTime(dsEmp.Tables["tb_employee"].Rows[0]["emp_bdate"].ToString());
-                    txtPhone.Text = dsEmp.Tables["tb_employee"].Rows[0]["emp_phone"].ToString();
+                    dtpBirthDate.Value = Convert.ToDateTime(ds.Tables["tb_employee"].Rows[0]["emp_bdate"].ToString());
+                    txtPhone.Text = ds.Tables["tb_employee"].Rows[0]["emp_phone"].ToString();
 
                 }
-                // ======================================== End  it is fill all data from tb_login to dataGridView ================================================== //
-
                 
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error on private void fillEmployData(string emp_id): " + ex.Message, "mesg");
             }
-
+            // ======================================== End  Fill all data from tb_login to dataGridView ================================================== //
         }
 
-      
-        // ================================== Event Cell mouse up data gridview ================================== // 
-        private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex == dgvAllMember.Rows.Count)
-            {
-                return;
-            }
-            try
-            {
-                sEMPID = dgvAllMember.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                txtEMPID.Text = sEMPID;
-
-                txtName.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtLastName.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
-                stateGenter = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
-
-                if (stateGenter == "ชาย")
-                {
-                    rdbMale.Checked = true;
-                }
-                else
-                {
-                    rdbFemale.Checked = true;
-                }
-
-
-                //dtpBirthDate.CustomFormat = "dd.MMM-yyyy";
-                dtpBirthDate.Value = Convert.ToDateTime(dgvAllMember.Rows[e.RowIndex].Cells[4].Value);
-
-                txtPhone.Text = dgvAllMember.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                // ==================================== Get tb_ogin Data ====================================================== //
-
-                //CallCenter CC= new CallCenter();
-                DataSet dsLogin = new DataSet();
-
-                string sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
-                dsLogin = ocn.pudsLoadData(sSqlSelect, "tb_login", dsLogin);
-
-                if (dsLogin.Tables["tb_login"].Rows.Count != 0)
-                {
-
-                    txtUsername.Text = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
-                    txtPassword.Text = dsLogin.Tables["tb_login"].Rows[0]["Password"].ToString();
-                    lbUserStatus.Text = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
-
-                    stateStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
-                    if (stateStatus == "user")
-                    {
-                        rdbUser.Checked = true;
-                    }
-                    else
-                    {
-                        rdbAdmin.Checked = true;
-                    }
-                    txtEMPID.Text = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
-
-                }
-                // ======================================== End  Get tb_ogin Data ================================================== //
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:" + ex.Message, "Error krub",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // ---------------------------------- Menu Exit ---------------------- // 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            prvClearAll();
-            // AutoID                     Field Name        Table Name Head  Last      
-            txtEMPID.Text = ocn.pusAutoID("emp_id", "tb_employee", "emp", "000"); // P-0001
-        }
 
         private void prvClearAll()
         {
+            /*------------------------------------------------- Detail --------
+          |  Function prvClearAll
+          |
+          |  Purpose:  For clear all data on text box.
+          |
+          *-------------------------------------------------------------------*/
+
             txtEMPID.Text = "";
             txtLastName.Text = "";
             txtName.Text = "";
@@ -294,6 +221,13 @@ namespace Fruit_Stock
 
         private void prvCheckStateGender()
         {
+            /*------------------------------------------------- Detail --------
+          |  Function prvCheckStateGender
+          |
+          |  Purpose:  Check radio button gender state.
+          |
+          *-------------------------------------------------------------------*/
+
             if (rdbMale.Checked == true)
             {
                 stateGenter = "ชาย";
@@ -304,49 +238,15 @@ namespace Fruit_Stock
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void prvCheckStateUsername()
         {
-            oCenter.pusvCloseConnection();
-            oCenter.pusvOpenConnection();
+            /*------------------------------------------------- Detail --------
+            |  Function prvCheckStateUsername
+            |
+            |  Purpose:  Check radio button user status state.
+            |
+            *-------------------------------------------------------------------*/
 
-            if (txtName.Text == "")
-            {
-                MessageBox.Show("กรุณากรอกข้อมูลที่จะแก้ไขให้ครบ", "ผิดพลาด",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtName.Focus();
-                return;
-            }
-            
-            //OleDbCommand comEdit = new OleDbCommand();
-            try
-            {
-                string sqlEdit;
-                string sqlEditLogin;
-
-                if (MessageBox.Show("คุณต้องการแก้ไขข้อมูลใช่หรือไม่", "ยืนยัน",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (oCenter.currentStatus == "user")
-                    {
-                        puvEditFunction();
-                    }
-                    else
-                    {
-                        puvEditFunction();
-                        prvClearAll();
-                        prvShowAllMember();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ข้อมูลผิดพลาด:" + ex.Message, "ผิดพลาด",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void puvEditFunction()
-        {
             if (rdbAdmin.Checked == true)
             {
                 stateStatus = "admin";
@@ -355,6 +255,20 @@ namespace Fruit_Stock
             {
                 stateStatus = "user";
             }
+        }
+
+      
+
+        private void prvEditFunction()
+        {
+            /*------------------------------------------------- Detail --------
+           |  Function prvEditFucntion
+           |
+           |  Purpose:  For update data tb_employee & tb_username
+           |
+           *-------------------------------------------------------------------*/
+
+            prvCheckStateUsername();
 
             string sqlEdit;
             string sqlEditLogin;
@@ -390,14 +304,23 @@ namespace Fruit_Stock
         }
 
         // ======================================== ##  btnSave_Click Event  ## ================================= //
-        private void btnSave_Click(object sender, EventArgs e)
+
+
+        private void prvSave()
         {
+            /*------------------------------------------------- Detail --------
+           |  Function prvSave
+           |
+           |  Purpose:  Insert data to tb_employee & tb_username
+           |
+           *-------------------------------------------------------------------*/
             prvCheckStateGender();
+
             if (txtEMPID.Text == "" ||
                 txtName.Text == "" ||
                 txtLastName.Text == "" ||
                 txtUsername.Text == "" ||
-                txtPassword.Text == ""||
+                txtPassword.Text == "" ||
                 txtPhone.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลให้ครบ", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -470,39 +393,82 @@ namespace Fruit_Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ไม่สามารถติดต่อฐานข้อมูลได้:"+ ex.Message, "โปรดลองอีกครั้ง",
+                MessageBox.Show("ไม่สามารถติดต่อฐานข้อมูลได้:" + ex.Message, "โปรดลองอีกครั้ง",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ### ======================================== ##  END btnSave_Click Event  ## =================================  ### //
 
-        // ### ======================================== ##   Employee Data Grid View Format ## =================================  ### //
+        // ### ======================================== ##   Data Grid View Format ## =================================  ### //
         private void prvFormatDataEmployee()
         {
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
-            dgvAllMember.Columns[0].HeaderText = "รหัสพนักงาน";
-            dgvAllMember.Columns[1].HeaderText = "ชื่อ";
-            dgvAllMember.Columns[2].HeaderText = "นามสกุล";
-            dgvAllMember.Columns[3].HeaderText = "เพศ";
-            dgvAllMember.Columns[4].HeaderText = "วันเดือนปีเกิด";
-            dgvAllMember.Columns[5].HeaderText = "เบอร์โทร";
+            /*------------------------------------------------- Detail --------
+           |  Function prvCheckStateUsername
+           |
+           |  Purpose:  Format data grid view Employee
+           |
+           *-------------------------------------------------------------------*/
+            try
+            {
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvAllMember.ColumnHeadersDefaultCellStyle = cs;
+                dgvAllMember.Columns[0].HeaderText = "รหัสพนักงาน";
+                dgvAllMember.Columns[1].HeaderText = "ชื่อ";
+                dgvAllMember.Columns[2].HeaderText = "นามสกุล";
+                dgvAllMember.Columns[3].HeaderText = "เพศ";
+                dgvAllMember.Columns[4].HeaderText = "วันเดือนปีเกิด";
+                dgvAllMember.Columns[5].HeaderText = "เบอร์โทร";
 
-            dgvAllMember.Columns[0].Width = 120;
-            dgvAllMember.Columns[1].Width = 220;
-            dgvAllMember.Columns[2].Width = 220;
-            dgvAllMember.Columns[3].Width = 60;
-            dgvAllMember.Columns[4].Width = 160;
-            dgvAllMember.Columns[5].Width = 160;
+                dgvAllMember.Columns[0].Width = 120;
+                dgvAllMember.Columns[1].Width = 220;
+                dgvAllMember.Columns[2].Width = 220;
+                dgvAllMember.Columns[3].Width = 60;
+                dgvAllMember.Columns[4].Width = 160;
+                dgvAllMember.Columns[5].Width = 160;
+            }
+            catch
+            {
+
+            }
+
+           
         }
-
         // ### ======================================== ##   END Data Grid View Format ## =================================  ### //
 
-        // ### ======================================== ##   btnDelete_Click ## =================================  ### //
-        private void btnDelete_Click(object sender, EventArgs e)
+
+        private void prvFormatDataUser()
         {
+            /*------------------------------------------------- Detail --------
+           |  Function pevFormatDataUser
+           |
+           |  Purpose:  Format data grid view of username and password data
+           |
+           *-------------------------------------------------------------------*/
+
+            //dgvAllUser.ColumnCount = 3;
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvAllUser.ColumnHeadersDefaultCellStyle = cs;
+            dgvAllUser.Columns[0].HeaderText = "Username";
+            dgvAllUser.Columns[1].HeaderText = "Password";
+            dgvAllUser.Columns[2].HeaderText = "Status";
+            dgvAllUser.Columns[3].HeaderText = "รหัสพนักงาน";
+
+            dgvAllUser.Columns[0].Width = 240;
+            dgvAllUser.Columns[1].Width = 240;
+            dgvAllUser.Columns[2].Width = 180;
+            dgvAllUser.Columns[3].Width = 220;
+        }
+
+        private void prvDelete()
+        {
+         /*------------------------------------------------- Detail --------
+         |  Function prvDelete
+         |
+         |  Purpose:  ! Delete Data select record
+         |
+         *-------------------------------------------------------------------*/
             try
             {
                 if (txtEMPID.Text == "")
@@ -510,8 +476,8 @@ namespace Fruit_Stock
                     MessageBox.Show("กรุณาเลือกข้อมูลที่จะลบ", "ผิดพลาด");
                     return;
                 }
-                string stateEMPID = "";
-                stateEMPID = txtEMPID.Text;
+
+                string stateEMPID = txtEMPID.Text;
                 String sqlDelEmp = "DELETE FROM tb_employee WHERE emp_id='" + stateEMPID + "'";
                 String sqlDelLogin = "DELETE FROM tb_login WHERE emp_id='" + stateEMPID + "'";
                 oCenter.pusvOpenConnection();
@@ -532,35 +498,9 @@ namespace Fruit_Stock
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error"+ex.Message.ToString(), "โปรดลองอีกครั้ง",
+                MessageBox.Show("Error" + ex.Message.ToString(), "โปรดลองอีกครั้ง",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        // ### ======================================== ##   END btnDelete_Click ## =================================  ### //
-
-
-        // ### ======================================== ##   Data Grid View Format ## =================================  ### //
-
-        private void prvFormatDataUser()
-        {
-            //dgvAllUser.ColumnCount = 3;
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvAllUser.ColumnHeadersDefaultCellStyle = cs;
-            dgvAllUser.Columns[0].HeaderText = "Username";
-            dgvAllUser.Columns[1].HeaderText = "Password";
-            dgvAllUser.Columns[2].HeaderText = "Status";
-            dgvAllUser.Columns[3].HeaderText = "รหัสพนักงาน";
-
-            dgvAllUser.Columns[0].Width = 240;
-            dgvAllUser.Columns[1].Width = 240;
-            dgvAllUser.Columns[2].Width = 180;
-            dgvAllUser.Columns[3].Width = 220;
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            prvSearch();
         }
 
         private void prvSearch()
@@ -570,66 +510,122 @@ namespace Fruit_Stock
                 MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string sSqlAdd = "";
-            string sSqlSelect = "";
             if (txtSearch.Text.Trim() != "")
             {
 
                 sSqlAdd = " WHERE " + sSql + " emp_id+emp_name+emp_lastname+emp_phone LIKE '%" + txtSearch.Text.Trim() + "%' ";
             }
-            DataSet dsSearch = new DataSet();
-            sSqlSelect = " SELECT * " +
-                        "FROM tb_employee" +
-                        " " + sSqlAdd + " ORDER BY emp_id Desc;";
+            
+            sSqlSelect = " SELECT * " +"FROM tb_employee" + " " + sSqlAdd + " ORDER BY emp_id Desc;";
 
-
-            if (IsFind == true)
+            if (bCheck == true)
             {
-                dsSearch.Tables["tb_employee"].Clear();
+                ds.Tables["tb_employee"].Clear();
             }
 
             da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
-            da.Fill(dsSearch, "tb_employee");
+            da.Fill(ds, "tb_employee");
 
 
-            if (dsSearch.Tables["tb_employee"].Rows.Count != 0)
+            if (ds.Tables["tb_employee"].Rows.Count != 0)
             {
-                IsFind = true;
+                bCheck = true;
                 dgvAllMember.ReadOnly = true;
-                dgvAllMember.DataSource = dsSearch.Tables["tb_employee"];
+                dgvAllMember.DataSource = ds.Tables["tb_employee"];
 
-                DataSet dsUser = new DataSet();
-                OleDbDataAdapter da_user = new OleDbDataAdapter();
 
                 // If dgvAllMember are have multirow : then Search from tb_login multirow too.. By WHERE emp_id is equal
-                for (int nRow = 0; nRow <= dsSearch.Tables["tb_employee"].Rows.Count - 1; nRow++)
+                for (int nRow = 0; nRow <= ds.Tables["tb_employee"].Rows.Count - 1; nRow++)
                 {
                     string selectUser = "SELECT * FROM tb_login WHERE emp_id='"
-                        + dsSearch.Tables["tb_employee"].Rows[nRow]["emp_id"].ToString() + "'";
+                        + ds.Tables["tb_employee"].Rows[nRow]["emp_id"].ToString() + "'";
 
-                    da_user = new OleDbDataAdapter(selectUser, oCenter.conn);
-                    da_user.Fill(dsUser, "tb_login");
+                    OleDbDataAdapter da_user = new OleDbDataAdapter(selectUser, oCenter.conn);
+                    da_user.Fill(ds, "tb_login");
 
                 }
 
                 dgvAllUser.ReadOnly = true;
-                dgvAllUser.DataSource = dsUser.Tables["tb_login"];
+                dgvAllUser.DataSource = ds.Tables["tb_login"];
 
             }
             else
             {
-                IsFind = false;
+                bCheck = false;
             }
             dgvAllMember.Refresh();
             btnSearch.Enabled = false;
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+
+
+
+        // =================================================================================================================== //
+        //                                                                                                                   //
+        //                                                    Event                                                          //
+        //                                                                                                                   //
+        // =================================================================================================================== //
+
+        private void btnNew_Click(object sender, EventArgs e)
         {
-            prvShowAllMember();
-            txtSearch.Text = "";
-            btnSearch.Enabled = true;
+            prvClearAll();
+            // AutoID                     Field Name        Table Name Head  Last      
+            txtEMPID.Text = ocn.pusAutoID("emp_id", "tb_employee", "emp", "000"); // P-0001
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            prvSave();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            oCenter.pusvCloseConnection();
+            oCenter.pusvOpenConnection();
+
+            if (txtName.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกข้อมูลที่จะแก้ไขให้ครบ", "ผิดพลาด",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                return;
+            }
+
+            try
+            {
+                if (MessageBox.Show("คุณต้องการแก้ไขข้อมูลใช่หรือไม่", "ยืนยัน",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (oCenter.currentStatus == "user")
+                    {
+                        prvEditFunction();
+                    }
+                    else
+                    {
+                        prvEditFunction();
+                        prvClearAll();
+                        prvShowAllMember();
+                    }
+                }
+            }
+            catch
+            {
+                // COM object that has been separated from it underlying RCW cannot be used. 
+                prvEditFunction();
+                prvClearAll();
+                prvShowAllMember();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            prvDelete();
+        }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            prvSearch();
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -651,11 +647,107 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmEmployeeFilter Frm = new FrmEmployeeFilter();
+            //this.Hide();
+            // Form Report Employee
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "AllEmployee";
+            // DataSet
+            Frm.rptEmployee.SetDataSource(ds);
             Frm.ShowDialog();
+        }
+
+        // ================================== Event Cell mouse up data gridview ================================== // 
+        private void dgvAllMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //DataSet dsLogin = new DataSet();
+            if (e.RowIndex == dgvAllMember.Rows.Count)
+            {
+                return;
+            }
+            try
+            {
+                sEMPID = dgvAllMember.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtEMPID.Text = sEMPID;
+                txtName.Text = dgvAllMember.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtLastName.Text = dgvAllMember.Rows[e.RowIndex].Cells[2].Value.ToString();
+                stateGenter = dgvAllMember.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                if (stateGenter == "ชาย")
+                {
+                    rdbMale.Checked = true;
+                }
+                else
+                {
+                    rdbFemale.Checked = true;
+                }
+
+                dtpBirthDate.Value = Convert.ToDateTime(dgvAllMember.Rows[e.RowIndex].Cells[4].Value);
+                txtPhone.Text = dgvAllMember.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                // ==================================== Get tb_ogin Data ====================================================== //
+
+                string sSqlSelect = "select * from tb_login WHERE emp_id='" + sEMPID + "'";
+                dsLogin = ocn.pudsLoadData(sSqlSelect, "tb_login", dsLogin);
+
+                if (dsLogin.Tables["tb_login"].Rows.Count != 0)
+                {
+                    txtUsername.Text = dsLogin.Tables["tb_login"].Rows[0]["Username"].ToString();
+                    txtPassword.Text = dsLogin.Tables["tb_login"].Rows[0]["Password"].ToString();
+                    lbUserStatus.Text = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+
+                    stateStatus = dsLogin.Tables["tb_login"].Rows[0]["Status"].ToString();
+                    if (stateStatus == "user")
+                    {
+                        rdbUser.Checked = true;
+                    }
+                    else
+                    {
+                        rdbAdmin.Checked = true;
+                    }
+                    txtEMPID.Text = dsLogin.Tables["tb_login"].Rows[0]["emp_id"].ToString();
+                }
+                // ======================================== End  Get tb_ogin Data ================================================== //
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "Error krub",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ================================== END Event Cell mouse up data gridview ================================== // 
+
+
+
+
+        // ---------------------------------- Menu Exit ---------------------- // 
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnPrintDetail_Click(object sender, EventArgs e)
+        {
+            if (txtEMPID.Text == "")
+            {
+                MessageBox.Show("Please select employee ");
+                return;
+            }
+
+            DataSet dsDetail = new DataSet();
+
+            sSql = " select * from tb_employee where emp_id='" + txtEMPID.Text + "'";
+
+            OleDbDataAdapter da = new OleDbDataAdapter(sSql, oCenter.conn);
+            da.Fill(dsDetail, "tb_employee");
+
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "DetailEmployee";
+            Frm.rptDetailEmployee.SetDataSource(dsDetail);
+            Frm.ShowDialog();
+
+            bCheck = false;
         }
     }
 }
-        
-
 

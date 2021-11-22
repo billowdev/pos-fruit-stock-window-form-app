@@ -32,27 +32,23 @@ namespace Fruit_Stock
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.mnuFrmMain = new System.Windows.Forms.MenuStrip();
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmuCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSale = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmuCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHistoryStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmuHistoryOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExitProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsName = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsPageStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timTime = new System.Windows.Forms.Timer(this.components);
-            this.timTimeLoading = new System.Windows.Forms.Timer(this.components);
             this.lbWelcome = new System.Windows.Forms.Label();
             this.pbMain = new System.Windows.Forms.PictureBox();
-            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFrmMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
@@ -64,45 +60,30 @@ namespace Fruit_Stock
             this.mnuFrmMain.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.mnuFrmMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuFrmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logOutToolStripMenuItem,
-            this.mnuProfile,
-            this.cmuCustomer,
             this.mnuSale,
-            this.mnuProduct,
+            this.cmuCustomer,
             this.mnuStock,
+            this.mnuProduct,
             this.mnuHistoryStock,
-            this.mnuHelp});
+            this.cmuHistoryOrder,
+            this.mnuProfile,
+            this.mnuHelp,
+            this.mnuExitProgram});
             this.mnuFrmMain.Location = new System.Drawing.Point(0, 0);
             this.mnuFrmMain.Name = "mnuFrmMain";
             this.mnuFrmMain.Size = new System.Drawing.Size(1920, 58);
             this.mnuFrmMain.TabIndex = 1;
             this.mnuFrmMain.Text = "menuStrip1";
             // 
-            // logOutToolStripMenuItem
+            // mnuSale
             // 
-            this.logOutToolStripMenuItem.AutoSize = false;
-            this.logOutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuExit,
-            this.themeToolStripMenuItem});
-            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(90, 54);
-            this.logOutToolStripMenuItem.Text = "File";
-            // 
-            // mnuExit
-            // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(224, 32);
-            this.mnuExit.Text = "Exit";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
-            // 
-            // mnuProfile
-            // 
-            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
-            this.mnuProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mnuProfile.Name = "mnuProfile";
-            this.mnuProfile.Size = new System.Drawing.Size(132, 54);
-            this.mnuProfile.Text = "Employee";
-            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
+            this.mnuSale.AutoSize = false;
+            this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mnuSale.Image = ((System.Drawing.Image)(resources.GetObject("mnuSale.Image")));
+            this.mnuSale.Name = "mnuSale";
+            this.mnuSale.Size = new System.Drawing.Size(100, 54);
+            this.mnuSale.Text = "Order";
+            this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
             // 
             // cmuCustomer
             // 
@@ -113,15 +94,14 @@ namespace Fruit_Stock
             this.cmuCustomer.Text = "Customer";
             this.cmuCustomer.Click += new System.EventHandler(this.cmuCustomer_Click);
             // 
-            // mnuSale
+            // mnuStock
             // 
-            this.mnuSale.AutoSize = false;
-            this.mnuSale.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.mnuSale.Image = ((System.Drawing.Image)(resources.GetObject("mnuSale.Image")));
-            this.mnuSale.Name = "mnuSale";
-            this.mnuSale.Size = new System.Drawing.Size(100, 54);
-            this.mnuSale.Text = "Sale";
-            this.mnuSale.Click += new System.EventHandler(this.mnuSale_Click);
+            this.mnuStock.AutoSize = false;
+            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
+            this.mnuStock.Name = "mnuStock";
+            this.mnuStock.Size = new System.Drawing.Size(100, 54);
+            this.mnuStock.Text = "Stock";
+            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
             // 
             // mnuProduct
             // 
@@ -132,15 +112,6 @@ namespace Fruit_Stock
             this.mnuProduct.Text = "Product";
             this.mnuProduct.Click += new System.EventHandler(this.mnuProduct_Click);
             // 
-            // mnuStock
-            // 
-            this.mnuStock.AutoSize = false;
-            this.mnuStock.Image = ((System.Drawing.Image)(resources.GetObject("mnuStock.Image")));
-            this.mnuStock.Name = "mnuStock";
-            this.mnuStock.Size = new System.Drawing.Size(100, 54);
-            this.mnuStock.Text = "Stock";
-            this.mnuStock.Click += new System.EventHandler(this.mnuStock_Click);
-            // 
             // mnuHistoryStock
             // 
             this.mnuHistoryStock.AutoSize = false;
@@ -150,6 +121,23 @@ namespace Fruit_Stock
             this.mnuHistoryStock.Text = "History Stock";
             this.mnuHistoryStock.Click += new System.EventHandler(this.mnuHistoryStock_Click);
             // 
+            // cmuHistoryOrder
+            // 
+            this.cmuHistoryOrder.Image = ((System.Drawing.Image)(resources.GetObject("cmuHistoryOrder.Image")));
+            this.cmuHistoryOrder.Name = "cmuHistoryOrder";
+            this.cmuHistoryOrder.Size = new System.Drawing.Size(165, 54);
+            this.cmuHistoryOrder.Text = "History Order";
+            this.cmuHistoryOrder.Click += new System.EventHandler(this.cmuHistoryOrder_Click);
+            // 
+            // mnuProfile
+            // 
+            this.mnuProfile.Image = ((System.Drawing.Image)(resources.GetObject("mnuProfile.Image")));
+            this.mnuProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mnuProfile.Name = "mnuProfile";
+            this.mnuProfile.Size = new System.Drawing.Size(132, 54);
+            this.mnuProfile.Text = "Employee";
+            this.mnuProfile.Click += new System.EventHandler(this.mnuProfile_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.Image = ((System.Drawing.Image)(resources.GetObject("mnuHelp.Image")));
@@ -157,6 +145,15 @@ namespace Fruit_Stock
             this.mnuHelp.Size = new System.Drawing.Size(87, 54);
             this.mnuHelp.Text = "Help";
             this.mnuHelp.Click += new System.EventHandler(this.mnuHelp_Click);
+            // 
+            // mnuExitProgram
+            // 
+            this.mnuExitProgram.AutoSize = false;
+            this.mnuExitProgram.Image = ((System.Drawing.Image)(resources.GetObject("mnuExitProgram.Image")));
+            this.mnuExitProgram.Name = "mnuExitProgram";
+            this.mnuExitProgram.Size = new System.Drawing.Size(80, 54);
+            this.mnuExitProgram.Text = "Exit";
+            this.mnuExitProgram.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -210,10 +207,6 @@ namespace Fruit_Stock
             this.timTime.Enabled = true;
             this.timTime.Tick += new System.EventHandler(this.timTime_Tick);
             // 
-            // timTimeLoading
-            // 
-            this.timTimeLoading.Interval = 8500;
-            // 
             // lbWelcome
             // 
             this.lbWelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -238,27 +231,6 @@ namespace Fruit_Stock
             this.pbMain.Size = new System.Drawing.Size(1925, 1024);
             this.pbMain.TabIndex = 3;
             this.pbMain.TabStop = false;
-            // 
-            // themeToolStripMenuItem
-            // 
-            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pinkToolStripMenuItem,
-            this.darkToolStripMenuItem});
-            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.themeToolStripMenuItem.Text = "Theme";
-            // 
-            // pinkToolStripMenuItem
-            // 
-            this.pinkToolStripMenuItem.Name = "pinkToolStripMenuItem";
-            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.pinkToolStripMenuItem.Text = "Pink";
-            // 
-            // darkToolStripMenuItem
-            // 
-            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.darkToolStripMenuItem.Text = "Dark";
             // 
             // FrmMain
             // 
@@ -298,20 +270,16 @@ namespace Fruit_Stock
         private System.Windows.Forms.ToolStripMenuItem mnuProduct;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.PictureBox pbMain;
-        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel stsTime;
         private System.Windows.Forms.Timer timTime;
         private System.Windows.Forms.ToolStripStatusLabel stsName;
-        private System.Windows.Forms.Timer timTimeLoading;
         private System.Windows.Forms.Label lbWelcome;
         private System.Windows.Forms.ToolStripMenuItem mnuHistoryStock;
         private System.Windows.Forms.ToolStripMenuItem cmuCustomer;
         private System.Windows.Forms.ToolStripStatusLabel stsPageStatus;
-        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmuHistoryOrder;
+        private System.Windows.Forms.ToolStripMenuItem mnuExitProgram;
     }
 }

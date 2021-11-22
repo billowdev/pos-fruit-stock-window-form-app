@@ -28,9 +28,6 @@ namespace Fruit_Stock
             lbWelcome.Text = "Welcome " + oCenter.currentName;
             lbWelcome.Show();
             stsPageStatus.Text = " >>    หน้าหลัก    <<";
-            // option loading page
-            //lbWelcome.Dispose();
-            //stsName.Text = "";
         }
 
         private void mnuProfile_Click(object sender, EventArgs e)
@@ -61,7 +58,6 @@ namespace Fruit_Stock
         }
 
 
-
         private void mnuProduct_Click(object sender, EventArgs e)
         {
             if (ocn.pub_CloseChildForm(this, "FrmProduct") == false)
@@ -88,23 +84,6 @@ namespace Fruit_Stock
 
         }
 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
-            {
-                try
-                {
-                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
-                }
-                catch
-                {
-                    Environment.Exit(1);
-                }
-            }
-        }
-
-
         private void mnuHistoryStock_Click(object sender, EventArgs e)
         {
             stsPageStatus.Text = " >>    หน้าประวัติการสต๊อกสินค้า    <<";
@@ -130,14 +109,69 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            if (ocn.pub_CloseChildForm(this, "FrmOrderProduct") == false)
+            //if (ocn.pub_CloseChildForm(this, "FrmOrderProduct") == false)
+            //{
+            //    stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
+            //    lbWelcome.Dispose();
+            //    pbMain.Dispose();
+            //    FrmOrderProduct Frm = new FrmOrderProduct();
+            //    Frm.MdiParent = this;
+            //    Frm.Show();
+            //}
+
+            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
             {
-                stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
+                stsPageStatus.Text = " >>    หน้าขายสินค้า     <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmOrderProduct Frm = new FrmOrderProduct();
+                FrmSale Frm = new FrmSale();
                 Frm.MdiParent = this;
                 Frm.Show();
+            }
+        }
+
+        private void cmuHistoryOrder_Click(object sender, EventArgs e)
+        {
+            if (ocn.pub_CloseChildForm(this, "FrmOrderHistory") == false)
+            {
+                stsPageStatus.Text = " >>    หน้าประวัติการสั่งซื้อสินค้า    <<";
+                lbWelcome.Dispose();
+                pbMain.Dispose();
+                FrmOrderHistory Frm = new FrmOrderHistory();
+                Frm.MdiParent = this;
+                Frm.Show();
+            }
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                }
+                catch
+                {
+                    Environment.Exit(1);
+                }
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((MessageBox.Show("ออกจากโปรแกรมใช่หรือไม่", "Msg",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes))
+            {
+                try
+                {
+                    Application.Exit(); // Collection was modified; enumeration operation may not execute.'
+                }
+                catch
+                {
+                    Environment.Exit(1);
+                }
             }
         }
 

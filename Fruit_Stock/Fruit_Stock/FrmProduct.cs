@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
 using System.Data.OleDb;
-using System.Data;
 
 namespace Fruit_Stock
 {
@@ -111,10 +110,8 @@ namespace Fruit_Stock
                 txtUnit.Text = dgvAllProduct.Rows[e.RowIndex].Cells[3].Value.ToString();
                 lbStockQuantity.Text = dgvAllProduct.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
-            catch (Exception ex)
-            {
+            catch { }
 
-            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)

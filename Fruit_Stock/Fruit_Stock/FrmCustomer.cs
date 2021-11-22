@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
@@ -238,10 +237,8 @@ namespace Fruit_Stock
                 txtCusLastName.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txtCusPhone.Text = dgvAllCustomer.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
+            
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -304,7 +301,9 @@ namespace Fruit_Stock
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            FrmReportCustomer Frm = new FrmReportCustomer();
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "AllCustomer";
             Frm.rptCustomer.SetDataSource(ds);
             Frm.ShowDialog();
 
@@ -318,21 +317,19 @@ namespace Fruit_Stock
                 MessageBox.Show("Please select customer ");
                 return;
             }
-           if (IsFind == true)
-            {
-                ds.Clear();
-            }
+            DataSet dsCustomer = new DataSet();
 
             sSql = " select * from tb_customer where cus_id='" + txtCusID.Text + "'";
         
             OleDbDataAdapter da = new OleDbDataAdapter(sSql, oCenter.conn);
-            da.Fill(ds, "tb_customer");
+            da.Fill(dsCustomer, "tb_customer");
             
-            FrmReportCustomer Frm = new FrmReportCustomer();
-            Frm.rptCustomer.SetDataSource(ds);
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "";
+            Frm.sReport = "DetailCustomer";
+            Frm.rptDetailCustomer.SetDataSource(dsCustomer);
             Frm.ShowDialog();
 
-            IsFind = false;
         }
     }
 }

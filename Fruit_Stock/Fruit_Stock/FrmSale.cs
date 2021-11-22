@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
@@ -19,28 +18,35 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
+        oCenter ocn = new oCenter();
         bool bCheck = false;
         public DataGridView pdgvStateOrder;
 
-        oCenter ocn = new oCenter();
         public double dCash = 0;
         public double dChange = 0;
         public double dTotal = 0;
         double dCalTotal = 0;
         double sumTotal = 0;
-
+        double dRaw = 0;
         DataSet dsCheck = new DataSet();
-        int nCurrentRow;
-        bool bfCheck = false;
-
+        //int nCurrentRow;
+        bool bCheckCal = false;
+        string conStr;
         List<string> sListGlobalCheck = new List<string>();
-        
+        bool bCheckFirstOrder = true;
 
         DataTable dtOrder = new DataTable();
-        DataTable dtRawOrder = new DataTable();
+        string stateOrder = "";
 
+        public DataSet dsSend = new DataSet();
+
+        DataTable RawTable = new DataTable();
         private void FrmOrder_Load(object sender, EventArgs e)
         {
+            // AutoID                     Field Name        Table Name Head  Last      
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+
+            bCheckFirstOrder = true;
             /*
              // Column 
                 tb_order column
@@ -65,20 +71,28 @@ namespace Fruit_Stock
             dtOrder.Columns.Add("oPrice");
             dtOrder.Columns.Add("oTotal");
 
+            RawTable.Columns.Add("oOid");
+            RawTable.Columns.Add("oQty");
+            RawTable.Columns.Add("oDate");
+            RawTable.Columns.Add("oCID");
+            RawTable.Columns.Add("oPID");
+            RawTable.Columns.Add("oUnit");
+            RawTable.Columns.Add("oPrice");
+            RawTable.Columns.Add("oTotal");
+
             // ======================== DataGridView State Order =====//
 
             dgvStateOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
 
-
             // ====================================== END Data Grid Order ================================ //
 
-            // AutoID                     Field Name        Table Name Head  Last      
-            txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
-
+            
+            stateOrder = txtOrderID.Text;
             //txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");
             btnCheckBill.Enabled = false;
             dtpOrder.Value = DateTime.Now;
+            prvFormatData();
         }
 
         // Method for show all product when form load to data grid view dgvAllOrder
@@ -86,32 +100,39 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            txtOrderID.Text = stateOrder;
             prvOpenListProduct();
             prvFormatData();
+           
         }
-       
+
         private void prvFormatData()
         {
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
-            dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
-            dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
-            dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
-            dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
-            dgvStateOrder.Columns[5].HeaderText = "หน่วย";
-            dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
-            dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
+            try
+            {
+                DataGridViewCellStyle cs = new DataGridViewCellStyle();
+                cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+                dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
+                dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+                dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+                dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+                dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+                dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
+                dgvStateOrder.Columns[5].HeaderText = "หน่วย";
+                dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
+                dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
 
-            dgvStateOrder.Columns[0].Width = 120;
-            dgvStateOrder.Columns[1].Width = 120;
-            dgvStateOrder.Columns[2].Width = 180;
-            dgvStateOrder.Columns[3].Width = 160;
-            dgvStateOrder.Columns[4].Width = 160;
-            dgvStateOrder.Columns[5].Width = 160;
-            dgvStateOrder.Columns[6].Width = 100;
-            dgvStateOrder.Columns[7].Width = 120;
+                dgvStateOrder.Columns[0].Width = 120;
+                dgvStateOrder.Columns[1].Width = 120;
+                dgvStateOrder.Columns[2].Width = 180;
+                dgvStateOrder.Columns[3].Width = 160;
+                dgvStateOrder.Columns[4].Width = 160;
+                dgvStateOrder.Columns[5].Width = 160;
+                dgvStateOrder.Columns[6].Width = 100;
+                dgvStateOrder.Columns[7].Width = 120;
+            }
+            catch { }
+           
         }
         private void prvOpenListProduct()
         {
@@ -119,16 +140,16 @@ namespace Fruit_Stock
             FrmListStockProduct Frm = new FrmListStockProduct();
 
             Frm.ShowDialog(this);
-            
 
             txtProID.Text = Frm.psPid;
             txtProName.Text = Frm.psPname;
             txtProPrice.Text = Frm.psPprice;
             txtProUnit.Text = Frm.psPunit;
             lbStockQuantity.Text = Frm.psPquantity;
-        }
 
-        DataSet nds = new DataSet();
+            bCheckFirstOrder = false;
+        }
+        
         private void prvCalculateTotal()
         {
             if (txtOrderQty.Text == "")
@@ -168,38 +189,8 @@ namespace Fruit_Stock
                 return;
             }
 
-            //  ===================== Add to data gridview   =====================  //
-            dtOrder.Rows.Add(txtOrderID.Text, txtOrderQty.Text, dtpOrder.Value,
-                            txtCustomerID.Text, txtProID.Text, txtProUnit.Text, Convert.ToDouble(txtProPrice.Text).ToString("#,##0.00"), 
-                            (Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text)).ToString("#,##0.00")
-                            );
-            //  ====================== Calculate Total ======================== //
-            
-            dgvStateOrder.DataSource = dtOrder;
+            //========================================================================================================================//
 
-            //for (int nRow = 0; nRow <= dtOrder.Rows.Count; nRow++)
-            //{
-
-            //    dCalTotal = Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oQty"].Value) *
-            //        Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oPrice"].Value);
-
-            //}
-            //dTotal = dCalTotal;
-            //lbTotal.Text = dTotal.ToString("#,##0.00");
-
-
-            lbTotal.Text = sumTotal.ToString("#,##0.00");
-
-            //  ===================== END Add to data gridview   =====================  //
-           
-            btnCheckBill.Enabled = true;
-        }
-
-       
-       
-
-        private void btnCalculateTotal_Click(object sender, EventArgs e)
-        {
             if (sListGlobalCheck.Count > 0)
             {
                 foreach (var item in sListGlobalCheck)
@@ -213,11 +204,64 @@ namespace Fruit_Stock
                 }
             }
 
+            if (bCheckFirstOrder == false)
+            {
+                if (bCheckFirstOrder == false)
+                {
+                    conStr = "";
+                    // ============= Auto ID ORDER
+                    string[] aStr = new string[] { stateOrder };
+
+                    var newList = aStr[0].Skip(0);
+
+                    foreach (var str in newList)
+                    {
+                        if (str.ToString() != "O")
+                        {
+                            conStr += str.ToString();
+                        }
+                    }
+
+                    dRaw = Convert.ToDouble(conStr) + 1;
+                    stateOrder = "O" + dRaw.ToString();
+                    txtOrderID.Text = "O" + dRaw.ToString();
+                    // ============= Auto ID ORDER
+                }
+                else
+                {
+                    stateOrder = txtOrderID.Text;
+                    //string[] aStr = new string[] { stateOrder };
+
+                    //var newList = aStr[0].Skip(0);
+                }
+            }
+
             string raw = txtProID.Text;
             sListGlobalCheck.Add(raw);
+            //========================================================================================================================//
 
-            prvCalculateTotal();
-            bfCheck = true;
+            //  ===================== Add to data gridview   =====================  //
+            dtOrder.Rows.Add(txtOrderID.Text, txtOrderQty.Text, dtpOrder.Value,
+                            txtCustomerID.Text, txtProID.Text, txtProUnit.Text, Convert.ToDouble(txtProPrice.Text).ToString("#,##0.00"), 
+                            (Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text)).ToString("#,##0.00")
+                            );
+            //  ====================== Calculate Total ======================== //
+            sumTotal += Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text);
+            dgvStateOrder.DataSource = dtOrder;
+            
+            lbTotal.Text = sumTotal.ToString("#,##0.00");
+
+            //  ===================== END Add to data gridview   =====================  //
+           
+            btnCheckBill.Enabled = true;
+        }
+
+        
+
+        private void btnCalculateTotal_Click(object sender, EventArgs e)
+        {
+                prvCalculateTotal();
+                bCheckCal = true;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -230,30 +274,35 @@ namespace Fruit_Stock
                 txtCustomerID.Text = Frm.psCusID;
             }
         }
-
+        bool bBillFinish = false;
         private void btnSale_Click(object sender, EventArgs e)
         {
+            if (txtCustomerID.Text == "" || txtOrderID.Text == "" || txtOrderQty.Text == "" || txtProID.Text == "")
+            {
+            MessageBox.Show("กรุณาเลือกสินค้า หรือ ลูกค้า", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            bCheckFirstOrder = true;
+            if (bCheck == true)
+            {
+                dtOrder.Clear();
+            }
             FrmCheckBill Frm = new FrmCheckBill();
-            
 
-            Frm.pdgvOrder = pdgvStateOrder;
+            dsSend.Tables.Add(dtOrder);
+
+            Frm.pds = dsSend;
             //Frm.pDS.Tables.Add(dtOrder);
             Frm.ShowDialog();
-            bfCheck = false;
-
-        }
-
-        private void prvClearAll()
-        {
-            txtOrderID.Text = "";
-            txtOrderQty.Text = "";
-            txtCustomerID.Text = "";
-            txtProID.Text = "";
-            txtProName.Text = "";
-            txtProPrice.Text = "";
-            txtProUnit.Text = "";
-            lbStockQuantity.Text = "";
-            
+            bCheckCal = false;
+            bCheck = false;
+            // AutoID                     Field Name        Table Name Head  Last      
+            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); //O112100001
+            bBillFinish = true;
+            if (bBillFinish == true)
+            {
+                dtOrder.Clear();
+            }
+            bBillFinish = false;
         }
 
         private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -273,7 +322,7 @@ namespace Fruit_Stock
                 {
                     dgvStateOrder.Rows[e.RowIndex].Cells[4].Value = 0;
                 }
-                
+
                 prvSum();
                 dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dgvStateOrder.Rows[e.RowIndex].Selected = true;
@@ -300,7 +349,7 @@ namespace Fruit_Stock
 
         }
 
-      
+        
     }
 }
 

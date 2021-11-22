@@ -150,11 +150,11 @@ namespace Fruit_Stock
             // 
             this.btnPrintOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnPrintOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintOne.Location = new System.Drawing.Point(419, 170);
+            this.btnPrintOne.Location = new System.Drawing.Point(149, 275);
             this.btnPrintOne.Name = "btnPrintOne";
-            this.btnPrintOne.Size = new System.Drawing.Size(217, 43);
+            this.btnPrintOne.Size = new System.Drawing.Size(136, 37);
             this.btnPrintOne.TabIndex = 15;
-            this.btnPrintOne.Text = "Print One Person";
+            this.btnPrintOne.Text = "Print Detail";
             this.btnPrintOne.UseVisualStyleBackColor = false;
             this.btnPrintOne.Click += new System.EventHandler(this.btnPrintOne_Click);
             // 
@@ -162,11 +162,11 @@ namespace Fruit_Stock
             // 
             this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(250)))));
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(522, 34);
+            this.btnReport.Location = new System.Drawing.Point(36, 275);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(107, 56);
+            this.btnReport.Size = new System.Drawing.Size(107, 36);
             this.btnReport.TabIndex = 15;
-            this.btnReport.Text = "Report";
+            this.btnReport.Text = "Report ";
             this.btnReport.UseVisualStyleBackColor = false;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
