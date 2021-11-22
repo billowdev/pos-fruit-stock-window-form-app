@@ -47,8 +47,7 @@ namespace Fruit_Stock
 
             prvShowAllOrder();
             prvFormatDataGrid();
-            // AutoID                     Field Name        Table Name Head  Last      
-            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "000"); // PID001
+           
 
             txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");

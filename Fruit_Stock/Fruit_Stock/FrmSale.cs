@@ -32,15 +32,20 @@ namespace Fruit_Stock
         DataSet dsCheck = new DataSet();
         int nCurrentRow;
         bool bfCheck = false;
-
+        string conStr;
         List<string> sListGlobalCheck = new List<string>();
-        
+        bool bCheckFirstOrder = true;
 
         DataTable dtOrder = new DataTable();
         DataTable dtRawOrder = new DataTable();
+        string stateOrder = "";
 
+        DataSet dsSend = new DataSet();
+
+        DataTable RawTable = new DataTable();
         private void FrmOrder_Load(object sender, EventArgs e)
         {
+            bCheckFirstOrder = true;
             /*
              // Column 
                 tb_order column
@@ -65,6 +70,15 @@ namespace Fruit_Stock
             dtOrder.Columns.Add("oPrice");
             dtOrder.Columns.Add("oTotal");
 
+            RawTable.Columns.Add("oOid");
+            RawTable.Columns.Add("oQty");
+            RawTable.Columns.Add("oDate");
+            RawTable.Columns.Add("oCID");
+            RawTable.Columns.Add("oPID");
+            RawTable.Columns.Add("oUnit");
+            RawTable.Columns.Add("oPrice");
+            RawTable.Columns.Add("oTotal");
+
             // ======================== DataGridView State Order =====//
 
             dgvStateOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
@@ -74,7 +88,7 @@ namespace Fruit_Stock
 
             // AutoID                     Field Name        Table Name Head  Last      
             txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
-
+            stateOrder = txtOrderID.Text;
             //txtCash.Text = dCash.ToString("#,##0.00");
             lbTotal.Text = dTotal.ToString("#,##0.00");
             btnCheckBill.Enabled = false;
@@ -86,12 +100,15 @@ namespace Fruit_Stock
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+
+            txtOrderID.Text = stateOrder;
+
             prvOpenListProduct();
             prvFormatData();
-
+           
         }
-       
+        
+
         private void prvFormatData()
         {
             try
@@ -132,9 +149,12 @@ namespace Fruit_Stock
             txtProPrice.Text = Frm.psPprice;
             txtProUnit.Text = Frm.psPunit;
             lbStockQuantity.Text = Frm.psPquantity;
+
+            bCheckFirstOrder = false;
         }
 
-        DataSet nds = new DataSet();
+        DataSet kds = new DataSet();
+        
         private void prvCalculateTotal()
         {
             if (txtOrderQty.Text == "")
@@ -180,19 +200,8 @@ namespace Fruit_Stock
                             (Convert.ToDouble(txtProPrice.Text) * Convert.ToDouble(txtOrderQty.Text)).ToString("#,##0.00")
                             );
             //  ====================== Calculate Total ======================== //
-            
+
             dgvStateOrder.DataSource = dtOrder;
-
-            //for (int nRow = 0; nRow <= dtOrder.Rows.Count; nRow++)
-            //{
-
-            //    dCalTotal = Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oQty"].Value) *
-            //        Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells["oPrice"].Value);
-
-            //}
-            //dTotal = dCalTotal;
-            //lbTotal.Text = dTotal.ToString("#,##0.00");
-
 
             lbTotal.Text = sumTotal.ToString("#,##0.00");
 
@@ -201,22 +210,12 @@ namespace Fruit_Stock
             btnCheckBill.Enabled = true;
         }
 
-
-
+        string rawID = "";
+        UInt32 dRaw = 0;
         List<string> sStr = new List<string>();
+
         private void btnCalculateTotal_Click(object sender, EventArgs e)
         {
-            txtOrderID.Text = ocn.pusAutoID("order_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
-            string rawID = txtOrderID.Text;
-            rawID = "O112200001";
-            //string[] aString = new string[10];
-            foreach (var i in rawID)
-            {
-                sStr.Add(i.ToString());
-            }
-            string test = sStr[]; 
-         
-
 
             if (sListGlobalCheck.Count > 0)
             {
@@ -231,98 +230,134 @@ namespace Fruit_Stock
                 }
             }
 
-            string raw = txtProID.Text;
-            sListGlobalCheck.Add(raw);
-
-            prvCalculateTotal();
-            bfCheck = true;
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-            FrmListCustomer Frm = new FrmListCustomer();
-            Frm.ShowDialog();
-
-            if (Frm.psCusID != "")
+            if (bCheckFirstOrder == false)
             {
-                txtCustomerID.Text = Frm.psCusID;
-            }
-        }
-
-        private void btnSale_Click(object sender, EventArgs e)
-        {
-            if (bCheck == true)
-            {
-                dtOrder.Clear();
-            }
-            FrmCheckBill Frm = new FrmCheckBill();
-            DataSet dsSend = new DataSet();
-            dsSend.Tables.Add(dtOrder);
-
-            Frm.pds = dsSend;
-            //Frm.pDS.Tables.Add(dtOrder);
-            Frm.ShowDialog();
-            bfCheck = false;
-        }
-
-        private void prvClearAll()
-        {
-            txtOrderID.Text = "";
-            txtOrderQty.Text = "";
-            txtCustomerID.Text = "";
-            txtProID.Text = "";
-            txtProName.Text = "";
-            txtProPrice.Text = "";
-            txtProUnit.Text = "";
-            lbStockQuantity.Text = "";
-            
-        }
-
-        private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            //dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
-
-        private void dgvStateOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((e.RowIndex >= 0) && ((e.ColumnIndex == 3)))
-            {
-                if (dgvStateOrder.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "")
+                if (bCheckFirstOrder == false)
                 {
-                    dgvStateOrder.Rows[e.RowIndex].Cells[3].Value = 0;
+                    conStr = "";
+                    // ============= Auto ID ORDER
+                    string[] aStr = new string[] { stateOrder };
+
+                    var newList = aStr[0].Skip(0);
+
+                    foreach (var str in newList)
+                    {
+                        if (str.ToString() != "O")
+                        {
+                            conStr += str.ToString();
+                        }
+                    }
+
+                    dRaw = Convert.ToUInt32(conStr) + 1;
+                    stateOrder = "O" + dRaw.ToString();
+                    txtOrderID.Text = "O" + dRaw.ToString();
+                    // ============= Auto ID ORDER
                 }
-                if (dgvStateOrder.Rows[e.RowIndex].Cells[4].Value.ToString().Trim() == "")
+                else
                 {
-                    dgvStateOrder.Rows[e.RowIndex].Cells[4].Value = 0;
+                    stateOrder = txtOrderID.Text;
+                    //string[] aStr = new string[] { stateOrder };
+
+                    //var newList = aStr[0].Skip(0);
                 }
-                
-                prvSum();
-                dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dgvStateOrder.Rows[e.RowIndex].Selected = true;
-                dgvStateOrder.Focus();
-
-                pdgvStateOrder = dgvStateOrder;
             }
-        }
 
-        private void prvSum()
-        {
-            txtProPrice.Text = "0.00";
-            lbTotal.Text = "0.00";
+                string raw = txtProID.Text;
+                sListGlobalCheck.Add(raw);
 
-            double dAmount = 0;
-            for (int nRow = 0; nRow < dgvStateOrder.Rows.Count; nRow++)
+                prvCalculateTotal();
+                bfCheck = true;
+            }
+
+            private void btnCustomer_Click(object sender, EventArgs e)
             {
-                if (dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim() != "")
+                FrmListCustomer Frm = new FrmListCustomer();
+                Frm.ShowDialog();
+
+                if (Frm.psCusID != "")
                 {
-                    dAmount += Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim());
+                    txtCustomerID.Text = Frm.psCusID;
                 }
-                lbTotal.Text = dAmount.ToString("#,##0.00");
             }
 
-        }
+            private void btnSale_Click(object sender, EventArgs e)
+            {
 
-      
+                bCheckFirstOrder = true;
+                if (bCheck == true)
+                {
+                    dtOrder.Clear();
+                }
+                FrmCheckBill Frm = new FrmCheckBill();
+
+                dsSend.Tables.Add(dtOrder);
+
+                Frm.pds = dsSend;
+                //Frm.pDS.Tables.Add(dtOrder);
+                Frm.ShowDialog();
+                bfCheck = false;
+                // AutoID                     Field Name        Table Name Head  Last      
+                txtOrderID.Text = ocn.pusAutoID("pro_id", "tb_order", "O" + DateTime.Now.Date.ToString("MMyy"), "00000"); // PID001
+            }
+
+            private void prvClearAll()
+            {
+                txtOrderID.Text = "";
+                txtOrderQty.Text = "";
+                txtCustomerID.Text = "";
+                txtProID.Text = "";
+                txtProName.Text = "";
+                txtProPrice.Text = "";
+                txtProUnit.Text = "";
+                lbStockQuantity.Text = "";
+
+            }
+
+            private void dgvStateOrder_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+            {
+                //dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
+
+            private void dgvStateOrder_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+            {
+                if ((e.RowIndex >= 0) && ((e.ColumnIndex == 3)))
+                {
+                    if (dgvStateOrder.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "")
+                    {
+                        dgvStateOrder.Rows[e.RowIndex].Cells[3].Value = 0;
+                    }
+                    if (dgvStateOrder.Rows[e.RowIndex].Cells[4].Value.ToString().Trim() == "")
+                    {
+                        dgvStateOrder.Rows[e.RowIndex].Cells[4].Value = 0;
+                    }
+
+                    prvSum();
+                    dgvStateOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dgvStateOrder.Rows[e.RowIndex].Selected = true;
+                    dgvStateOrder.Focus();
+
+                    pdgvStateOrder = dgvStateOrder;
+                }
+            }
+
+            private void prvSum()
+            {
+                txtProPrice.Text = "0.00";
+                lbTotal.Text = "0.00";
+
+                double dAmount = 0;
+                for (int nRow = 0; nRow < dgvStateOrder.Rows.Count; nRow++)
+                {
+                    if (dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim() != "")
+                    {
+                        dAmount += Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim());
+                    }
+                    lbTotal.Text = dAmount.ToString("#,##0.00");
+                }
+
+            }
+
+        
     }
 }
 
