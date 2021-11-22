@@ -69,26 +69,6 @@ namespace Fruit_Stock
 
             dgvStateOrder.DataSource = dtOrder; // ให้ค่า เป็นค่าจาก DataTable
 
-            DataGridViewCellStyle cs = new DataGridViewCellStyle();
-            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
-            dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
-            dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
-            dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
-            dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
-            dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
-            dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
-            dgvStateOrder.Columns[5].HeaderText = "หน่วย";
-            dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
-            dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
-
-            dgvStateOrder.Columns[0].Width = 160;
-            dgvStateOrder.Columns[1].Width = 120;
-            dgvStateOrder.Columns[2].Width = 240;
-            dgvStateOrder.Columns[3].Width = 160;
-            dgvStateOrder.Columns[4].Width = 160;
-            dgvStateOrder.Columns[5].Width = 160;
-            dgvStateOrder.Columns[6].Width = 120;
-            dgvStateOrder.Columns[7].Width = 140;
 
             // ====================================== END Data Grid Order ================================ //
 
@@ -107,9 +87,32 @@ namespace Fruit_Stock
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             prvOpenListProduct();
+            prvFormatData();
         }
        
+        private void prvFormatData()
+        {
+            DataGridViewCellStyle cs = new DataGridViewCellStyle();
+            cs.Font = new Font("Ms Sans Serif", 10, FontStyle.Regular);
+            dgvStateOrder.ColumnHeadersDefaultCellStyle = cs;
+            dgvStateOrder.Columns[0].HeaderText = "รหัสการสั่งซื้อ";
+            dgvStateOrder.Columns[1].HeaderText = "จำนวนที่สั่งซื้อ";
+            dgvStateOrder.Columns[2].HeaderText = "วันที่สั่งซื้อ";
+            dgvStateOrder.Columns[3].HeaderText = "รหัสลูกค้า";
+            dgvStateOrder.Columns[4].HeaderText = "รหัสสินค้า";
+            dgvStateOrder.Columns[5].HeaderText = "หน่วย";
+            dgvStateOrder.Columns[6].HeaderText = "ราคาสินค้า";
+            dgvStateOrder.Columns[7].HeaderText = "ราคารวม";
 
+            dgvStateOrder.Columns[0].Width = 120;
+            dgvStateOrder.Columns[1].Width = 120;
+            dgvStateOrder.Columns[2].Width = 180;
+            dgvStateOrder.Columns[3].Width = 160;
+            dgvStateOrder.Columns[4].Width = 160;
+            dgvStateOrder.Columns[5].Width = 160;
+            dgvStateOrder.Columns[6].Width = 100;
+            dgvStateOrder.Columns[7].Width = 120;
+        }
         private void prvOpenListProduct()
         {
             

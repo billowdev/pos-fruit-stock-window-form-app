@@ -130,12 +130,12 @@ namespace Fruit_Stock
 
         private void mnuSale_Click(object sender, EventArgs e)
         {
-            if (ocn.pub_CloseChildForm(this, "FrmSale") == false)
+            if (ocn.pub_CloseChildForm(this, "FrmOrderProduct") == false)
             {
                 stsPageStatus.Text = " >>    หน้าขายสินค้า    <<";
                 lbWelcome.Dispose();
                 pbMain.Dispose();
-                FrmSale Frm = new FrmSale();
+                FrmOrderProduct Frm = new FrmOrderProduct();
                 Frm.MdiParent = this;
                 Frm.Show();
             }
