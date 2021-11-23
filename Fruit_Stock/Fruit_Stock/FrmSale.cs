@@ -152,6 +152,12 @@ namespace Fruit_Stock
         
         private void prvCalculateTotal()
         {
+            if (Convert.ToDouble(txtOrderQty.Text) > Convert.ToDouble(lbStockQuantity.Text))
+            {
+                MessageBox.Show("ไม่สามารถซื้อเกินสต๊อกได้ กรุณาเพิ่มสต๊อกสินค้า", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtOrderQty.Text = "";
+                return;
+            }
             if (txtOrderQty.Text == "")
             {
                 MessageBox.Show("Enter Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -170,22 +176,6 @@ namespace Fruit_Stock
             if (lbStockQuantity.Text == "")
             {
                 MessageBox.Show("Please Select other product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (Convert.ToInt32(txtOrderQty.Text) == 0)
-            {
-                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (Convert.ToInt32(txtOrderQty.Text) < 0)
-            {
-                MessageBox.Show("Please Enter Quantity more than zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (Convert.ToInt32(txtOrderQty.Text) > Convert.ToInt32(lbStockQuantity.Text))
-            {
-                MessageBox.Show("Can't Order more than product stock \n please check stock or select other product", "Warning",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -329,23 +319,7 @@ namespace Fruit_Stock
             //}
         }
 
-        private void prvSum()
-        {
-            txtProPrice.Text = "0.00";
-            lbTotal.Text = "0.00";
-
-            double dAmount = 0;
-            for (int nRow = 0; nRow < dgvStateOrder.Rows.Count; nRow++)
-            {
-                if (dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim() != "")
-                {
-                    dAmount += Convert.ToDouble(dgvStateOrder.Rows[nRow].Cells[5].Value.ToString().Trim());
-                }
-                lbTotal.Text = dAmount.ToString("#,##0.00");
-            }
-
-        }
-
+   
         
     }
 }
