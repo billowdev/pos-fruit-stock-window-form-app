@@ -131,6 +131,11 @@
       <DependentUpon>cryOrder.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="dsBillReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBillReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FrmCheckBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +313,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="dsBillReport.xsc">
+      <DependentUpon>dsBillReport.xsd</DependentUpon>
+    </None>
+    <None Include="dsBillReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBillReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsBillReport.xss">
+      <DependentUpon>dsBillReport.xsd</DependentUpon>
+    </None>
     <None Include="Fruit_Stock_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

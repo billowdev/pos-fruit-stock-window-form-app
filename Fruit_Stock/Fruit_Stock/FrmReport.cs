@@ -30,6 +30,15 @@ namespace Fruit_Stock
 
         public string sReport = "";
 
+        public string pOrderID;
+        public string pOrderQty;
+        public string pOrderDate;
+        public string pOrderCID;
+        public string pOrderPID;
+        public string pOrderUnit;
+        public string pOrderPrice;
+        public string pOrderTotal;
+
 
         private void FrmReportEmployee_Load(object sender, EventArgs e)
         {
@@ -55,10 +64,12 @@ namespace Fruit_Stock
                     cryViewer.ReportSource = rptOrder;
                     break;
                 case "CheckBill":
-                    cryViewer.ReportSource = rptBill;
+                    //cryViewer.ReportSource = rptBill;
+                    //rptBill.SetParameterValue("OID", pOrderID);
                     rptBill.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                     rptBill.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                     rptBill.PrintToPrinter(1, false, 0, 1);
+                    this.Close();
                     break;
 
                 default:

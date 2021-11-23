@@ -18,9 +18,13 @@ namespace Fruit_Stock
         {
             InitializeComponent();
         }
-        public double pdTotal = 0;
-        public double pdCash = 0;
-        public double pdChange = 0;
+        double dTotalBefore = 0;
+        double dPriceAll = 0;
+        double dCashCustomer = 0;
+        double dChange = 0;
+        double dDiscount = 0;
+        double TotalAfter = 0;
+
         public bool pbCheckAction = false;
         public DataGridView pdgvOrder;
         oCenter ocn = new oCenter();
@@ -30,15 +34,11 @@ namespace Fruit_Stock
         double dPreviousQty = 0; // Qty Product
         double dNewQty = 0;
         double dPresentQty = 0; // Qty Product After Operating with newQty
-        
+        public double OrderPrice;
+        public double OrderTotal;
+        public string OrderName;
 
-        private void prv_CheckBill()
-        {
-            pdCash = Convert.ToDouble(txtCash.Text);
-            pdChange = Convert.ToDouble(lbChange.Text);
-            pbCheckAction = true;
-            this.Close();
-        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             pbCheckAction = false;
@@ -46,27 +46,34 @@ namespace Fruit_Stock
         }
         public DataSet pDS = new DataSet();
         public cryBill rptBill = new cryBill();
-        double dTotal = 0;
+        
 
         private void FrmCheckBill_Load(object sender, EventArgs e)
         {
+
             txtCash.Focus();
             dgvOrder.DataSource = pds.Tables[0];
 
             prvFormatDataGrid();
-      
+
             for (int nRow = 0; nRow < pds.Tables[0].Rows.Count; nRow++)
             {
-                dTotal += Convert.ToDouble(pds.Tables[0].Rows[nRow][7].ToString());
+                lbCUSID.Text = pds.Tables[0].Rows[nRow][3].ToString();
+                string sSqlName = "select cus_name from tb_customer where cus_id='" + lbCUSID.Text + "'";
+                DataSet dsCUSNAME = new DataSet();
+                dsCUSNAME = ocn.pudsLoadData(sSqlName, "tb_customer", dsCUSNAME);
+
+                if (dsCUSNAME.Tables["tb_customer"].Rows.Count != 0)
+                {
+                    lbCUSNAME.Text = dsCUSNAME.Tables["tb_customer"].Rows[0]["cus_name"].ToString();
+                }
+
+                dPriceAll += Convert.ToDouble(pds.Tables[0].Rows[nRow][7].ToString());
             }
-
-            lbTotal.Text = Convert.ToDouble(dTotal).ToString("#,##0.00");
-
-            lbChange.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
-            lbTotalAfter.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
-            lbDiscount.Text = Convert.ToDouble(pdCash).ToString("#,##0.00");
-
-            
+            lbTotal.Text = "0.00";
+            lbChange.Text = "0.00";
+            lbPrice.Text = dPriceAll.ToString("#,##0.00");
+            btnCheckBill.Enabled = false;
         }
 
         private void prvFormatDataGrid()
@@ -95,7 +102,7 @@ namespace Fruit_Stock
                 dgvOrder.Columns[7].Width = 120;
             }
             catch { }
-            
+
         }
 
         private void prvUpdateProduct(string _sPID, string _dUpdateQty)
@@ -109,7 +116,7 @@ namespace Fruit_Stock
 
             if (checkDS.Tables["tb_product"].Rows.Count != 0)
             {
-                dPreviousQty = Convert.ToInt32( checkDS.Tables["tb_product"].Rows[0]["pro_quantity"].ToString() ); // Qty Product
+                dPreviousQty = Convert.ToInt32(checkDS.Tables["tb_product"].Rows[0]["pro_quantity"].ToString()); // Qty Product
                 dNewQty = Convert.ToDouble(_dUpdateQty);  // Qty Order
                 dPresentQty = dPreviousQty - dNewQty; // Qty Product After Operating with newQty
 
@@ -159,58 +166,54 @@ namespace Fruit_Stock
                 cmdOrder.CommandText = sSqlOder;
                 cmdOrder.Connection = oCenter.conn;
                 cmdOrder.ExecuteNonQuery();
-            } catch(Exception ex) { MessageBox.Show(ex.Message); }
-            
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+
         }
 
         string sOID, sOQty, sCusID, sPID, sDate;
 
-        private void txtCash_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (lbTotal.Text == "")
-                {
-                    return;
-                }
+        public string OrderID;
+        public string OrderQty;
+        public string OrderDate ;
+        public string OrderCID ;
+        public string OrderPID ;
+        public string OrderUnit ;
 
-                if (Convert.ToDouble(lbTotal.Text) <= 0)
-                {
-                    return;
-                }
-                double dOut = Convert.ToDouble(txtCash.Text) - Convert.ToDouble(lbTotal.Text);
-                lbTotalAfter.Text = dOut.ToString("#,##0.00");
-            }
-            catch
+
+        private void btnCal_Click(object sender, EventArgs e)
+        {
+     
+            if (txtCash.Text == "")
             {
-                txtCash.Text = "0";
-                lbTotalAfter.Text = "0.00";
+                MessageBox.Show("กรอกเงินสด", "คำนวณไม่ได้", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-        }
-
-        private void txtDiscount_TextChanged(object sender, EventArgs e)
-        {
-            try
+            if (Convert.ToDouble(txtCash.Text) <= 0)
             {
-                if (lbTotal.Text == "")
-                {
-                    return;
-                }
-
-                if (Convert.ToDouble(lbTotal.Text) <= 0)
-                {
-                    return;
-                }
-                double dOut = Convert.ToDouble(lbTotal.Text) - Convert.ToDouble(txtDiscount.Text);
-                lbTotalAfter.Text = dOut.ToString("#,##0.00");
-            }
-            catch
-            {
-                txtDiscount.Text = "0";
-                lbTotalAfter.Text = "0.00";
+                MessageBox.Show("กรุณากรอกจำนวนเงิน", "คำนวณไม่ได้", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (txtDiscount.Text == "")
+            {
+                lbDiscount.Text = "0";
+            }
+
+            lbDiscount.Text = txtDiscount.Text; //  SHOW FOR CHECKBILL
+            dDiscount = Convert.ToDouble(lbDiscount.Text);
+            dPriceAll = Convert.ToDouble(lbPrice.Text); // ค่าใช้จ่าย
+
+            TotalAfter = dPriceAll - dDiscount;  // ราคาหลัง คิดส่วนลด
+            
+            lbCash.Text = txtCash.Text; //  SHOW FOR CHECKBILL
+            
+            lbTotal.Text = Convert.ToString(TotalAfter);  //  SHOW FOR CHECKBILL
+
+            dCashCustomer = Convert.ToDouble(txtCash.Text); // เงินสด
+            // =========================================================
+            lbChange.Text = Convert.ToString(Convert.ToDouble(lbCash.Text) - Convert.ToDouble(lbTotal.Text));
+            dChange = Convert.ToDouble(lbChange.Text);
+            btnCheckBill.Enabled = true;
+
         }
 
         private void btnCheckBill_Click(object sender, EventArgs e)
@@ -224,13 +227,13 @@ namespace Fruit_Stock
             //dtOrder.Columns.Add("oPrice");
             //dtOrder.Columns.Add("oTotal");
 
-            for (int iTem=0; iTem < pds.Tables[0].Rows.Count; iTem++)
+            for (int nRow = 0; nRow < pds.Tables[0].Rows.Count; nRow++)
             {
-                sOID = pds.Tables[0].Rows[iTem]["oOid"].ToString();
-                sOQty = pds.Tables[0].Rows[iTem]["oQty"].ToString();
-                sDate = pds.Tables[0].Rows[iTem]["oDate"].ToString();
-                sCusID = pds.Tables[0].Rows[iTem]["oCID"].ToString();
-                sPID = pds.Tables[0].Rows[iTem]["oPID"].ToString();
+                sOID = pds.Tables[0].Rows[nRow]["oOid"].ToString();
+                sOQty = pds.Tables[0].Rows[nRow]["oQty"].ToString();
+                sDate = pds.Tables[0].Rows[nRow]["oDate"].ToString();
+                sCusID = pds.Tables[0].Rows[nRow]["oCID"].ToString();
+                sPID = pds.Tables[0].Rows[nRow]["oPID"].ToString();
 
                 prvInsertOrder(sOID, sOQty, sCusID, sPID, sDate);
 
@@ -239,15 +242,47 @@ namespace Fruit_Stock
             }
 
             // ===================================================================================================================================
-            //FrmReport Frm = new FrmReport();
-            //Frm.sReport = "CheckBill";
-            //Frm.rptBill.SetDataSource(pds);
-            //Frm.ShowDialog();
+
+            dsBillReport dsBillR = new dsBillReport();
+            FrmReport Frm = new FrmReport();
+            Frm.sReport = "CheckBill";
+
+            for (int nRow = 0; nRow < dgvOrder.Rows.Count - 1; nRow++)
+            {
+                OrderID = dgvOrder.Rows[nRow].Cells[0].Value.ToString();
+                OrderQty = dgvOrder.Rows[nRow].Cells[1].Value.ToString();
+                OrderDate = dgvOrder.Rows[nRow].Cells[2].Value.ToString();
+                OrderCID = dgvOrder.Rows[nRow].Cells[3].Value.ToString();
+                OrderPID = dgvOrder.Rows[nRow].Cells[4].Value.ToString();
+                OrderUnit = dgvOrder.Rows[nRow].Cells[5].Value.ToString();
+                OrderPrice = Convert.ToDouble(dgvOrder.Rows[nRow].Cells[6].Value.ToString());
+                OrderTotal = Convert.ToDouble(dgvOrder.Rows[nRow].Cells[7].Value.ToString());
+
+                dsBillR.Tables[0].Rows.Add(OrderID, OrderName, OrderQty, OrderPID, OrderUnit, OrderPrice);
+
+                string sPSql = "Select * from tb_product where pro_id='" + OrderPID + "'";
+                pDS = ocn.pudsLoadData(sPSql, "tb_product", pDS);
+                if (pDS.Tables["tb_product"].Rows.Count > 0)
+                {
+                    OrderName = pDS.Tables["tb_product"].Rows[0]["pro_name"].ToString();
+                }
+            }
+
+            Frm.rptBill.SetDataSource(dsBillR);
+            
+            Frm.rptBill.SetParameterValue("oPrice", lbTotal.Text);
+            Frm.rptBill.SetParameterValue("oDiscount", lbDiscount.Text);
+            Frm.rptBill.SetParameterValue("oCash", lbCash.Text);
+            Frm.rptBill.SetParameterValue("oChange", lbChange.Text);
+            Frm.rptBill.SetParameterValue("oCusid", OrderCID);
+            Frm.rptBill.SetParameterValue("oEmpid", oCenter.currentid);
+
+            Frm.ShowDialog();
             this.Close();
 
         }
 
-
-
     }
+
+
 }
