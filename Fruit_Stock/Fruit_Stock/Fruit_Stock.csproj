@@ -66,6 +66,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Fruit_Stock.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -196,12 +199,6 @@
     <Compile Include="FrmOrderHistory.Designer.cs">
       <DependentUpon>FrmOrderHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmOrderProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmOrderProduct.Designer.cs">
-      <DependentUpon>FrmOrderProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,9 +288,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOrderHistory.resx">
       <DependentUpon>FrmOrderHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmOrderProduct.resx">
-      <DependentUpon>FrmOrderProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSale.resx">
       <DependentUpon>FrmSale.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
+using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
@@ -76,37 +77,41 @@ namespace Fruit_Stock
 
         private void prvSearch()
         {
-
-            if (txtSearch.Text == "")
+            try
             {
-                MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (txtSearch.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอกข้อความที่ต้องการค้นหา", "Msg", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                string sSqlSelect = " SELECT * FROM tb_order WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
+
+                if (bCheck == true)
+                {
+                    dsOrder.Tables["tb_order"].Clear();
+                }
+
+                OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
+                da.Fill(dsOrder, "tb_order");
+
+                if (dsOrder.Tables["tb_order"].Rows.Count != 0)
+                {
+                    bCheck = true;
+                    dgvAllOrderHistory.ReadOnly = true;
+                    dgvAllOrderHistory.DataSource = dsOrder.Tables["tb_order"];
+                }
+                else
+                {
+                    bCheck = false;
+                }
+                dgvAllOrderHistory.Refresh();
+               
             }
+            catch { }
 
-
-            string sSqlSelect = " SELECT * FROM tb_order WHERE im_id+im_name+emp_id LIKE '%" + txtSearch.Text.Trim() + "%' ORDER BY im_id DESC;";
-
-            if (bCheck == true)
-            {
-                dsOrder.Tables["tb_order"].Clear();
-            }
-
-            OleDbDataAdapter da = new OleDbDataAdapter(sSqlSelect, oCenter.conn);
-            da.Fill(dsOrder, "tb_order");
-
-            if (dsOrder.Tables["tb_order"].Rows.Count != 0)
-            {
-                bCheck = true;
-                dgvAllOrderHistory.ReadOnly = true;
-                dgvAllOrderHistory.DataSource = dsOrder.Tables["tb_order"];
-            }
-            else
-            {
-                bCheck = false;
-            }
-            dgvAllOrderHistory.Refresh();
-            btnSearch.Enabled = false;
-
+             btnSearch.Enabled = false;
         }
 
         private void prvClearAll()
@@ -122,33 +127,41 @@ namespace Fruit_Stock
 
         private void prvFillterDate()
         {
-
-            //prvSearch();
-            string sSqlLoad = "SELECT * FROM tb_order WHERE im_date Between " +
-                                dtpFromDate.Value.ToString("#dd-MM-yyyy#") + " and " +
-                                dtpToDate.Value.ToString("#dd-MM-yyyy#") + "";
-            oCenter.pusvOpenConnection();
-            OleDbDataAdapter da = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
-
-            da = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
-            da.Fill(dsOrder, "tb_order");
-
-            if (bCheck == true)
+            try
             {
-                dsOrder.Tables["tb_order"].Clear();
-            }
+                DataSet dsFill = new DataSet();
+                //prvSearch();
+                string sSqlLoad = "SELECT * FROM tb_order WHERE tb_order Between " +
+                                    dtpFromDate.Value.ToString("#dd-MM-yyyy#") + " and " +
+                                    dtpToDate.Value.ToString("#dd-MM-yyyy#") + "";
+                oCenter.pusvOpenConnection();
+                OleDbDataAdapter da = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
 
-            if (dsOrder.Tables["tb_order"].Rows.Count != 0)
-            {
-                bCheck = true;
-                dgvAllOrderHistory.ReadOnly = true;
-                dgvAllOrderHistory.DataSource = dsOrder.Tables["tb_order"];
+                da = new OleDbDataAdapter(sSqlLoad, oCenter.conn);
+                da.Fill(dsFill, "tb_order");
+
+                if (bCheck == true)
+                {
+                    dsFill.Tables["tb_order"].Clear();
+                }
+
+                if (dsFill.Tables["tb_order"].Rows.Count != 0)
+                {
+                    bCheck = true;
+                    dgvAllOrderHistory.ReadOnly = true;
+                    dgvAllOrderHistory.DataSource = dsFill.Tables["tb_order"];
+                }
+                else
+                {
+                    bCheck = false;
+                }
+                dgvAllOrderHistory.Refresh();
             }
-            else
+            catch
             {
-                bCheck = false;
+                //MessageBox.Show();
             }
-            dgvAllOrderHistory.Refresh();
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -164,20 +177,25 @@ namespace Fruit_Stock
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 13)
+            try
             {
+                if (e.KeyValue == 13)
+                {
 
-                if (btnSearch.Enabled == true)
-                {
-                    prvSearch();
-                }
-                else
-                {
-                    prvShowAllOrder();
-                    //txtSearch.Text = "";
-                    btnSearch.Enabled = true;
-                }
+                    if (btnSearch.Enabled == true)
+                    {
+                        prvSearch();
+                    }
+                    else
+                    {
+                        prvShowAllOrder();
+                        //txtSearch.Text = "";
+                        btnSearch.Enabled = true;
+                    }
+                } 
             }
+            catch { }
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

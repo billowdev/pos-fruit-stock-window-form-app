@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fruit_Stock.static_classes;
+using System.Data;
 using System.Data.OleDb;
 
 namespace Fruit_Stock
